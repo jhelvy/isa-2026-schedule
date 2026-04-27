@@ -1,0 +1,851 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ISA 2026 Conference Schedule</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            line-height: 1.6;
+            color: #212529;
+            background: #f8f9fa;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        header {
+            background: white;
+            border-bottom: 1px solid #dee2e6;
+            color: #212529;
+            padding: 15px 20px;
+            box-shadow: 0 0.5rem 1rem rgba(0,0,0,0.05);
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .logo {
+            height: 50px;
+            width: auto;
+        }
+
+        .header-text h1 {
+            font-size: 1.5em;
+            margin-bottom: 2px;
+            color: #0d6efd;
+            font-weight: 600;
+        }
+
+        .header-text p {
+            font-size: 0.9em;
+            color: #6c757d;
+        }
+
+        .main-container {
+            display: flex;
+            flex: 1;
+            max-width: 1800px;
+            margin: 0 auto;
+            width: 100%;
+        }
+
+        .sidebar {
+            width: 300px;
+            background: white;
+            padding: 1.5rem;
+            border-right: 1px solid #dee2e6;
+            overflow-y: auto;
+            position: sticky;
+            top: 0;
+            height: calc(100vh - 82px);
+        }
+
+        .sidebar h2 {
+            font-size: 1.1em;
+            margin-bottom: 1rem;
+            color: #495057;
+            font-weight: 600;
+        }
+
+        .day-tabs {
+            display: flex;
+            gap: 0.5rem;
+            margin-bottom: 1.5rem;
+            flex-wrap: wrap;
+        }
+
+        .day-tab {
+            flex: 1;
+            min-width: fit-content;
+            padding: 0.5rem 0.75rem;
+            background: white;
+            border: 1px solid #ced4da;
+            border-radius: 0.375rem;
+            cursor: pointer;
+            font-size: 0.85em;
+            font-weight: 500;
+            color: #495057;
+            text-align: center;
+            transition: all 0.15s ease-in-out;
+        }
+
+        .day-tab:hover {
+            background: #f8f9fa;
+            border-color: #86b7fe;
+        }
+
+        .day-tab.active {
+            background: #0d6efd;
+            border-color: #0d6efd;
+            color: white;
+        }
+
+        .mobile-filter-toggle {
+            display: none;
+            position: fixed;
+            bottom: 1.5rem;
+            right: 1.5rem;
+            background: #0d6efd;
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 56px;
+            height: 56px;
+            font-size: 1.5em;
+            cursor: pointer;
+            box-shadow: 0 0.5rem 1rem rgba(0,0,0,0.15);
+            z-index: 1000;
+            transition: all 0.15s ease-in-out;
+        }
+
+        .mobile-filter-toggle:hover {
+            background: #0b5ed7;
+            transform: scale(1.05);
+        }
+
+        .sidebar-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0,0,0,0.5);
+            z-index: 999;
+        }
+
+        .control-item {
+            display: flex;
+            flex-direction: column;
+            margin-bottom: 20px;
+        }
+
+        label {
+            font-weight: 600;
+            margin-bottom: 8px;
+            color: #555;
+            font-size: 0.85em;
+        }
+
+        /* Custom styled select wrapper with color bar */
+        .track-select-wrapper {
+            position: relative;
+        }
+
+        .track-select-wrapper::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 4px;
+            border-radius: 4px 0 0 4px;
+            background: var(--track-color, #d1d5db);
+            pointer-events: none;
+            z-index: 1;
+            transition: background 0.3s;
+        }
+
+        .track-select-wrapper select {
+            padding-left: 12px;
+            width: 100%;
+        }
+
+        input, select {
+            padding: 0.5rem 0.75rem;
+            border: 1px solid #ced4da;
+            border-radius: 0.375rem;
+            font-size: 0.95em;
+            transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+            width: 100%;
+            background-color: #fff;
+        }
+
+        input:focus, select:focus {
+            outline: none;
+            border-color: #86b7fe;
+            box-shadow: 0 0 0 0.25rem rgba(13,110,253,0.25);
+        }
+
+        .button-group {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            margin-top: 20px;
+            padding-top: 20px;
+            border-top: 1px solid #e5e5e5;
+        }
+
+        .expand-all {
+            background: #0d6efd;
+            color: white;
+            border: 1px solid #0d6efd;
+            padding: 0.5rem 1rem;
+            border-radius: 0.375rem;
+            cursor: pointer;
+            font-size: 0.9em;
+            transition: all 0.15s ease-in-out;
+            width: 100%;
+            font-weight: 500;
+        }
+
+        .expand-all:hover {
+            background: #0b5ed7;
+            border-color: #0a58ca;
+        }
+
+        .stats {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            margin-top: 20px;
+            padding-top: 20px;
+            border-top: 1px solid #e5e5e5;
+        }
+
+        .stat {
+            font-size: 0.85em;
+            color: #666;
+        }
+
+        .stat strong {
+            color: #1e3a8a;
+            font-size: 1em;
+        }
+
+        .content {
+            flex: 1;
+            padding: 20px;
+            overflow-y: auto;
+        }
+
+        /* Track colors from schedule.qmd */
+        .cat-general {
+            border-left: 5px solid #E69F00 !important;
+        }
+        .cat-health {
+            border-left: 5px solid #56B4E9 !important;
+        }
+        .cat-innovation {
+            border-left: 5px solid #CC79A7 !important;
+        }
+        .cat-labor {
+            border-left: 5px solid #F0E442 !important;
+        }
+        .cat-operations {
+            border-left: 5px solid #0072B2 !important;
+        }
+        .cat-policy {
+            border-left: 5px solid #D55E00 !important;
+        }
+        .cat-sustainability {
+            border-left: 5px solid #009E73 !important;
+        }
+
+        .session-group {
+            background: white;
+            border: 1px solid #dee2e6;
+            border-radius: 0.5rem;
+            margin-bottom: 1rem;
+            box-shadow: 0 0.125rem 0.25rem rgba(0,0,0,0.075);
+            overflow: hidden;
+            transition: box-shadow 0.15s ease-in-out;
+        }
+
+        .session-group:hover {
+            box-shadow: 0 0.5rem 1rem rgba(0,0,0,0.1);
+        }
+
+        .session-header {
+            background: white;
+            color: #212529;
+            padding: 1rem 1.25rem;
+            cursor: pointer;
+            user-select: none;
+            transition: background 0.15s ease-in-out;
+        }
+
+        .session-header:hover {
+            background: #f8f9fa;
+        }
+
+        .session-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .session-title {
+            font-size: 1.3em;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+
+        .session-info {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+            font-size: 0.95em;
+            opacity: 0.95;
+        }
+
+        .session-info span {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .session-papers {
+            padding: 0;
+            display: none;
+        }
+
+        .session-group.expanded .session-papers {
+            display: block;
+        }
+
+        .paper {
+            padding: 20px;
+            border-bottom: 1px solid #e5e5e5;
+        }
+
+        .paper:last-child {
+            border-bottom: none;
+        }
+
+        .paper-title {
+            font-size: 1.05em;
+            font-weight: 600;
+            color: #212529;
+            margin-bottom: 0.5rem;
+        }
+
+        .paper-authors {
+            color: #6c757d;
+            font-size: 0.9em;
+            margin-bottom: 0.75rem;
+        }
+
+        .paper-category {
+            display: inline-block;
+            background: #e7f1ff;
+            color: #084298;
+            padding: 0.25rem 0.5rem;
+            border-radius: 0.25rem;
+            font-size: 0.85em;
+            margin-bottom: 0.75rem;
+            border: 1px solid #b6d4fe;
+        }
+
+        .abstract-toggle {
+            background: #0d6efd;
+            color: white;
+            border: 1px solid #0d6efd;
+            padding: 0.375rem 0.75rem;
+            border-radius: 0.375rem;
+            cursor: pointer;
+            font-size: 0.9em;
+            transition: all 0.15s ease-in-out;
+            font-weight: 500;
+        }
+
+        .abstract-toggle:hover {
+            background: #0b5ed7;
+            border-color: #0a58ca;
+        }
+
+        .abstract {
+            display: none;
+            margin-top: 1rem;
+            padding: 1rem;
+            background: #f8f9fa;
+            border-left: 4px solid #0d6efd;
+            border-radius: 0.375rem;
+            color: #495057;
+            line-height: 1.7;
+        }
+
+        .abstract.visible {
+            display: block;
+        }
+
+        .no-results {
+            text-align: center;
+            padding: 60px 20px;
+            color: #666;
+            background: white;
+            border-radius: 8px;
+        }
+
+        .no-results h2 {
+            font-size: 1.5em;
+            margin-bottom: 10px;
+        }
+
+        @media (max-width: 1024px) {
+            .main-container {
+                flex-direction: column;
+            }
+
+            .sidebar {
+                position: fixed;
+                left: -100%;
+                top: 0;
+                width: 320px;
+                max-width: 85vw;
+                height: 100vh;
+                z-index: 1000;
+                transition: left 0.3s ease-in-out;
+                box-shadow: 0.5rem 0 1rem rgba(0,0,0,0.15);
+                overflow-y: auto;
+            }
+
+            .sidebar.mobile-open {
+                left: 0;
+            }
+
+            .sidebar-overlay.show {
+                display: block;
+            }
+
+            .mobile-filter-toggle {
+                display: block;
+            }
+
+            .content {
+                padding: 1rem;
+            }
+
+            header {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .logo {
+                height: 40px;
+            }
+
+            .header-text h1 {
+                font-size: 1.3em;
+            }
+
+            .day-tabs {
+                flex-direction: column;
+            }
+
+            .day-tab {
+                width: 100%;
+            }
+        }
+
+        .loading {
+            text-align: center;
+            padding: 40px;
+            font-size: 1.2em;
+            color: #666;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <img src="logo.png" alt="ISA Logo" class="logo">
+        <div class="header-text">
+            <h1>ISA 2026 Conference Schedule</h1>
+            <p>Industry Studies Association Annual Conference | June 3-5, 2026</p>
+        </div>
+    </header>
+
+    <div class="main-container">
+        <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+        <aside class="sidebar" id="sidebar">
+            <h2>Filters & Options</h2>
+
+            <div class="day-tabs">
+                <button class="day-tab active" data-day="">All Days</button>
+                <button class="day-tab" data-day="Wednesday">Wed</button>
+                <button class="day-tab" data-day="Thursday">Thu</button>
+                <button class="day-tab" data-day="Friday">Fri</button>
+            </div>
+
+            <div class="control-item">
+                <label for="search">Search</label>
+                <input type="text" id="search" placeholder="Title, authors, abstract...">
+            </div>
+
+            <div class="control-item">
+                <label for="timeSlotFilter">Time Slot</label>
+                <select id="timeSlotFilter">
+                    <option value="">All Time Slots</option>
+                </select>
+            </div>
+
+            <div class="control-item">
+                <label for="trackFilter">Track</label>
+                <div class="track-select-wrapper">
+                    <select id="trackFilter">
+                        <option value="">All Tracks</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="control-item">
+                <label for="typeFilter">Type</label>
+                <select id="typeFilter">
+                    <option value="">All Types</option>
+                    <option value="paper">Paper Sessions</option>
+                    <option value="panel_discussion">Panel Discussions</option>
+                </select>
+            </div>
+
+            <div class="button-group">
+                <button class="expand-all" id="expandAll">Expand All Sessions</button>
+                <button class="expand-all" id="collapseAll" style="background: #dc3545; border-color: #dc3545;">Collapse All Sessions</button>
+            </div>
+
+            <div class="stats">
+                <div class="stat">Sessions: <strong id="sessionCount">0</strong></div>
+                <div class="stat">Papers: <strong id="paperCount">0</strong></div>
+            </div>
+        </aside>
+
+        <main class="content">
+            <div id="schedule">
+                <div class="loading">Loading schedule...</div>
+            </div>
+        </main>
+
+        <button class="mobile-filter-toggle" id="mobileFilterToggle">
+            ☰
+        </button>
+    </div>
+
+    <script>
+        let scheduleData = [];
+        let allTracks = new Set();
+        let allTimeSlots = new Set();
+
+        // Load data
+        fetch('schedule_data.json')
+            .then(response => response.json())
+            .then(data => {
+                scheduleData = data;
+
+                // Extract unique tracks and time slots
+                data.forEach(item => {
+                    if (item.category) {
+                        allTracks.add(item.category);
+                    }
+                    if (item.time_slot && item.day) {
+                        // Create readable time slot label
+                        const timeLabel = item.start_time && item.end_time
+                            ? `${item.day.substring(0,3)} ${formatTime(item.start_time)} - ${formatTime(item.end_time)}`
+                            : `${item.day} ${item.time_slot}`;
+                        allTimeSlots.add(JSON.stringify({
+                            slot: item.time_slot,
+                            day: item.day,
+                            label: timeLabel,
+                            order: item.time_order
+                        }));
+                    }
+                });
+
+                // Populate track dropdown with shortened labels
+                const trackFilter = document.getElementById('trackFilter');
+                const trackMap = {
+                    'General Industry Studies': { short: 'General Industry', color: '#E69F00' },
+                    'Health Care Systems, Biotechnology, and Pharmaceuticals': { short: 'Health Care & Pharma', color: '#56B4E9' },
+                    'Innovation, Entrepreneurship, and AI-Driven Transformation': { short: 'Innovation & AI', color: '#CC79A7' },
+                    'Labor Markets, Organizations, and the Future of Work': { short: 'Labor & Work', color: '#F0E442' },
+                    'Operations, Supply Chain, and AI-Enhanced Industry 4.0': { short: 'Operations & Supply Chain', color: '#0072B2' },
+                    'Public Policy and Global Competitiveness': { short: 'Public Policy', color: '#D55E00' },
+                    'Sustainable Innovation, Energy, and Mobility': { short: 'Sustainability & Energy', color: '#009E73' }
+                };
+
+                Array.from(allTracks).sort().forEach(track => {
+                    const option = document.createElement('option');
+                    option.value = track;
+                    const trackInfo = trackMap[track];
+                    if (trackInfo) {
+                        option.textContent = trackInfo.short;
+                    } else {
+                        option.textContent = track;
+                    }
+                    trackFilter.appendChild(option);
+                });
+
+                // Update wrapper color indicator on change
+                trackFilter.addEventListener('change', function() {
+                    const wrapper = this.closest('.track-select-wrapper');
+                    const trackInfo = trackMap[this.value];
+                    if (trackInfo) {
+                        wrapper.style.setProperty('--track-color', trackInfo.color);
+                    } else {
+                        wrapper.style.setProperty('--track-color', '#e5e5e5');
+                    }
+                });
+
+                // Populate time slot dropdown
+                const timeSlotFilter = document.getElementById('timeSlotFilter');
+                const timeSlots = Array.from(allTimeSlots)
+                    .map(ts => JSON.parse(ts))
+                    .sort((a, b) => a.order - b.order);
+
+                timeSlots.forEach(ts => {
+                    const option = document.createElement('option');
+                    option.value = ts.slot;
+                    option.textContent = ts.label;
+                    option.setAttribute('data-day', ts.day);
+                    timeSlotFilter.appendChild(option);
+                });
+
+                renderSchedule();
+                attachEventListeners();
+            })
+            .catch(error => {
+                document.getElementById('schedule').innerHTML =
+                    '<div class="no-results"><h2>Error loading schedule</h2><p>' + error.message + '</p></div>';
+            });
+
+        function attachEventListeners() {
+            document.getElementById('search').addEventListener('input', renderSchedule);
+            document.getElementById('timeSlotFilter').addEventListener('change', renderSchedule);
+            document.getElementById('trackFilter').addEventListener('change', renderSchedule);
+            document.getElementById('typeFilter').addEventListener('change', renderSchedule);
+            document.getElementById('expandAll').addEventListener('click', () => expandCollapseAll(true));
+            document.getElementById('collapseAll').addEventListener('click', () => expandCollapseAll(false));
+
+            // Day tab listeners
+            document.querySelectorAll('.day-tab').forEach(tab => {
+                tab.addEventListener('click', function() {
+                    document.querySelectorAll('.day-tab').forEach(t => t.classList.remove('active'));
+                    this.classList.add('active');
+                    renderSchedule();
+                });
+            });
+
+            // Mobile filter toggle
+            const mobileToggle = document.getElementById('mobileFilterToggle');
+            const sidebar = document.getElementById('sidebar');
+            const overlay = document.getElementById('sidebarOverlay');
+
+            mobileToggle.addEventListener('click', () => {
+                sidebar.classList.add('mobile-open');
+                overlay.classList.add('show');
+            });
+
+            overlay.addEventListener('click', () => {
+                sidebar.classList.remove('mobile-open');
+                overlay.classList.remove('show');
+            });
+        }
+
+        function expandCollapseAll(expand) {
+            const sessions = document.querySelectorAll('.session-group');
+            sessions.forEach(session => {
+                if (expand) {
+                    session.classList.add('expanded');
+                } else {
+                    session.classList.remove('expanded');
+                }
+            });
+        }
+
+        function renderSchedule() {
+            const searchTerm = document.getElementById('search').value.toLowerCase();
+            const activeDayTab = document.querySelector('.day-tab.active');
+            const dayFilter = activeDayTab ? activeDayTab.getAttribute('data-day') : '';
+            const timeSlotFilter = document.getElementById('timeSlotFilter').value;
+            const trackFilter = document.getElementById('trackFilter').value;
+            const typeFilter = document.getElementById('typeFilter').value;
+
+            // Filter data
+            let filtered = scheduleData.filter(item => {
+                // Search filter
+                const searchMatch = !searchTerm ||
+                    (item.session_name && item.session_name.toLowerCase().includes(searchTerm)) ||
+                    (item.authors && item.authors.toLowerCase().includes(searchTerm)) ||
+                    (item.abstract && item.abstract.toLowerCase().includes(searchTerm));
+
+                // Day filter
+                const dayMatch = !dayFilter || item.day === dayFilter;
+
+                // Time slot filter
+                const timeSlotMatch = !timeSlotFilter || item.time_slot === timeSlotFilter;
+
+                // Track filter
+                const trackMatch = !trackFilter || item.category === trackFilter;
+
+                // Type filter - treat paper and self_organized_panel as "paper"
+                const typeMatch = !typeFilter ||
+                    (typeFilter === 'paper' && (item.type === 'paper' || item.type === 'self_organized_panel')) ||
+                    (typeFilter === 'panel_discussion' && item.type === 'panel_discussion');
+
+                return searchMatch && dayMatch && timeSlotMatch && trackMatch && typeMatch;
+            });
+
+            // Sort by time
+            filtered.sort((a, b) => {
+                if (a.time_order !== b.time_order) return a.time_order - b.time_order;
+                if (a.session_id !== b.session_id) return a.session_id - b.session_id;
+                return a.id - b.id;
+            });
+
+            // Group by session
+            const sessions = {};
+            filtered.forEach(item => {
+                const key = `${item.session_id}_${item.time_slot}`;
+                if (!sessions[key]) {
+                    sessions[key] = {
+                        session_id: item.session_id,
+                        session_name: item.session_name,
+                        time_slot: item.time_slot,
+                        room: item.room,
+                        date: item.date,
+                        day: item.day,
+                        start_time: item.start_time,
+                        end_time: item.end_time,
+                        time_order: item.time_order,
+                        category: item.category,
+                        papers: []
+                    };
+                }
+                sessions[key].papers.push(item);
+            });
+
+            // Render HTML
+            const scheduleDiv = document.getElementById('schedule');
+
+            if (Object.keys(sessions).length === 0) {
+                scheduleDiv.innerHTML = '<div class="no-results"><h2>No results found</h2><p>Try adjusting your search or filters</p></div>';
+                document.getElementById('sessionCount').textContent = '0';
+                document.getElementById('paperCount').textContent = '0';
+                return;
+            }
+
+            let html = '';
+            let totalPapers = 0;
+
+            Object.values(sessions).forEach(session => {
+                totalPapers += session.papers.length;
+
+                const timeStr = session.start_time && session.end_time
+                    ? `${formatTime(session.start_time)} - ${formatTime(session.end_time)}`
+                    : session.time_slot;
+
+                const categoryClass = getCategoryClass(session.category);
+
+                html += `
+                    <div class="session-group ${categoryClass}">
+                        <div class="session-header" onclick="toggleSession(this)">
+                            <div class="session-meta">
+                                <div>
+                                    <div class="session-title">${escapeHtml(session.session_name || 'Untitled Session')}</div>
+                                    <div class="session-info">
+                                        <span>📅 ${session.day}, ${formatDate(session.date)}</span>
+                                        <span>🕒 ${timeStr}</span>
+                                        <span>📍 ${session.room || 'TBA'}</span>
+                                        <span>📄 ${session.papers.length === 1 && session.papers[0].type === 'panel_discussion' ? 'Panel Discussion' : `${session.papers.length} paper${session.papers.length !== 1 ? 's' : ''}`}</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="session-papers">
+                            ${session.papers.map((paper, idx) => `
+                                <div class="paper">
+                                    <div class="paper-title">${escapeHtml(paper.title || 'Untitled')}</div>
+                                    ${paper.authors ? `<div class="paper-authors">${escapeHtml(paper.authors)}</div>` : ''}
+                                    ${paper.category ? `<div class="paper-category">${escapeHtml(paper.category)}</div>` : ''}
+                                    ${paper.abstract ? `
+                                        <button class="abstract-toggle" onclick="toggleAbstract(this, event)">View Abstract</button>
+                                        <div class="abstract" id="abstract-${paper.id}">${escapeHtml(paper.abstract)}</div>
+                                    ` : ''}
+                                </div>
+                            `).join('')}
+                        </div>
+                    </div>
+                `;
+            });
+
+            scheduleDiv.innerHTML = html;
+            document.getElementById('sessionCount').textContent = Object.keys(sessions).length;
+            document.getElementById('paperCount').textContent = totalPapers;
+        }
+
+        function toggleSession(element) {
+            element.parentElement.classList.toggle('expanded');
+        }
+
+        function toggleAbstract(button, event) {
+            event.stopPropagation();
+            const abstract = button.nextElementSibling;
+            abstract.classList.toggle('visible');
+            button.textContent = abstract.classList.contains('visible') ? 'Hide Abstract' : 'View Abstract';
+        }
+
+        function formatTime(timeStr) {
+            if (!timeStr) return '';
+            const [hours, minutes] = timeStr.split(':');
+            const h = parseInt(hours);
+            const period = h >= 12 ? 'PM' : 'AM';
+            const hour12 = h === 0 ? 12 : h > 12 ? h - 12 : h;
+            return `${hour12}:${minutes} ${period}`;
+        }
+
+        function formatDate(dateStr) {
+            if (!dateStr) return '';
+            const date = new Date(dateStr + 'T00:00:00');
+            return date.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
+        }
+
+        function escapeHtml(text) {
+            if (!text) return '';
+            const div = document.createElement('div');
+            div.textContent = text;
+            return div.innerHTML;
+        }
+
+        function getCategoryClass(category) {
+            if (!category) return '';
+            if (category.includes('General Industry Studies')) return 'cat-general';
+            if (category.includes('Health Care Systems') || category.includes('Biotechnology') || category.includes('Pharmaceuticals')) return 'cat-health';
+            if (category.includes('Labor Markets') || category.includes('Organizations') || category.includes('Future of Work')) return 'cat-labor';
+            if (category.includes('Operations') || category.includes('Supply Chain') || category.includes('Industry 4.0')) return 'cat-operations';
+            if (category.includes('Public Policy') || category.includes('Global Competitiveness')) return 'cat-policy';
+            if (category.includes('Sustainable Innovation') || category.includes('Sustainable')) return 'cat-sustainability';
+            if (category.includes('Innovation') || category.includes('Entrepreneurship') || category.includes('AI-Driven')) return 'cat-innovation';
+            return '';
+        }
+    </script>
+</body>
+</html>
