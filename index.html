@@ -155,7 +155,6 @@
             font-size: 0.85em;
         }
 
-        /* Custom styled select wrapper with color bar */
         .track-select-wrapper {
             position: relative;
         }
@@ -247,28 +246,15 @@
             overflow-y: auto;
         }
 
-        /* Track colors from schedule.qmd */
-        .cat-general {
-            border-left: 5px solid #E69F00 !important;
-        }
-        .cat-health {
-            border-left: 5px solid #56B4E9 !important;
-        }
-        .cat-innovation {
-            border-left: 5px solid #CC79A7 !important;
-        }
-        .cat-labor {
-            border-left: 5px solid #F0E442 !important;
-        }
-        .cat-operations {
-            border-left: 5px solid #0072B2 !important;
-        }
-        .cat-policy {
-            border-left: 5px solid #D55E00 !important;
-        }
-        .cat-sustainability {
-            border-left: 5px solid #009E73 !important;
-        }
+        /* Track colors */
+        .cat-general      { border-left: 5px solid #E69F00 !important; }
+        .cat-health       { border-left: 5px solid #56B4E9 !important; }
+        .cat-innovation   { border-left: 5px solid #CC79A7 !important; }
+        .cat-labor        { border-left: 5px solid #F0E442 !important; }
+        .cat-operations   { border-left: 5px solid #0072B2 !important; }
+        .cat-policy       { border-left: 5px solid #D55E00 !important; }
+        .cat-sustainability { border-left: 5px solid #009E73 !important; }
+        .cat-special      { border-left: 5px solid #6f42c1 !important; }
 
         .session-group {
             background: white;
@@ -305,10 +291,41 @@
             gap: 10px;
         }
 
+        .session-title-row {
+            display: flex;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-bottom: 8px;
+        }
+
         .session-title {
             font-size: 1.3em;
             font-weight: 600;
-            margin-bottom: 8px;
+        }
+
+        .session-badge {
+            display: inline-block;
+            padding: 0.15rem 0.5rem;
+            border-radius: 0.25rem;
+            font-size: 0.65em;
+            font-weight: 700;
+            letter-spacing: 0.03em;
+            text-transform: uppercase;
+            vertical-align: middle;
+            white-space: nowrap;
+        }
+
+        .badge-plenary {
+            background: #fff3cd;
+            color: #664d03;
+            border: 1px solid #ffda6a;
+        }
+
+        .badge-special {
+            background: #e8d5ff;
+            color: #3d0070;
+            border: 1px solid #c49af0;
         }
 
         .session-info {
@@ -399,6 +416,39 @@
             display: block;
         }
 
+        /* Special session (panel) content styles */
+        .panel-moderator {
+            font-size: 0.95em;
+            margin-bottom: 0.75rem;
+        }
+
+        .panel-panelists {
+            font-size: 0.95em;
+            margin-bottom: 0.75rem;
+        }
+
+        .panel-panelists ul {
+            margin: 0.3rem 0 0 1.5rem;
+            padding: 0;
+        }
+
+        .panel-panelists li {
+            margin-bottom: 0.2rem;
+            color: #495057;
+        }
+
+        .panel-description {
+            margin-top: 0.75rem;
+            padding: 1rem;
+            background: #f8f9fa;
+            border-left: 4px solid #6f42c1;
+            border-radius: 0.375rem;
+            color: #495057;
+            line-height: 1.7;
+            font-size: 0.95em;
+            white-space: pre-line;
+        }
+
         .no-results {
             text-align: center;
             padding: 60px 20px;
@@ -413,9 +463,7 @@
         }
 
         @media (max-width: 1024px) {
-            .main-container {
-                flex-direction: column;
-            }
+            .main-container { flex-direction: column; }
 
             .sidebar {
                 position: fixed;
@@ -430,42 +478,21 @@
                 overflow-y: auto;
             }
 
-            .sidebar.mobile-open {
-                left: 0;
-            }
+            .sidebar.mobile-open { left: 0; }
+            .sidebar-overlay.show { display: block; }
+            .mobile-filter-toggle { display: block; }
 
-            .sidebar-overlay.show {
-                display: block;
-            }
-
-            .mobile-filter-toggle {
-                display: block;
-            }
-
-            .content {
-                padding: 1rem;
-            }
+            .content { padding: 1rem; }
 
             header {
                 flex-direction: column;
                 align-items: flex-start;
             }
 
-            .logo {
-                height: 40px;
-            }
-
-            .header-text h1 {
-                font-size: 1.3em;
-            }
-
-            .day-tabs {
-                flex-direction: column;
-            }
-
-            .day-tab {
-                width: 100%;
-            }
+            .logo { height: 40px; }
+            .header-text h1 { font-size: 1.3em; }
+            .day-tabs { flex-direction: column; }
+            .day-tab { width: 100%; }
         }
 
         .loading {
@@ -520,11 +547,11 @@
             </div>
 
             <div class="control-item">
-                <label for="typeFilter">Type</label>
+                <label for="typeFilter">Session Type</label>
                 <select id="typeFilter">
                     <option value="">All Types</option>
                     <option value="paper">Paper Sessions</option>
-                    <option value="panel_discussion">Panel Discussions</option>
+                    <option value="special">Special Sessions</option>
                 </select>
             </div>
 
@@ -545,9 +572,7 @@
             </div>
         </main>
 
-        <button class="mobile-filter-toggle" id="mobileFilterToggle">
-            ☰
-        </button>
+        <button class="mobile-filter-toggle" id="mobileFilterToggle">☰</button>
     </div>
 
     <script>
@@ -555,21 +580,27 @@
         let allTracks = new Set();
         let allTimeSlots = new Set();
 
+        const trackMap = {
+            'General Industry Studies':                                          { short: 'General Industry',          color: '#E69F00' },
+            'Health Care Systems, Biotechnology, and Pharmaceuticals':           { short: 'Health Care & Pharma',      color: '#56B4E9' },
+            'Innovation, Entrepreneurship, and AI-Driven Transformation':        { short: 'Innovation & AI',           color: '#CC79A7' },
+            'Labor Markets, Organizations, and the Future of Work':              { short: 'Labor & Work',              color: '#F0E442' },
+            'Operations, Supply Chain, and AI-Enhanced Industry 4.0':            { short: 'Operations & Supply Chain', color: '#0072B2' },
+            'Public Policy and Global Competitiveness':                          { short: 'Public Policy',             color: '#D55E00' },
+            'Sustainable Innovation, Energy, and Mobility':                      { short: 'Sustainability & Energy',   color: '#009E73' }
+        };
+
         // Load data
         fetch('schedule_data.json')
-            .then(response => response.json())
+            .then(r => r.json())
             .then(data => {
                 scheduleData = data;
 
-                // Extract unique tracks and time slots
                 data.forEach(item => {
-                    if (item.category) {
-                        allTracks.add(item.category);
-                    }
+                    if (item.category) allTracks.add(item.category);
                     if (item.time_slot && item.day) {
-                        // Create readable time slot label
                         const timeLabel = item.start_time && item.end_time
-                            ? `${item.day.substring(0,3)} ${formatTime(item.start_time)} - ${formatTime(item.end_time)}`
+                            ? `${item.day.substring(0,3)} ${formatTime(item.start_time)} – ${formatTime(item.end_time)}`
                             : `${item.day} ${item.time_slot}`;
                         allTimeSlots.add(JSON.stringify({
                             slot: item.time_slot,
@@ -580,61 +611,40 @@
                     }
                 });
 
-                // Populate track dropdown with shortened labels
+                // Populate track dropdown
                 const trackFilter = document.getElementById('trackFilter');
-                const trackMap = {
-                    'General Industry Studies': { short: 'General Industry', color: '#E69F00' },
-                    'Health Care Systems, Biotechnology, and Pharmaceuticals': { short: 'Health Care & Pharma', color: '#56B4E9' },
-                    'Innovation, Entrepreneurship, and AI-Driven Transformation': { short: 'Innovation & AI', color: '#CC79A7' },
-                    'Labor Markets, Organizations, and the Future of Work': { short: 'Labor & Work', color: '#F0E442' },
-                    'Operations, Supply Chain, and AI-Enhanced Industry 4.0': { short: 'Operations & Supply Chain', color: '#0072B2' },
-                    'Public Policy and Global Competitiveness': { short: 'Public Policy', color: '#D55E00' },
-                    'Sustainable Innovation, Energy, and Mobility': { short: 'Sustainability & Energy', color: '#009E73' }
-                };
-
                 Array.from(allTracks).sort().forEach(track => {
                     const option = document.createElement('option');
                     option.value = track;
-                    const trackInfo = trackMap[track];
-                    if (trackInfo) {
-                        option.textContent = trackInfo.short;
-                    } else {
-                        option.textContent = track;
-                    }
+                    option.textContent = trackMap[track] ? trackMap[track].short : track;
                     trackFilter.appendChild(option);
                 });
 
-                // Update wrapper color indicator on change
                 trackFilter.addEventListener('change', function() {
                     const wrapper = this.closest('.track-select-wrapper');
-                    const trackInfo = trackMap[this.value];
-                    if (trackInfo) {
-                        wrapper.style.setProperty('--track-color', trackInfo.color);
-                    } else {
-                        wrapper.style.setProperty('--track-color', '#e5e5e5');
-                    }
+                    const info = trackMap[this.value];
+                    wrapper.style.setProperty('--track-color', info ? info.color : '#e5e5e5');
                 });
 
-                // Populate time slot dropdown
+                // Populate time slot dropdown (sorted chronologically)
                 const timeSlotFilter = document.getElementById('timeSlotFilter');
-                const timeSlots = Array.from(allTimeSlots)
+                Array.from(allTimeSlots)
                     .map(ts => JSON.parse(ts))
-                    .sort((a, b) => a.order - b.order);
-
-                timeSlots.forEach(ts => {
-                    const option = document.createElement('option');
-                    option.value = ts.slot;
-                    option.textContent = ts.label;
-                    option.setAttribute('data-day', ts.day);
-                    timeSlotFilter.appendChild(option);
-                });
+                    .sort((a, b) => a.order - b.order)
+                    .forEach(ts => {
+                        const option = document.createElement('option');
+                        option.value = ts.slot;
+                        option.textContent = ts.label;
+                        option.setAttribute('data-day', ts.day);
+                        timeSlotFilter.appendChild(option);
+                    });
 
                 renderSchedule();
                 attachEventListeners();
             })
-            .catch(error => {
+            .catch(err => {
                 document.getElementById('schedule').innerHTML =
-                    '<div class="no-results"><h2>Error loading schedule</h2><p>' + error.message + '</p></div>';
+                    `<div class="no-results"><h2>Error loading schedule</h2><p>${err.message}</p></div>`;
             });
 
         function attachEventListeners() {
@@ -645,7 +655,6 @@
             document.getElementById('expandAll').addEventListener('click', () => expandCollapseAll(true));
             document.getElementById('collapseAll').addEventListener('click', () => expandCollapseAll(false));
 
-            // Day tab listeners
             document.querySelectorAll('.day-tab').forEach(tab => {
                 tab.addEventListener('click', function() {
                     document.querySelectorAll('.day-tab').forEach(t => t.classList.remove('active'));
@@ -654,16 +663,13 @@
                 });
             });
 
-            // Mobile filter toggle
             const mobileToggle = document.getElementById('mobileFilterToggle');
             const sidebar = document.getElementById('sidebar');
             const overlay = document.getElementById('sidebarOverlay');
-
             mobileToggle.addEventListener('click', () => {
                 sidebar.classList.add('mobile-open');
                 overlay.classList.add('show');
             });
-
             overlay.addEventListener('click', () => {
                 sidebar.classList.remove('mobile-open');
                 overlay.classList.remove('show');
@@ -671,54 +677,46 @@
         }
 
         function expandCollapseAll(expand) {
-            const sessions = document.querySelectorAll('.session-group');
-            sessions.forEach(session => {
-                if (expand) {
-                    session.classList.add('expanded');
-                } else {
-                    session.classList.remove('expanded');
-                }
+            document.querySelectorAll('.session-group').forEach(s => {
+                s.classList.toggle('expanded', expand);
             });
         }
 
-        function renderSchedule() {
-            const searchTerm = document.getElementById('search').value.toLowerCase();
-            const activeDayTab = document.querySelector('.day-tab.active');
-            const dayFilter = activeDayTab ? activeDayTab.getAttribute('data-day') : '';
-            const timeSlotFilter = document.getElementById('timeSlotFilter').value;
-            const trackFilter = document.getElementById('trackFilter').value;
-            const typeFilter = document.getElementById('typeFilter').value;
+        function isSpecial(type) {
+            return type === 'special_session' || type === 'plenary';
+        }
 
-            // Filter data
-            let filtered = scheduleData.filter(item => {
-                // Search filter
+        function renderSchedule() {
+            const searchTerm   = document.getElementById('search').value.toLowerCase();
+            const dayFilter    = document.querySelector('.day-tab.active').getAttribute('data-day');
+            const slotFilter   = document.getElementById('timeSlotFilter').value;
+            const trackFilter  = document.getElementById('trackFilter').value;
+            const typeFilter   = document.getElementById('typeFilter').value;
+
+            const filtered = scheduleData.filter(item => {
                 const searchMatch = !searchTerm ||
                     (item.session_name && item.session_name.toLowerCase().includes(searchTerm)) ||
-                    (item.authors && item.authors.toLowerCase().includes(searchTerm)) ||
-                    (item.abstract && item.abstract.toLowerCase().includes(searchTerm));
+                    (item.title        && item.title.toLowerCase().includes(searchTerm))        ||
+                    (item.authors      && item.authors.toLowerCase().includes(searchTerm))      ||
+                    (item.abstract     && item.abstract.toLowerCase().includes(searchTerm))     ||
+                    (item.moderator    && item.moderator.toLowerCase().includes(searchTerm));
 
-                // Day filter
-                const dayMatch = !dayFilter || item.day === dayFilter;
-
-                // Time slot filter
-                const timeSlotMatch = !timeSlotFilter || item.time_slot === timeSlotFilter;
-
-                // Track filter
+                const dayMatch  = !dayFilter   || item.day === dayFilter;
+                const slotMatch = !slotFilter  || item.time_slot === slotFilter;
                 const trackMatch = !trackFilter || item.category === trackFilter;
+                const typeMatch = !typeFilter  ||
+                    (typeFilter === 'paper'   && (item.type === 'paper' || item.type === 'self_organized_panel')) ||
+                    (typeFilter === 'special' && isSpecial(item.type));
 
-                // Type filter - treat paper and self_organized_panel as "paper"
-                const typeMatch = !typeFilter ||
-                    (typeFilter === 'paper' && (item.type === 'paper' || item.type === 'self_organized_panel')) ||
-                    (typeFilter === 'panel_discussion' && item.type === 'panel_discussion');
-
-                return searchMatch && dayMatch && timeSlotMatch && trackMatch && typeMatch;
+                return searchMatch && dayMatch && slotMatch && trackMatch && typeMatch;
             });
 
-            // Sort by time
+            // Sort chronologically
             filtered.sort((a, b) => {
                 if (a.time_order !== b.time_order) return a.time_order - b.time_order;
-                if (a.session_id !== b.session_id) return a.session_id - b.session_id;
-                return a.id - b.id;
+                const sa = String(a.session_id), sb = String(b.session_id);
+                if (sa !== sb) return sa.localeCompare(sb);
+                return String(a.id).localeCompare(String(b.id));
             });
 
             // Group by session
@@ -727,26 +725,27 @@
                 const key = `${item.session_id}_${item.time_slot}`;
                 if (!sessions[key]) {
                     sessions[key] = {
-                        session_id: item.session_id,
+                        session_id:   item.session_id,
                         session_name: item.session_name,
-                        time_slot: item.time_slot,
-                        room: item.room,
-                        date: item.date,
-                        day: item.day,
-                        start_time: item.start_time,
-                        end_time: item.end_time,
-                        time_order: item.time_order,
-                        category: item.category,
+                        time_slot:    item.time_slot,
+                        room:         item.room,
+                        date:         item.date,
+                        day:          item.day,
+                        start_time:   item.start_time,
+                        end_time:     item.end_time,
+                        time_order:   item.time_order,
+                        category:     item.category,
+                        type:         item.type,
                         papers: []
                     };
                 }
                 sessions[key].papers.push(item);
             });
 
-            // Render HTML
             const scheduleDiv = document.getElementById('schedule');
+            const sessionList = Object.values(sessions);
 
-            if (Object.keys(sessions).length === 0) {
+            if (sessionList.length === 0) {
                 scheduleDiv.innerHTML = '<div class="no-results"><h2>No results found</h2><p>Try adjusting your search or filters</p></div>';
                 document.getElementById('sessionCount').textContent = '0';
                 document.getElementById('paperCount').textContent = '0';
@@ -756,50 +755,92 @@
             let html = '';
             let totalPapers = 0;
 
-            Object.values(sessions).forEach(session => {
-                totalPapers += session.papers.length;
+            sessionList.forEach(session => {
+                const special = isSpecial(session.type);
+                if (!special) totalPapers += session.papers.length;
 
                 const timeStr = session.start_time && session.end_time
-                    ? `${formatTime(session.start_time)} - ${formatTime(session.end_time)}`
+                    ? `${formatTime(session.start_time)} – ${formatTime(session.end_time)}`
                     : session.time_slot;
 
-                const categoryClass = getCategoryClass(session.category);
+                const categoryClass = special ? 'cat-special' : getCategoryClass(session.category);
+
+                const badge = session.type === 'plenary'
+                    ? '<span class="session-badge badge-plenary">Plenary</span>'
+                    : session.type === 'special_session'
+                    ? '<span class="session-badge badge-special">Special Session</span>'
+                    : '';
+
+                const typeLabel = session.type === 'plenary'   ? '🎤 Plenary Session'  :
+                                  session.type === 'special_session' ? '🎤 Special Session' :
+                                  `📄 ${session.papers.length} paper${session.papers.length !== 1 ? 's' : ''}`;
+
+                const papersHtml = special
+                    ? renderPanelContent(session.papers[0])
+                    : session.papers.map(renderPaper).join('');
 
                 html += `
                     <div class="session-group ${categoryClass}">
                         <div class="session-header" onclick="toggleSession(this)">
                             <div class="session-meta">
                                 <div>
-                                    <div class="session-title">${escapeHtml(session.session_name || 'Untitled Session')}</div>
+                                    <div class="session-title-row">
+                                        <span class="session-title">${escapeHtml(session.session_name || 'Untitled Session')}</span>
+                                        ${badge}
+                                    </div>
                                     <div class="session-info">
                                         <span>📅 ${session.day}, ${formatDate(session.date)}</span>
                                         <span>🕒 ${timeStr}</span>
                                         <span>📍 ${session.room || 'TBA'}</span>
-                                        <span>📄 ${session.papers.length === 1 && session.papers[0].type === 'panel_discussion' ? 'Panel Discussion' : `${session.papers.length} paper${session.papers.length !== 1 ? 's' : ''}`}</span>
+                                        <span>${typeLabel}</span>
                                     </div>
                                 </div>
                             </div>
                         </div>
                         <div class="session-papers">
-                            ${session.papers.map((paper, idx) => `
-                                <div class="paper">
-                                    <div class="paper-title">${escapeHtml(paper.title || 'Untitled')}</div>
-                                    ${paper.authors ? `<div class="paper-authors">${escapeHtml(paper.authors)}</div>` : ''}
-                                    ${paper.category ? `<div class="paper-category">${escapeHtml(paper.category)}</div>` : ''}
-                                    ${paper.abstract ? `
-                                        <button class="abstract-toggle" onclick="toggleAbstract(this, event)">View Abstract</button>
-                                        <div class="abstract" id="abstract-${paper.id}">${escapeHtml(paper.abstract)}</div>
-                                    ` : ''}
-                                </div>
-                            `).join('')}
+                            ${papersHtml}
                         </div>
-                    </div>
-                `;
+                    </div>`;
             });
 
             scheduleDiv.innerHTML = html;
-            document.getElementById('sessionCount').textContent = Object.keys(sessions).length;
+            document.getElementById('sessionCount').textContent = sessionList.length;
             document.getElementById('paperCount').textContent = totalPapers;
+        }
+
+        function renderPaper(paper) {
+            return `
+                <div class="paper">
+                    <div class="paper-title">${escapeHtml(paper.title || 'Untitled')}</div>
+                    ${paper.authors ? `<div class="paper-authors">${escapeHtml(paper.authors)}</div>` : ''}
+                    ${paper.category ? `<div class="paper-category">${escapeHtml(paper.category)}</div>` : ''}
+                    ${paper.abstract ? `
+                        <button class="abstract-toggle" onclick="toggleAbstract(this, event)">View Abstract</button>
+                        <div class="abstract" id="abstract-${paper.id}">${escapeHtml(paper.abstract)}</div>
+                    ` : ''}
+                </div>`;
+        }
+
+        function renderPanelContent(panel) {
+            if (!panel) return '';
+
+            const mod = panel.moderator && panel.moderator.trim() && panel.moderator.trim() !== 'TBD'
+                ? `<div class="panel-moderator"><strong>Moderator:</strong> ${escapeHtml(panel.moderator.trim())}</div>`
+                : '';
+
+            let panelists = '';
+            if (panel.panelists && panel.panelists.trim() && panel.panelists.trim() !== 'TBD') {
+                const items = panel.panelists.split('\n').map(p => p.trim()).filter(p => p.length > 0);
+                panelists = `<div class="panel-panelists"><strong>Panelists:</strong><ul>
+                    ${items.map(p => `<li>${escapeHtml(p)}</li>`).join('')}
+                </ul></div>`;
+            }
+
+            const desc = panel.abstract && panel.abstract.trim() && panel.abstract.trim() !== 'TBD'
+                ? `<div class="panel-description">${escapeHtml(panel.abstract.trim())}</div>`
+                : '';
+
+            return `<div class="paper">${mod}${panelists}${desc}</div>`;
         }
 
         function toggleSession(element) {
@@ -837,13 +878,13 @@
 
         function getCategoryClass(category) {
             if (!category) return '';
-            if (category.includes('General Industry Studies')) return 'cat-general';
-            if (category.includes('Health Care Systems') || category.includes('Biotechnology') || category.includes('Pharmaceuticals')) return 'cat-health';
-            if (category.includes('Labor Markets') || category.includes('Organizations') || category.includes('Future of Work')) return 'cat-labor';
-            if (category.includes('Operations') || category.includes('Supply Chain') || category.includes('Industry 4.0')) return 'cat-operations';
-            if (category.includes('Public Policy') || category.includes('Global Competitiveness')) return 'cat-policy';
-            if (category.includes('Sustainable Innovation') || category.includes('Sustainable')) return 'cat-sustainability';
-            if (category.includes('Innovation') || category.includes('Entrepreneurship') || category.includes('AI-Driven')) return 'cat-innovation';
+            if (category.includes('General Industry Studies'))                                       return 'cat-general';
+            if (category.includes('Health Care') || category.includes('Pharmaceuticals'))           return 'cat-health';
+            if (category.includes('Labor Markets') || category.includes('Future of Work'))          return 'cat-labor';
+            if (category.includes('Operations') || category.includes('Supply Chain'))               return 'cat-operations';
+            if (category.includes('Public Policy') || category.includes('Global Competitiveness'))  return 'cat-policy';
+            if (category.includes('Sustainable Innovation') || category.includes('Energy'))         return 'cat-sustainability';
+            if (category.includes('Innovation') || category.includes('Entrepreneurship'))           return 'cat-innovation';
             return '';
         }
     </script>
