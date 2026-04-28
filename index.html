@@ -385,9 +385,9 @@
         }
 
         .abstract-toggle {
-            background: #0d6efd;
+            background: #adb5bd;
             color: white;
-            border: 1px solid #0d6efd;
+            border: 1px solid #adb5bd;
             padding: 0.375rem 0.75rem;
             border-radius: 0.375rem;
             cursor: pointer;
@@ -397,16 +397,15 @@
         }
 
         .abstract-toggle:hover {
-            background: #0b5ed7;
-            border-color: #0a58ca;
+            background: #9aa0a6;
+            border-color: #9aa0a6;
         }
 
         .abstract {
             display: none;
             margin-top: 1rem;
             padding: 1rem;
-            background: #f8f9fa;
-            border-left: 4px solid #0d6efd;
+            background: #f0f1f2;
             border-radius: 0.375rem;
             color: #495057;
             line-height: 1.7;
@@ -493,6 +492,11 @@
             .header-text h1 { font-size: 1.3em; }
             .day-tabs { flex-direction: column; }
             .day-tab { width: 100%; }
+        }
+
+        .session-category {
+            font-weight: 600;
+            font-size: 0.9em;
         }
 
         .loading {
@@ -771,9 +775,14 @@
                     ? '<span class="session-badge badge-special">Special Session</span>'
                     : '';
 
-                const typeLabel = session.type === 'plenary'   ? '🎤 Plenary Session'  :
+                const typeLabel = session.type === 'plenary'        ? '🎤 Plenary Session'  :
                                   session.type === 'special_session' ? '🎤 Special Session' :
                                   `📄 ${session.papers.length} paper${session.papers.length !== 1 ? 's' : ''}`;
+
+                const trackInfo = trackMap[session.category];
+                const categoryLabel = trackInfo
+                    ? `<span class="session-category" style="color:${trackInfo.color}">■ ${trackInfo.short}</span>`
+                    : (session.category ? `<span class="session-category">${escapeHtml(session.category)}</span>` : '');
 
                 const papersHtml = special
                     ? renderPanelContent(session.papers[0])
@@ -793,6 +802,7 @@
                                         <span>🕒 ${timeStr}</span>
                                         <span>📍 ${session.room || 'TBA'}</span>
                                         <span>${typeLabel}</span>
+                                        ${categoryLabel}
                                     </div>
                                 </div>
                             </div>
@@ -813,7 +823,6 @@
                 <div class="paper">
                     <div class="paper-title">${escapeHtml(paper.title || 'Untitled')}</div>
                     ${paper.authors ? `<div class="paper-authors">${escapeHtml(paper.authors)}</div>` : ''}
-                    ${paper.category ? `<div class="paper-category">${escapeHtml(paper.category)}</div>` : ''}
                     ${paper.abstract ? `
                         <button class="abstract-toggle" onclick="toggleAbstract(this, event)">View Abstract</button>
                         <div class="abstract" id="abstract-${paper.id}">${escapeHtml(paper.abstract)}</div>
