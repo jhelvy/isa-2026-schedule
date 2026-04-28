@@ -505,6 +505,15 @@
             font-size: 1.2em;
             color: #666;
         }
+
+        label.filter-active {
+            color: #0d6efd;
+        }
+        label.filter-active::after {
+            content: ' ●';
+            font-size: 0.65em;
+            vertical-align: middle;
+        }
     </style>
 </head>
 <body>
@@ -562,6 +571,7 @@
             <div class="button-group">
                 <button class="expand-all" id="expandAll">Expand All Sessions</button>
                 <button class="expand-all" id="collapseAll" style="background: #dc3545; border-color: #dc3545;">Collapse All Sessions</button>
+                <button class="expand-all" id="resetFilters" style="background: #6c757d; border-color: #6c757d;">Reset All Filters</button>
             </div>
 
             <div class="stats">
@@ -582,7 +592,8 @@
     <script>
         let scheduleData = [];
         let allTracks = new Set();
-        let allTimeSlots = new Set();
+        let allTimeSlotsData = [];
+        const seenSlotKeys = new Set();
 
         const trackMap = {
             'General Industry Studies':                                          { short: 'General Industry',          color: '#E69F00' },
@@ -603,15 +614,21 @@
                 data.forEach(item => {
                     if (item.category) allTracks.add(item.category);
                     if (item.time_slot && item.day) {
-                        const timeLabel = item.start_time && item.end_time
-                            ? `${item.day.substring(0,3)} ${formatTime(item.start_time)} – ${formatTime(item.end_time)}`
-                            : `${item.day} ${item.time_slot}`;
-                        allTimeSlots.add(JSON.stringify({
-                            slot: item.time_slot,
-                            day: item.day,
-                            label: timeLabel,
-                            order: item.time_order
-                        }));
+                        const slotKey = `${item.time_slot}__${item.day}`;
+                        if (!seenSlotKeys.has(slotKey)) {
+                            seenSlotKeys.add(slotKey);
+                            const timeLabel = item.start_time && item.end_time
+                                ? `${item.day.substring(0,3)} ${formatTime(item.start_time)} – ${formatTime(item.end_time)}`
+                                : `${item.day} ${item.time_slot}`;
+                            allTimeSlotsData.push({
+                                slot: item.time_slot,
+                                day: item.day,
+                                label: timeLabel,
+                                start_time: item.start_time,
+                                end_time: item.end_time,
+                                order: item.time_order
+                            });
+                        }
                     }
                 });
 
@@ -630,18 +647,8 @@
                     wrapper.style.setProperty('--track-color', info ? info.color : '#e5e5e5');
                 });
 
-                // Populate time slot dropdown (sorted chronologically)
-                const timeSlotFilter = document.getElementById('timeSlotFilter');
-                Array.from(allTimeSlots)
-                    .map(ts => JSON.parse(ts))
-                    .sort((a, b) => a.order - b.order)
-                    .forEach(ts => {
-                        const option = document.createElement('option');
-                        option.value = ts.slot;
-                        option.textContent = ts.label;
-                        option.setAttribute('data-day', ts.day);
-                        timeSlotFilter.appendChild(option);
-                    });
+                // Populate time slot dropdown (all slots initially)
+                updateTimeSlotDropdown('');
 
                 renderSchedule();
                 attachEventListeners();
@@ -652,17 +659,20 @@
             });
 
         function attachEventListeners() {
-            document.getElementById('search').addEventListener('input', renderSchedule);
-            document.getElementById('timeSlotFilter').addEventListener('change', renderSchedule);
-            document.getElementById('trackFilter').addEventListener('change', renderSchedule);
-            document.getElementById('typeFilter').addEventListener('change', renderSchedule);
+            document.getElementById('search').addEventListener('input', () => { updateFilterIndicators(); renderSchedule(); });
+            document.getElementById('timeSlotFilter').addEventListener('change', () => { updateFilterIndicators(); renderSchedule(); });
+            document.getElementById('trackFilter').addEventListener('change', () => { updateFilterIndicators(); renderSchedule(); });
+            document.getElementById('typeFilter').addEventListener('change', () => { updateFilterIndicators(); renderSchedule(); });
             document.getElementById('expandAll').addEventListener('click', () => expandCollapseAll(true));
             document.getElementById('collapseAll').addEventListener('click', () => expandCollapseAll(false));
+            document.getElementById('resetFilters').addEventListener('click', resetAllFilters);
 
             document.querySelectorAll('.day-tab').forEach(tab => {
                 tab.addEventListener('click', function() {
                     document.querySelectorAll('.day-tab').forEach(t => t.classList.remove('active'));
                     this.classList.add('active');
+                    updateTimeSlotDropdown(this.getAttribute('data-day'));
+                    updateFilterIndicators();
                     renderSchedule();
                 });
             });
@@ -883,6 +893,61 @@
             const div = document.createElement('div');
             div.textContent = text;
             return div.innerHTML;
+        }
+
+        function updateTimeSlotDropdown(selectedDay) {
+            const timeSlotFilter = document.getElementById('timeSlotFilter');
+            const currentSlot = timeSlotFilter.value;
+
+            timeSlotFilter.innerHTML = '<option value="">All Time Slots</option>';
+
+            const slots = selectedDay
+                ? allTimeSlotsData.filter(ts => ts.day === selectedDay)
+                : allTimeSlotsData;
+
+            slots.slice().sort((a, b) => a.order - b.order).forEach(ts => {
+                const option = document.createElement('option');
+                option.value = ts.slot;
+                option.textContent = selectedDay
+                    ? (ts.start_time && ts.end_time
+                        ? `${formatTime(ts.start_time)} – ${formatTime(ts.end_time)}`
+                        : ts.slot)
+                    : ts.label;
+                option.setAttribute('data-day', ts.day);
+                timeSlotFilter.appendChild(option);
+            });
+
+            timeSlotFilter.value = slots.some(ts => ts.slot === currentSlot) ? currentSlot : '';
+        }
+
+        function updateFilterIndicators() {
+            const searchVal  = document.getElementById('search').value;
+            const slotVal    = document.getElementById('timeSlotFilter').value;
+            const trackVal   = document.getElementById('trackFilter').value;
+            const typeVal    = document.getElementById('typeFilter').value;
+
+            document.querySelector('label[for="search"]').classList.toggle('filter-active', !!searchVal);
+            document.querySelector('label[for="timeSlotFilter"]').classList.toggle('filter-active', !!slotVal);
+            document.querySelector('label[for="trackFilter"]').classList.toggle('filter-active', !!trackVal);
+            document.querySelector('label[for="typeFilter"]').classList.toggle('filter-active', !!typeVal);
+        }
+
+        function resetAllFilters() {
+            document.getElementById('search').value = '';
+            document.getElementById('timeSlotFilter').value = '';
+            document.getElementById('trackFilter').value = '';
+            document.getElementById('typeFilter').value = '';
+
+            document.getElementById('trackFilter')
+                .closest('.track-select-wrapper')
+                .style.setProperty('--track-color', '#e5e5e5');
+
+            document.querySelectorAll('.day-tab').forEach(t => t.classList.remove('active'));
+            document.querySelector('.day-tab[data-day=""]').classList.add('active');
+
+            updateTimeSlotDropdown('');
+            updateFilterIndicators();
+            renderSchedule();
         }
 
         function getCategoryClass(category) {
