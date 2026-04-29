@@ -1,0 +1,11 @@
+id,time_slot,room,date,day,start_time,end_time,time_order
+E1,WE,Off-campus,2026-06-03,Wednesday,08:00:00,11:30:00,0
+E2,WE,Off-campus,2026-06-03,Wednesday,08:00:00,11:30:00,0
+P1,WP1,Convening Hall,2026-06-03,Wednesday,13:00:00,13:55:00,0.5
+S1,TS1,SC-307,2026-06-04,Thursday,10:30:00,11:30:00,4.5
+S2,TS1,SC-Amp.,2026-06-04,Thursday,10:30:00,11:30:00,4.5
+S3,TS2,SC-307,2026-06-04,Thursday,14:00:00,15:00:00,5.5
+S4,TS2,SC-Amp.,2026-06-04,Thursday,14:00:00,15:00:00,5.5
+P2,TP1,SC-Grand B.,2026-06-04,Thursday,16:55:00,18:00:00,6.5
+S5,FS1,SC-307,2026-06-05,Friday,10:30:00,11:30:00,7.5
+S6,FS1,SC-Amp.,2026-06-05,Friday,10:30:00,11:30:00,7.5

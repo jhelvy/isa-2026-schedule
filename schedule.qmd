@@ -1,0 +1,503 @@
+---
+title: |
+  2026 Industry Studies Association \
+  Annual Conference
+subtitle: |
+  Program Schedule \
+  June 3 - 5, 2026
+format:
+  pdf:
+    toc: false
+    number-sections: false
+    highlight-style: haddock
+    colorlinks: true
+    documentclass: scrartcl
+    papersize: letter
+    pdf-engine: xelatex
+    mainfont: Avenir
+    sansfont: Avenir
+    fontsize: 10pt
+    geometry:
+      - margin=1in
+      - heightrounded
+    include-in-header:
+      text: |
+        \usepackage{xcolor}
+        \definecolor{gis}{HTML}{E69F00}
+        \definecolor{health}{HTML}{56B4E9}
+        \definecolor{innovation}{HTML}{CC79A7}
+        \definecolor{labor}{HTML}{B8860B}
+        \definecolor{operations}{HTML}{0072B2}
+        \definecolor{policy}{HTML}{D55E00}
+        \definecolor{sustainability}{HTML}{009E73}
+execute:
+  echo: false
+  warning: false
+  message: false
+---
+
+```{r}
+#| label: setup
+library(tidyverse)
+library(knitr)
+library(kableExtra)
+
+# Read submissions data with type information
+submissions <- read_csv(
+  file.path('data', 'submissions.csv'),
+  show_col_types = FALSE
+) %>%
+  mutate(id = as.character(id))
+
+# Read self-organized panel details
+self_sessions <- read_csv(
+  file.path('data', 'self-sessions.csv'),
+  show_col_types = FALSE
+) %>%
+  mutate(id = as.character(id))
+
+# Read standalone panel sessions (these are interwoven into the schedule
+# as panel discussion blocks, separate from paper sessions)
+panels_raw <- read_csv(
+  file.path('data', 'panels.csv'),
+  show_col_types = FALSE
+) %>%
+  mutate(
+    date_parsed = lubridate::mdy(date),
+    day_name = case_when(
+      date_parsed == as.Date("2026-06-03") ~ "Wednesday",
+      date_parsed == as.Date("2026-06-04") ~ "Thursday",
+      date_parsed == as.Date("2026-06-05") ~ "Friday",
+      TRUE ~ format(date_parsed, "%A")
+    ),
+    start_dt = as.POSIXct(
+      paste(format(date_parsed, "%Y-%m-%d"), time_start),
+      format = "%Y-%m-%d %H:%M:%S"
+    ),
+    end_dt = as.POSIXct(
+      paste(format(date_parsed, "%Y-%m-%d"), time_end),
+      format = "%Y-%m-%d %H:%M:%S"
+    ),
+    room = str_trim(str_replace_all(room, "\\s+", " ")),
+    track_color = case_when(
+      category == "General Industry Studies" ~ "gis",
+      category ==
+        "Health Care Systems, Biotechnology, and Pharmaceuticals" ~ "health",
+      category ==
+        "Innovation, Entrepreneurship, and AI-Driven Transformation" ~ "innovation",
+      category ==
+        "Labor Markets, Organizations, and the Future of Work" ~ "labor",
+      category ==
+        "Operations, Supply Chain, and AI-Enhanced Industry 4.0" ~ "operations",
+      category == "Public Policy and Global Competitiveness" ~ "policy",
+      category ==
+        "Sustainable Innovation, Energy, and Mobility" ~ "sustainability",
+      TRUE ~ "black"
+    )
+  )
+
+# Read full schedule (with time/room assignments)
+schedule <- read_csv(
+  file.path('data', 'schedule.csv'),
+  show_col_types = FALSE
+) %>%
+  mutate(id = as.character(id))
+
+# Merge submissions with schedule
+sessions <- submissions %>%
+  inner_join(schedule, by = "id") %>%
+  mutate(
+    is_self_organized = type == "self_organized_panel",
+    panel_description = NA_character_
+  )
+
+# Add self-organized panel papers to sessions
+# These papers share the same session_id as their parent panel submission
+self_papers <- self_sessions %>%
+  select(parent_id = id, authors, title, abstract) %>%
+  left_join(
+    sessions %>%
+      filter(is_self_organized) %>%
+      distinct(
+        id,
+        session_id,
+        session_name,
+        time_slot,
+        room,
+        date,
+        day,
+        start_time,
+        end_time,
+        time_order,
+        category,
+        type
+      ),
+    by = c("parent_id" = "id")
+  ) %>%
+  mutate(
+    is_panel = FALSE,
+    is_self_organized = FALSE
+  )
+
+# Replace self-organized panel entries with their constituent papers
+sessions <- sessions %>%
+  filter(!is_self_organized) %>%
+  bind_rows(self_papers %>% select(-parent_id))
+
+# is_panel is always FALSE (no panel_discussion type submissions)
+sessions <- sessions %>%
+  mutate(
+    is_panel = if_else(is.na(is_panel), FALSE, is_panel)
+  )
+
+# Helper function to escape LaTeX special characters
+escape_latex <- function(text) {
+  if (is.na(text) || nchar(text) == 0) {
+    return(text)
+  }
+  text <- str_replace_all(text, "\\\\", "\\\\textbackslash{}")
+  text <- str_replace_all(text, "([&%$#_{}])", "\\\\\\1")
+  text <- str_replace_all(text, "\\^", "\\\\textasciicircum{}")
+  text <- str_replace_all(text, "~", "\\\\textasciitilde{}")
+  return(text)
+}
+
+# Helper function for proper title case (keeps articles/conjunctions/prepositions lowercase)
+proper_title_case <- function(text) {
+  if (is.na(text) || nchar(text) == 0) {
+    return(text)
+  }
+
+  # Words that should be lowercase (unless first or last word)
+  lowercase_words <- c(
+    "a",
+    "an",
+    "and",
+    "as",
+    "at",
+    "but",
+    "by",
+    "for",
+    "from",
+    "in",
+    "into",
+    "of",
+    "on",
+    "or",
+    "the",
+    "to",
+    "with",
+    "vs",
+    "via"
+  )
+
+  # Split into words
+  words <- str_split(text, "\\s+")[[1]]
+
+  # Title case each word
+  result <- map_chr(seq_along(words), function(i) {
+    word <- words[i]
+    word_lower <- str_to_lower(word)
+
+    # Always capitalize first and last word
+    if (i == 1 || i == length(words)) {
+      return(str_to_title(word))
+    }
+
+    # Keep lowercase words lowercase
+    if (word_lower %in% lowercase_words) {
+      return(word_lower)
+    }
+
+    # Otherwise title case
+    return(str_to_title(word))
+  })
+
+  return(paste(result, collapse = " "))
+}
+
+# Short track codes and colors
+sessions <- sessions %>%
+  mutate(
+    track_short = case_when(
+      category == "General Industry Studies" ~ "GIS",
+      category ==
+        "Health Care Systems, Biotechnology, and Pharmaceuticals" ~ "Health",
+      category ==
+        "Innovation, Entrepreneurship, and AI-Driven Transformation" ~ "Innovation",
+      category ==
+        "Labor Markets, Organizations, and the Future of Work" ~ "Labor",
+      category ==
+        "Operations, Supply Chain, and AI-Enhanced Industry 4.0" ~ "Operations",
+      category == "Public Policy and Global Competitiveness" ~ "Policy",
+      category ==
+        "Sustainable Innovation, Energy, and Mobility" ~ "Sustainability",
+      TRUE ~ "Panel"
+    ),
+    track_color = case_when(
+      category == "General Industry Studies" ~ "gis",
+      category ==
+        "Health Care Systems, Biotechnology, and Pharmaceuticals" ~ "health",
+      category ==
+        "Innovation, Entrepreneurship, and AI-Driven Transformation" ~ "innovation",
+      category ==
+        "Labor Markets, Organizations, and the Future of Work" ~ "labor",
+      category ==
+        "Operations, Supply Chain, and AI-Enhanced Industry 4.0" ~ "operations",
+      category == "Public Policy and Global Competitiveness" ~ "policy",
+      category ==
+        "Sustainable Innovation, Energy, and Mobility" ~ "sustainability",
+      TRUE ~ "black"
+    ),
+    title = map_chr(title, proper_title_case)
+  )
+```
+
+```{r}
+#| label: legend
+#| results: asis
+legend_data <- sessions %>%
+  distinct(category, track_short, track_color) %>%
+  filter(!is.na(category)) %>%
+  arrange(category)
+
+cat("```{=latex}\n")
+cat("\\vspace{-2em}\n")
+cat("\\textbf{\\large Track Categories}\\par\\smallskip\n")
+cat("\\begin{itemize}\\setlength{\\itemsep}{2pt}\n")
+
+for (i in seq_len(nrow(legend_data))) {
+  r <- legend_data[i, ]
+  cat(
+    "  \\item \\textcolor{",
+    r$track_color,
+    "}{",
+    escape_latex(r$category),
+    "}\n",
+    sep = ""
+  )
+}
+
+cat("\\end{itemize}\n")
+cat("\\vspace{0.5em}\\noindent\\hrulefill\\vspace{1em}\n")
+cat("```\n\n")
+```
+
+```{r}
+#| label: schedule
+#| results: asis
+# Build paper time blocks (one per time slot)
+paper_blocks <- sessions %>%
+  filter(!is.na(time_slot)) %>%
+  group_by(time_slot) %>%
+  summarize(
+    day_name = first(day),
+    start_dt = as.POSIXct(paste(first(as.character(date)), first(start_time))),
+    end_dt = as.POSIXct(paste(first(as.character(date)), first(end_time))),
+    .groups = "drop"
+  ) %>%
+  mutate(block_type = "paper", block_key = time_slot)
+
+# Build panel time blocks (one per unique start time)
+panel_blocks <- panels_raw %>%
+  group_by(start_dt, end_dt, day_name) %>%
+  summarize(.groups = "drop") %>%
+  arrange(start_dt) %>%
+  mutate(block_type = "panel", block_key = paste0("PANEL_", row_number()))
+
+# Combine all blocks and sort chronologically
+all_blocks <- bind_rows(
+  paper_blocks %>% select(block_type, block_key, day_name, start_dt, end_dt),
+  panel_blocks %>% select(block_type, block_key, day_name, start_dt, end_dt)
+) %>%
+  arrange(start_dt)
+
+first_block <- TRUE
+
+for (b in seq_len(nrow(all_blocks))) {
+  block <- all_blocks[b, ]
+
+  # Page break between blocks
+  if (!first_block) {
+    cat("\n\\newpage\n\n")
+  }
+  first_block <- FALSE
+
+  # Session type label and time header — centered
+  session_type <- if (b == 1) {
+    "Plenary Session"
+  } else if (block$block_type == "paper") {
+    "Paper Sessions"
+  } else {
+    "Special Sessions"
+  }
+
+  time_label <- paste0(
+    block$day_name,
+    ", ",
+    format(block$start_dt, "%I:%M %p"),
+    " – ",
+    format(block$end_dt, "%I:%M %p")
+  )
+
+  cat("\\begin{center}\n")
+  cat("\\normalsize\\textit{", session_type, "}\\\\[0.3em]\n", sep = "")
+  cat("\\Large\\textbf{", time_label, "}\n", sep = "")
+  cat("\\end{center}\n\n")
+
+  if (block$block_type == "paper") {
+    ts <- block$block_key
+    ts_sessions <- sessions %>%
+      filter(time_slot == ts)
+
+    # Get unique categories in this time slot, alphabetically
+    track_order <- sort(unique(ts_sessions$category))
+
+    # Loop through categories
+    for (cat_name in track_order) {
+      cat_sessions <- ts_sessions %>%
+        filter(category == cat_name) %>%
+        arrange(room)
+
+      if (nrow(cat_sessions) == 0) {
+        next
+      }
+
+      track_color <- unique(cat_sessions$track_color)[1]
+
+      # Get unique sessions within this category
+      unique_sess <- cat_sessions %>%
+        distinct(session_id, session_name, room, is_panel) %>%
+        arrange(room)
+
+      for (k in seq_len(nrow(unique_sess))) {
+        s <- unique_sess[k, ]
+
+        # Repeat category header for each session
+        cat("\n## \\textcolor{", track_color, "}{", cat_name, "}\n\n", sep = "")
+
+        # Get session data
+        session_data <- cat_sessions %>%
+          filter(session_id == s$session_id)
+
+        # Panel tag for panel discussion sessions only
+        panel_tag <- if (s$is_panel) {
+          " *(Panel Discussion)*"
+        } else {
+          ""
+        }
+
+        # Session title with room
+        cat(
+          "\n**",
+          escape_latex(s$session_name),
+          "**",
+          panel_tag,
+          " — Room ",
+          s$room,
+          "\n\n",
+          sep = ""
+        )
+
+        if (s$is_panel) {
+          # For panel sessions: show description and participants
+          panel_info <- session_data %>%
+            select(panel_description, authors) %>%
+            slice(1)
+
+          # Show panel description if available
+          if (
+            !is.na(panel_info$panel_description) &&
+              nchar(panel_info$panel_description) > 0
+          ) {
+            cat(escape_latex(panel_info$panel_description), "\n\n")
+          }
+
+          # Show participants
+          cat("**Participants:**\n\n")
+          authors_list <- session_data %>%
+            select(authors) %>%
+            distinct()
+
+          for (m in seq_len(nrow(authors_list))) {
+            cat("- ", escape_latex(authors_list$authors[m]), "\n")
+          }
+          cat("\n")
+        } else {
+          # For regular sessions: show paper list
+          papers <- session_data %>%
+            arrange(id) %>%
+            select(authors, title)
+
+          for (m in seq_len(nrow(papers))) {
+            cat(
+              m,
+              ". **",
+              escape_latex(papers$authors[m]),
+              "** — ",
+              escape_latex(papers$title[m]),
+              "\n\n",
+              sep = ""
+            )
+          }
+        }
+      }
+    }
+  } else {
+    # Panel block: render each panel in this time group
+    group_panels <- panels_raw %>%
+      filter(start_dt == block$start_dt) %>%
+      arrange(category, room)
+
+    for (k in seq_len(nrow(group_panels))) {
+      p <- group_panels[k, ]
+
+      cat(
+        "\n## \\textcolor{",
+        p$track_color,
+        "}{",
+        escape_latex(p$category),
+        "}\n\n",
+        sep = ""
+      )
+
+      cat(
+        "\n**",
+        escape_latex(p$title),
+        "** *(Panel Discussion)*",
+        " — Room ",
+        escape_latex(p$room),
+        "\n\n",
+        sep = ""
+      )
+
+      # Moderator
+      mod <- str_trim(p$moderator)
+      if (!is.na(mod) && nchar(mod) > 0 && mod != "TBD") {
+        cat("**Moderator:** ", escape_latex(mod), "\n\n", sep = "")
+      }
+
+      # Panelists
+      pan_raw <- p$panelists
+      if (
+        !is.na(pan_raw) && str_trim(pan_raw) != "" && str_trim(pan_raw) != "TBD"
+      ) {
+        panelist_list <- str_split(pan_raw, "\n")[[1]] %>%
+          str_trim() %>%
+          .[nchar(.) > 0]
+        cat("**Panelists:**\n\n")
+        for (pan in panelist_list) {
+          cat("- ", escape_latex(pan), "\n")
+        }
+        cat("\n")
+      }
+
+      # Description
+      desc <- p$description
+      if (!is.na(desc) && str_trim(desc) != "" && str_trim(desc) != "TBD") {
+        cat(escape_latex(desc), "\n\n")
+      }
+    }
+  }
+}
+```
