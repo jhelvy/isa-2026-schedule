@@ -78,8 +78,93 @@ panels <- read_csv('data/panels.csv', show_col_types = FALSE) %>%
     panelists
   )
 
+# Read and format overview events (breaks, meals, receptions, etc.)
+# Sessions already covered by paper schedule or panels.csv
+covered_sessions <- c("Paper Sessions", "Opening Plenary", "Concurrent Panel Sessions")
+
+# Force time columns to character so readr doesn't mis-parse "8:00 AM" as hms
+events <- read_csv(
+  'data/overview.csv',
+  show_col_types = FALSE,
+  col_types = cols(.default = "c")
+) %>%
+  rename_with(str_trim) %>%
+  rename(
+    weekday        = Weekday,
+    time_start_str = `Time Start`,
+    time_end_str   = `Time End`,
+    session        = Session,
+    building       = Building,
+    room_raw       = Room
+  ) %>%
+  mutate(
+    weekday        = str_trim(weekday),
+    time_start_str = str_trim(time_start_str),
+    time_end_str   = str_trim(time_end_str),
+    session        = str_trim(session)
+  ) %>%
+  filter(!session %in% covered_sessions) %>%
+  mutate(
+    date = case_when(
+      weekday == "Wednesday" ~ as.Date("2026-06-03"),
+      weekday == "Thursday"  ~ as.Date("2026-06-04"),
+      weekday == "Friday"    ~ as.Date("2026-06-05")
+    ),
+    day  = weekday,
+    room = str_trim(paste(
+      building,
+      str_trim(str_replace_all(room_raw, "\\s+", " ")),
+      sep = " — "
+    )),
+    # Parse "H:MM AM/PM" to seconds since midnight; derive HH:MM:SS strings
+    start_secs = {
+      t <- parse_date_time(time_start_str, orders = "I:M p", quiet = TRUE)
+      hour(t) * 3600L + minute(t) * 60L
+    },
+    end_secs = {
+      t <- parse_date_time(time_end_str, orders = "I:M p", quiet = TRUE)
+      hour(t) * 3600L + minute(t) * 60L
+    },
+    start_time = sprintf("%02d:%02d:00", start_secs %/% 3600L, (start_secs %% 3600L) %/% 60L),
+    end_time   = sprintf("%02d:%02d:00", end_secs   %/% 3600L, (end_secs   %% 3600L) %/% 60L),
+    # time_order: interleaves events with paper slots (1–7) and panel slots (0.5–6.75)
+    # Computed from start_secs to avoid fragile string joins
+    time_order = case_when(
+      weekday == "Wednesday" & start_secs == 28800L ~ 0.10,  # 8:00 AM
+      weekday == "Wednesday" & start_secs == 43200L ~ 0.30,  # 12:00 PM
+      weekday == "Wednesday" & start_secs == 50400L ~ 0.95,  # 2:00 PM (PDW)
+      weekday == "Wednesday" & start_secs == 54600L ~ 1.50,  # 3:10 PM
+      weekday == "Wednesday" & start_secs == 64800L ~ 3.50,  # 6:00 PM
+      weekday == "Thursday"  & start_secs == 30000L ~ 3.80,  # 8:20 AM
+      weekday == "Thursday"  & start_secs == 36600L ~ 4.25,  # 10:10 AM
+      weekday == "Thursday"  & start_secs == 42000L ~ 4.75,  # 11:40 AM
+      weekday == "Thursday"  & start_secs == 54300L ~ 5.75,  # 3:05 PM
+      weekday == "Thursday"  & start_secs == 64800L ~ 6.55,  # 6:00 PM
+      weekday == "Friday"    & start_secs == 30000L ~ 6.65,  # 8:20 AM
+      weekday == "Friday"    & start_secs == 36000L ~ 6.80,  # 10:00 AM
+      weekday == "Friday"    & start_secs == 42000L ~ 7.50,  # 11:40 AM
+      TRUE                                           ~ 99.0
+    ),
+    id           = paste0("EV", row_number()),
+    session_id   = id,
+    session_name = session,
+    type         = "event",
+    time_slot    = NA_character_,
+    category     = NA_character_,
+    title        = session,
+    authors      = NA_character_,
+    abstract     = NA_character_,
+    moderator    = NA_character_,
+    panelists    = NA_character_
+  ) %>%
+  select(
+    id, session_id, session_name, type, category, date, day,
+    start_time, end_time, time_slot, time_order, room,
+    title, authors, abstract, moderator, panelists
+  )
+
 # Combine and write JSON
-all_data <- bind_rows(paper_sessions, panels) %>%
+all_data <- bind_rows(paper_sessions, panels, events) %>%
   arrange(time_order, session_id, id)
 
 write_json(
@@ -90,7 +175,8 @@ write_json(
 )
 
 cat(sprintf(
-  "Written %d paper entries + %d panel entries to schedule_data.json\n",
+  "Written %d paper entries + %d panel entries + %d event entries to schedule_data.json\n",
   nrow(paper_sessions),
-  nrow(panels)
+  nrow(panels),
+  nrow(events)
 ))

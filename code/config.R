@@ -56,6 +56,7 @@ date_restrictions <- list(
   `128` = "2026-06-04",
   `141` = "2026-06-04",
   `203` = "2026-06-04",
+  `21` = "2026-06-04",
   `32` = "2026-06-04", # Labor Markets, Organizations
   `64` = "2026-06-05"
 )
@@ -63,6 +64,7 @@ date_restrictions <- list(
 # Scheduling exclusions: id -> dates the session must NOT be on (format: "YYYY-MM-DD")
 date_exclusions <- list(
   `133` = "2026-06-03", # Sustainable Innovation, Energy, and Mobility
+  `148` = "2026-06-03",
   `120` = "2026-06-05",
   `191` = "2026-06-05"
 )

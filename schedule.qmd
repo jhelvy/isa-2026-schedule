@@ -30,6 +30,14 @@ format:
         \definecolor{operations}{HTML}{0072B2}
         \definecolor{policy}{HTML}{D55E00}
         \definecolor{sustainability}{HTML}{009E73}
+        \definecolor{event}{HTML}{17A2B8}
+        \usepackage{scrlayer-scrpage}
+        \pagestyle{scrheadings}
+        \clearpairofpagestyles
+        \lohead{\small\textit{\leftmark}}
+        \rohead{\small\textit{\rightmark}}
+        \cfoot{\small\thepage}
+        \KOMAoptions{headsepline=true}
 execute:
   echo: false
   warning: false
@@ -148,6 +156,57 @@ sessions <- sessions %>%
 sessions <- sessions %>%
   mutate(
     is_panel = if_else(is.na(is_panel), FALSE, is_panel)
+  )
+
+# Read overview events (breaks, meals, receptions, etc.)
+covered_sessions <- c(
+  "Paper Sessions",
+  "Opening Plenary",
+  "Concurrent Panel Sessions"
+)
+
+overview_events <- read_csv(
+  file.path('data', 'overview.csv'),
+  show_col_types = FALSE,
+  col_types = cols(.default = "c")
+) %>%
+  rename_with(str_trim) %>%
+  rename(
+    weekday = Weekday,
+    time_start_str = `Time Start`,
+    time_end_str = `Time End`,
+    session = Session,
+    building = Building,
+    room_raw = Room
+  ) %>%
+  mutate(
+    weekday = str_trim(weekday),
+    time_start_str = str_trim(time_start_str),
+    time_end_str = str_trim(time_end_str),
+    session = str_trim(session)
+  ) %>%
+  filter(!session %in% covered_sessions) %>%
+  mutate(
+    date_parsed = case_when(
+      weekday == "Wednesday" ~ as.Date("2026-06-03"),
+      weekday == "Thursday" ~ as.Date("2026-06-04"),
+      weekday == "Friday" ~ as.Date("2026-06-05")
+    ),
+    day_name = weekday,
+    room = str_trim(paste(
+      building,
+      str_trim(str_replace_all(room_raw, "\\s+", " ")),
+      sep = ", "
+    )),
+    start_dt = as.POSIXct(
+      paste(format(date_parsed, "%Y-%m-%d"), time_start_str),
+      format = "%Y-%m-%d %I:%M %p"
+    ),
+    end_dt = as.POSIXct(
+      paste(format(date_parsed, "%Y-%m-%d"), time_end_str),
+      format = "%Y-%m-%d %I:%M %p"
+    ),
+    session_name = session
   )
 
 # Helper function to escape LaTeX special characters
@@ -305,10 +364,31 @@ panel_blocks <- panels_raw %>%
   arrange(start_dt) %>%
   mutate(block_type = "panel", block_key = paste0("PANEL_", row_number()))
 
+# Build event blocks (breaks, meals, receptions)
+event_blocks <- overview_events %>%
+  arrange(start_dt) %>%
+  mutate(block_type = "event", block_key = paste0("EV", row_number())) %>%
+  select(block_type, block_key, day_name, start_dt, end_dt, session_name, room)
+
 # Combine all blocks and sort chronologically
 all_blocks <- bind_rows(
-  paper_blocks %>% select(block_type, block_key, day_name, start_dt, end_dt),
-  panel_blocks %>% select(block_type, block_key, day_name, start_dt, end_dt)
+  paper_blocks %>%
+    select(block_type, block_key, day_name, start_dt, end_dt) %>%
+    mutate(event_name = NA_character_, event_room = NA_character_),
+  panel_blocks %>%
+    select(block_type, block_key, day_name, start_dt, end_dt) %>%
+    mutate(event_name = NA_character_, event_room = NA_character_),
+  event_blocks %>%
+    rename(event_name = session_name, event_room = room) %>%
+    select(
+      block_type,
+      block_key,
+      day_name,
+      start_dt,
+      end_dt,
+      event_name,
+      event_room
+    )
 ) %>%
   arrange(start_dt)
 
@@ -317,14 +397,74 @@ first_block <- TRUE
 for (b in seq_len(nrow(all_blocks))) {
   block <- all_blocks[b, ]
 
-  # Page break between blocks
+  # Page break logic:
+  #   paper/panel → paper/panel : new page
+  #   anything    → event (new day) : new page
+  #   event       → paper/panel : no page break (event and next session share a page)
+  #   anything    → event (same day) : vspace only
   if (!first_block) {
-    cat("\n\\newpage\n\n")
+    prev_block <- all_blocks[b - 1, ]
+    if (block$block_type != "event" && prev_block$block_type != "event") {
+      cat("\n\\newpage\n\n")
+    } else if (
+      block$block_type == "event" && block$day_name != prev_block$day_name
+    ) {
+      cat("\n\\newpage\n\n")
+    } else {
+      cat("\n\\vspace{1em}\n\n")
+    }
   }
   first_block <- FALSE
 
-  # Session type label and time header — centered
-  session_type <- if (b == 1) {
+  # Day label used in running header marks
+  day_label <- switch(
+    block$day_name,
+    "Wednesday" = "Wednesday, June 3",
+    "Thursday" = "Thursday, June 4",
+    "Friday" = "Friday, June 5",
+    block$day_name
+  )
+
+  # Event blocks: compact colored box, no page header
+  if (block$block_type == "event") {
+    time_label <- paste0(
+      format(block$start_dt, "%I:%M %p"),
+      " – ",
+      format(block$end_dt, "%I:%M %p")
+    )
+    cat(
+      "\\markboth{",
+      escape_latex(day_label),
+      "}{",
+      escape_latex(block$event_name),
+      "}\n\n",
+      sep = ""
+    )
+    cat("\\begin{center}\n")
+    cat(
+      "\\colorbox{event!15}{\\parbox{0.9\\linewidth}{\\centering\n",
+      "  \\textcolor{event}{\\large\\textbf{",
+      escape_latex(block$event_name),
+      "}}\\\\[2pt]\n",
+      "  {\\small ",
+      block$day_name,
+      ", ",
+      time_label,
+      " $\\cdot$ \\textit{",
+      escape_latex(block$event_room),
+      "}}\n",
+      "}}\n",
+      sep = ""
+    )
+    cat("\\end{center}\n\n")
+    next
+  }
+
+  # Session type label and time header — centered (paper / panel blocks)
+  is_plenary_block <- block$block_type == "panel" &&
+    "P1" %in% (panels_raw %>% filter(start_dt == block$start_dt) %>% pull(id))
+
+  session_type <- if (is_plenary_block) {
     "Plenary Session"
   } else if (block$block_type == "paper") {
     "Paper Sessions"
@@ -340,6 +480,18 @@ for (b in seq_len(nrow(all_blocks))) {
     format(block$end_dt, "%I:%M %p")
   )
 
+  cat(
+    "\\markboth{",
+    escape_latex(day_label),
+    "}{",
+    session_type,
+    " | ",
+    format(block$start_dt, "%I:%M %p"),
+    " – ",
+    format(block$end_dt, "%I:%M %p"),
+    "}\n\n",
+    sep = ""
+  )
   cat("\\begin{center}\n")
   cat("\\normalsize\\textit{", session_type, "}\\\\[0.3em]\n", sep = "")
   cat("\\Large\\textbf{", time_label, "}\n", sep = "")
