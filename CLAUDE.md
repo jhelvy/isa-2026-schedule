@@ -24,7 +24,7 @@ code/
   config.R            # Configuration: seed, reject/withdraw/dissertation IDs, date constraints
   setup.R             # Loads libraries and reads data/submissions.csv
   1assign_slots.R     # Assigns sessions to time slots and rooms → data/schedule.csv
-  2generate_json.R    # Generates schedule_data.json from schedule + panels
+  2generate_json.R    # Generates schedule_data.json from schedule + panels + overview events
   3verify.R           # Test suite for scheduling constraints
 
 data/
@@ -33,6 +33,7 @@ data/
   session-slots.csv   # Available time slots and rooms
   schedule.csv        # OUTPUT: full schedule with time slots and rooms
   panels.csv          # Special sessions and plenaries
+  overview.csv        # Full conference program overview (breaks, meals, PDW, receptions, etc.)
   self-sessions.csv   # Papers within self-organized panels (used by schedule.qmd)
   pdw-registered.csv  # PDW registrants who cannot present in W1 or W2
   special-slots.csv   # Special slot definitions
@@ -78,6 +79,30 @@ W1 and W2 overlap with the Professional Development Workshop — no PDW registra
 **Add a date restriction**: add an entry to `date_restrictions` in `code/config.R`, then re-run `1assign_slots.R`.
 
 **Update panels/special sessions**: edit `data/panels.csv`, then re-run `2generate_json.R` and re-render `schedule.qmd`.
+
+**Update breaks, meals, receptions, PDW, or other non-paper program items**: edit `data/overview.csv`, then re-run `2generate_json.R` and re-render `schedule.qmd`.
+
+## Social Events (overview.csv)
+
+`data/overview.csv` contains the full conference program overview including all non-paper items: breaks, meals, receptions, the PDW, and the morning excursion. These appear as distinct teal-colored blocks in both the web app and PDF.
+
+**How they are included:**
+- `2generate_json.R` reads `overview.csv` and excludes rows already covered by `panels.csv` or `schedule.csv` (currently: "Paper Sessions", "Opening Plenary", "Concurrent Panel Sessions"). Everything else becomes a `type = "event"` entry in `schedule_data.json`.
+- `schedule.qmd` reads the same file with the same exclusions and renders events as compact `\colorbox{event!15}` banners interspersed throughout the PDF (no page break before same-day events; page break only at day transitions or between paper/panel blocks).
+- The `time_order` for each event is computed from seconds-since-midnight via `case_when` — if a new event time is added to `overview.csv`, add a matching entry to the `case_when` block in `2generate_json.R`.
+- Use `col_types = cols(.default = "c")` when reading `overview.csv` to prevent readr from auto-parsing time columns like "8:00 AM" as an hms type.
+
+## PDF Features
+
+- **Running headers**: left = day + date (e.g., "Wednesday, June 3"), right = session type + time range. Set via `\markboth{}{}` at the start of each block. Implemented with `scrlayer-scrpage` (KOMA-Script companion — compatible with `scrartcl`).
+- **Track colors**: each academic track has a named LaTeX color (`gis`, `health`, `innovation`, `labor`, `operations`, `policy`, `sustainability`). Social events use `event` (teal `#17A2B8`). All defined in the `include-in-header` block of `schedule.qmd`.
+- **Page breaks**: paper/panel blocks always start on a new page (except when following an event block on the same page). Events only trigger a new page at day transitions.
+
+## Web App Features
+
+- **Session types**: `paper`, `self_organized_panel`, `special_session`, `plenary`, `event`. Filter by type in the sidebar ("Paper Sessions", "Special Sessions", "Social Events").
+- **Social events** render as non-expandable teal banner cards (no papers to expand). They are excluded from the session and paper stat counts.
+- Track colors are defined in `trackMap` in `index.html`. Social events use CSS class `cat-event` (teal border, light teal background).
 
 ## Workflow Rules
 
