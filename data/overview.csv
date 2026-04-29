@@ -1,0 +1,30 @@
+Weekday,Time Start,Time End,Duration,Session,Building,Room 
+Wednesday,8:00 AM,11:30 AM,3:30,Morning excursion,Milken,"Convening 
+Hall"
+Wednesday,12:00 PM,1:00 PM,1:00,Lunch,Milken,"Convening 
+Hall"
+Wednesday,1:00 PM,1:55 PM,0:55,Opening Plenary,Milken,"Convening 
+Hall"
+Wednesday,2:00 PM,4:40 PM,2:40,PDW,Milken,"Convening 
+Hall"
+Wednesday,2:00 PM,3:10 PM,1:10,Paper Sessions,SEH,Classrooms
+Wednesday,3:10 PM,3:30 PM,0:20,Break,SEH,B1 Greenwall 
+Wednesday,3:30 PM,4:40 PM,1:10,Paper Sessions,SEH,Classrooms
+Wednesday,4:45 PM,5:55 PM,1:10,Paper Sessions,SEH,Classrooms
+Wednesday,6:00 PM,7:00 PM,1:00,Reception,SEH,B1 Greenwall 
+Thursday,8:20 AM,9:00 AM,0:40,Breakfast,SC,Grand Ballroom
+Thursday,9:00 AM,10:10 AM,1:10,Paper Sessions,SC,Classrooms
+Thursday,10:10 AM,10:40 AM,0:30,Break,SC,Hallway in front of Grand Ballroom
+Thursday,10:40 AM,11:40 AM,1:00,Concurrent Panel Sessions,SC,Classrooms
+Thursday,11:40 AM,12:45 PM,1:05,Lunch & Business Meeting,SC,Grand Ballroom
+Thursday,12:50 PM,2:00 PM,1:10,Paper Sessions,SC,Classrooms
+Thursday,2:05 PM,3:05 PM,1:00,Concurrent Panel Sessions,SC,Classrooms
+Thursday,3:05 PM,3:35 PM,0:30,Break,SC,Hallway in front of Grand Ballroom
+Thursday,3:40 PM,4:50 PM,1:10,Paper Sessions,SC,Classrooms
+Thursday,4:55 PM,6:00 PM,1:05,Concurrent Panel Sessions,SC,Classrooms
+Thursday,6:00 PM,8:00 PM,2:00,Reception,SC,Grand Ballroom
+Friday,8:20 AM,9:00 AM,0:40,Breakfast,SC,Grand Ballroom
+Friday,9:00 AM,10:00 AM,1:00,Concurrent Panel Sessions,SC,Classrooms
+Friday,10:00 AM,10:30 AM,0:30,Break,SC,Hallway in front of Grand Ballroom
+Friday,10:30 AM,11:40 AM,1:10,Paper Sessions,SC,Classrooms
+Friday,11:40 AM,12:40 PM,1:00,Lunch & Awards Ceremony,SC,Grand Ballroom
