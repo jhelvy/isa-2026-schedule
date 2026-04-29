@@ -11,13 +11,16 @@ library(stringr)
 schedule <- read_csv('data/schedule.csv', show_col_types = FALSE)
 submissions <- read_csv('data/submissions.csv', show_col_types = FALSE)
 
-# Join schedule with abstracts and other submission details
+# Join schedule with abstracts and other submission details.
+# Self-organized panels (e.g. ids 32, 131) store all papers under the same id
+# in both schedule and submissions, so deduplicate schedule on id first to avoid
+# a many-to-many cartesian product — submissions already has one row per paper.
 paper_sessions <- schedule %>%
+  distinct(id, .keep_all = TRUE) %>%
   left_join(
     submissions %>%
       select(id, title, abstract, authors, category, type),
-    by = 'id',
-    relationship = 'many-to-many'
+    by = 'id'
   ) %>%
   mutate(
     id = as.character(id),
