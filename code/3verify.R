@@ -208,7 +208,8 @@ test_that("No PDW-registered author is scheduled in W1 or W2", {
     filter(time_slot %in% c("W1", "W2")) %>%
     left_join(
       submissions %>% mutate(id = as.character(id)) %>% select(id, authors),
-      by = "id"
+      by = "id",
+      relationship = "many-to-many"
     ) %>%
     filter(!is.na(authors)) %>%
     mutate(author_list = str_split(authors, ";")) %>%

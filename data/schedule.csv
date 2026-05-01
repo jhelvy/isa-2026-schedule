@@ -31,10 +31,10 @@ id,session_id,session_name,time_slot,room,date,day,start_time,end_time,time_orde
 75,33,Healthcare and People-Centric Operations,W2,SEH-1450,2026-06-03,Wednesday,15:30:00,16:40:00,2
 162,33,Healthcare and People-Centric Operations,W2,SEH-1450,2026-06-03,Wednesday,15:30:00,16:40:00,2
 2001,33,Healthcare and People-Centric Operations,W2,SEH-1450,2026-06-03,Wednesday,15:30:00,16:40:00,2
-54,20,Innovation Strategy and Resources,W2,SEH-3040,2026-06-03,Wednesday,15:30:00,16:40:00,2
-55,20,Innovation Strategy and Resources,W2,SEH-3040,2026-06-03,Wednesday,15:30:00,16:40:00,2
-59,20,Innovation Strategy and Resources,W2,SEH-3040,2026-06-03,Wednesday,15:30:00,16:40:00,2
-65,20,Innovation Strategy and Resources,W2,SEH-3040,2026-06-03,Wednesday,15:30:00,16:40:00,2
+28,34,Digital Technology in Manufacturing,W2,SEH-3040,2026-06-03,Wednesday,15:30:00,16:40:00,2
+34,34,Digital Technology in Manufacturing,W2,SEH-3040,2026-06-03,Wednesday,15:30:00,16:40:00,2
+183,34,Digital Technology in Manufacturing,W2,SEH-3040,2026-06-03,Wednesday,15:30:00,16:40:00,2
+198,34,Digital Technology in Manufacturing,W2,SEH-3040,2026-06-03,Wednesday,15:30:00,16:40:00,2
 23,27,Organizational Structure and Human Capital,W2,SEH-B1220,2026-06-03,Wednesday,15:30:00,16:40:00,2
 160,27,Organizational Structure and Human Capital,W2,SEH-B1220,2026-06-03,Wednesday,15:30:00,16:40:00,2
 187,27,Organizational Structure and Human Capital,W2,SEH-B1220,2026-06-03,Wednesday,15:30:00,16:40:00,2
@@ -78,10 +78,10 @@ id,session_id,session_name,time_slot,room,date,day,start_time,end_time,time_orde
 21,7,Biomedical Innovation Ecosystem,T1,SC-302,2026-06-04,Thursday,09:00:00,10:10:00,4
 71,7,Biomedical Innovation Ecosystem,T1,SC-302,2026-06-04,Thursday,09:00:00,10:10:00,4
 188,7,Biomedical Innovation Ecosystem,T1,SC-302,2026-06-04,Thursday,09:00:00,10:10:00,4
-32,48,Technological Change at Work and Across Industries,T1,SC-307,2026-06-04,Thursday,09:00:00,10:10:00,4
-32,48,Technological Change at Work and Across Industries,T1,SC-307,2026-06-04,Thursday,09:00:00,10:10:00,4
-32,48,Technological Change at Work and Across Industries,T1,SC-307,2026-06-04,Thursday,09:00:00,10:10:00,4
-32,48,Technological Change at Work and Across Industries,T1,SC-307,2026-06-04,Thursday,09:00:00,10:10:00,4
+84,19,Industrial Policy and Technology Development,T1,SC-307,2026-06-04,Thursday,09:00:00,10:10:00,4
+146,19,Industrial Policy and Technology Development,T1,SC-307,2026-06-04,Thursday,09:00:00,10:10:00,4
+195,19,Industrial Policy and Technology Development,T1,SC-307,2026-06-04,Thursday,09:00:00,10:10:00,4
+203,19,Industrial Policy and Technology Development,T1,SC-307,2026-06-04,Thursday,09:00:00,10:10:00,4
 33,15,Advanced Technologies and Digital Innovation,T1,SC-308,2026-06-04,Thursday,09:00:00,10:10:00,4
 52,15,Advanced Technologies and Digital Innovation,T1,SC-308,2026-06-04,Thursday,09:00:00,10:10:00,4
 121,15,Advanced Technologies and Digital Innovation,T1,SC-308,2026-06-04,Thursday,09:00:00,10:10:00,4
@@ -123,9 +123,10 @@ id,session_id,session_name,time_slot,room,date,day,start_time,end_time,time_orde
 89,44,EV Transition and Automotive Industry,T2,SC-Amp.,2026-06-04,Thursday,12:50:00,14:00:00,5
 93,44,EV Transition and Automotive Industry,T2,SC-Amp.,2026-06-04,Thursday,12:50:00,14:00:00,5
 159,44,EV Transition and Automotive Industry,T2,SC-Amp.,2026-06-04,Thursday,12:50:00,14:00:00,5
-94,9,Drug Supply Chains and Shortages,T3,SC-301,2026-06-04,Thursday,15:40:00,16:50:00,6
-95,9,Drug Supply Chains and Shortages,T3,SC-301,2026-06-04,Thursday,15:40:00,16:50:00,6
-148,9,Drug Supply Chains and Shortages,T3,SC-301,2026-06-04,Thursday,15:40:00,16:50:00,6
+54,20,Innovation Strategy and Resources,T3,SC-301,2026-06-04,Thursday,15:40:00,16:50:00,6
+55,20,Innovation Strategy and Resources,T3,SC-301,2026-06-04,Thursday,15:40:00,16:50:00,6
+59,20,Innovation Strategy and Resources,T3,SC-301,2026-06-04,Thursday,15:40:00,16:50:00,6
+65,20,Innovation Strategy and Resources,T3,SC-301,2026-06-04,Thursday,15:40:00,16:50:00,6
 30,13,Pharmaceutical R&D Strategy,T3,SC-302,2026-06-04,Thursday,15:40:00,16:50:00,6
 31,13,Pharmaceutical R&D Strategy,T3,SC-302,2026-06-04,Thursday,15:40:00,16:50:00,6
 48,13,Pharmaceutical R&D Strategy,T3,SC-302,2026-06-04,Thursday,15:40:00,16:50:00,6
@@ -134,14 +135,13 @@ id,session_id,session_name,time_slot,room,date,day,start_time,end_time,time_orde
 109,1,Geographic Location and Transportation Cost,T3,SC-307,2026-06-04,Thursday,15:40:00,16:50:00,6
 122,1,Geographic Location and Transportation Cost,T3,SC-307,2026-06-04,Thursday,15:40:00,16:50:00,6
 178,1,Geographic Location and Transportation Cost,T3,SC-307,2026-06-04,Thursday,15:40:00,16:50:00,6
-84,19,Industrial Policy and Technology Development,T3,SC-308,2026-06-04,Thursday,15:40:00,16:50:00,6
-146,19,Industrial Policy and Technology Development,T3,SC-308,2026-06-04,Thursday,15:40:00,16:50:00,6
-195,19,Industrial Policy and Technology Development,T3,SC-308,2026-06-04,Thursday,15:40:00,16:50:00,6
-203,19,Industrial Policy and Technology Development,T3,SC-308,2026-06-04,Thursday,15:40:00,16:50:00,6
-28,34,Digital Technology in Manufacturing,T3,SC-309,2026-06-04,Thursday,15:40:00,16:50:00,6
-34,34,Digital Technology in Manufacturing,T3,SC-309,2026-06-04,Thursday,15:40:00,16:50:00,6
-183,34,Digital Technology in Manufacturing,T3,SC-309,2026-06-04,Thursday,15:40:00,16:50:00,6
-198,34,Digital Technology in Manufacturing,T3,SC-309,2026-06-04,Thursday,15:40:00,16:50:00,6
+32,48,Technological Change at Work and Across Industries,T3,SC-308,2026-06-04,Thursday,15:40:00,16:50:00,6
+32,48,Technological Change at Work and Across Industries,T3,SC-308,2026-06-04,Thursday,15:40:00,16:50:00,6
+32,48,Technological Change at Work and Across Industries,T3,SC-308,2026-06-04,Thursday,15:40:00,16:50:00,6
+32,48,Technological Change at Work and Across Industries,T3,SC-308,2026-06-04,Thursday,15:40:00,16:50:00,6
+37,29,Digital Platforms and Last-Mile Delivery,T3,SC-309,2026-06-04,Thursday,15:40:00,16:50:00,6
+61,29,Digital Platforms and Last-Mile Delivery,T3,SC-309,2026-06-04,Thursday,15:40:00,16:50:00,6
+98,29,Digital Platforms and Last-Mile Delivery,T3,SC-309,2026-06-04,Thursday,15:40:00,16:50:00,6
 16,37,AI and Digital Economy Policy,T3,SC-310,2026-06-04,Thursday,15:40:00,16:50:00,6
 157,37,AI and Digital Economy Policy,T3,SC-310,2026-06-04,Thursday,15:40:00,16:50:00,6
 196,37,AI and Digital Economy Policy,T3,SC-310,2026-06-04,Thursday,15:40:00,16:50:00,6
@@ -165,9 +165,9 @@ id,session_id,session_name,time_slot,room,date,day,start_time,end_time,time_orde
 72,23,"Hiring, Skills, and Labor Market Dynamics",F1,SC-308,2026-06-05,Friday,10:30:00,11:40:00,7
 100,23,"Hiring, Skills, and Labor Market Dynamics",F1,SC-308,2026-06-05,Friday,10:30:00,11:40:00,7
 119,23,"Hiring, Skills, and Labor Market Dynamics",F1,SC-308,2026-06-05,Friday,10:30:00,11:40:00,7
-37,29,Digital Platforms and Last-Mile Delivery,F1,SC-309,2026-06-05,Friday,10:30:00,11:40:00,7
-61,29,Digital Platforms and Last-Mile Delivery,F1,SC-309,2026-06-05,Friday,10:30:00,11:40:00,7
-98,29,Digital Platforms and Last-Mile Delivery,F1,SC-309,2026-06-05,Friday,10:30:00,11:40:00,7
+94,9,Drug Supply Chains and Shortages,F1,SC-309,2026-06-05,Friday,10:30:00,11:40:00,7
+95,9,Drug Supply Chains and Shortages,F1,SC-309,2026-06-05,Friday,10:30:00,11:40:00,7
+148,9,Drug Supply Chains and Shortages,F1,SC-309,2026-06-05,Friday,10:30:00,11:40:00,7
 90,40,Industrial Policy Frameworks,F1,SC-310,2026-06-05,Friday,10:30:00,11:40:00,7
 118,40,Industrial Policy Frameworks,F1,SC-310,2026-06-05,Friday,10:30:00,11:40:00,7
 176,40,Industrial Policy Frameworks,F1,SC-310,2026-06-05,Friday,10:30:00,11:40:00,7
