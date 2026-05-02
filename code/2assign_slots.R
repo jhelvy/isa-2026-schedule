@@ -428,13 +428,18 @@ if (length(conflicts) > 0) {
 cat("\n\n=== Optimizing category spread ===\n")
 
 cat_score <- function(asgn) {
-  asgn %>%
-    count(assigned_time_slot, category) %>%
-    filter(n > 1) %>%
-    pull(n) %>%
-    {
-      if (length(.) == 0) 0L else sum(. - 1L)
-    }
+  slot_counts <- asgn |>
+    count(assigned_time_slot, category, name = "n") |>
+    filter(n > 1)
+  if (nrow(slot_counts) == 0) return(0L)
+  # Primary: number of slots where >1 category has doubles (weight heavily)
+  n_multi_doubled <- slot_counts |>
+    count(assigned_time_slot, name = "n_doubled_cats") |>
+    filter(n_doubled_cats > 1) |>
+    nrow()
+  # Secondary: total excess count (tiebreaker)
+  total_excess <- sum(slot_counts$n - 1L)
+  n_multi_doubled * 1000L + total_excess
 }
 
 # Check: would swapping sess1 and sess2 introduce new author, date, or PDW conflicts?
@@ -1016,13 +1021,18 @@ if (length(post_conflicts) > 0) {
 cat("\n\n=== Final category spread optimization ===\n")
 
 cat_score_final <- function(asgn) {
-  asgn %>%
-    count(time_slot, category, name = "n") %>%
-    filter(n > 1) %>%
-    pull(n) %>%
-    {
-      if (length(.) == 0) 0L else sum(. - 1L)
-    }
+  slot_counts <- asgn |>
+    count(time_slot, category, name = "n") |>
+    filter(n > 1)
+  if (nrow(slot_counts) == 0) return(0L)
+  # Primary: number of slots where >1 category has doubles (weight heavily)
+  n_multi_doubled <- slot_counts |>
+    count(time_slot, name = "n_doubled_cats") |>
+    filter(n_doubled_cats > 1) |>
+    nrow()
+  # Secondary: total excess count (tiebreaker)
+  total_excess <- sum(slot_counts$n - 1L)
+  n_multi_doubled * 1000L + total_excess
 }
 
 swap_is_author_safe_final <- function(asgn, sess1, sess2) {
