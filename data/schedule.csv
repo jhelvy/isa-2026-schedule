@@ -1,176 +1,176 @@
 id,session_id,session_name,time_slot,room,date,day,start_time,end_time,time_order
-17,5,Industrial Policy and Market Governance,W1,SEH-1300,2026-06-03,Wednesday,14:00:00,15:10:00,1
-24,5,Industrial Policy and Market Governance,W1,SEH-1300,2026-06-03,Wednesday,14:00:00,15:10:00,1
-87,5,Industrial Policy and Market Governance,W1,SEH-1300,2026-06-03,Wednesday,14:00:00,15:10:00,1
-35,8,Drug Pricing and Market Competition,W1,SEH-1400,2026-06-03,Wednesday,14:00:00,15:10:00,1
-38,8,Drug Pricing and Market Competition,W1,SEH-1400,2026-06-03,Wednesday,14:00:00,15:10:00,1
-46,8,Drug Pricing and Market Competition,W1,SEH-1400,2026-06-03,Wednesday,14:00:00,15:10:00,1
-58,8,Drug Pricing and Market Competition,W1,SEH-1400,2026-06-03,Wednesday,14:00:00,15:10:00,1
-179,22,Technology Legitimacy and Emerging Markets,W1,SEH-1450,2026-06-03,Wednesday,14:00:00,15:10:00,1
-186,22,Technology Legitimacy and Emerging Markets,W1,SEH-1450,2026-06-03,Wednesday,14:00:00,15:10:00,1
-2000,22,Technology Legitimacy and Emerging Markets,W1,SEH-1450,2026-06-03,Wednesday,14:00:00,15:10:00,1
-116,28,Labor Policy and Institutions,W1,SEH-3040,2026-06-03,Wednesday,14:00:00,15:10:00,1
-167,28,Labor Policy and Institutions,W1,SEH-3040,2026-06-03,Wednesday,14:00:00,15:10:00,1
-211,28,Labor Policy and Institutions,W1,SEH-3040,2026-06-03,Wednesday,14:00:00,15:10:00,1
-36,30,Supply Chain Risk and Resilience,W1,SEH-B1220,2026-06-03,Wednesday,14:00:00,15:10:00,1
-156,30,Supply Chain Risk and Resilience,W1,SEH-B1220,2026-06-03,Wednesday,14:00:00,15:10:00,1
-168,30,Supply Chain Risk and Resilience,W1,SEH-B1220,2026-06-03,Wednesday,14:00:00,15:10:00,1
-206,30,Supply Chain Risk and Resilience,W1,SEH-B1220,2026-06-03,Wednesday,14:00:00,15:10:00,1
-131,49,Taking Stock: System Dynamics Modeling in Industry Studies,W1,SEH-B1270,2026-06-03,Wednesday,14:00:00,15:10:00,1
-131,49,Taking Stock: System Dynamics Modeling in Industry Studies,W1,SEH-B1270,2026-06-03,Wednesday,14:00:00,15:10:00,1
-131,49,Taking Stock: System Dynamics Modeling in Industry Studies,W1,SEH-B1270,2026-06-03,Wednesday,14:00:00,15:10:00,1
-131,49,Taking Stock: System Dynamics Modeling in Industry Studies,W1,SEH-B1270,2026-06-03,Wednesday,14:00:00,15:10:00,1
-80,21,Venture Financing and Technology Dynamics,W2,SEH-1300,2026-06-03,Wednesday,15:30:00,16:40:00,2
-92,21,Venture Financing and Technology Dynamics,W2,SEH-1300,2026-06-03,Wednesday,15:30:00,16:40:00,2
-210,21,Venture Financing and Technology Dynamics,W2,SEH-1300,2026-06-03,Wednesday,15:30:00,16:40:00,2
-86,24,"AI, Technology, and the Changing Nature of Work",W2,SEH-1400,2026-06-03,Wednesday,15:30:00,16:40:00,2
-129,24,"AI, Technology, and the Changing Nature of Work",W2,SEH-1400,2026-06-03,Wednesday,15:30:00,16:40:00,2
-144,24,"AI, Technology, and the Changing Nature of Work",W2,SEH-1400,2026-06-03,Wednesday,15:30:00,16:40:00,2
-147,24,"AI, Technology, and the Changing Nature of Work",W2,SEH-1400,2026-06-03,Wednesday,15:30:00,16:40:00,2
-51,33,Healthcare and People-Centric Operations,W2,SEH-1450,2026-06-03,Wednesday,15:30:00,16:40:00,2
-75,33,Healthcare and People-Centric Operations,W2,SEH-1450,2026-06-03,Wednesday,15:30:00,16:40:00,2
-162,33,Healthcare and People-Centric Operations,W2,SEH-1450,2026-06-03,Wednesday,15:30:00,16:40:00,2
-2001,33,Healthcare and People-Centric Operations,W2,SEH-1450,2026-06-03,Wednesday,15:30:00,16:40:00,2
-28,34,Digital Technology in Manufacturing,W2,SEH-3040,2026-06-03,Wednesday,15:30:00,16:40:00,2
-34,34,Digital Technology in Manufacturing,W2,SEH-3040,2026-06-03,Wednesday,15:30:00,16:40:00,2
-183,34,Digital Technology in Manufacturing,W2,SEH-3040,2026-06-03,Wednesday,15:30:00,16:40:00,2
-198,34,Digital Technology in Manufacturing,W2,SEH-3040,2026-06-03,Wednesday,15:30:00,16:40:00,2
-23,27,Organizational Structure and Human Capital,W2,SEH-B1220,2026-06-03,Wednesday,15:30:00,16:40:00,2
-160,27,Organizational Structure and Human Capital,W2,SEH-B1220,2026-06-03,Wednesday,15:30:00,16:40:00,2
-187,27,Organizational Structure and Human Capital,W2,SEH-B1220,2026-06-03,Wednesday,15:30:00,16:40:00,2
-60,31,Retail and Manufacturing Operations,W2,SEH-B1270,2026-06-03,Wednesday,15:30:00,16:40:00,2
-135,31,Retail and Manufacturing Operations,W2,SEH-B1270,2026-06-03,Wednesday,15:30:00,16:40:00,2
-164,31,Retail and Manufacturing Operations,W2,SEH-B1270,2026-06-03,Wednesday,15:30:00,16:40:00,2
-193,31,Retail and Manufacturing Operations,W2,SEH-B1270,2026-06-03,Wednesday,15:30:00,16:40:00,2
-78,39,Humanitarian and Development Policy,W2,SEH-B2020,2026-06-03,Wednesday,15:30:00,16:40:00,2
-171,39,Humanitarian and Development Policy,W2,SEH-B2020,2026-06-03,Wednesday,15:30:00,16:40:00,2
-177,39,Humanitarian and Development Policy,W2,SEH-B2020,2026-06-03,Wednesday,15:30:00,16:40:00,2
-180,39,Humanitarian and Development Policy,W2,SEH-B2020,2026-06-03,Wednesday,15:30:00,16:40:00,2
-39,11,Healthcare Data and Analytics,W3,SEH-1300,2026-06-03,Wednesday,16:45:00,17:55:00,3
-114,11,Healthcare Data and Analytics,W3,SEH-1300,2026-06-03,Wednesday,16:45:00,17:55:00,3
-150,11,Healthcare Data and Analytics,W3,SEH-1300,2026-06-03,Wednesday,16:45:00,17:55:00,3
-103,3,Biodiversity and Agricultural Industry,W3,SEH-1400,2026-06-03,Wednesday,16:45:00,17:55:00,3
-175,3,Biodiversity and Agricultural Industry,W3,SEH-1400,2026-06-03,Wednesday,16:45:00,17:55:00,3
-192,3,Biodiversity and Agricultural Industry,W3,SEH-1400,2026-06-03,Wednesday,16:45:00,17:55:00,3
-77,16,Entrepreneurial Ecosystems and Clusters,W3,SEH-1450,2026-06-03,Wednesday,16:45:00,17:55:00,3
-91,16,Entrepreneurial Ecosystems and Clusters,W3,SEH-1450,2026-06-03,Wednesday,16:45:00,17:55:00,3
-123,16,Entrepreneurial Ecosystems and Clusters,W3,SEH-1450,2026-06-03,Wednesday,16:45:00,17:55:00,3
-132,16,Entrepreneurial Ecosystems and Clusters,W3,SEH-1450,2026-06-03,Wednesday,16:45:00,17:55:00,3
-96,25,Manufacturing Transformation and Workforce Development,W3,SEH-3040,2026-06-03,Wednesday,16:45:00,17:55:00,3
-126,25,Manufacturing Transformation and Workforce Development,W3,SEH-3040,2026-06-03,Wednesday,16:45:00,17:55:00,3
-151,25,Manufacturing Transformation and Workforce Development,W3,SEH-3040,2026-06-03,Wednesday,16:45:00,17:55:00,3
-204,25,Manufacturing Transformation and Workforce Development,W3,SEH-3040,2026-06-03,Wednesday,16:45:00,17:55:00,3
-83,32,Sustainable and Circular Supply Chains,W3,SEH-B1220,2026-06-03,Wednesday,16:45:00,17:55:00,3
-99,32,Sustainable and Circular Supply Chains,W3,SEH-B1220,2026-06-03,Wednesday,16:45:00,17:55:00,3
-130,32,Sustainable and Circular Supply Chains,W3,SEH-B1220,2026-06-03,Wednesday,16:45:00,17:55:00,3
-170,32,Sustainable and Circular Supply Chains,W3,SEH-B1220,2026-06-03,Wednesday,16:45:00,17:55:00,3
-82,38,Global Value Chains and Trade Policy,W3,SEH-B1270,2026-06-03,Wednesday,16:45:00,17:55:00,3
-145,38,Global Value Chains and Trade Policy,W3,SEH-B1270,2026-06-03,Wednesday,16:45:00,17:55:00,3
-161,38,Global Value Chains and Trade Policy,W3,SEH-B1270,2026-06-03,Wednesday,16:45:00,17:55:00,3
-18,46,Energy Systems and Reliability,W3,SEH-B2020,2026-06-03,Wednesday,16:45:00,17:55:00,3
-42,46,Energy Systems and Reliability,W3,SEH-B2020,2026-06-03,Wednesday,16:45:00,17:55:00,3
-44,46,Energy Systems and Reliability,W3,SEH-B2020,2026-06-03,Wednesday,16:45:00,17:55:00,3
-189,46,Energy Systems and Reliability,W3,SEH-B2020,2026-06-03,Wednesday,16:45:00,17:55:00,3
-85,2,Public Policy and ESG,T1,SC-301,2026-06-04,Thursday,09:00:00,10:10:00,4
-166,2,Public Policy and ESG,T1,SC-301,2026-06-04,Thursday,09:00:00,10:10:00,4
-172,2,Public Policy and ESG,T1,SC-301,2026-06-04,Thursday,09:00:00,10:10:00,4
-205,2,Public Policy and ESG,T1,SC-301,2026-06-04,Thursday,09:00:00,10:10:00,4
-21,7,Biomedical Innovation Ecosystem,T1,SC-302,2026-06-04,Thursday,09:00:00,10:10:00,4
-71,7,Biomedical Innovation Ecosystem,T1,SC-302,2026-06-04,Thursday,09:00:00,10:10:00,4
-188,7,Biomedical Innovation Ecosystem,T1,SC-302,2026-06-04,Thursday,09:00:00,10:10:00,4
-84,19,Industrial Policy and Technology Development,T1,SC-307,2026-06-04,Thursday,09:00:00,10:10:00,4
-146,19,Industrial Policy and Technology Development,T1,SC-307,2026-06-04,Thursday,09:00:00,10:10:00,4
-195,19,Industrial Policy and Technology Development,T1,SC-307,2026-06-04,Thursday,09:00:00,10:10:00,4
-203,19,Industrial Policy and Technology Development,T1,SC-307,2026-06-04,Thursday,09:00:00,10:10:00,4
-33,15,Advanced Technologies and Digital Innovation,T1,SC-308,2026-06-04,Thursday,09:00:00,10:10:00,4
-52,15,Advanced Technologies and Digital Innovation,T1,SC-308,2026-06-04,Thursday,09:00:00,10:10:00,4
-121,15,Advanced Technologies and Digital Innovation,T1,SC-308,2026-06-04,Thursday,09:00:00,10:10:00,4
-194,15,Advanced Technologies and Digital Innovation,T1,SC-308,2026-06-04,Thursday,09:00:00,10:10:00,4
-97,35,ESG in Supply Chains,T1,SC-309,2026-06-04,Thursday,09:00:00,10:10:00,4
-128,35,ESG in Supply Chains,T1,SC-309,2026-06-04,Thursday,09:00:00,10:10:00,4
-143,35,ESG in Supply Chains,T1,SC-309,2026-06-04,Thursday,09:00:00,10:10:00,4
-154,35,ESG in Supply Chains,T1,SC-309,2026-06-04,Thursday,09:00:00,10:10:00,4
-45,41,Regulatory Dynamics and Business Strategy,T1,SC-310,2026-06-04,Thursday,09:00:00,10:10:00,4
-88,41,Regulatory Dynamics and Business Strategy,T1,SC-310,2026-06-04,Thursday,09:00:00,10:10:00,4
-191,41,Regulatory Dynamics and Business Strategy,T1,SC-310,2026-06-04,Thursday,09:00:00,10:10:00,4
-14,45,Energy Infrastructure and Communities,T1,SC-Amp.,2026-06-04,Thursday,09:00:00,10:10:00,4
-47,45,Energy Infrastructure and Communities,T1,SC-Amp.,2026-06-04,Thursday,09:00:00,10:10:00,4
-142,45,Energy Infrastructure and Communities,T1,SC-Amp.,2026-06-04,Thursday,09:00:00,10:10:00,4
-201,45,Energy Infrastructure and Communities,T1,SC-Amp.,2026-06-04,Thursday,09:00:00,10:10:00,4
-73,6,Industry Classification and Regulatory Policy,T2,SC-301,2026-06-04,Thursday,12:50:00,14:00:00,5
-110,6,Industry Classification and Regulatory Policy,T2,SC-301,2026-06-04,Thursday,12:50:00,14:00:00,5
-134,6,Industry Classification and Regulatory Policy,T2,SC-301,2026-06-04,Thursday,12:50:00,14:00:00,5
-181,6,Industry Classification and Regulatory Policy,T2,SC-301,2026-06-04,Thursday,12:50:00,14:00:00,5
-50,10,FDA Regulation and Drug Quality,T2,SC-302,2026-06-04,Thursday,12:50:00,14:00:00,5
-184,10,FDA Regulation and Drug Quality,T2,SC-302,2026-06-04,Thursday,12:50:00,14:00:00,5
-185,10,FDA Regulation and Drug Quality,T2,SC-302,2026-06-04,Thursday,12:50:00,14:00:00,5
-190,10,FDA Regulation and Drug Quality,T2,SC-302,2026-06-04,Thursday,12:50:00,14:00:00,5
-13,17,Entrepreneurship Research and Policy,T2,SC-307,2026-06-04,Thursday,12:50:00,14:00:00,5
-108,17,Entrepreneurship Research and Policy,T2,SC-307,2026-06-04,Thursday,12:50:00,14:00:00,5
-120,17,Entrepreneurship Research and Policy,T2,SC-307,2026-06-04,Thursday,12:50:00,14:00:00,5
-208,17,Entrepreneurship Research and Policy,T2,SC-307,2026-06-04,Thursday,12:50:00,14:00:00,5
-27,26,"Platform Work, Control, and Worker Voice",T2,SC-308,2026-06-04,Thursday,12:50:00,14:00:00,5
-107,26,"Platform Work, Control, and Worker Voice",T2,SC-308,2026-06-04,Thursday,12:50:00,14:00:00,5
-141,26,"Platform Work, Control, and Worker Voice",T2,SC-308,2026-06-04,Thursday,12:50:00,14:00:00,5
-57,18,Generative AI and the Future of Work,T2,SC-309,2026-06-04,Thursday,12:50:00,14:00:00,5
-62,18,Generative AI and the Future of Work,T2,SC-309,2026-06-04,Thursday,12:50:00,14:00:00,5
-63,18,Generative AI and the Future of Work,T2,SC-309,2026-06-04,Thursday,12:50:00,14:00:00,5
-138,18,Generative AI and the Future of Work,T2,SC-309,2026-06-04,Thursday,12:50:00,14:00:00,5
-19,42,Technology Competitiveness and National Security,T2,SC-310,2026-06-04,Thursday,12:50:00,14:00:00,5
-41,42,Technology Competitiveness and National Security,T2,SC-310,2026-06-04,Thursday,12:50:00,14:00:00,5
-113,42,Technology Competitiveness and National Security,T2,SC-310,2026-06-04,Thursday,12:50:00,14:00:00,5
-67,44,EV Transition and Automotive Industry,T2,SC-Amp.,2026-06-04,Thursday,12:50:00,14:00:00,5
-89,44,EV Transition and Automotive Industry,T2,SC-Amp.,2026-06-04,Thursday,12:50:00,14:00:00,5
-93,44,EV Transition and Automotive Industry,T2,SC-Amp.,2026-06-04,Thursday,12:50:00,14:00:00,5
-159,44,EV Transition and Automotive Industry,T2,SC-Amp.,2026-06-04,Thursday,12:50:00,14:00:00,5
-54,20,Innovation Strategy and Resources,T3,SC-301,2026-06-04,Thursday,15:40:00,16:50:00,6
-55,20,Innovation Strategy and Resources,T3,SC-301,2026-06-04,Thursday,15:40:00,16:50:00,6
-59,20,Innovation Strategy and Resources,T3,SC-301,2026-06-04,Thursday,15:40:00,16:50:00,6
-65,20,Innovation Strategy and Resources,T3,SC-301,2026-06-04,Thursday,15:40:00,16:50:00,6
-30,13,Pharmaceutical R&D Strategy,T3,SC-302,2026-06-04,Thursday,15:40:00,16:50:00,6
-31,13,Pharmaceutical R&D Strategy,T3,SC-302,2026-06-04,Thursday,15:40:00,16:50:00,6
-48,13,Pharmaceutical R&D Strategy,T3,SC-302,2026-06-04,Thursday,15:40:00,16:50:00,6
-169,13,Pharmaceutical R&D Strategy,T3,SC-302,2026-06-04,Thursday,15:40:00,16:50:00,6
-56,1,Geographic Location and Transportation Cost,T3,SC-307,2026-06-04,Thursday,15:40:00,16:50:00,6
-109,1,Geographic Location and Transportation Cost,T3,SC-307,2026-06-04,Thursday,15:40:00,16:50:00,6
-122,1,Geographic Location and Transportation Cost,T3,SC-307,2026-06-04,Thursday,15:40:00,16:50:00,6
-178,1,Geographic Location and Transportation Cost,T3,SC-307,2026-06-04,Thursday,15:40:00,16:50:00,6
+28,34,Digital Technology in Manufacturing,W1,SEH-1300,2026-06-03,Wednesday,14:00:00,15:10:00,1
+34,34,Digital Technology in Manufacturing,W1,SEH-1300,2026-06-03,Wednesday,14:00:00,15:10:00,1
+183,34,Digital Technology in Manufacturing,W1,SEH-1300,2026-06-03,Wednesday,14:00:00,15:10:00,1
+198,34,Digital Technology in Manufacturing,W1,SEH-1300,2026-06-03,Wednesday,14:00:00,15:10:00,1
+86,24,"AI, Technology, and the Changing Nature of Work",W1,SEH-1400,2026-06-03,Wednesday,14:00:00,15:10:00,1
+129,24,"AI, Technology, and the Changing Nature of Work",W1,SEH-1400,2026-06-03,Wednesday,14:00:00,15:10:00,1
+144,24,"AI, Technology, and the Changing Nature of Work",W1,SEH-1400,2026-06-03,Wednesday,14:00:00,15:10:00,1
+147,24,"AI, Technology, and the Changing Nature of Work",W1,SEH-1400,2026-06-03,Wednesday,14:00:00,15:10:00,1
+80,21,Venture Financing and Technology Dynamics,W1,SEH-1450,2026-06-03,Wednesday,14:00:00,15:10:00,1
+92,21,Venture Financing and Technology Dynamics,W1,SEH-1450,2026-06-03,Wednesday,14:00:00,15:10:00,1
+210,21,Venture Financing and Technology Dynamics,W1,SEH-1450,2026-06-03,Wednesday,14:00:00,15:10:00,1
+23,27,Organizational Structure and Human Capital,W1,SEH-3040,2026-06-03,Wednesday,14:00:00,15:10:00,1
+160,27,Organizational Structure and Human Capital,W1,SEH-3040,2026-06-03,Wednesday,14:00:00,15:10:00,1
+187,27,Organizational Structure and Human Capital,W1,SEH-3040,2026-06-03,Wednesday,14:00:00,15:10:00,1
+19,42,Technology Competitiveness and National Security,W1,SEH-B1220,2026-06-03,Wednesday,14:00:00,15:10:00,1
+41,42,Technology Competitiveness and National Security,W1,SEH-B1220,2026-06-03,Wednesday,14:00:00,15:10:00,1
+113,42,Technology Competitiveness and National Security,W1,SEH-B1220,2026-06-03,Wednesday,14:00:00,15:10:00,1
+51,33,Healthcare and People-Centric Operations,W1,SEH-B1270,2026-06-03,Wednesday,14:00:00,15:10:00,1
+75,33,Healthcare and People-Centric Operations,W1,SEH-B1270,2026-06-03,Wednesday,14:00:00,15:10:00,1
+162,33,Healthcare and People-Centric Operations,W1,SEH-B1270,2026-06-03,Wednesday,14:00:00,15:10:00,1
+2001,33,Healthcare and People-Centric Operations,W1,SEH-B1270,2026-06-03,Wednesday,14:00:00,15:10:00,1
+17,5,Industrial Policy and Market Governance,W2,SEH-1300,2026-06-03,Wednesday,15:30:00,16:40:00,2
+24,5,Industrial Policy and Market Governance,W2,SEH-1300,2026-06-03,Wednesday,15:30:00,16:40:00,2
+87,5,Industrial Policy and Market Governance,W2,SEH-1300,2026-06-03,Wednesday,15:30:00,16:40:00,2
+179,22,Technology Legitimacy and Emerging Markets,W2,SEH-1400,2026-06-03,Wednesday,15:30:00,16:40:00,2
+186,22,Technology Legitimacy and Emerging Markets,W2,SEH-1400,2026-06-03,Wednesday,15:30:00,16:40:00,2
+2000,22,Technology Legitimacy and Emerging Markets,W2,SEH-1400,2026-06-03,Wednesday,15:30:00,16:40:00,2
+78,39,Humanitarian and Development Policy,W2,SEH-1450,2026-06-03,Wednesday,15:30:00,16:40:00,2
+171,39,Humanitarian and Development Policy,W2,SEH-1450,2026-06-03,Wednesday,15:30:00,16:40:00,2
+177,39,Humanitarian and Development Policy,W2,SEH-1450,2026-06-03,Wednesday,15:30:00,16:40:00,2
+180,39,Humanitarian and Development Policy,W2,SEH-1450,2026-06-03,Wednesday,15:30:00,16:40:00,2
+35,8,Drug Pricing and Market Competition,W2,SEH-3040,2026-06-03,Wednesday,15:30:00,16:40:00,2
+38,8,Drug Pricing and Market Competition,W2,SEH-3040,2026-06-03,Wednesday,15:30:00,16:40:00,2
+46,8,Drug Pricing and Market Competition,W2,SEH-3040,2026-06-03,Wednesday,15:30:00,16:40:00,2
+58,8,Drug Pricing and Market Competition,W2,SEH-3040,2026-06-03,Wednesday,15:30:00,16:40:00,2
+116,28,Labor Policy and Institutions,W2,SEH-B1220,2026-06-03,Wednesday,15:30:00,16:40:00,2
+167,28,Labor Policy and Institutions,W2,SEH-B1220,2026-06-03,Wednesday,15:30:00,16:40:00,2
+211,28,Labor Policy and Institutions,W2,SEH-B1220,2026-06-03,Wednesday,15:30:00,16:40:00,2
+37,29,Digital Platforms and Last-Mile Delivery,W2,SEH-B1270,2026-06-03,Wednesday,15:30:00,16:40:00,2
+61,29,Digital Platforms and Last-Mile Delivery,W2,SEH-B1270,2026-06-03,Wednesday,15:30:00,16:40:00,2
+98,29,Digital Platforms and Last-Mile Delivery,W2,SEH-B1270,2026-06-03,Wednesday,15:30:00,16:40:00,2
+131,49,Taking Stock: System Dynamics Modeling in Industry Studies,W2,SEH-B2020,2026-06-03,Wednesday,15:30:00,16:40:00,2
+131,49,Taking Stock: System Dynamics Modeling in Industry Studies,W2,SEH-B2020,2026-06-03,Wednesday,15:30:00,16:40:00,2
+131,49,Taking Stock: System Dynamics Modeling in Industry Studies,W2,SEH-B2020,2026-06-03,Wednesday,15:30:00,16:40:00,2
+131,49,Taking Stock: System Dynamics Modeling in Industry Studies,W2,SEH-B2020,2026-06-03,Wednesday,15:30:00,16:40:00,2
+25,4,Private Equity and Capital Markets,W3,SEH-1300,2026-06-03,Wednesday,16:45:00,17:55:00,3
+74,4,Private Equity and Capital Markets,W3,SEH-1300,2026-06-03,Wednesday,16:45:00,17:55:00,3
+149,4,Private Equity and Capital Markets,W3,SEH-1300,2026-06-03,Wednesday,16:45:00,17:55:00,3
+18,46,Energy Systems and Reliability,W3,SEH-1400,2026-06-03,Wednesday,16:45:00,17:55:00,3
+42,46,Energy Systems and Reliability,W3,SEH-1400,2026-06-03,Wednesday,16:45:00,17:55:00,3
+44,46,Energy Systems and Reliability,W3,SEH-1400,2026-06-03,Wednesday,16:45:00,17:55:00,3
+189,46,Energy Systems and Reliability,W3,SEH-1400,2026-06-03,Wednesday,16:45:00,17:55:00,3
+13,17,Entrepreneurship Research and Policy,W3,SEH-1450,2026-06-03,Wednesday,16:45:00,17:55:00,3
+108,17,Entrepreneurship Research and Policy,W3,SEH-1450,2026-06-03,Wednesday,16:45:00,17:55:00,3
+120,17,Entrepreneurship Research and Policy,W3,SEH-1450,2026-06-03,Wednesday,16:45:00,17:55:00,3
+208,17,Entrepreneurship Research and Policy,W3,SEH-1450,2026-06-03,Wednesday,16:45:00,17:55:00,3
+39,11,Healthcare Data and Analytics,W3,SEH-3040,2026-06-03,Wednesday,16:45:00,17:55:00,3
+114,11,Healthcare Data and Analytics,W3,SEH-3040,2026-06-03,Wednesday,16:45:00,17:55:00,3
+150,11,Healthcare Data and Analytics,W3,SEH-3040,2026-06-03,Wednesday,16:45:00,17:55:00,3
+124,12,Healthcare Operations and Capacity,W3,SEH-B1220,2026-06-03,Wednesday,16:45:00,17:55:00,3
+125,12,Healthcare Operations and Capacity,W3,SEH-B1220,2026-06-03,Wednesday,16:45:00,17:55:00,3
+137,12,Healthcare Operations and Capacity,W3,SEH-B1220,2026-06-03,Wednesday,16:45:00,17:55:00,3
+140,12,Healthcare Operations and Capacity,W3,SEH-B1220,2026-06-03,Wednesday,16:45:00,17:55:00,3
+90,40,Industrial Policy Frameworks,W3,SEH-B1270,2026-06-03,Wednesday,16:45:00,17:55:00,3
+118,40,Industrial Policy Frameworks,W3,SEH-B1270,2026-06-03,Wednesday,16:45:00,17:55:00,3
+176,40,Industrial Policy Frameworks,W3,SEH-B1270,2026-06-03,Wednesday,16:45:00,17:55:00,3
+33,15,Advanced Technologies and Digital Innovation,W3,SEH-B2020,2026-06-03,Wednesday,16:45:00,17:55:00,3
+52,15,Advanced Technologies and Digital Innovation,W3,SEH-B2020,2026-06-03,Wednesday,16:45:00,17:55:00,3
+121,15,Advanced Technologies and Digital Innovation,W3,SEH-B2020,2026-06-03,Wednesday,16:45:00,17:55:00,3
+194,15,Advanced Technologies and Digital Innovation,W3,SEH-B2020,2026-06-03,Wednesday,16:45:00,17:55:00,3
+15,47,Green Innovation Diffusion,T1,SC-301,2026-06-04,Thursday,09:00:00,10:10:00,4
+66,47,Green Innovation Diffusion,T1,SC-301,2026-06-04,Thursday,09:00:00,10:10:00,4
+68,47,Green Innovation Diffusion,T1,SC-301,2026-06-04,Thursday,09:00:00,10:10:00,4
+133,47,Green Innovation Diffusion,T1,SC-301,2026-06-04,Thursday,09:00:00,10:10:00,4
+21,9,Drug Quality and Safety,T1,SC-302,2026-06-04,Thursday,09:00:00,10:10:00,4
+50,9,Drug Quality and Safety,T1,SC-302,2026-06-04,Thursday,09:00:00,10:10:00,4
+94,9,Drug Quality and Safety,T1,SC-302,2026-06-04,Thursday,09:00:00,10:10:00,4
+95,9,Drug Quality and Safety,T1,SC-302,2026-06-04,Thursday,09:00:00,10:10:00,4
+57,18,Generative AI and the Future of Work,T1,SC-307,2026-06-04,Thursday,09:00:00,10:10:00,4
+62,18,Generative AI and the Future of Work,T1,SC-307,2026-06-04,Thursday,09:00:00,10:10:00,4
+63,18,Generative AI and the Future of Work,T1,SC-307,2026-06-04,Thursday,09:00:00,10:10:00,4
+138,18,Generative AI and the Future of Work,T1,SC-307,2026-06-04,Thursday,09:00:00,10:10:00,4
+56,1,Geographic Location and Transportation Cost,T1,SC-308,2026-06-04,Thursday,09:00:00,10:10:00,4
+109,1,Geographic Location and Transportation Cost,T1,SC-308,2026-06-04,Thursday,09:00:00,10:10:00,4
+122,1,Geographic Location and Transportation Cost,T1,SC-308,2026-06-04,Thursday,09:00:00,10:10:00,4
+178,1,Geographic Location and Transportation Cost,T1,SC-308,2026-06-04,Thursday,09:00:00,10:10:00,4
+27,26,"Platform Work, Control, and Worker Voice",T1,SC-309,2026-06-04,Thursday,09:00:00,10:10:00,4
+107,26,"Platform Work, Control, and Worker Voice",T1,SC-309,2026-06-04,Thursday,09:00:00,10:10:00,4
+141,26,"Platform Work, Control, and Worker Voice",T1,SC-309,2026-06-04,Thursday,09:00:00,10:10:00,4
+36,30,Supply Chain Risk and Resilience,T1,SC-310,2026-06-04,Thursday,09:00:00,10:10:00,4
+156,30,Supply Chain Risk and Resilience,T1,SC-310,2026-06-04,Thursday,09:00:00,10:10:00,4
+168,30,Supply Chain Risk and Resilience,T1,SC-310,2026-06-04,Thursday,09:00:00,10:10:00,4
+206,30,Supply Chain Risk and Resilience,T1,SC-310,2026-06-04,Thursday,09:00:00,10:10:00,4
+82,38,Global Value Chains and Trade Policy,T1,SC-Amp.,2026-06-04,Thursday,09:00:00,10:10:00,4
+145,38,Global Value Chains and Trade Policy,T1,SC-Amp.,2026-06-04,Thursday,09:00:00,10:10:00,4
+161,38,Global Value Chains and Trade Policy,T1,SC-Amp.,2026-06-04,Thursday,09:00:00,10:10:00,4
+54,20,Innovation Strategy and Resources,T2,SC-301,2026-06-04,Thursday,12:50:00,14:00:00,5
+55,20,Innovation Strategy and Resources,T2,SC-301,2026-06-04,Thursday,12:50:00,14:00:00,5
+59,20,Innovation Strategy and Resources,T2,SC-301,2026-06-04,Thursday,12:50:00,14:00:00,5
+65,20,Innovation Strategy and Resources,T2,SC-301,2026-06-04,Thursday,12:50:00,14:00:00,5
+148,10,Drug Supply Chains and Shortages,T2,SC-302,2026-06-04,Thursday,12:50:00,14:00:00,5
+184,10,Drug Supply Chains and Shortages,T2,SC-302,2026-06-04,Thursday,12:50:00,14:00:00,5
+185,10,Drug Supply Chains and Shortages,T2,SC-302,2026-06-04,Thursday,12:50:00,14:00:00,5
+190,10,Drug Supply Chains and Shortages,T2,SC-302,2026-06-04,Thursday,12:50:00,14:00:00,5
+96,25,Manufacturing Transformation and Workforce Development,T2,SC-307,2026-06-04,Thursday,12:50:00,14:00:00,5
+126,25,Manufacturing Transformation and Workforce Development,T2,SC-307,2026-06-04,Thursday,12:50:00,14:00:00,5
+151,25,Manufacturing Transformation and Workforce Development,T2,SC-307,2026-06-04,Thursday,12:50:00,14:00:00,5
+204,25,Manufacturing Transformation and Workforce Development,T2,SC-307,2026-06-04,Thursday,12:50:00,14:00:00,5
+103,3,Biodiversity and Agricultural Industry,T2,SC-308,2026-06-04,Thursday,12:50:00,14:00:00,5
+175,3,Biodiversity and Agricultural Industry,T2,SC-308,2026-06-04,Thursday,12:50:00,14:00:00,5
+192,3,Biodiversity and Agricultural Industry,T2,SC-308,2026-06-04,Thursday,12:50:00,14:00:00,5
+45,41,Regulatory Dynamics and Business Strategy,T2,SC-309,2026-06-04,Thursday,12:50:00,14:00:00,5
+88,41,Regulatory Dynamics and Business Strategy,T2,SC-309,2026-06-04,Thursday,12:50:00,14:00:00,5
+191,41,Regulatory Dynamics and Business Strategy,T2,SC-309,2026-06-04,Thursday,12:50:00,14:00:00,5
+60,31,Retail and Manufacturing Operations,T2,SC-310,2026-06-04,Thursday,12:50:00,14:00:00,5
+135,31,Retail and Manufacturing Operations,T2,SC-310,2026-06-04,Thursday,12:50:00,14:00:00,5
+164,31,Retail and Manufacturing Operations,T2,SC-310,2026-06-04,Thursday,12:50:00,14:00:00,5
+193,31,Retail and Manufacturing Operations,T2,SC-310,2026-06-04,Thursday,12:50:00,14:00:00,5
+14,45,Energy Infrastructure and Communities,T2,SC-Amp.,2026-06-04,Thursday,12:50:00,14:00:00,5
+47,45,Energy Infrastructure and Communities,T2,SC-Amp.,2026-06-04,Thursday,12:50:00,14:00:00,5
+142,45,Energy Infrastructure and Communities,T2,SC-Amp.,2026-06-04,Thursday,12:50:00,14:00:00,5
+201,45,Energy Infrastructure and Communities,T2,SC-Amp.,2026-06-04,Thursday,12:50:00,14:00:00,5
+73,6,Industry Classification and Regulatory Policy,T3,SC-301,2026-06-04,Thursday,15:40:00,16:50:00,6
+110,6,Industry Classification and Regulatory Policy,T3,SC-301,2026-06-04,Thursday,15:40:00,16:50:00,6
+134,6,Industry Classification and Regulatory Policy,T3,SC-301,2026-06-04,Thursday,15:40:00,16:50:00,6
+181,6,Industry Classification and Regulatory Policy,T3,SC-301,2026-06-04,Thursday,15:40:00,16:50:00,6
+30,7,Biomedical Innovation & Organizational Ecosystems,T3,SC-302,2026-06-04,Thursday,15:40:00,16:50:00,6
+71,7,Biomedical Innovation & Organizational Ecosystems,T3,SC-302,2026-06-04,Thursday,15:40:00,16:50:00,6
+188,7,Biomedical Innovation & Organizational Ecosystems,T3,SC-302,2026-06-04,Thursday,15:40:00,16:50:00,6
+84,19,Industrial Policy and Technology Development,T3,SC-307,2026-06-04,Thursday,15:40:00,16:50:00,6
+146,19,Industrial Policy and Technology Development,T3,SC-307,2026-06-04,Thursday,15:40:00,16:50:00,6
+195,19,Industrial Policy and Technology Development,T3,SC-307,2026-06-04,Thursday,15:40:00,16:50:00,6
+203,19,Industrial Policy and Technology Development,T3,SC-307,2026-06-04,Thursday,15:40:00,16:50:00,6
 32,48,Technological Change at Work and Across Industries,T3,SC-308,2026-06-04,Thursday,15:40:00,16:50:00,6
 32,48,Technological Change at Work and Across Industries,T3,SC-308,2026-06-04,Thursday,15:40:00,16:50:00,6
 32,48,Technological Change at Work and Across Industries,T3,SC-308,2026-06-04,Thursday,15:40:00,16:50:00,6
 32,48,Technological Change at Work and Across Industries,T3,SC-308,2026-06-04,Thursday,15:40:00,16:50:00,6
-37,29,Digital Platforms and Last-Mile Delivery,T3,SC-309,2026-06-04,Thursday,15:40:00,16:50:00,6
-61,29,Digital Platforms and Last-Mile Delivery,T3,SC-309,2026-06-04,Thursday,15:40:00,16:50:00,6
-98,29,Digital Platforms and Last-Mile Delivery,T3,SC-309,2026-06-04,Thursday,15:40:00,16:50:00,6
+97,35,ESG in Supply Chains,T3,SC-309,2026-06-04,Thursday,15:40:00,16:50:00,6
+128,35,ESG in Supply Chains,T3,SC-309,2026-06-04,Thursday,15:40:00,16:50:00,6
+143,35,ESG in Supply Chains,T3,SC-309,2026-06-04,Thursday,15:40:00,16:50:00,6
+154,35,ESG in Supply Chains,T3,SC-309,2026-06-04,Thursday,15:40:00,16:50:00,6
 16,37,AI and Digital Economy Policy,T3,SC-310,2026-06-04,Thursday,15:40:00,16:50:00,6
 157,37,AI and Digital Economy Policy,T3,SC-310,2026-06-04,Thursday,15:40:00,16:50:00,6
 196,37,AI and Digital Economy Policy,T3,SC-310,2026-06-04,Thursday,15:40:00,16:50:00,6
 197,37,AI and Digital Economy Policy,T3,SC-310,2026-06-04,Thursday,15:40:00,16:50:00,6
-15,47,Green Innovation Diffusion,T3,SC-Amp.,2026-06-04,Thursday,15:40:00,16:50:00,6
-66,47,Green Innovation Diffusion,T3,SC-Amp.,2026-06-04,Thursday,15:40:00,16:50:00,6
-68,47,Green Innovation Diffusion,T3,SC-Amp.,2026-06-04,Thursday,15:40:00,16:50:00,6
-133,47,Green Innovation Diffusion,T3,SC-Amp.,2026-06-04,Thursday,15:40:00,16:50:00,6
-25,4,Private Equity and Capital Markets,F1,SC-301,2026-06-05,Friday,10:30:00,11:40:00,7
-74,4,Private Equity and Capital Markets,F1,SC-301,2026-06-05,Friday,10:30:00,11:40:00,7
-149,4,Private Equity and Capital Markets,F1,SC-301,2026-06-05,Friday,10:30:00,11:40:00,7
-124,12,Healthcare Operations and Capacity,F1,SC-302,2026-06-05,Friday,10:30:00,11:40:00,7
-125,12,Healthcare Operations and Capacity,F1,SC-302,2026-06-05,Friday,10:30:00,11:40:00,7
-137,12,Healthcare Operations and Capacity,F1,SC-302,2026-06-05,Friday,10:30:00,11:40:00,7
-140,12,Healthcare Operations and Capacity,F1,SC-302,2026-06-05,Friday,10:30:00,11:40:00,7
+67,44,EV Transition and Automotive Industry,T3,SC-Amp.,2026-06-04,Thursday,15:40:00,16:50:00,6
+89,44,EV Transition and Automotive Industry,T3,SC-Amp.,2026-06-04,Thursday,15:40:00,16:50:00,6
+93,44,EV Transition and Automotive Industry,T3,SC-Amp.,2026-06-04,Thursday,15:40:00,16:50:00,6
+159,44,EV Transition and Automotive Industry,T3,SC-Amp.,2026-06-04,Thursday,15:40:00,16:50:00,6
+43,23,"Hiring, Skills, and Labor Market Dynamics",F1,SC-301,2026-06-05,Friday,10:30:00,11:40:00,7
+72,23,"Hiring, Skills, and Labor Market Dynamics",F1,SC-301,2026-06-05,Friday,10:30:00,11:40:00,7
+100,23,"Hiring, Skills, and Labor Market Dynamics",F1,SC-301,2026-06-05,Friday,10:30:00,11:40:00,7
+119,23,"Hiring, Skills, and Labor Market Dynamics",F1,SC-301,2026-06-05,Friday,10:30:00,11:40:00,7
+31,13,Pharmaceutical R&D Strategy,F1,SC-302,2026-06-05,Friday,10:30:00,11:40:00,7
+48,13,Pharmaceutical R&D Strategy,F1,SC-302,2026-06-05,Friday,10:30:00,11:40:00,7
+169,13,Pharmaceutical R&D Strategy,F1,SC-302,2026-06-05,Friday,10:30:00,11:40:00,7
 111,14,AI Adoption and Organizational Performance,F1,SC-307,2026-06-05,Friday,10:30:00,11:40:00,7
 199,14,AI Adoption and Organizational Performance,F1,SC-307,2026-06-05,Friday,10:30:00,11:40:00,7
 200,14,AI Adoption and Organizational Performance,F1,SC-307,2026-06-05,Friday,10:30:00,11:40:00,7
 209,14,AI Adoption and Organizational Performance,F1,SC-307,2026-06-05,Friday,10:30:00,11:40:00,7
-43,23,"Hiring, Skills, and Labor Market Dynamics",F1,SC-308,2026-06-05,Friday,10:30:00,11:40:00,7
-72,23,"Hiring, Skills, and Labor Market Dynamics",F1,SC-308,2026-06-05,Friday,10:30:00,11:40:00,7
-100,23,"Hiring, Skills, and Labor Market Dynamics",F1,SC-308,2026-06-05,Friday,10:30:00,11:40:00,7
-119,23,"Hiring, Skills, and Labor Market Dynamics",F1,SC-308,2026-06-05,Friday,10:30:00,11:40:00,7
-94,9,Drug Supply Chains and Shortages,F1,SC-309,2026-06-05,Friday,10:30:00,11:40:00,7
-95,9,Drug Supply Chains and Shortages,F1,SC-309,2026-06-05,Friday,10:30:00,11:40:00,7
-148,9,Drug Supply Chains and Shortages,F1,SC-309,2026-06-05,Friday,10:30:00,11:40:00,7
-90,40,Industrial Policy Frameworks,F1,SC-310,2026-06-05,Friday,10:30:00,11:40:00,7
-118,40,Industrial Policy Frameworks,F1,SC-310,2026-06-05,Friday,10:30:00,11:40:00,7
-176,40,Industrial Policy Frameworks,F1,SC-310,2026-06-05,Friday,10:30:00,11:40:00,7
+77,16,Entrepreneurial Ecosystems and Clusters,F1,SC-308,2026-06-05,Friday,10:30:00,11:40:00,7
+91,16,Entrepreneurial Ecosystems and Clusters,F1,SC-308,2026-06-05,Friday,10:30:00,11:40:00,7
+123,16,Entrepreneurial Ecosystems and Clusters,F1,SC-308,2026-06-05,Friday,10:30:00,11:40:00,7
+132,16,Entrepreneurial Ecosystems and Clusters,F1,SC-308,2026-06-05,Friday,10:30:00,11:40:00,7
+83,32,Sustainable and Circular Supply Chains,F1,SC-309,2026-06-05,Friday,10:30:00,11:40:00,7
+99,32,Sustainable and Circular Supply Chains,F1,SC-309,2026-06-05,Friday,10:30:00,11:40:00,7
+130,32,Sustainable and Circular Supply Chains,F1,SC-309,2026-06-05,Friday,10:30:00,11:40:00,7
+170,32,Sustainable and Circular Supply Chains,F1,SC-309,2026-06-05,Friday,10:30:00,11:40:00,7
+85,2,Public Policy and ESG,F1,SC-310,2026-06-05,Friday,10:30:00,11:40:00,7
+166,2,Public Policy and ESG,F1,SC-310,2026-06-05,Friday,10:30:00,11:40:00,7
+172,2,Public Policy and ESG,F1,SC-310,2026-06-05,Friday,10:30:00,11:40:00,7
+205,2,Public Policy and ESG,F1,SC-310,2026-06-05,Friday,10:30:00,11:40:00,7
 64,43,Industrial Decarbonization Pathways,F1,SC-Amp.,2026-06-05,Friday,10:30:00,11:40:00,7
 69,43,Industrial Decarbonization Pathways,F1,SC-Amp.,2026-06-05,Friday,10:30:00,11:40:00,7
 76,43,Industrial Decarbonization Pathways,F1,SC-Amp.,2026-06-05,Friday,10:30:00,11:40:00,7

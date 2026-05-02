@@ -20,20 +20,21 @@ id,session_id,session_name
 110,6,Industry Classification and Regulatory Policy
 134,6,Industry Classification and Regulatory Policy
 181,6,Industry Classification and Regulatory Policy
-21,7,Biomedical Innovation Ecosystem
-71,7,Biomedical Innovation Ecosystem
-188,7,Biomedical Innovation Ecosystem
+30,7,Biomedical Innovation & Organizational Ecosystems
+71,7,Biomedical Innovation & Organizational Ecosystems
+188,7,Biomedical Innovation & Organizational Ecosystems
 35,8,Drug Pricing and Market Competition
 38,8,Drug Pricing and Market Competition
 46,8,Drug Pricing and Market Competition
 58,8,Drug Pricing and Market Competition
-94,9,Drug Supply Chains and Shortages
-95,9,Drug Supply Chains and Shortages
-148,9,Drug Supply Chains and Shortages
-50,10,FDA Regulation and Drug Quality
-184,10,FDA Regulation and Drug Quality
-185,10,FDA Regulation and Drug Quality
-190,10,FDA Regulation and Drug Quality
+21,9,Drug Quality and Safety
+50,9,Drug Quality and Safety
+94,9,Drug Quality and Safety
+95,9,Drug Quality and Safety
+148,10,Drug Supply Chains and Shortages
+184,10,Drug Supply Chains and Shortages
+185,10,Drug Supply Chains and Shortages
+190,10,Drug Supply Chains and Shortages
 39,11,Healthcare Data and Analytics
 114,11,Healthcare Data and Analytics
 150,11,Healthcare Data and Analytics
@@ -41,7 +42,6 @@ id,session_id,session_name
 125,12,Healthcare Operations and Capacity
 137,12,Healthcare Operations and Capacity
 140,12,Healthcare Operations and Capacity
-30,13,Pharmaceutical R&D Strategy
 31,13,Pharmaceutical R&D Strategy
 48,13,Pharmaceutical R&D Strategy
 169,13,Pharmaceutical R&D Strategy
