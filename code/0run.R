@@ -5,4 +5,7 @@ source(here::here("code", "2assign_slots.R"))
 source(here::here("code", "3generate_json.R"))
 source(here::here("code", "4verify.R"))
 
+# Render the schedule.qmd file
+quarto::quarto_render("schedule.qmd")
+
 # servr::httd()
