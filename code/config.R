@@ -65,6 +65,8 @@ date_restrictions <- list(
 date_exclusions <- list(
   `133` = "2026-06-03", # Sustainable Innovation, Energy, and Mobility
   `148` = "2026-06-03",
+  `36` = "2026-06-03",
+  `51` = "2026-06-03",
   `120` = "2026-06-05",
   `191` = "2026-06-05"
 )
