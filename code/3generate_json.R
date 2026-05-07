@@ -11,15 +11,47 @@ library(stringr)
 schedule <- read_csv('data/schedule.csv', show_col_types = FALSE)
 submissions <- read_csv('data/submissions.csv', show_col_types = FALSE)
 
-# Join schedule with abstracts and other submission details.
-# Self-organized panels (e.g. ids 32, 131) store all papers under the same id
-# in both schedule and submissions, so deduplicate schedule on id first to avoid
-# a many-to-many cartesian product — submissions already has one row per paper.
+# Paper presentation order within each session:
+#   Regular sessions   → row order in data/sessions/*.csv
+#   Self-organized     → row order in data/self-sessions.csv
+# This preserves the intended presentation order regardless of numeric id order.
+
+sessions_order <- bind_rows(lapply(
+  list.files('data/sessions', pattern = '\\.csv$', full.names = TRUE),
+  \(f) read_csv(f, show_col_types = FALSE)
+)) %>%
+  group_by(session_id) %>%
+  mutate(paper_order = row_number()) %>%
+  ungroup() %>%
+  mutate(id = as.character(id), session_id = as.character(session_id)) %>%
+  select(id, session_id, paper_order)
+
+self_sessions_raw <- read_csv('data/self-sessions.csv', show_col_types = FALSE)
+
+# Row order within each self-organized session (matched to paper_sessions by id + title)
+self_sessions_order <- self_sessions_raw %>%
+  group_by(id) %>%
+  mutate(paper_order = row_number()) %>%
+  ungroup() %>%
+  mutate(id = as.character(id)) %>%
+  select(id, title, paper_order)
+
+# Discussant: one per self-organized session (first non-empty value)
+self_discussants <- self_sessions_raw %>%
+  group_by(id) %>%
+  summarize(
+    discussant = first(discussant[!is.na(discussant) & str_trim(discussant) != ""]),
+    .groups = "drop"
+  ) %>%
+  mutate(id = as.character(id))
+
+# Build paper sessions and attach ordering + discussant
+# Self-organized panels store all papers under the same id in schedule and
+# submissions, so distinct(id) on schedule avoids a many-to-many join.
 paper_sessions <- schedule %>%
   distinct(id, .keep_all = TRUE) %>%
   left_join(
-    submissions %>%
-      select(id, title, abstract, authors, category, type),
+    submissions %>% select(id, title, abstract, authors, category, type),
     by = 'id'
   ) %>%
   mutate(
@@ -28,7 +60,29 @@ paper_sessions <- schedule %>%
     start_time = as.character(start_time),
     end_time = as.character(end_time)
   ) %>%
-  arrange(time_order, session_id)
+  left_join(sessions_order, by = c('id', 'session_id')) %>%
+  left_join(
+    self_sessions_order %>% rename(self_paper_order = paper_order),
+    by = c('id', 'title')
+  ) %>%
+  mutate(paper_order = coalesce(paper_order, self_paper_order)) %>%
+  select(-self_paper_order) %>%
+  left_join(self_discussants, by = 'id') %>%
+  arrange(time_order, session_id, paper_order)
+
+# Session chair: first author of the first paper in each session
+session_chairs <- paper_sessions %>%
+  filter(paper_order == 1) %>%
+  mutate(
+    session_chair = coalesce(
+      str_trim(str_extract(authors, "^.+?\\)")),
+      str_trim(str_extract(authors, "^[^;,]+"))
+    )
+  ) %>%
+  select(session_id, session_chair)
+
+paper_sessions <- paper_sessions %>%
+  left_join(session_chairs, by = 'session_id')
 
 # Read and format panel sessions
 # Panels get synthetic time_slot codes (WP1, TP1, TP2, TP3, FP1) and
@@ -68,6 +122,10 @@ panels <- read_csv('data/panels.csv', show_col_types = FALSE) %>%
     panelists = str_trim(panelists),
     moderator = str_trim(moderator)
   ) %>%
+  mutate(
+    session_chair = NA_character_,
+    discussant    = NA_character_
+  ) %>%
   select(
     id, session_id, session_name, type, category, date, day,
     start_time, end_time, time_slot, time_order, room,
@@ -75,7 +133,9 @@ panels <- read_csv('data/panels.csv', show_col_types = FALSE) %>%
     authors = panelists,
     abstract = description,
     moderator,
-    panelists
+    panelists,
+    session_chair,
+    discussant
   )
 
 # Read and format overview events (breaks, meals, receptions, etc.)
@@ -154,18 +214,20 @@ events <- read_csv(
     title        = session,
     authors      = NA_character_,
     abstract     = NA_character_,
-    moderator    = NA_character_,
-    panelists    = NA_character_
+    moderator     = NA_character_,
+    panelists     = NA_character_,
+    session_chair = NA_character_,
+    discussant    = NA_character_
   ) %>%
   select(
     id, session_id, session_name, type, category, date, day,
     start_time, end_time, time_slot, time_order, room,
-    title, authors, abstract, moderator, panelists
+    title, authors, abstract, moderator, panelists, session_chair, discussant
   )
 
 # Combine and write JSON
 all_data <- bind_rows(paper_sessions, panels, events) %>%
-  arrange(time_order, session_id, id)
+  arrange(time_order, session_id)
 
 write_json(
   all_data,

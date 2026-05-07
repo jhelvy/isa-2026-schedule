@@ -383,6 +383,18 @@
             margin-bottom: 0.75rem;
         }
 
+        .session-chair {
+            font-size: 0.9em;
+            color: #495057;
+            padding: 12px 20px 4px 20px;
+        }
+
+        .session-discussant {
+            font-size: 0.9em;
+            color: #495057;
+            padding: 4px 20px 12px 20px;
+        }
+
         .paper-category {
             display: inline-block;
             background: #e7f1ff;
@@ -724,7 +736,9 @@
                     (item.title        && item.title.toLowerCase().includes(searchTerm))        ||
                     (item.authors      && item.authors.toLowerCase().includes(searchTerm))      ||
                     (item.abstract     && item.abstract.toLowerCase().includes(searchTerm))     ||
-                    (item.moderator    && item.moderator.toLowerCase().includes(searchTerm));
+                    (item.moderator    && item.moderator.toLowerCase().includes(searchTerm))     ||
+                    (item.discussant   && item.discussant.toLowerCase().includes(searchTerm))   ||
+                    (item.session_chair && item.session_chair.toLowerCase().includes(searchTerm));
 
                 const dayMatch  = !dayFilter   || item.day === dayFilter;
                 const slotMatch = !slotFilter  || item.time_slot === slotFilter;
@@ -741,8 +755,7 @@
             filtered.sort((a, b) => {
                 if (a.time_order !== b.time_order) return a.time_order - b.time_order;
                 const sa = String(a.session_id), sb = String(b.session_id);
-                if (sa !== sb) return sa.localeCompare(sb);
-                return String(a.id).localeCompare(String(b.id));
+                return sa.localeCompare(sb);
             });
 
             // Group by session
@@ -751,17 +764,19 @@
                 const key = `${item.session_id}_${item.time_slot}`;
                 if (!sessions[key]) {
                     sessions[key] = {
-                        session_id:   item.session_id,
-                        session_name: item.session_name,
-                        time_slot:    item.time_slot,
-                        room:         item.room,
-                        date:         item.date,
-                        day:          item.day,
-                        start_time:   item.start_time,
-                        end_time:     item.end_time,
-                        time_order:   item.time_order,
-                        category:     item.category,
-                        type:         item.type,
+                        session_id:    item.session_id,
+                        session_name:  item.session_name,
+                        time_slot:     item.time_slot,
+                        room:          item.room,
+                        date:          item.date,
+                        day:           item.day,
+                        start_time:    item.start_time,
+                        end_time:      item.end_time,
+                        time_order:    item.time_order,
+                        category:      item.category,
+                        type:          item.type,
+                        session_chair: item.session_chair || null,
+                        discussant:    item.discussant    || null,
                         papers: []
                     };
                 }
@@ -839,6 +854,14 @@
                     ? renderPanelContent(session.papers[0])
                     : session.papers.map(renderPaper).join('');
 
+                const chairHtml = !special && session.session_chair
+                    ? `<div class="session-chair"><strong>Session Chair:</strong> ${escapeHtml(session.session_chair)}</div>`
+                    : '';
+
+                const discussantHtml = !special && session.discussant
+                    ? `<div class="session-discussant"><strong>Discussant:</strong> ${escapeHtml(session.discussant)}</div>`
+                    : '';
+
                 html += `
                     <div class="session-group ${categoryClass}">
                         <div class="session-header" onclick="toggleSession(this)">
@@ -859,7 +882,7 @@
                             </div>
                         </div>
                         <div class="session-papers">
-                            ${papersHtml}
+                            ${chairHtml}${discussantHtml}${papersHtml}
                         </div>
                     </div>`;
             });

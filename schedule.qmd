@@ -111,18 +111,45 @@ schedule <- read_csv(
 ) %>%
   mutate(id = as.character(id))
 
-# Merge submissions with schedule
+# Paper order within each session from sessions/*.csv row position
+sessions_order <- bind_rows(lapply(
+  list.files(file.path('data', 'sessions'), pattern = '\\.csv$', full.names = TRUE),
+  \(f) read_csv(f, show_col_types = FALSE)
+)) %>%
+  group_by(session_id) %>%
+  mutate(paper_order = row_number()) %>%
+  ungroup() %>%
+  mutate(id = as.character(id), session_id = as.character(session_id)) %>%
+  select(id, session_id, paper_order)
+
+# Merge submissions with schedule and attach paper order
 sessions <- submissions %>%
   inner_join(schedule, by = "id") %>%
   mutate(
+    id = as.character(id),
+    session_id = as.character(session_id),
     is_self_organized = type == "self_organized_panel",
     panel_description = NA_character_
+  ) %>%
+  left_join(sessions_order, by = c("id", "session_id"))
+
+# One discussant per self-organized session (first non-empty value)
+self_discussants <- self_sessions %>%
+  group_by(id) %>%
+  summarize(
+    discussant = first(discussant[!is.na(discussant) & str_trim(discussant) != ""]),
+    .groups = "drop"
   )
 
 # Add self-organized panel papers to sessions
-# These papers share the same session_id as their parent panel submission
+# These papers share the same session_id as their parent panel submission.
+# Row position in self_sessions.csv defines the intended presentation order.
 self_papers <- self_sessions %>%
-  select(parent_id = id, authors, title, abstract) %>%
+  group_by(id) %>%
+  mutate(paper_order = row_number()) %>%
+  ungroup() %>%
+  select(parent_id = id, authors, title, abstract, paper_order) %>%
+  left_join(self_discussants, by = c("parent_id" = "id")) %>%
   left_join(
     sessions %>%
       filter(is_self_organized) %>%
@@ -150,6 +177,7 @@ self_papers <- self_sessions %>%
 # Replace self-organized panel entries with their constituent papers
 sessions <- sessions %>%
   filter(!is_self_organized) %>%
+  mutate(discussant = NA_character_) %>%
   bind_rows(self_papers %>% select(-parent_id))
 
 # is_panel is always FALSE (no panel_discussion type submissions)
@@ -576,10 +604,20 @@ for (b in seq_len(nrow(all_blocks))) {
           }
           cat("\n")
         } else {
-          # For regular sessions: show paper list
+          # For regular sessions: show paper list in sessions/*.csv row order
           papers <- session_data %>%
-            arrange(id) %>%
+            arrange(paper_order) %>%
             select(authors, title)
+
+          # Session chair: first author of first paper
+          first_authors <- papers$authors[1]
+          session_chair <- coalesce(
+            str_trim(str_extract(first_authors, "^.+?\\)")),
+            str_trim(str_extract(first_authors, "^[^;,]+"))
+          )
+          if (!is.na(session_chair) && nchar(session_chair) > 0) {
+            cat("**Session Chair:** ", escape_latex(session_chair), "\n\n", sep = "")
+          }
 
           for (m in seq_len(nrow(papers))) {
             cat(
@@ -591,6 +629,12 @@ for (b in seq_len(nrow(all_blocks))) {
               "\n\n",
               sep = ""
             )
+          }
+
+          # Discussant (self-organized sessions only)
+          disc <- unique(na.omit(session_data$discussant))
+          if (length(disc) > 0 && nchar(disc[1]) > 0) {
+            cat("**Discussant:** ", escape_latex(disc[1]), "\n\n", sep = "")
           }
         }
       }
