@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ISA 2026 Schedule — Flipbook</title>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
+    <script src="https://unpkg.com/page-flip/dist/js/page-flip.browser.js"></script>
+
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            line-height: 1.6;
+            color: #212529;
+        }
+
+        header {
+            background: white;
+            border-bottom: 1px solid #dee2e6;
+            padding: 15px 20px;
+            box-shadow: 0 0.5rem 1rem rgba(0,0,0,0.05);
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            flex-shrink: 0;
+            z-index: 10;
+        }
+
+        .logo { height: 50px; width: auto; }
+
+        .header-text { flex: 1; }
+        .header-text h1 {
+            font-size: 1.5em;
+            margin-bottom: 2px;
+            color: #0d6efd;
+            font-weight: 600;
+        }
+        .header-text p { font-size: 0.9em; color: #6c757d; }
+
+        .header-actions { display: flex; gap: 10px; }
+
+        .header-btn {
+            text-decoration: none;
+            padding: 7px 16px;
+            border-radius: 6px;
+            font-size: 0.85em;
+            font-weight: 500;
+            transition: all 0.2s;
+            border: 1px solid;
+            white-space: nowrap;
+        }
+        .btn-outline { background: white; color: #0d6efd; border-color: #0d6efd; }
+        .btn-outline:hover { background: #0d6efd; color: white; }
+        .btn-primary { background: #0d6efd; color: white; border-color: #0d6efd; }
+        .btn-primary:hover { background: #0b5ed7; border-color: #0b5ed7; }
+
+        /* Dark reader area */
+        .reader {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 30px 20px 20px;
+            background: linear-gradient(160deg, #1a1a2e 0%, #16213e 60%, #0f3460 100%);
+        }
+
+        /* Loading */
+        #loading {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 16px;
+            color: rgba(255,255,255,0.85);
+            text-align: center;
+        }
+
+        .spinner {
+            width: 44px;
+            height: 44px;
+            border: 3px solid rgba(255,255,255,0.12);
+            border-top-color: #4d90fe;
+            border-radius: 50%;
+            animation: spin 0.9s linear infinite;
+        }
+        @keyframes spin { to { transform: rotate(360deg); } }
+
+        #loading h2 { font-size: 1.2em; font-weight: 500; }
+        #loading p { font-size: 0.85em; color: rgba(255,255,255,0.5); }
+
+        .progress-track {
+            width: 260px;
+            height: 4px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 4px;
+            overflow: hidden;
+        }
+        .progress-fill {
+            height: 100%;
+            background: #4d90fe;
+            border-radius: 4px;
+            transition: width 0.25s ease;
+            width: 0%;
+        }
+
+        /* Book display */
+        #book-area {
+            display: none;
+            flex-direction: column;
+            align-items: center;
+            gap: 18px;
+        }
+
+        .book-shadow {
+            filter: drop-shadow(0 24px 48px rgba(0,0,0,0.65))
+                    drop-shadow(0 6px 16px rgba(0,0,0,0.5));
+        }
+
+        /* Navigation controls */
+        .controls {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            background: rgba(255,255,255,0.07);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 50px;
+            padding: 8px 20px;
+        }
+
+        .ctrl-btn {
+            background: rgba(255,255,255,0.1);
+            border: 1px solid rgba(255,255,255,0.15);
+            color: white;
+            padding: 6px 16px;
+            border-radius: 30px;
+            cursor: pointer;
+            font-size: 0.88em;
+            font-weight: 500;
+            transition: background 0.2s, border-color 0.2s;
+        }
+        .ctrl-btn:hover:not(:disabled) {
+            background: rgba(255,255,255,0.22);
+            border-color: rgba(255,255,255,0.35);
+        }
+        .ctrl-btn:disabled { opacity: 0.3; cursor: not-allowed; }
+
+        #page-info {
+            color: rgba(255,255,255,0.7);
+            font-size: 0.88em;
+            min-width: 80px;
+            text-align: center;
+        }
+
+        .hint {
+            color: rgba(255,255,255,0.28);
+            font-size: 0.73em;
+            text-align: center;
+        }
+
+        @media (max-width: 600px) {
+            .header-actions { display: none; }
+            .header-text h1 { font-size: 1.2em; }
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <img src="logo.png" alt="ISA Logo" class="logo">
+    <div class="header-text">
+        <h1>ISA 2026 Conference Schedule</h1>
+        <p>Industry Studies Association Annual Conference | June 3–5, 2026</p>
+    </div>
+    <div class="header-actions">
+        <a href="index.html" class="header-btn btn-outline">&#8592; Interactive Schedule</a>
+        <a href="schedule.pdf" download class="header-btn btn-primary">Download PDF</a>
+    </div>
+</header>
+
+<div class="reader">
+
+    <div id="loading">
+        <div class="spinner"></div>
+        <h2>Loading Schedule</h2>
+        <p id="status-text">Preparing…</p>
+        <div class="progress-track">
+            <div class="progress-fill" id="progress-fill"></div>
+        </div>
+    </div>
+
+    <div id="book-area">
+        <div class="book-shadow">
+            <div id="flipbook"></div>
+        </div>
+        <div class="controls">
+            <button class="ctrl-btn" id="prev-btn" disabled>&#8592; Prev</button>
+            <span id="page-info">— / —</span>
+            <button class="ctrl-btn" id="next-btn">Next &#8594;</button>
+        </div>
+        <p class="hint">Drag the page edge to flip &nbsp;·&nbsp; Arrow keys to navigate</p>
+    </div>
+
+</div>
+
+<script>
+    pdfjsLib.GlobalWorkerOptions.workerSrc =
+        'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';
+
+    let pageFlip = null;
+    let numPages  = 0;
+
+    async function init() {
+        const statusEl = document.getElementById('status-text');
+        const fillEl   = document.getElementById('progress-fill');
+
+        try {
+            statusEl.textContent = 'Loading PDF…';
+            const pdf = await pdfjsLib.getDocument('schedule.pdf').promise;
+            numPages = pdf.numPages;
+
+            // Use first page to get the aspect ratio
+            const firstPage = await pdf.getPage(1);
+            const baseVP    = firstPage.getViewport({ scale: 1 });
+            const aspect    = baseVP.height / baseVP.width;
+
+            // Compute display size so the two-page spread fits the viewport
+            const headerH = document.querySelector('header').getBoundingClientRect().height;
+            const availH  = window.innerHeight - headerH - 110; // controls + hint + gaps
+            const availW  = window.innerWidth - 80;
+            const isMobile = window.innerWidth < 700;
+
+            let pageW, pageH;
+            if (isMobile) {
+                pageW = Math.round(Math.max(200, Math.min(availW, availH / aspect)));
+                pageH = Math.round(pageW * aspect);
+            } else {
+                const maxByW = Math.floor(availW / 2) - 8;
+                const maxByH = availH;
+                pageW = Math.max(220, Math.min(maxByW, Math.floor(maxByH / aspect)));
+                pageH = Math.round(pageW * aspect);
+            }
+
+            // Render at 2× display size for crisp text
+            const renderScale = (pageW * 2) / baseVP.width;
+            const imageUrls   = [];
+
+            for (let p = 1; p <= numPages; p++) {
+                statusEl.textContent    = `Rendering page ${p} of ${numPages}…`;
+                fillEl.style.width      = `${(p / numPages) * 100}%`;
+
+                const page     = await pdf.getPage(p);
+                const vp       = page.getViewport({ scale: renderScale });
+                const canvas   = document.createElement('canvas');
+                canvas.width   = vp.width;
+                canvas.height  = vp.height;
+
+                const ctx = canvas.getContext('2d');
+                ctx.fillStyle = '#ffffff';
+                ctx.fillRect(0, 0, canvas.width, canvas.height);
+                await page.render({ canvasContext: ctx, viewport: vp }).promise;
+
+                imageUrls.push(canvas.toDataURL('image/jpeg', 0.88));
+                canvas.width = 0; // release GPU memory
+            }
+
+            // Swap loading → book
+            document.getElementById('loading').style.display = 'none';
+            const bookArea = document.getElementById('book-area');
+            bookArea.style.display = 'flex';
+
+            pageFlip = new St.PageFlip(document.getElementById('flipbook'), {
+                width:               pageW,
+                height:              pageH,
+                size:                'fixed',
+                drawShadow:          true,
+                flippingTime:        750,
+                useMouseEvents:      true,
+                showCover:           true,
+                mobileScrollSupport: false,
+                maxShadowOpacity:    0.45,
+                usePortrait:         isMobile,
+            });
+
+            pageFlip.loadFromImages(imageUrls);
+
+            pageFlip.on('flip',        updateUI);
+            pageFlip.on('changeState', updateUI);
+
+            updateUI();
+
+        } catch (err) {
+            console.error('Flipbook error:', err);
+            statusEl.textContent = 'Could not load schedule.pdf — please refresh the page.';
+        }
+    }
+
+    function updateUI() {
+        if (!pageFlip) return;
+        const idx = pageFlip.getCurrentPageIndex();
+        document.getElementById('page-info').textContent = `${idx + 1} / ${numPages}`;
+        document.getElementById('prev-btn').disabled = idx <= 0;
+        document.getElementById('next-btn').disabled = idx >= numPages - 1;
+    }
+
+    document.getElementById('prev-btn').addEventListener('click', () => pageFlip?.flipPrev());
+    document.getElementById('next-btn').addEventListener('click', () => pageFlip?.flipNext());
+
+    document.addEventListener('keydown', e => {
+        if (e.key === 'ArrowLeft')  pageFlip?.flipPrev();
+        if (e.key === 'ArrowRight') pageFlip?.flipNext();
+    });
+
+    init();
+</script>
+</body>
+</html>
