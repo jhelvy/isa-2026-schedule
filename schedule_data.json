@@ -107,7 +107,7 @@
     "time_order": 1,
     "title": "Service Design and Innovation for Aging Societies: Introducing Silver Prosperity Index (SPI)",
     "abstract": "This paper presents the Silver Prosperity Index (SPI), a data-driven framework for evaluating service innovation in aging societies. The SPI is structured around four pillars: Economic Empowerment, Health and Well-being, Social Cohesion and Connectivity, and Security and Protection. It integrates primary survey data with secondary datasets, applying standardized normalization, confirmatory factor weighting, and cross-validation to ensure reliability. A 2025 application across all 50 U.S. states demonstrates its ability to generate detailed, localized insights. Results demonstrate significant regional disparities in support for aging populations, particularly in digital access, workforce participation, and community resilience. These gaps signal opportunities for developing innovative services targeting older adults.",
-    "authors": "Kejia Hu (University of Oxford), Xin Ding (Rutgers University) and Diep Pham (University of South Carolina)",
+    "authors": "Rohit Verma (University of South Carolina), Kejia Hu (University of Oxford), Xin Ding (Rutgers University), and Diep Pham (University of South Carolina)",
     "category": "Innovation, Entrepreneurship, and AI-Driven Transformation",
     "type": "paper",
     "paper_order": 3,
@@ -3128,7 +3128,7 @@
     "time_order": 6.5,
     "title": "Inside China's AI Ecosystem: Open Source Development, Hardware Diversity, and a Changing Trade Landscape",
     "abstract": "China's AI ecosystem is evolving at remarkable speed, with companies and research institutions increasingly embracing open source models and frameworks while navigating a complex hardware landscape shaped by business competition, government priorities, and shifting trade policies. This panel brings together experts with direct knowledge of what is actually happening in China's AI sector to explore how Chinese companies are building and deploying AI systems across a diverse array of chips, from advanced processors from the US to domestic alternatives from Huawei and other vendors. Beyond the technical questions of model training and inference capabilities, we will examine how concerns about dual use technology and civil-military fusion are influencing development choices, how open source is reshaping the competitive dynamics, and what the changing US regulatory environment under different administrations means in practice for access to advanced chips. Rather than debating optimal policy approaches, this panel provides an empirical look at the strategies, innovations, and constraints defining China's AI landscape today and how they are shaping the trajectory of global AI development.",
-    "authors": "Douglas Fuller (Georgetown University, Zhejiang University School of Management)\nPaul Triolo (Partner at DGA-Albright Stonebridge Group)",
+    "authors": "Douglas Fuller (Associate Professor of International Economics, Government & Business, Copenhagen Business School & Zhejiang University School of Management)\nPaul Triolo (Partner at DGA-Albright Stonebridge Group)",
     "category": "Innovation, Entrepreneurship, and AI-Driven Transformation",
     "type": "special_session",
     "moderator": "TBD"
