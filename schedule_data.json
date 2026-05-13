@@ -28,7 +28,7 @@
   {
     "id": "P1",
     "session_id": "P1",
-    "session_name": "Fireside Chat: Monica Gorman & Laura Taylor-Kale",
+    "session_name": "Fireside Chat: Dr. Laura Taylor-Kale & Dr. Monica Gorman",
     "time_slot": "WP1",
     "room": "Milken - Convening Hall",
     "date": "2026-06-03",
@@ -36,12 +36,11 @@
     "start_time": "13:00:00",
     "end_time": "14:00:00",
     "time_order": 0.5,
-    "title": "Fireside Chat: Monica Gorman & Laura Taylor-Kale",
+    "title": "Fireside Chat: Dr. Laura Taylor-Kale & Dr. Monica Gorman",
     "abstract": "TBD",
-    "authors": "Monica Gorman (Managing Director, Crowell Global Advisors)\nLaura Taylor-Kale (Founder & CEO, Catalytic Capital Strategies LLC)",
+    "authors": "Dr. Monica Gorman (Managing Director, Crowell Global Advisors)\nDr. Laura Taylor-Kale (Senior Fellow for Geoeconomics and Defense at the Council on Foreign Relations)",
     "category": "Public Policy and Global Competitiveness",
-    "type": "plenary",
-    "moderator": "TBD"
+    "type": "plenary"
   },
   {
     "id": "EV3",

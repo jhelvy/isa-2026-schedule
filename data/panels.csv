@@ -1,7 +1,7 @@
 id,date,time_start,time_end,room,title,category,contact_author,contact_email,moderator,panelists,description
 P1,6/3/26,1:00 PM,2:00 PM,"Milken - Convening 
-Hall",Fireside Chat: Monica Gorman & Laura Taylor-Kale,Public Policy and Global Competitiveness,Monica Gorman,mgorman@crowellglobaladvisors.com,TBD,"Monica Gorman (Managing Director, Crowell Global Advisors)
-Laura Taylor-Kale (Founder & CEO, Catalytic Capital Strategies LLC)",TBD
+Hall",Fireside Chat: Dr. Laura Taylor-Kale & Dr. Monica Gorman,Public Policy and Global Competitiveness,Monica Gorman,mgorman@crowellglobaladvisors.com,NA,"Dr. Monica Gorman (Managing Director, Crowell Global Advisors)
+Dr. Laura Taylor-Kale (Senior Fellow for Geoeconomics and Defense at the Council on Foreign Relations)",TBD
 P2,6/4/26,2:05 PM,3:05 PM,SC-309,Grid and electricity demand from AI data centers,"Sustainable Innovation, Energy, and Mobility",David Hart,dmhart@cfr.org,"David Hart (Senior Fellow for Climate and Energy, Council on Foreign Relations)","Long Lam (Managing Energy Associate, Brattle Group)
 Levi Patterson (Director of Science, Energy, and AI Infrastructure Policy, Nvidia)
 Elizabeth Wilson (Professor of Environmental Studies, Dartmouth)","US electricity demand is growing for the first time in decades, thanks in large part to demand for AI infrastructure. The electricity system is having difficulty meeting this demand, which has become a bottleneck for the AI buildout. This session will explore the complex, high-pressure interaction among AI model builders, data center developers, utilities, alternative power providers, and all levels of government, which will determine how AI will be powered in the U.S. The outcome has substantial implications for the economy, national security, and the environment. This panel will provide complementary perspectives from the AI and electricity sectors as well as a critical analysis of the policy issues that must be resolved."
