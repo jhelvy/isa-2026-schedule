@@ -259,11 +259,11 @@
     "time_order": 1,
     "title": "Does the transition to battery electric, software-defined vehicles create opportunities for Europe?",
     "abstract": "In an uncertain global order, Europe’s interdependence has become a liability and the bloc’s economy is lagging behind. \nTo turn its weaknesses into interdependencies, Europe needs to understand its position in global value chains and build capabilities in critical areas of innovation. Only then can the EU bargain from a strong position for the resources it needs to protect its interests and provide its citizens with improving standards of living. The automotive sector is one of Europe’s core industries and a bellwether of European production. This study identifies and analyses thee potential areas of innovation in the transition to battery electric, software-defined vehicles: automotive chiplets, AI models and quantum computing. It then \n identifies three factors that may help policymakers design policies  that can set the basis for future growth: an approach that combines the benefits of centralized coordination with sufficient decentralization at the local level, where innovation takes place, a strategy guided by the composition of Europe's production and its markets rather than top-down political goals, and congruency between the proposed policies and existing institutions, especially those in the areas of skills, capital, and innovation. The paper then uses our framework to make concrete recommendations for how to work constructively with industry in the European context. This paper was produced as part of the author's fellowship with the European Commission and presented to the Commission in December 2025.",
-    "authors": "Angela  Garcia Calvo  (University of Reading )",
+    "authors": "Angela  Garcia Calvo  (University of Reading)",
     "category": "Public Policy and Global Competitiveness",
     "type": "paper",
     "paper_order": 1,
-    "session_chair": "Angela  Garcia Calvo  (University of Reading )"
+    "session_chair": "Angela  Garcia Calvo  (University of Reading)"
   },
   {
     "id": "41",
@@ -282,7 +282,7 @@
     "category": "Public Policy and Global Competitiveness",
     "type": "paper",
     "paper_order": 2,
-    "session_chair": "Angela  Garcia Calvo  (University of Reading )"
+    "session_chair": "Angela  Garcia Calvo  (University of Reading)"
   },
   {
     "id": "113",
@@ -297,11 +297,11 @@
     "time_order": 1,
     "title": "The Real Bottleneck in AI: Power Generation, Environmental Policy, and National Competitiveness",
     "abstract": "Artificial intelligence is framed as a central driver of productivity, industrial transformation, and national competitiveness. Policy discussions, however, continue to prioritize computer chips, data, and talent while underestimating the environmental and infrastructure constraints that shape AI scalability. This paper argues that the binding constraint on long-term AI competitiveness is not computational capacity alone, but the availability of low-cost, low-emissions power.\n\nBuilding on prior work quantifying the environmental impact of datacenters that power AI, this study examines how rapidly scaling AI capacity influences energy demand and the resultant emissions by examining the current largest datacenter of xAI - The Colossus in Boxtown, TN. This paper explores the exponential growth of AI computational power, the resultant energy demand, emissions and current environmental policy.\n\nThe analysis demonstrates the need for cheap, low emission energy production is crucial to AI competitiveness and the bottleneck to scalability. Sustainable and affordable energy expansion—rather than the weakening of emissions standards—must be the central industrial policy lever for maintaining AI competitiveness in unprecedented times of AI innovation.",
-    "authors": "Prathyaj Mantha (Peer Consultants, P.C.",
+    "authors": "Prathyaj Mantha (PEER Consultants, P.C.)",
     "category": "Public Policy and Global Competitiveness",
     "type": "paper",
     "paper_order": 3,
-    "session_chair": "Angela  Garcia Calvo  (University of Reading )"
+    "session_chair": "Angela  Garcia Calvo  (University of Reading)"
   },
   {
     "id": "131",
