@@ -12,6 +12,6 @@ quarto::quarto_render("schedule.qmd")
 
 # Changes without needing to re-assign slots:
 #  - Schedule structure (session_name, room, slot) → edit schedule.csv
-#   - Paper content → edit submissions.csv
-#   - Panel content → edit panels.csv directly
-#   - Then just run steps 3 + render
+#  - Paper content → edit submissions.csv
+#  - Panel content → edit panels.csv directly
+#  - Then just run steps 3 + render
