@@ -1,41 +1,54 @@
 ---
 title: |
-  2026 Industry Studies Association
+  2026 Industry Studies Association \
   Annual Conference
 subtitle: |
-  Program Schedule
+  Program Schedule \
   June 3 - 5, 2026
 format:
-  docx:
+  pdf:
     toc: false
     number-sections: false
+    highlight-style: haddock
+    colorlinks: true
+    documentclass: scrartcl
+    papersize: letter
+    pdf-engine: xelatex
+    mainfont: Avenir
+    sansfont: Avenir
+    fontsize: 10pt
+    geometry:
+      - margin=1in
+      - heightrounded
+    include-in-header:
+      text: |
+        \usepackage{xcolor}
+        \definecolor{gis}{HTML}{E69F00}
+        \definecolor{health}{HTML}{56B4E9}
+        \definecolor{innovation}{HTML}{CC79A7}
+        \definecolor{labor}{HTML}{B8860B}
+        \definecolor{operations}{HTML}{0072B2}
+        \definecolor{policy}{HTML}{D55E00}
+        \definecolor{sustainability}{HTML}{009E73}
+        \definecolor{event}{HTML}{17A2B8}
+        \usepackage{scrlayer-scrpage}
+        \pagestyle{scrheadings}
+        \clearpairofpagestyles
+        \lohead{\small\textit{\leftmark}}
+        \rohead{\small\textit{\rightmark}}
+        \cfoot{\small\thepage}
+        \KOMAoptions{headsepline=true}
 execute:
   echo: false
   warning: false
   message: false
 ---
 
-# ~WELCOME~  {.unnumbered}
-
-## John Gray, President of the Industry Studies Association {.unnumbered}
-
-[PLACEHOLDER: Insert president's message text here.]
-
-[PLACEHOLDER: Insert president's message text here.]
-
-[PLACEHOLDER: Insert president's message text here.]
-
-John Gray
-President, ISA
-
-![President, ISA](images/president.jpg){width=40%}
-
-\newpage
-
 ```{r}
 #| label: setup
 library(tidyverse)
 library(knitr)
+library(kableExtra)
 
 # Read submissions data with type information
 submissions <- read_csv(
@@ -100,11 +113,7 @@ schedule <- read_csv(
 
 # Paper order within each session from sessions/*.csv row position
 sessions_order <- bind_rows(lapply(
-  list.files(
-    file.path('data', 'sessions'),
-    pattern = '\\.csv$',
-    full.names = TRUE
-  ),
+  list.files(file.path('data', 'sessions'), pattern = '\\.csv$', full.names = TRUE),
   \(f) read_csv(f, show_col_types = FALSE)
 )) %>%
   group_by(session_id) %>%
@@ -128,9 +137,7 @@ sessions <- submissions %>%
 self_discussants <- self_sessions %>%
   group_by(id) %>%
   summarize(
-    discussant = first(discussant[
-      !is.na(discussant) & str_trim(discussant) != ""
-    ]),
+    discussant = first(discussant[!is.na(discussant) & str_trim(discussant) != ""]),
     .groups = "drop"
   )
 
@@ -230,8 +237,17 @@ overview_events <- read_csv(
     session_name = session
   )
 
-# No-op: Word output doesn't need LaTeX escaping
-escape_latex <- function(text) text
+# Helper function to escape LaTeX special characters
+escape_latex <- function(text) {
+  if (is.na(text) || nchar(text) == 0) {
+    return(text)
+  }
+  text <- str_replace_all(text, "\\\\", "\\\\textbackslash{}")
+  text <- str_replace_all(text, "([&%$#_{}])", "\\\\\\1")
+  text <- str_replace_all(text, "\\^", "\\\\textasciicircum{}")
+  text <- str_replace_all(text, "~", "\\\\textasciitilde{}")
+  return(text)
+}
 
 # Helper function for proper title case (keeps articles/conjunctions/prepositions lowercase)
 proper_title_case <- function(text) {
@@ -287,7 +303,7 @@ proper_title_case <- function(text) {
   return(paste(result, collapse = " "))
 }
 
-# Short track codes
+# Short track codes and colors
 sessions <- sessions %>%
   mutate(
     track_short = case_when(
@@ -305,108 +321,53 @@ sessions <- sessions %>%
         "Sustainable Innovation, Energy, and Mobility" ~ "Sustainability",
       TRUE ~ "Panel"
     ),
+    track_color = case_when(
+      category == "General Industry Studies" ~ "gis",
+      category ==
+        "Health Care Systems, Biotechnology, and Pharmaceuticals" ~ "health",
+      category ==
+        "Innovation, Entrepreneurship, and AI-Driven Transformation" ~ "innovation",
+      category ==
+        "Labor Markets, Organizations, and the Future of Work" ~ "labor",
+      category ==
+        "Operations, Supply Chain, and AI-Enhanced Industry 4.0" ~ "operations",
+      category == "Public Policy and Global Competitiveness" ~ "policy",
+      category ==
+        "Sustainable Innovation, Energy, and Mobility" ~ "sustainability",
+      TRUE ~ "black"
+    ),
     title = map_chr(title, proper_title_case)
   )
 ```
-
-\newpage
-
-# Conference in Brief {.unnumbered}
-
-**CONFERENCE LOCATION**
-
-**George Washington University**
-
-**Milken Institute** and **Science & Engineering Hall (SEH)** — Washington, DC *(Wednesday, June 3)*
-
-**Student Center** — Washington, DC *(Thursday–Friday, June 4–5)*
-
-**METRO STOP LOCATION**
-
-**Foggy Bottom Metro Station** (Blue, Orange & Silver Lines)
-
-**REGISTRATION**
-
-| Day | Location |
-|:----|:---------|
-| Wednesday, June 3 — morning | Milken Institute |
-| Wednesday, June 3 — afternoon | Science & Engineering Hall (SEH) |
-| Thursday, June 4 | Student Center |
-| Friday, June 5 | Student Center |
-
-```{r}
-#| label: conference-brief
-#| results: asis
-fmt_time <- function(t) {
-  t <- str_trim(t)
-  period <- if_else(str_detect(t, "PM"), "pm", "am")
-  time_part <- str_extract(t, "\\d+:\\d+")
-  paste0(time_part, period)
-}
-
-brief_raw <- read_csv(
-  file.path('data', 'overview.csv'),
-  col_types = cols(.default = "c")
-) %>%
-  rename_with(str_trim) %>%
-  rename(
-    weekday = Weekday,
-    time_start = `Time Start`,
-    time_end = `Time End`,
-    session = Session,
-    building = Building,
-    room = Room
-  ) %>%
-  mutate(
-    across(everything(), \(x) str_trim(str_replace_all(x, "\\s+", " "))),
-    time_range = paste0(fmt_time(time_start), "\u2014", fmt_time(time_end)),
-    location = paste(building, room, sep = ", ")
-  )
-
-for (day in c("Wednesday", "Thursday", "Friday")) {
-  day_data <- brief_raw %>% filter(weekday == day)
-  date_str <- switch(
-    day,
-    "Wednesday" = "Wednesday, June 3",
-    "Thursday" = "Thursday, June 4",
-    "Friday" = "Friday, June 5"
-  )
-  cat("**", date_str, "**\n\n", sep = "")
-  cat("| Time | Event | Location |\n")
-  cat("|:-----|:------|:---------|\n")
-  for (i in seq_len(nrow(day_data))) {
-    r <- day_data[i, ]
-    cat(
-      "| ",
-      r$time_range,
-      " | ",
-      r$session,
-      " | ",
-      r$location,
-      " |\n",
-      sep = ""
-    )
-  }
-  cat("\n")
-}
-```
-
-\newpage
 
 ```{r}
 #| label: legend
 #| results: asis
 legend_data <- sessions %>%
-  distinct(category, track_short) %>%
+  distinct(category, track_short, track_color) %>%
   filter(!is.na(category)) %>%
   arrange(category)
 
-cat("**Track Categories**\n\n")
+cat("```{=latex}\n")
+cat("\\vspace{-2em}\n")
+cat("\\textbf{\\large Track Categories}\\par\\smallskip\n")
+cat("\\begin{itemize}\\setlength{\\itemsep}{2pt}\n")
+
 for (i in seq_len(nrow(legend_data))) {
   r <- legend_data[i, ]
-  cat("- ", r$category, "\n", sep = "")
+  cat(
+    "  \\item \\textcolor{",
+    r$track_color,
+    "}{",
+    escape_latex(r$category),
+    "}\n",
+    sep = ""
+  )
 }
-cat("\n---\n\n")
+
+cat("\\end{itemize}\n")
+cat("\\vspace{0.5em}\\noindent\\hrulefill\\vspace{1em}\n")
+cat("```\n\n")
 ```
 
 ```{r}
@@ -467,8 +428,8 @@ for (b in seq_len(nrow(all_blocks))) {
   # Page break logic:
   #   paper/panel → paper/panel : new page
   #   anything    → event (new day) : new page
-  #   event       → paper/panel : no page break
-  #   anything    → event (same day) : horizontal rule only
+  #   event       → paper/panel : no page break (event and next session share a page)
+  #   anything    → event (same day) : vspace only
   if (!first_block) {
     prev_block <- all_blocks[b - 1, ]
     if (block$block_type != "event" && prev_block$block_type != "event") {
@@ -478,12 +439,21 @@ for (b in seq_len(nrow(all_blocks))) {
     ) {
       cat("\n\\newpage\n\n")
     } else {
-      cat("\n---\n\n")
+      cat("\n\\vspace{1em}\n\n")
     }
   }
   first_block <- FALSE
 
-  # Event blocks: bold name with location
+  # Day label used in running header marks
+  day_label <- switch(
+    block$day_name,
+    "Wednesday" = "Wednesday, June 3",
+    "Thursday" = "Thursday, June 4",
+    "Friday" = "Friday, June 5",
+    block$day_name
+  )
+
+  # Event blocks: compact colored box, no page header
   if (block$block_type == "event") {
     time_label <- paste0(
       format(block$start_dt, "%I:%M %p"),
@@ -491,22 +461,34 @@ for (b in seq_len(nrow(all_blocks))) {
       format(block$end_dt, "%I:%M %p")
     )
     cat(
-      "> **",
-      block$event_name,
-      "**  \n",
-      "> ",
+      "\\markboth{",
+      escape_latex(day_label),
+      "}{",
+      escape_latex(block$event_name),
+      "}\n\n",
+      sep = ""
+    )
+    cat("\\begin{center}\n")
+    cat(
+      "\\colorbox{event!15}{\\parbox{0.9\\linewidth}{\\centering\n",
+      "  \\textcolor{event}{\\large\\textbf{",
+      escape_latex(block$event_name),
+      "}}\\\\[2pt]\n",
+      "  {\\small ",
       block$day_name,
       ", ",
       time_label,
-      " · *",
-      block$event_room,
-      "*\n\n",
+      " $\\cdot$ \\textit{",
+      escape_latex(block$event_room),
+      "}}\n",
+      "}}\n",
       sep = ""
     )
+    cat("\\end{center}\n\n")
     next
   }
 
-  # Session type label and time header (paper / panel blocks)
+  # Session type label and time header — centered (paper / panel blocks)
   is_plenary_block <- block$block_type == "panel" &&
     "P1" %in% (panels_raw %>% filter(start_dt == block$start_dt) %>% pull(id))
 
@@ -526,8 +508,22 @@ for (b in seq_len(nrow(all_blocks))) {
     format(block$end_dt, "%I:%M %p")
   )
 
-  cat("*", session_type, "*\n\n", sep = "")
-  cat("# ", time_label, "\n\n", sep = "")
+  cat(
+    "\\markboth{",
+    escape_latex(day_label),
+    "}{",
+    session_type,
+    " | ",
+    format(block$start_dt, "%I:%M %p"),
+    " – ",
+    format(block$end_dt, "%I:%M %p"),
+    "}\n\n",
+    sep = ""
+  )
+  cat("\\begin{center}\n")
+  cat("\\normalsize\\textit{", session_type, "}\\\\[0.3em]\n", sep = "")
+  cat("\\Large\\textbf{", time_label, "}\n", sep = "")
+  cat("\\end{center}\n\n")
 
   if (block$block_type == "paper") {
     ts <- block$block_key
@@ -547,6 +543,8 @@ for (b in seq_len(nrow(all_blocks))) {
         next
       }
 
+      track_color <- unique(cat_sessions$track_color)[1]
+
       # Get unique sessions within this category
       unique_sess <- cat_sessions %>%
         distinct(session_id, session_name, room, is_panel) %>%
@@ -555,14 +553,19 @@ for (b in seq_len(nrow(all_blocks))) {
       for (k in seq_len(nrow(unique_sess))) {
         s <- unique_sess[k, ]
 
-        cat("\n## ", cat_name, "\n\n", sep = "")
+        # Repeat category header for each session
+        cat("\n## \\textcolor{", track_color, "}{", cat_name, "}\n\n", sep = "")
 
         # Get session data
         session_data <- cat_sessions %>%
           filter(session_id == s$session_id)
 
         # Panel tag for panel discussion sessions only
-        panel_tag <- if (s$is_panel) " *(Panel Discussion)*" else ""
+        panel_tag <- if (s$is_panel) {
+          " *(Panel Discussion)*"
+        } else {
+          ""
+        }
 
         # Session title with room
         cat(
@@ -582,6 +585,7 @@ for (b in seq_len(nrow(all_blocks))) {
             select(panel_description, authors) %>%
             slice(1)
 
+          # Show panel description if available
           if (
             !is.na(panel_info$panel_description) &&
               nchar(panel_info$panel_description) > 0
@@ -589,6 +593,7 @@ for (b in seq_len(nrow(all_blocks))) {
             cat(escape_latex(panel_info$panel_description), "\n\n")
           }
 
+          # Show participants
           cat("**Participants:**\n\n")
           authors_list <- session_data %>%
             select(authors) %>%
@@ -611,12 +616,7 @@ for (b in seq_len(nrow(all_blocks))) {
             str_trim(str_extract(first_authors, "^[^;,]+"))
           )
           if (!is.na(session_chair) && nchar(session_chair) > 0) {
-            cat(
-              "**Session Chair:** ",
-              escape_latex(session_chair),
-              "\n\n",
-              sep = ""
-            )
+            cat("**Session Chair:** ", escape_latex(session_chair), "\n\n", sep = "")
           }
 
           for (m in seq_len(nrow(papers))) {
@@ -648,7 +648,14 @@ for (b in seq_len(nrow(all_blocks))) {
     for (k in seq_len(nrow(group_panels))) {
       p <- group_panels[k, ]
 
-      cat("\n## ", escape_latex(p$category), "\n\n", sep = "")
+      cat(
+        "\n## \\textcolor{",
+        p$track_color,
+        "}{",
+        escape_latex(p$category),
+        "}\n\n",
+        sep = ""
+      )
 
       cat(
         "\n**",
