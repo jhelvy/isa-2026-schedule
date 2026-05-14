@@ -555,24 +555,108 @@ all_blocks <- bind_rows(
 ) %>%
   arrange(start_dt, block_type)
 
-first_block <- TRUE
+# Read all overview rows (no filter) for day overview pages
+all_overview <- read_csv(
+  file.path('data', 'overview.csv'),
+  show_col_types = FALSE,
+  col_types = cols(.default = "c")
+) %>%
+  rename_with(str_trim) %>%
+  rename(
+    weekday = Weekday,
+    time_start_str = `Time Start`,
+    time_end_str = `Time End`,
+    session = Session,
+    building = Building,
+    room_raw = Room
+  ) %>%
+  mutate(
+    weekday = str_trim(weekday),
+    time_start_str = str_trim(time_start_str),
+    time_end_str = str_trim(time_end_str),
+    session = str_trim(session),
+    building = str_trim(coalesce(building, "")),
+    room_raw = str_trim(str_replace_all(coalesce(room_raw, ""), "\\s+", " ")),
+    date_parsed = case_when(
+      weekday == "Wednesday" ~ as.Date("2026-06-03"),
+      weekday == "Thursday" ~ as.Date("2026-06-04"),
+      weekday == "Friday" ~ as.Date("2026-06-05")
+    ),
+    start_dt = as.POSIXct(
+      paste(format(date_parsed, "%Y-%m-%d"), time_start_str),
+      format = "%Y-%m-%d %I:%M %p"
+    ),
+    time_fmt = paste0(
+      str_replace_all(str_to_lower(time_start_str), " ", ""),
+      "--",
+      str_replace_all(str_to_lower(time_end_str), " ", "")
+    ),
+    location = case_when(
+      nchar(building) > 0 & nchar(room_raw) > 0 ~ paste(
+        building,
+        room_raw,
+        sep = ", "
+      ),
+      nchar(building) > 0 ~ building,
+      TRUE ~ room_raw
+    )
+  ) %>%
+  arrange(date_parsed, start_dt)
+
+day_labels <- c(
+  "Wednesday" = "Wednesday, June 3",
+  "Thursday" = "Thursday, June 4",
+  "Friday" = "Friday, June 5"
+)
+
+emit_day_overview <- function(day_name) {
+  label <- day_labels[[day_name]]
+  day_data <- all_overview %>% filter(weekday == day_name)
+  cat("```{=latex}\n")
+  cat("\\markboth{}{}\n")
+  cat(
+    "\\noindent\\colorbox{event}{\\parbox{\\dimexpr\\linewidth-2\\fboxsep}{",
+    "\\centering\\textcolor{white}{\\large\\textbf{Conference Program: ",
+    escape_latex(label),
+    "}}}}\n\n",
+    sep = ""
+  )
+  cat("\\vspace{0.6em}\n\n")
+  cat("{\\renewcommand{\\arraystretch}{0.9}\n\n")
+  for (i in seq_len(nrow(day_data))) {
+    r <- day_data[i, ]
+    cat(
+      "\\noindent\\textcolor{event}{\\textbf{",
+      escape_latex(str_to_upper(r$session)),
+      "}}\n\n",
+      sep = ""
+    )
+    cat("\\begin{tabular}{@{}p{3.2cm}p{\\dimexpr\\linewidth-3.5cm}@{}}\n")
+    cat("  ", r$time_fmt, " & ", escape_latex(r$location), " \\\\\n", sep = "")
+    cat("\\end{tabular}\n\n")
+    cat("\\vspace{0.25em}\n\n")
+  }
+  cat("}\n")
+  cat("\\newpage\n")
+  cat("```\n\n")
+}
+
+current_day <- ""
 
 for (b in seq_len(nrow(all_blocks))) {
   block <- all_blocks[b, ]
 
-  # Page break logic:
-  #   paper/panel → paper/panel : new page
-  #   anything    → event (new day) : new page
-  #   PDW event   → paper/panel : new page
-  #   event       → paper/panel : no page break (event and next session share a page)
-  #   anything    → event (same day) : vspace only
-  if (!first_block) {
+  if (block$day_name != current_day) {
+    # New day: emit one-page day overview, then render first block without extra break
+    if (current_day != "") {
+      cat("\n\\newpage\n\n")
+    }
+    emit_day_overview(block$day_name)
+    current_day <- block$day_name
+  } else {
+    # Same day: regular page break logic
     prev_block <- all_blocks[b - 1, ]
     if (block$block_type != "event" && prev_block$block_type != "event") {
-      cat("\n\\newpage\n\n")
-    } else if (
-      block$block_type == "event" && block$day_name != prev_block$day_name
-    ) {
       cat("\n\\newpage\n\n")
     } else if (
       block$block_type != "event" && isTRUE(prev_block$event_name == "PDW")
@@ -582,7 +666,6 @@ for (b in seq_len(nrow(all_blocks))) {
       cat("\n\\vspace{1em}\n\n")
     }
   }
-  first_block <- FALSE
 
   # Day label used in running header marks
   day_label <- switch(
