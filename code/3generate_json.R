@@ -247,3 +247,9 @@ cat(sprintf(
 bios <- read_csv('data/bios.csv', show_col_types = FALSE)
 write_json(bios, 'bios_data.json', auto_unbox = TRUE, pretty = TRUE)
 cat(sprintf("Written %d bio entries to bios_data.json\n", nrow(bios)))
+
+# Generate awards JSON
+awards <- read_csv('data/awards.csv', show_col_types = FALSE) %>%
+  arrange(award_order, desc(rank == "Winner"))
+write_json(awards, 'awards_data.json', auto_unbox = TRUE, pretty = TRUE)
+cat(sprintf("Written %d award entries to awards_data.json\n", nrow(awards)))

@@ -681,46 +681,174 @@ cat("```\n\n")
 bios <- read_csv(
   file.path('data', 'bios.csv'),
   show_col_types = FALSE
-) %>%
-  mutate(last_name = word(name, -1)) %>%
-  arrange(last_name)
+)
+
+bio_panels <- read_csv(
+  file.path('data', 'bio-panels.csv'),
+  show_col_types = FALSE
+)
+
+panel_order_ids <- panels_raw %>%
+  arrange(start_dt, id) %>%
+  pull(id)
 
 cat("```{=latex}\n")
 cat("\\markboth{Featured Speakers}{}\n")
-cat("\\noindent\\textbf{\\Large Featured Speakers}\\par\\vspace{1em}\n\n")
+cat("\\noindent\\textbf{\\Large Featured Speakers}\\par\\vspace{0.8em}\n\n")
 
-for (i in seq_len(nrow(bios))) {
-  row <- bios[i, ]
-  img_path <- file.path("images", "bios", paste0(row$image, ".png"))
-  has_image <- !is.na(row$image) &&
-    nchar(row$image) > 0 &&
-    file.exists(img_path)
+seen_people <- character(0)
+first_panel <- list()
+current_day <- ""
 
-  cat("\\noindent%\n")
-  if (has_image) {
-    cat("\\begin{minipage}[t]{1.1in}\n")
+for (pid in panel_order_ids) {
+  p <- panels_raw %>% filter(id == pid)
+  spkrs <- bio_panels %>% filter(panel_id == pid) %>% arrange(panel_order)
+
+  if (nrow(spkrs) == 0) {
+    next
+  }
+
+  day_label <- if (p$date_parsed[[1]] == as.Date("2026-06-03")) {
+    "Wednesday, June 3"
+  } else if (p$date_parsed[[1]] == as.Date("2026-06-04")) {
+    "Thursday, June 4"
+  } else {
+    "Friday, June 5"
+  }
+
+  if (day_label != current_day) {
+    if (current_day != "") {
+      cat("\\newpage\n\n")
+    }
     cat(
-      "  \\vspace{0pt}\\includegraphics[width=1.1in]{",
-      img_path,
-      "}\n",
+      "\\noindent{\\large\\textbf{",
+      escape_latex(day_label),
+      "}}\\par\n",
       sep = ""
     )
-    cat("\\end{minipage}%\n")
-    cat("\\hspace{0.15in}%\n")
-    cat("\\begin{minipage}[t]{\\dimexpr\\linewidth-1.25in\\relax}\n")
+    cat(
+      "\\vspace{0.3em}\\noindent\\rule{\\linewidth}{0.5pt}\\par\\vspace{0.8em}\n\n",
+      sep = ""
+    )
+    current_day <- day_label
   } else {
-    cat("\\begin{minipage}[t]{\\linewidth}\n")
+    cat(
+      "\\par\\vspace{0.6em}\\noindent\\rule{\\linewidth}{0.3pt}\\par\\vspace{0.6em}\n\n",
+      sep = ""
+    )
   }
-  cat("  \\vspace{0pt}%\n")
+
+  time_str <- paste0(
+    sub("^0", "", format(p$start_dt[[1]], "%I:%M %p")),
+    " – ",
+    sub("^0", "", format(p$end_dt[[1]], "%I:%M %p"))
+  )
+
   cat(
-    "  \\textbf{",
-    escape_latex(row$name),
-    "}\\par\\vspace{0.2em}\n",
+    "\\noindent{\\large\\textbf{\\textcolor{",
+    p$track_color[[1]],
+    "}{",
+    escape_latex(p$title[[1]]),
+    "}}}\\\\[0.2em]\n",
     sep = ""
   )
-  cat("  {\\small ", escape_latex(row$bio), "}\\par\n", sep = "")
-  cat("\\end{minipage}%\n")
-  cat("\\par\\vspace{0.9em}\n\n")
+  cat(
+    "{\\small\\textit{",
+    escape_latex(time_str),
+    " $\\cdot$ Room ",
+    escape_latex(p$room[[1]]),
+    "}}\\par\\vspace{0.5em}\n",
+    sep = ""
+  )
+
+  desc <- p$description[[1]]
+  if (!is.na(desc) && str_trim(desc) != "" && str_trim(desc) != "TBD") {
+    cat("{\\small ", escape_latex(desc), "}\\par\\vspace{0.8em}\n\n", sep = "")
+  }
+
+  has_mod <- any(spkrs$role == "moderator")
+  mod_done <- FALSE
+  pan_done <- FALSE
+
+  for (i in seq_len(nrow(spkrs))) {
+    spk <- spkrs[i, ]
+    person <- bios %>% filter(image == spk$person_id)
+
+    if (nrow(person) == 0) {
+      next
+    }
+
+    is_repeat <- spk$person_id %in% seen_people
+
+    if (spk$role == "moderator" && !mod_done) {
+      cat(
+        "\\noindent{\\small\\textit{Moderator:}}\\par\\vspace{0.3em}\n\n",
+        sep = ""
+      )
+      mod_done <- TRUE
+    } else if (spk$role == "panelist" && !pan_done) {
+      if (mod_done) {
+        cat("\\par\\vspace{0.3em}\n")
+      }
+      cat(
+        "\\noindent{\\small\\textit{Panelists:}}\\par\\vspace{0.3em}\n\n",
+        sep = ""
+      )
+      pan_done <- TRUE
+    }
+
+    img_path <- file.path("images", "bios", paste0(spk$person_id, ".png"))
+    has_image <- file.exists(img_path)
+
+    cat("\\noindent%\n")
+    if (has_image) {
+      cat("\\begin{minipage}[t]{1.1in}\n")
+      cat(
+        "  \\vspace{0pt}\\includegraphics[width=1.1in]{",
+        img_path,
+        "}\n",
+        sep = ""
+      )
+      cat("\\end{minipage}%\n")
+      cat("\\hspace{0.15in}%\n")
+      cat("\\begin{minipage}[t]{\\dimexpr\\linewidth-1.25in\\relax}\n")
+    } else {
+      cat("\\begin{minipage}[t]{\\linewidth}\n")
+    }
+    cat("  \\vspace{0pt}%\n")
+    cat(
+      "  \\textbf{",
+      escape_latex(person$name[[1]]),
+      "}\\par\\vspace{0.2em}\n",
+      sep = ""
+    )
+
+    if (!is_repeat) {
+      cat("  {\\small ", escape_latex(person$bio[[1]]), "}\\par\n", sep = "")
+      seen_people <- c(seen_people, spk$person_id)
+      first_panel[[spk$person_id]] <- p$title[[1]]
+    } else {
+      short_desc <- str_extract(person$bio[[1]], "^[^.]+\\.")
+      cat(
+        "  {\\small ",
+        escape_latex(short_desc),
+        "}\\par\\vspace{0.15em}\n",
+        sep = ""
+      )
+      ref <- first_panel[[spk$person_id]]
+      if (!is.null(ref)) {
+        cat(
+          "  {\\small\\textit{(Full bio appears above under ``",
+          escape_latex(ref),
+          "''.)}}\\par\n",
+          sep = ""
+        )
+      }
+    }
+
+    cat("\\end{minipage}%\n")
+    cat("\\par\\vspace{0.9em}\n\n")
+  }
 }
 
 cat("\\newpage\n")
@@ -1136,12 +1264,6 @@ for (b in seq_len(nrow(all_blocks))) {
           cat("- ", escape_latex(pan), "\n")
         }
         cat("\n")
-      }
-
-      # Description
-      desc <- p$description
-      if (!is.na(desc) && str_trim(desc) != "" && str_trim(desc) != "TBD") {
-        cat(escape_latex(desc), "\n\n")
       }
     }
   }

@@ -697,6 +697,125 @@
             .speakers-grid { grid-template-columns: 1fr; }
             .speaker-photo, .speaker-photo-placeholder { width: 80px; height: 80px; }
         }
+
+        /* Awards view */
+        .awards-view {
+            max-width: 960px;
+            margin: 0 auto;
+            width: 100%;
+            padding: 20px;
+        }
+
+        .award-card {
+            background: white;
+            border: 1px solid #dee2e6;
+            border-radius: 0.5rem;
+            margin-bottom: 1.5rem;
+            box-shadow: 0 0.125rem 0.25rem rgba(0,0,0,0.075);
+            overflow: hidden;
+        }
+
+        .award-header {
+            padding: 1.1rem 1.25rem 0.9rem;
+            border-bottom: 1px solid #dee2e6;
+            background: #f8f9fa;
+        }
+
+        .award-name {
+            font-size: 1.15em;
+            font-weight: 700;
+            color: #212529;
+            margin-bottom: 0.4rem;
+        }
+
+        .award-description {
+            font-size: 0.85em;
+            color: #6c757d;
+            line-height: 1.55;
+        }
+
+        .award-entries {
+            padding: 0.75rem 1.25rem 1rem;
+            display: flex;
+            flex-direction: column;
+            gap: 0.85rem;
+        }
+
+        .award-entry {
+            display: flex;
+            gap: 0.85rem;
+            align-items: flex-start;
+        }
+
+        .award-rank-badge {
+            flex-shrink: 0;
+            font-size: 0.7em;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.04em;
+            padding: 0.2rem 0.55rem;
+            border-radius: 0.25rem;
+            margin-top: 0.2rem;
+            white-space: nowrap;
+        }
+
+        .rank-winner {
+            background: #fff3cd;
+            color: #664d03;
+            border: 1px solid #ffc107;
+        }
+
+        .rank-runnerup {
+            background: #f0f0f0;
+            color: #495057;
+            border: 1px solid #adb5bd;
+        }
+
+        .award-entry-body { flex: 1; min-width: 0; }
+
+        .award-paper-title {
+            font-size: 0.97em;
+            font-weight: 600;
+            color: #212529;
+            margin-bottom: 0.2rem;
+        }
+
+        .award-authors {
+            font-size: 0.87em;
+            color: #6c757d;
+            margin-bottom: 0.2rem;
+        }
+
+        .award-publication {
+            font-size: 0.85em;
+            color: #495057;
+            font-style: italic;
+        }
+
+        .award-publication a {
+            color: #0d6efd;
+            text-decoration: none;
+        }
+        .award-publication a:hover { text-decoration: underline; }
+
+        .award-committee {
+            font-size: 0.82em;
+            color: #6c757d;
+            margin-top: 0.5rem;
+            padding-top: 0.6rem;
+            border-top: 1px solid #f0f0f0;
+        }
+
+        .awards-luncheon-note {
+            text-align: center;
+            padding: 1rem;
+            font-size: 0.92em;
+            color: #495057;
+            background: #f8f9fa;
+            border: 1px solid #dee2e6;
+            border-radius: 0.5rem;
+            margin-bottom: 1.5rem;
+        }
     </style>
 </head>
 <body>
@@ -715,10 +834,15 @@
     <nav class="view-nav">
         <button class="view-btn active" data-view="schedule">Schedule</button>
         <button class="view-btn" data-view="speakers">Speakers</button>
+        <button class="view-btn" data-view="awards">Awards</button>
     </nav>
 
     <div id="speakersView" class="speakers-view" style="display:none;">
         <div class="speakers-grid" id="speakersGrid"></div>
+    </div>
+
+    <div id="awardsView" class="awards-view" style="display:none;">
+        <div id="awardsGrid"></div>
     </div>
 
     <div class="main-container" id="scheduleView">
@@ -790,6 +914,7 @@
         let scheduleData = [];
         let biosData = [];
         let bioMap = {};
+        let awardsData = [];
         let allTracks = new Set();
         let allTimeSlotsData = [];
         const seenSlotKeys = new Set();
@@ -807,11 +932,13 @@
         // Load data
         Promise.all([
             fetch('schedule_data.json').then(r => r.json()),
-            fetch('bios_data.json').then(r => r.json())
+            fetch('bios_data.json').then(r => r.json()),
+            fetch('awards_data.json').then(r => r.json())
         ])
-            .then(([data, bios]) => {
+            .then(([data, bios, awards]) => {
                 scheduleData = data;
                 biosData = bios;
+                awardsData = awards;
                 buildBioMap();
 
                 data.forEach(item => {
@@ -855,6 +982,7 @@
 
                 renderSchedule();
                 renderSpeakers();
+                renderAwards();
                 attachEventListeners();
             })
             .catch(err => {
@@ -1243,18 +1371,10 @@
             document.querySelectorAll('.view-btn').forEach(btn => {
                 btn.classList.toggle('active', btn.getAttribute('data-view') === view);
             });
-            const scheduleView = document.getElementById('scheduleView');
-            const speakersView = document.getElementById('speakersView');
-            const mobileToggle = document.getElementById('mobileFilterToggle');
-            if (view === 'schedule') {
-                scheduleView.style.display = '';
-                speakersView.style.display = 'none';
-                mobileToggle.style.display = '';
-            } else {
-                scheduleView.style.display = 'none';
-                speakersView.style.display = '';
-                mobileToggle.style.display = 'none';
-            }
+            document.getElementById('scheduleView').style.display  = view === 'schedule'  ? '' : 'none';
+            document.getElementById('speakersView').style.display  = view === 'speakers'  ? '' : 'none';
+            document.getElementById('awardsView').style.display    = view === 'awards'    ? '' : 'none';
+            document.getElementById('mobileFilterToggle').style.display = view === 'schedule' ? '' : 'none';
         }
 
         function showSpeaker(slug) {
@@ -1288,6 +1408,66 @@
             }).join('');
 
             document.getElementById('speakersGrid').innerHTML = html;
+        }
+
+        function renderAwards() {
+            // Group entries by award (preserving award_order)
+            const groups = [];
+            const seen = {};
+            awardsData.forEach(row => {
+                if (!seen[row.award]) {
+                    seen[row.award] = { award: row.award, description: row.description, entries: [] };
+                    groups.push(seen[row.award]);
+                }
+                seen[row.award].entries.push(row);
+            });
+
+            const luncheonNote = `<div class="awards-luncheon-note">
+                Join us Friday, June 6 at the awards luncheon, when we will recognize all awardees.
+            </div>`;
+
+            const cardsHtml = groups.map(g => {
+                const entriesHtml = g.entries.map(e => {
+                    const isWinner = e.rank === 'Winner';
+                    const badgeClass = isWinner ? 'rank-winner' : 'rank-runnerup';
+                    const badgeLabel = isWinner ? 'Winner' : 'Runner-up';
+
+                    const pubHtml = e.publication
+                        ? `<div class="award-publication">${escapeHtml(e.publication)}${e.doi ? ` — <a href="${escapeHtml(e.doi)}" target="_blank" rel="noopener">DOI</a>` : ''}</div>`
+                        : '';
+
+                    const committeeHtml = e.committee
+                        ? `<div class="award-committee"><strong>Dissertation Committee:</strong> ${escapeHtml(e.committee)}</div>`
+                        : '';
+
+                    return `
+                    <div class="award-entry">
+                        <span class="award-rank-badge ${badgeClass}">${badgeLabel}</span>
+                        <div class="award-entry-body">
+                            <div class="award-paper-title">${escapeHtml(e.paper_title)}</div>
+                            <div class="award-authors">${escapeHtml(e.authors)}</div>
+                            ${pubHtml}${committeeHtml}
+                        </div>
+                    </div>`;
+                }).join('');
+
+                const awardsCommittee = g.entries[0].awards_committee;
+                const awardsCommitteeHtml = awardsCommittee
+                    ? `<div class="award-committee" style="margin: 0 1.25rem 1rem; padding-top: 0.6rem; border-top: 1px solid #f0f0f0;"><strong>Award Committee:</strong> ${escapeHtml(awardsCommittee)}</div>`
+                    : '';
+
+                return `
+                <div class="award-card">
+                    <div class="award-header">
+                        <div class="award-name">${escapeHtml(g.award)}</div>
+                        <div class="award-description">${escapeHtml(g.description)}</div>
+                    </div>
+                    <div class="award-entries">${entriesHtml}</div>
+                    ${awardsCommitteeHtml}
+                </div>`;
+            }).join('');
+
+            document.getElementById('awardsGrid').innerHTML = luncheonNote + cardsHtml;
         }
 
         function getCategoryClass(category) {
