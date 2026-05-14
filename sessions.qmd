@@ -339,6 +339,112 @@ sessions <- sessions %>%
 ```
 
 ```{r}
+#| label: awards-page
+#| results: asis
+awards <- read_csv(
+  file.path('data', 'awards.csv'),
+  show_col_types = FALSE
+) %>%
+  arrange(award_order, desc(rank == "Winner"))
+
+cat("```{=latex}\n")
+cat("\\markboth{}{}\n")
+cat("\\noindent\\textbf{\\Large ISA 2026 Award Winners}\\par\n")
+cat("\\vspace{0.5em}\n")
+cat("{\\small\n")
+
+current_award <- ""
+current_awards_committee <- ""
+
+for (i in seq_len(nrow(awards))) {
+  r <- awards[i, ]
+
+  if (r$award != current_award) {
+    # Close previous award: print its committee
+    if (current_award != "") {
+      cat(
+        "\\noindent\\textbf{Award Committee:} ",
+        escape_latex(current_awards_committee),
+        "\\par\n",
+        sep = ""
+      )
+      cat("\\vspace{0.4em}\n\n")
+    }
+    # Open new award: name + description
+    cat(
+      "\\noindent\\textcolor{event}{\\textbf{",
+      escape_latex(str_to_upper(r$award)),
+      "}}\\par\\vspace{0.1em}\n",
+      sep = ""
+    )
+    cat(
+      "\\noindent\\textit{",
+      escape_latex(r$description),
+      "}\\par\\vspace{0.15em}\n",
+      sep = ""
+    )
+    current_award <- r$award
+    current_awards_committee <- coalesce(r$awards_committee, "")
+  }
+
+  rank_label <- if (r$rank == "Winner") {
+    "\\textbf{Winner:}"
+  } else {
+    "\\textbf{Runner-up:}"
+  }
+  cat(
+    "\\noindent ",
+    rank_label,
+    " \\textit{``",
+    escape_latex(r$paper_title),
+    "''}\\par\n",
+    sep = ""
+  )
+  cat("\\noindent ", escape_latex(r$authors), "\\par\n", sep = "")
+
+  if (!is.na(r$publication) && nchar(r$publication) > 0) {
+    pub_line <- escape_latex(r$publication)
+    if (!is.na(r$doi) && nchar(r$doi) > 0) {
+      pub_line <- paste0(pub_line, ". ", escape_latex(r$doi))
+    }
+    cat("\\noindent\\textit{", pub_line, "}\\par\n", sep = "")
+  }
+
+  if (!is.na(r$committee) && nchar(r$committee) > 0) {
+    cat(
+      "\\noindent\\textit{Dissertation Committee: ",
+      escape_latex(r$committee),
+      "}\\par\n",
+      sep = ""
+    )
+  }
+
+  cat("\\vspace{0.2em}\n\n")
+}
+
+# Close the final award's committee
+if (current_award != "") {
+  cat(
+    "\\noindent\\textbf{Award Committee:} ",
+    escape_latex(current_awards_committee),
+    "\\par\n",
+    sep = ""
+  )
+}
+
+cat("\\vspace{1.5em}\n\n")
+cat(
+  "\\begin{center}\\textbf{Join us Friday, June 6th at the awards luncheon, ",
+  "when we will recognize all awardees.}\\end{center}\n",
+  sep = ""
+)
+
+cat("}\n")
+cat("\\newpage\n")
+cat("```\n\n")
+```
+
+```{r}
 #| label: conference-in-brief
 #| results: asis
 brief_data <- read_csv(
