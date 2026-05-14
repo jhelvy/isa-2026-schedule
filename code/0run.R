@@ -5,14 +5,8 @@ source(here::here("code", "2assign_slots.R"))
 source(here::here("code", "3generate_json.R"))
 source(here::here("code", "4verify.R"))
 
-# Render the detailed session program (PDF) and Word docs for hand editing
-quarto::quarto_render("sessions.qmd")
-quarto::quarto_render("frontmatter.qmd")
-quarto::quarto_render("endmatter.qmd")
-
-# After hand-editing frontmatter.docx and endmatter.docx and saving as PDFs,
-# combine all three into the final schedule:
-# source(here::here("code", "5combine_pdfs.R"))
+# Render the detailed session program (PDF) a
+quarto::quarto_render("schedule.qmd")
 
 # servr::httd()
 # servr::daemon_stop(2)
