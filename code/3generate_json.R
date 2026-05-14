@@ -242,3 +242,8 @@ cat(sprintf(
   nrow(panels),
   nrow(events)
 ))
+
+# Generate bios JSON for speaker profiles
+bios <- read_csv('data/bios.csv', show_col_types = FALSE)
+write_json(bios, 'bios_data.json', auto_unbox = TRUE, pretty = TRUE)
+cat(sprintf("Written %d bio entries to bios_data.json\n", nrow(bios)))

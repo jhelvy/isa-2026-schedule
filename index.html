@@ -570,6 +570,133 @@
             font-size: 0.65em;
             vertical-align: middle;
         }
+
+        /* View navigation tabs */
+        .view-nav {
+            background: white;
+            border-bottom: 2px solid #dee2e6;
+            padding: 0 20px;
+            display: flex;
+        }
+
+        .view-btn {
+            padding: 0.75rem 1.25rem;
+            border: none;
+            border-bottom: 3px solid transparent;
+            margin-bottom: -2px;
+            background: none;
+            cursor: pointer;
+            font-size: 0.95em;
+            font-weight: 500;
+            color: #6c757d;
+            transition: all 0.15s ease-in-out;
+            white-space: nowrap;
+        }
+
+        .view-btn:hover {
+            color: #212529;
+            background: #f8f9fa;
+        }
+
+        .view-btn.active {
+            color: #0d6efd;
+            border-bottom-color: #0d6efd;
+        }
+
+        /* Speakers view */
+        .speakers-view {
+            max-width: 1800px;
+            margin: 0 auto;
+            width: 100%;
+            padding: 20px;
+        }
+
+        .speakers-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1rem;
+        }
+
+        .speaker-card {
+            background: white;
+            border: 1px solid #dee2e6;
+            border-radius: 0.5rem;
+            padding: 1.25rem;
+            display: flex;
+            gap: 1.25rem;
+            box-shadow: 0 0.125rem 0.25rem rgba(0,0,0,0.075);
+            transition: box-shadow 0.15s ease-in-out;
+            scroll-margin-top: 20px;
+        }
+
+        .speaker-card:hover {
+            box-shadow: 0 0.5rem 1rem rgba(0,0,0,0.1);
+        }
+
+        .speaker-photo {
+            width: 110px;
+            height: 110px;
+            border-radius: 50%;
+            object-fit: cover;
+            flex-shrink: 0;
+            border: 2px solid #dee2e6;
+        }
+
+        .speaker-photo-placeholder {
+            width: 110px;
+            height: 110px;
+            border-radius: 50%;
+            background: #e9ecef;
+            flex-shrink: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.5em;
+            color: #adb5bd;
+        }
+
+        .speaker-info { flex: 1; min-width: 0; }
+
+        .speaker-name {
+            font-size: 1.05em;
+            font-weight: 600;
+            color: #212529;
+            margin-bottom: 0.5rem;
+        }
+
+        .speaker-bio {
+            font-size: 0.88em;
+            color: #495057;
+            line-height: 1.65;
+            margin: 0;
+        }
+
+        .speaker-link {
+            color: #0d6efd;
+            text-decoration: none;
+            cursor: pointer;
+            border-bottom: 1px dotted #0d6efd;
+            transition: border-bottom-style 0.1s;
+        }
+
+        .speaker-link:hover {
+            color: #0b5ed7;
+            border-bottom-style: solid;
+        }
+
+        @keyframes speaker-highlight-fade {
+            0%   { box-shadow: 0 0 0 4px rgba(13,110,253,0.45), 0 0.5rem 1rem rgba(0,0,0,0.1); }
+            100% { box-shadow: 0 0.125rem 0.25rem rgba(0,0,0,0.075); }
+        }
+
+        .speaker-highlight {
+            animation: speaker-highlight-fade 2s ease-out forwards;
+        }
+
+        @media (max-width: 900px) {
+            .speakers-grid { grid-template-columns: 1fr; }
+            .speaker-photo, .speaker-photo-placeholder { width: 80px; height: 80px; }
+        }
     </style>
 </head>
 <body>
@@ -585,7 +712,16 @@
         </div>
     </header>
 
-    <div class="main-container">
+    <nav class="view-nav">
+        <button class="view-btn active" data-view="schedule">Schedule</button>
+        <button class="view-btn" data-view="speakers">Speakers</button>
+    </nav>
+
+    <div id="speakersView" class="speakers-view" style="display:none;">
+        <div class="speakers-grid" id="speakersGrid"></div>
+    </div>
+
+    <div class="main-container" id="scheduleView">
         <div class="sidebar-overlay" id="sidebarOverlay"></div>
 
         <aside class="sidebar" id="sidebar">
@@ -652,6 +788,8 @@
 
     <script>
         let scheduleData = [];
+        let biosData = [];
+        let bioMap = {};
         let allTracks = new Set();
         let allTimeSlotsData = [];
         const seenSlotKeys = new Set();
@@ -667,10 +805,14 @@
         };
 
         // Load data
-        fetch('schedule_data.json')
-            .then(r => r.json())
-            .then(data => {
+        Promise.all([
+            fetch('schedule_data.json').then(r => r.json()),
+            fetch('bios_data.json').then(r => r.json())
+        ])
+            .then(([data, bios]) => {
                 scheduleData = data;
+                biosData = bios;
+                buildBioMap();
 
                 data.forEach(item => {
                     if (item.category) allTracks.add(item.category);
@@ -712,6 +854,7 @@
                 updateTimeSlotDropdown('');
 
                 renderSchedule();
+                renderSpeakers();
                 attachEventListeners();
             })
             .catch(err => {
@@ -720,6 +863,10 @@
             });
 
         function attachEventListeners() {
+            document.querySelectorAll('.view-btn').forEach(btn => {
+                btn.addEventListener('click', () => switchView(btn.getAttribute('data-view')));
+            });
+
             document.getElementById('search').addEventListener('input', () => { updateFilterIndicators(); renderSchedule(); });
             document.getElementById('timeSlotFilter').addEventListener('change', () => { updateFilterIndicators(); renderSchedule(); });
             document.getElementById('trackFilter').addEventListener('change', () => { updateFilterIndicators(); renderSchedule(); });
@@ -946,7 +1093,7 @@
             if (!panel) return '';
 
             const mod = panel.moderator && panel.moderator.trim() && panel.moderator.trim() !== 'TBD'
-                ? `<div class="panel-moderator"><strong>Moderator:</strong> ${escapeHtml(panel.moderator.trim())}</div>`
+                ? `<div class="panel-moderator"><strong>Moderator:</strong> ${renderPanelistLine(panel.moderator.trim())}</div>`
                 : '';
 
             let panelists = '';
@@ -954,7 +1101,7 @@
                 const items = panel.authors.split('\n').map(p => p.trim()).filter(p => p.length > 0);
                 const label = panel.type === 'plenary' ? 'Speakers' : 'Panelists';
                 panelists = `<div class="panel-panelists"><strong>${label}:</strong><ul>
-                    ${items.map(p => `<li>${escapeHtml(p)}</li>`).join('')}
+                    ${items.map(p => `<li>${renderPanelistLine(p)}</li>`).join('')}
                 </ul></div>`;
             }
 
@@ -1051,6 +1198,96 @@
             updateTimeSlotDropdown('');
             updateFilterIndicators();
             renderSchedule();
+        }
+
+        function buildBioMap() {
+            bioMap = {};
+            biosData.forEach(bio => {
+                const addKey = name => { if (name) bioMap[name] = bio; };
+                addKey(bio.name);
+                if (bio.name.startsWith('Dr. ')) addKey(bio.name.slice(4));
+                else addKey('Dr. ' + bio.name);
+                if (bio.name.includes('-')) addKey(bio.name.replace(/-/g, ' '));
+            });
+        }
+
+        function findBioForName(panelistStr) {
+            if (!panelistStr || panelistStr.trim() === 'TBD') return null;
+            const s = panelistStr.trim();
+            for (const bio of biosData) {
+                const variants = [bio.name];
+                if (bio.name.startsWith('Dr. ')) variants.push(bio.name.slice(4));
+                else variants.push('Dr. ' + bio.name);
+                if (bio.name.includes('-')) variants.push(bio.name.replace(/-/g, ' '));
+                for (const v of variants) {
+                    if (s === v || s.startsWith(v + ',') || s.startsWith(v + ' (') || s.startsWith(v + ';')) {
+                        return bio;
+                    }
+                }
+            }
+            return null;
+        }
+
+        function renderPanelistLine(panelistStr) {
+            const trimmed = panelistStr.trim();
+            if (!trimmed) return '';
+            const bio = findBioForName(trimmed);
+            if (!bio) return escapeHtml(trimmed);
+            const parenIdx = trimmed.indexOf('(');
+            const namePart = parenIdx >= 0 ? trimmed.slice(0, parenIdx).trim() : trimmed;
+            const restPart = parenIdx >= 0 ? ' ' + trimmed.slice(parenIdx) : '';
+            return `<a class="speaker-link" href="#" onclick="showSpeaker('${bio.image}'); return false;">${escapeHtml(namePart)}</a>${escapeHtml(restPart)}`;
+        }
+
+        function switchView(view) {
+            document.querySelectorAll('.view-btn').forEach(btn => {
+                btn.classList.toggle('active', btn.getAttribute('data-view') === view);
+            });
+            const scheduleView = document.getElementById('scheduleView');
+            const speakersView = document.getElementById('speakersView');
+            const mobileToggle = document.getElementById('mobileFilterToggle');
+            if (view === 'schedule') {
+                scheduleView.style.display = '';
+                speakersView.style.display = 'none';
+                mobileToggle.style.display = '';
+            } else {
+                scheduleView.style.display = 'none';
+                speakersView.style.display = '';
+                mobileToggle.style.display = 'none';
+            }
+        }
+
+        function showSpeaker(slug) {
+            switchView('speakers');
+            setTimeout(() => {
+                const el = document.getElementById('speaker-' + slug);
+                if (!el) return;
+                el.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                el.classList.remove('speaker-highlight');
+                void el.offsetWidth;
+                el.classList.add('speaker-highlight');
+            }, 50);
+        }
+
+        function renderSpeakers() {
+            const sorted = [...biosData].sort((a, b) => {
+                const lastName = name => name.replace(/^Dr\.\s+/, '').split(' ').pop();
+                return lastName(a.name).localeCompare(lastName(b.name));
+            });
+
+            const html = sorted.map(bio => {
+                const imgHtml = `<img src="images/bios/${bio.image}.png" class="speaker-photo" alt="${escapeHtml(bio.name)}" onerror="this.outerHTML='<div class=\\'speaker-photo-placeholder\\'>&#128100;</div>'">`;
+                return `
+                <div class="speaker-card" id="speaker-${bio.image}">
+                    ${imgHtml}
+                    <div class="speaker-info">
+                        <div class="speaker-name">${escapeHtml(bio.name)}</div>
+                        <p class="speaker-bio">${escapeHtml(bio.bio)}</p>
+                    </div>
+                </div>`;
+            }).join('');
+
+            document.getElementById('speakersGrid').innerHTML = html;
         }
 
         function getCategoryClass(category) {

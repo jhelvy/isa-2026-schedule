@@ -40,7 +40,6 @@ execute:
 #| label: setup
 library(tidyverse)
 library(knitr)
-library(kableExtra)
 
 # Read submissions data with type information
 submissions <- read_csv(
@@ -382,15 +381,15 @@ sessions <- sessions %>%
 \noindent\textbf{\large John Gray, President of the Industry Studies Association}
 
 \vspace{1em}
-\noindent [PLACEHOLDER: Insert president's message text here.]
+\noindent [<President's message text here>]
 
 \vspace{2em}
 \noindent John Gray\\
 President, ISA
 
-\vspace{1.5em}
+\vspace{1.5em}  
 \begin{center}
-  \includegraphics[width=0.35\textwidth]{images/john-gray.png}
+  \includegraphics[width=0.35\textwidth]{images/bios/john-gray.png}
 \end{center}
 \newpage
 ```
@@ -676,6 +675,57 @@ cat("```\n\n")
 \newpage
 ```
 
+```{r}
+#| label: featured-speakers
+#| results: asis
+bios <- read_csv(
+  file.path('data', 'bios.csv'),
+  show_col_types = FALSE
+) %>%
+  mutate(last_name = word(name, -1)) %>%
+  arrange(last_name)
+
+cat("```{=latex}\n")
+cat("\\markboth{Featured Speakers}{}\n")
+cat("\\noindent\\textbf{\\Large Featured Speakers}\\par\\vspace{1em}\n\n")
+
+for (i in seq_len(nrow(bios))) {
+  row <- bios[i, ]
+  img_path <- file.path("images", "bios", paste0(row$image, ".png"))
+  has_image <- !is.na(row$image) &&
+    nchar(row$image) > 0 &&
+    file.exists(img_path)
+
+  cat("\\noindent%\n")
+  if (has_image) {
+    cat("\\begin{minipage}[t]{1.1in}\n")
+    cat(
+      "  \\vspace{0pt}\\includegraphics[width=1.1in]{",
+      img_path,
+      "}\n",
+      sep = ""
+    )
+    cat("\\end{minipage}%\n")
+    cat("\\hspace{0.15in}%\n")
+    cat("\\begin{minipage}[t]{\\dimexpr\\linewidth-1.25in\\relax}\n")
+  } else {
+    cat("\\begin{minipage}[t]{\\linewidth}\n")
+  }
+  cat("  \\vspace{0pt}%\n")
+  cat(
+    "  \\textbf{",
+    escape_latex(row$name),
+    "}\\par\\vspace{0.2em}\n",
+    sep = ""
+  )
+  cat("  {\\small ", escape_latex(row$bio), "}\\par\n", sep = "")
+  cat("\\end{minipage}%\n")
+  cat("\\par\\vspace{0.9em}\n\n")
+}
+
+cat("\\newpage\n")
+cat("```\n\n")
+```
 
 ```{r}
 #| label: schedule
