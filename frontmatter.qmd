@@ -9,6 +9,7 @@ format:
   docx:
     toc: false
     number-sections: false
+    reference-doc: reference.docx
 execute:
   echo: false
   warning: false
@@ -21,14 +22,10 @@ execute:
 
 [PLACEHOLDER: Insert president's message text here.]
 
-[PLACEHOLDER: Insert president's message text here.]
-
-[PLACEHOLDER: Insert president's message text here.]
-
 John Gray
 President, ISA
 
-![President, ISA](images/president.jpg){width=40%}
+![President, ISA](images/john-gray.jpg){width=40%}
 
 \newpage
 

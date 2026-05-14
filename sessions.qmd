@@ -29,7 +29,6 @@ format:
         \pagestyle{scrheadings}
         \clearpairofpagestyles
         \lohead{\small\textit{\leftmark}}
-        \rohead{\small\textit{\rightmark}}
         \cfoot{\small\thepage}
         \KOMAoptions{headsepline=true}
 execute:
@@ -340,35 +339,62 @@ sessions <- sessions %>%
   )
 ```
 
-```{r}
-#| label: legend
-#| results: asis
-legend_data <- sessions %>%
-  distinct(category, track_short, track_color) %>%
-  filter(!is.na(category)) %>%
-  arrange(category)
+```{=latex}
+\markboth{}{}
+\noindent\textbf{\large Research stream descriptions, abbreviations, and color key:}
 
-cat("```{=latex}\n")
-cat("\\vspace{-2em}\n")
-cat("\\textbf{\\large Track Categories}\\par\\smallskip\n")
-cat("\\begin{itemize}\\setlength{\\itemsep}{2pt}\n")
+\vspace{1.2em}
 
-for (i in seq_len(nrow(legend_data))) {
-  r <- legend_data[i, ]
-  cat(
-    "  \\item \\textcolor{",
-    r$track_color,
-    "}{",
-    escape_latex(r$category),
-    "}\n",
-    sep = ""
-  )
-}
+\noindent\textbf{\textcolor{sustainability}{1. Energy, Sustainable Innovation, and Mobility (EN)}}
 
-cat("\\end{itemize}\n")
-cat("\\vspace{0.5em}\\noindent\\hrulefill\\vspace{1em}\n")
-cat("```\n\n")
+\vspace{0.3em}
+\noindent This stream invites papers and panels on the changing market and public policy landscape where the energy industry (including oil and gas, electricity, pipelines) intersects with environmental concerns.
+
+\vspace{1em}
+
+\noindent\textbf{\textcolor{gis}{2. General Industry Studies (GO)}}
+
+\vspace{0.3em}
+\noindent Any research on issues or industries not covered in other research streams described above may be submitted to this general stream. Papers or organized panels comparing phenomena, trends, issues, or economic activities across occupations, industries, or geographic regions are especially welcome.
+
+\vspace{1em}
+
+\noindent\textbf{\textcolor{health}{3. Health Care Systems, Biotechnology, and Pharmaceuticals (HC)}}
+
+\vspace{0.3em}
+\noindent This stream invites papers and panels that examine the myriad of issues surrounding effective management of health care entities and systems (e.g., hospitals, medical groups, public health agencies, insurance companies, pharmaceutical firms, technology companies, etc.).
+
+\vspace{1em}
+
+\noindent\textbf{\textcolor{innovation}{4. Innovation, Entrepreneurship, and AI-Driven Transformation (IE)}}
+
+\vspace{0.3em}
+\noindent This stream invites papers and panels that examine innovation within firms and other organizations such as universities, across organizational boundaries, across country boundaries, and in new entrepreneurial ventures.
+
+\vspace{1em}
+
+\noindent\textbf{\textcolor{labor}{5. Labor Markets, Organizations, and the Future of Work (LM)}}
+
+\vspace{0.3em}
+\noindent This stream welcomes papers and panels that examine the impacts of firm, industry, and market characteristics on labor markets, industrial relations, and/or human resource practices as well as public policy outcomes.
+
+\vspace{1em}
+
+\noindent\textbf{\textcolor{operations}{6. Operations, Supply Chain, and AI-Enhanced Industry 4.0 (OP)}}
+
+\vspace{0.3em}
+\noindent This stream welcomes papers and panels that are concerned with the oversight, design, and control of the business processes responsible for the production of goods and services as well as those focused on coordination of (multiple) firms responsible for these business processes within a supply network.
+
+\vspace{1em}
+
+\noindent\textbf{\textcolor{policy}{7. Public Policy, and Global Competitiveness (PP)}}
+
+\vspace{0.3em}
+\noindent Public policy -- whether national, regional, local or global -- often shapes opportunities for industries, including competitive options within industries and globalization of industries. In turn, wrestling with these opportunities, competitiveness and globalization have had a profound impact on the nature of industrial activity and policy.
+
+\newpage
 ```
+
 
 ```{r}
 #| label: schedule
@@ -418,7 +444,7 @@ all_blocks <- bind_rows(
       event_room
     )
 ) %>%
-  arrange(start_dt)
+  arrange(start_dt, block_type)
 
 first_block <- TRUE
 
@@ -428,6 +454,7 @@ for (b in seq_len(nrow(all_blocks))) {
   # Page break logic:
   #   paper/panel → paper/panel : new page
   #   anything    → event (new day) : new page
+  #   PDW event   → paper/panel : new page
   #   event       → paper/panel : no page break (event and next session share a page)
   #   anything    → event (same day) : vspace only
   if (!first_block) {
@@ -436,6 +463,10 @@ for (b in seq_len(nrow(all_blocks))) {
       cat("\n\\newpage\n\n")
     } else if (
       block$block_type == "event" && block$day_name != prev_block$day_name
+    ) {
+      cat("\n\\newpage\n\n")
+    } else if (
+      block$block_type != "event" && isTRUE(prev_block$event_name == "PDW")
     ) {
       cat("\n\\newpage\n\n")
     } else {

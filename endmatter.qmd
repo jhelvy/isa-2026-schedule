@@ -9,6 +9,7 @@ format:
   docx:
     toc: false
     number-sections: false
+    reference-doc: reference.docx
 execute:
   echo: false
   warning: false
