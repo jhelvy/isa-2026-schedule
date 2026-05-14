@@ -15,6 +15,7 @@ quarto::quarto_render("endmatter.qmd")
 # source(here::here("code", "5combine_pdfs.R"))
 
 # servr::httd()
+# servr::daemon_stop(2)
 
 # Changes without needing to re-assign slots:
 #  - Schedule structure (session_name, room, slot) → edit schedule.csv

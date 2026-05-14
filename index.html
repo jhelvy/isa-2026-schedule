@@ -950,9 +950,10 @@
                 : '';
 
             let panelists = '';
-            if (panel.panelists && panel.panelists.trim() && panel.panelists.trim() !== 'TBD') {
-                const items = panel.panelists.split('\n').map(p => p.trim()).filter(p => p.length > 0);
-                panelists = `<div class="panel-panelists"><strong>Panelists:</strong><ul>
+            if (panel.authors && panel.authors.trim() && panel.authors.trim() !== 'TBD') {
+                const items = panel.authors.split('\n').map(p => p.trim()).filter(p => p.length > 0);
+                const label = panel.type === 'plenary' ? 'Speakers' : 'Panelists';
+                panelists = `<div class="panel-panelists"><strong>${label}:</strong><ul>
                     ${items.map(p => `<li>${escapeHtml(p)}</li>`).join('')}
                 </ul></div>`;
             }
