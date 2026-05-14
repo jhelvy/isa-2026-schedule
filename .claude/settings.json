@@ -1,0 +1,18 @@
+{
+  "hooks": {
+    "PostToolUse": [
+      {
+        "matcher": "Write|Edit",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "bash /Users/jhelvy/gh/web/isa-2026-schedule/.claude/render-qmd.sh",
+            "timeout": 300,
+            "statusMessage": "Rendering Quarto document...",
+            "async": true
+          }
+        ]
+      }
+    ]
+  }
+}

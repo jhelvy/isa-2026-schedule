@@ -29,8 +29,7 @@ format:
         \pagestyle{scrheadings}
         \clearpairofpagestyles
         \lohead{\small\textit{\leftmark}}
-        \cfoot{\small\thepage}
-        \KOMAoptions{headsepline=true}
+        \KOMAoptions{headsepline=true, footsepline=true}
 execute:
   echo: false
   warning: false
@@ -337,6 +336,116 @@ sessions <- sessions %>%
     ),
     title = map_chr(title, proper_title_case)
   )
+```
+
+```{r}
+#| label: conference-in-brief
+#| results: asis
+brief_data <- read_csv(
+  file.path('data', 'overview.csv'),
+  show_col_types = FALSE,
+  col_types = cols(.default = "c")
+) %>%
+  rename_with(str_trim) %>%
+  rename(
+    weekday = Weekday,
+    time_start_str = `Time Start`,
+    time_end_str = `Time End`,
+    session = Session,
+    building = Building
+  ) %>%
+  mutate(
+    weekday = str_trim(weekday),
+    time_start_str = str_trim(time_start_str),
+    time_end_str = str_trim(time_end_str),
+    session = str_trim(session),
+    building = str_trim(building),
+    date_parsed = case_when(
+      weekday == "Wednesday" ~ as.Date("2026-06-03"),
+      weekday == "Thursday" ~ as.Date("2026-06-04"),
+      weekday == "Friday" ~ as.Date("2026-06-05")
+    ),
+    start_dt = as.POSIXct(
+      paste(format(date_parsed, "%Y-%m-%d"), time_start_str),
+      format = "%Y-%m-%d %I:%M %p"
+    ),
+    time_fmt = paste0(
+      str_replace_all(str_to_lower(time_start_str), " ", ""),
+      "--",
+      str_replace_all(str_to_lower(time_end_str), " ", "")
+    ),
+    is_highlighted = session %in%
+      c(
+        "Paper Sessions",
+        "Concurrent Panel Sessions",
+        "Opening Plenary",
+        "PDW"
+      )
+  ) %>%
+  arrange(date_parsed, start_dt)
+
+days <- list(
+  list(label = "WEDNESDAY, June 3", day = "Wednesday"),
+  list(label = "THURSDAY, June 4", day = "Thursday"),
+  list(label = "FRIDAY, June 5", day = "Friday")
+)
+
+cat("```{=latex}\n")
+cat("\\markboth{}{}\n")
+cat("\\noindent\\textbf{\\Large Conference in Brief}\\par\\vspace{0.5em}\n")
+cat("{\\renewcommand{\\arraystretch}{0.9}\n")
+
+# Registration section
+cat(
+  "\\noindent\\textcolor{event}{\\textbf{REGISTRATION}}\\par\\vspace{0.15em}\n"
+)
+cat("\\begin{tabular}{@{}p{3.2cm}p{\\dimexpr\\linewidth-3.5cm}@{}}\n")
+cat(
+  "  Wed., June 3 & 8:00am--6:00pm\\quad Science \\& Engineering Hall, B1 \\\\\n"
+)
+cat("  Wed., June 3 & 11:30am--2:00pm\\quad Milken Institute \\\\\n")
+cat("  Thu.--Fri., June 4--5 & Student Center, 3rd Floor \\\\\n")
+cat("\\end{tabular}\n")
+
+for (d in days) {
+  day_rows <- brief_data %>% filter(weekday == d$day)
+  cat("\n\\vspace{0.5em}\n")
+  cat(
+    "\\noindent\\textcolor{event}{\\textbf{",
+    escape_latex(d$label),
+    "}}\\par\\vspace{0.15em}\n",
+    sep = ""
+  )
+  cat("\\begin{tabular}{@{}p{3.2cm}p{\\dimexpr\\linewidth-3.5cm}@{}}\n")
+  current_building <- ""
+  for (i in seq_len(nrow(day_rows))) {
+    r <- day_rows[i, ]
+    bldg <- if (!is.na(r$building) && nchar(r$building) > 0) {
+      r$building
+    } else {
+      current_building
+    }
+    if (bldg != current_building) {
+      cat(
+        "  \\multicolumn{2}{@{}l@{}}{\\textbf{",
+        escape_latex(bldg),
+        "}} \\\\\n",
+        sep = ""
+      )
+      current_building <- bldg
+    }
+    session_text <- escape_latex(r$session)
+    if (isTRUE(r$is_highlighted)) {
+      session_text <- paste0("\\textcolor{event}{", session_text, "}")
+    }
+    cat("  ", r$time_fmt, " & ", session_text, " \\\\\n", sep = "")
+  }
+  cat("\\end{tabular}\n")
+}
+
+cat("}\n")
+cat("\\newpage\n")
+cat("```\n\n")
 ```
 
 ```{=latex}
