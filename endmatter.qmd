@@ -1,0 +1,32 @@
+---
+title: |
+  2026 Industry Studies Association
+  Annual Conference
+subtitle: |
+  Program Schedule
+  June 3 - 5, 2026
+format:
+  docx:
+    toc: false
+    number-sections: false
+execute:
+  echo: false
+  warning: false
+  message: false
+---
+
+# Sponsors & Acknowledgments {.unnumbered}
+
+[PLACEHOLDER: Insert sponsor acknowledgments here.]
+
+\newpage
+
+# Conference Organizing Committee {.unnumbered}
+
+[PLACEHOLDER: Insert organizing committee list here.]
+
+\newpage
+
+# Notes {.unnumbered}
+
+[PLACEHOLDER: Insert notes pages here.]

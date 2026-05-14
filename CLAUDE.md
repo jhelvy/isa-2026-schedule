@@ -12,8 +12,13 @@ Run these scripts in order when the schedule needs to be updated:
 Rscript code/1generate_session_ids.R  # Build session-ids.csv from data/sessions/ CSVs
 Rscript code/2assign_slots.R          # Assign sessions to time slots → data/schedule.csv
 Rscript code/3generate_json.R         # Build JSON for the web app → schedule_data.json
-quarto render schedule.qmd            # Render the PDF program → schedule.pdf
+quarto render sessions.qmd            # Render the detailed session program PDF → sessions.pdf
+quarto render frontmatter.qmd         # Render the front matter Word doc → frontmatter.docx
+quarto render endmatter.qmd           # Render the end matter Word doc → endmatter.docx
 Rscript code/4verify.R                # Verify all scheduling constraints are satisfied
+
+# After hand-editing frontmatter.docx and endmatter.docx and saving as PDFs:
+Rscript code/5combine_pdfs.R          # Merge all three PDFs → schedule.pdf
 ```
 
 ## File Structure
@@ -37,15 +42,17 @@ data/
   schedule.csv        # OUTPUT: full schedule with time slots and rooms
   panels.csv          # Special sessions and plenaries
   overview.csv        # Full conference program overview (breaks, meals, PDW, receptions, etc.)
-  self-sessions.csv   # Papers within self-organized panels (used by schedule.qmd)
+  self-sessions.csv   # Papers within self-organized panels (used by sessions.qmd)
   pdw-registered.csv  # PDW registrants who cannot present in W1 or W2
   special-slots.csv   # Special slot definitions
 
 index.html            # Web app (served by GitHub Pages)
 logo.png              # Conference logo
 schedule_data.json    # OUTPUT: web app data (served by GitHub Pages)
-schedule.pdf          # OUTPUT: printed program
-schedule.qmd          # Quarto source for the printed program PDF
+sessions.qmd          # Quarto source for the detailed session program PDF → sessions.pdf
+frontmatter.qmd       # Quarto source for front matter Word doc → frontmatter.docx
+endmatter.qmd         # Quarto source for end matter Word doc → endmatter.docx
+code/5combine_pdfs.R  # Merges frontmatter.pdf + sessions.pdf + endmatter.pdf → schedule.pdf
 ```
 
 ## Configuration (`code/config.R`)
@@ -81,9 +88,9 @@ W1 and W2 overlap with the Professional Development Workshop — no PDW registra
 
 **Add a date restriction**: add an entry to `date_restrictions` in `code/config.R`, then re-run `2assign_slots.R`.
 
-**Update panels/special sessions**: edit `data/panels.csv`, then re-run `3generate_json.R` and re-render `schedule.qmd`.
+**Update panels/special sessions**: edit `data/panels.csv`, then re-run `3generate_json.R` and re-render `sessions.qmd`.
 
-**Update breaks, meals, receptions, PDW, or other non-paper program items**: edit `data/overview.csv`, then re-run `3generate_json.R` and re-render `schedule.qmd`.
+**Update breaks, meals, receptions, PDW, or other non-paper program items**: edit `data/overview.csv`, then re-run `3generate_json.R` and re-render `sessions.qmd` (for the session PDF) and `frontmatter.qmd` (for the conference-in-brief table in the Word doc).
 
 ## Social Events (overview.csv)
 
@@ -91,14 +98,14 @@ W1 and W2 overlap with the Professional Development Workshop — no PDW registra
 
 **How they are included:**
 - `3generate_json.R` reads `overview.csv` and excludes rows already covered by `panels.csv` or `schedule.csv` (currently: "Paper Sessions", "Opening Plenary", "Concurrent Panel Sessions"). Everything else becomes a `type = "event"` entry in `schedule_data.json`.
-- `schedule.qmd` reads the same file with the same exclusions and renders events as compact `\colorbox{event!15}` banners interspersed throughout the PDF (no page break before same-day events; page break only at day transitions or between paper/panel blocks).
+- `sessions.qmd` reads the same file with the same exclusions and renders events as compact `\colorbox{event!15}` banners interspersed throughout the PDF (no page break before same-day events; page break only at day transitions or between paper/panel blocks).
 - The `time_order` for each event is computed from seconds-since-midnight via `case_when` — if a new event time is added to `overview.csv`, add a matching entry to the `case_when` block in `3generate_json.R`.
 - Use `col_types = cols(.default = "c")` when reading `overview.csv` to prevent readr from auto-parsing time columns like "8:00 AM" as an hms type.
 
 ## PDF Features
 
 - **Running headers**: left = day + date (e.g., "Wednesday, June 3"), right = session type + time range. Set via `\markboth{}{}` at the start of each block. Implemented with `scrlayer-scrpage` (KOMA-Script companion — compatible with `scrartcl`).
-- **Track colors**: each academic track has a named LaTeX color (`gis`, `health`, `innovation`, `labor`, `operations`, `policy`, `sustainability`). Social events use `event` (teal `#17A2B8`). All defined in the `include-in-header` block of `schedule.qmd`.
+- **Track colors**: each academic track has a named LaTeX color (`gis`, `health`, `innovation`, `labor`, `operations`, `policy`, `sustainability`). Social events use `event` (teal `#17A2B8`). All defined in the `include-in-header` block of `sessions.qmd`.
 - **Page breaks**: paper/panel blocks always start on a new page (except when following an event block on the same page). Events only trigger a new page at day transitions.
 
 ## Web App Features
