@@ -2,19 +2,32 @@
   {
     "id": "EV1",
     "session_id": "EV1",
-    "session_name": "Morning excursion",
-    "room": "Milkin Institute — Convening Hall",
+    "session_name": "Morning excursion, option 1 (intro to DC non profits)",
+    "room": "Science & Engineering Hall — B1 1270",
     "date": "2026-06-03",
     "day": "Wednesday",
     "start_time": "08:00:00",
     "end_time": "11:30:00",
     "time_order": 0.1,
-    "title": "Morning excursion",
+    "title": "Morning excursion, option 1 (intro to DC non profits)",
     "type": "event"
   },
   {
     "id": "EV2",
     "session_id": "EV2",
+    "session_name": "Morning excursion, option 2 (mall tour)",
+    "room": "Science & Engineering Hall — Meet at Lincoln Memorial",
+    "date": "2026-06-03",
+    "day": "Wednesday",
+    "start_time": "08:00:00",
+    "end_time": "11:30:00",
+    "time_order": 0.1,
+    "title": "Morning excursion, option 2 (mall tour)",
+    "type": "event"
+  },
+  {
+    "id": "EV3",
+    "session_id": "EV3",
     "session_name": "Lunch",
     "room": "Milkin Institute — Convening Hall",
     "date": "2026-06-03",
@@ -43,8 +56,8 @@
     "type": "plenary"
   },
   {
-    "id": "EV3",
-    "session_id": "EV3",
+    "id": "EV4",
+    "session_id": "EV4",
     "session_name": "PDW",
     "room": "Milkin Institute — Convening Hall",
     "date": "2026-06-03",
@@ -455,8 +468,8 @@
     "session_chair": "Miguel  Sanchez (Johns Hopkins University)"
   },
   {
-    "id": "EV4",
-    "session_id": "EV4",
+    "id": "EV5",
+    "session_id": "EV5",
     "session_name": "Break",
     "room": "Science & Engineering Hall — B1 Greenwall",
     "date": "2026-06-03",
@@ -1437,8 +1450,8 @@
     "session_chair": "Muhammad Tayyab Sohail (Xiangtan University China)"
   },
   {
-    "id": "EV5",
-    "session_id": "EV5",
+    "id": "EV6",
+    "session_id": "EV6",
     "session_name": "Reception",
     "room": "Science & Engineering Hall — B1 Greenwall",
     "date": "2026-06-03",
@@ -1450,8 +1463,8 @@
     "type": "event"
   },
   {
-    "id": "EV6",
-    "session_id": "EV6",
+    "id": "EV7",
+    "session_id": "EV7",
     "session_name": "Breakfast",
     "room": "Student Center — Grand Ballroom",
     "date": "2026-06-04",
@@ -1919,8 +1932,8 @@
     "session_chair": "Matteo Tranchero (The Wharton School)"
   },
   {
-    "id": "EV7",
-    "session_id": "EV7",
+    "id": "EV8",
+    "session_id": "EV8",
     "session_name": "Break",
     "room": "Student Center — Hallway in front of Grand Ballroom",
     "date": "2026-06-04",
@@ -1986,8 +1999,8 @@
     "moderator": "David Adler (Committee Member, National Academies Musa Study)"
   },
   {
-    "id": "EV8",
-    "session_id": "EV8",
+    "id": "EV9",
+    "session_id": "EV9",
     "session_name": "Lunch & Business Meeting",
     "room": "Student Center — Grand Ballroom",
     "date": "2026-06-04",
@@ -2566,8 +2579,8 @@
     "moderator": "David Hart (Senior Fellow for Climate and Energy, Council on Foreign Relations)"
   },
   {
-    "id": "EV9",
-    "session_id": "EV9",
+    "id": "EV10",
+    "session_id": "EV10",
     "session_name": "Break",
     "room": "Student Center — Hallway in front of Grand Ballroom",
     "date": "2026-06-04",
@@ -3169,8 +3182,8 @@
     "moderator": "Susan Helper (Weatherhead School of Management, Case Western Reserve University)"
   },
   {
-    "id": "EV10",
-    "session_id": "EV10",
+    "id": "EV11",
+    "session_id": "EV11",
     "session_name": "Reception",
     "room": "Student Center — Grand Ballroom",
     "date": "2026-06-04",
@@ -3182,8 +3195,8 @@
     "type": "event"
   },
   {
-    "id": "EV11",
-    "session_id": "EV11",
+    "id": "EV12",
+    "session_id": "EV12",
     "session_name": "Breakfast",
     "room": "Student Center — Grand Ballroom",
     "date": "2026-06-05",
@@ -3249,8 +3262,8 @@
     "moderator": "Melissa Appleyard (Portland State University)"
   },
   {
-    "id": "EV12",
-    "session_id": "EV12",
+    "id": "EV13",
+    "session_id": "EV13",
     "session_name": "Break",
     "room": "Student Center — Hallway in front of Grand Ballroom",
     "date": "2026-06-05",
@@ -3756,8 +3769,8 @@
     "session_chair": "Mateus Do Rego Ferreira Lima (Indiana University)"
   },
   {
-    "id": "EV13",
-    "session_id": "EV13",
+    "id": "EV14",
+    "session_id": "EV14",
     "session_name": "Lunch & Awards Ceremony",
     "room": "Student Center — Grand Ballroom",
     "date": "2026-06-05",

@@ -1,10 +1,4 @@
 ---
-title: |
-  2026 Industry Studies Association \
-  Annual Conference
-subtitle: |
-  Program Schedule \
-  June 3 - 5, 2026
 format:
   pdf:
     toc: false
@@ -113,7 +107,11 @@ schedule <- read_csv(
 
 # Paper order within each session from sessions/*.csv row position
 sessions_order <- bind_rows(lapply(
-  list.files(file.path('data', 'sessions'), pattern = '\\.csv$', full.names = TRUE),
+  list.files(
+    file.path('data', 'sessions'),
+    pattern = '\\.csv$',
+    full.names = TRUE
+  ),
   \(f) read_csv(f, show_col_types = FALSE)
 )) %>%
   group_by(session_id) %>%
@@ -137,7 +135,9 @@ sessions <- submissions %>%
 self_discussants <- self_sessions %>%
   group_by(id) %>%
   summarize(
-    discussant = first(discussant[!is.na(discussant) & str_trim(discussant) != ""]),
+    discussant = first(discussant[
+      !is.na(discussant) & str_trim(discussant) != ""
+    ]),
     .groups = "drop"
   )
 
@@ -616,7 +616,12 @@ for (b in seq_len(nrow(all_blocks))) {
             str_trim(str_extract(first_authors, "^[^;,]+"))
           )
           if (!is.na(session_chair) && nchar(session_chair) > 0) {
-            cat("**Session Chair:** ", escape_latex(session_chair), "\n\n", sep = "")
+            cat(
+              "**Session Chair:** ",
+              escape_latex(session_chair),
+              "\n\n",
+              sep = ""
+            )
           }
 
           for (m in seq_len(nrow(papers))) {
