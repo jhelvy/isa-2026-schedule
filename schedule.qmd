@@ -31,6 +31,7 @@ format:
         \clearpairofpagestyles
         \lohead{\small\textit{\leftmark}}
         \KOMAoptions{headsepline=true, footsepline=true}
+        \AtBeginDocument{\hypersetup{pdfpagemode=UseOutlines, bookmarksdepth=-1}}
 execute:
   echo: false
   warning: false
@@ -375,6 +376,7 @@ sessions <- sessions %>%
 ```{=latex}
 \thispagestyle{empty}
 \markboth{}{}
+\pdfbookmark[0]{Scan QR Code}{qr}
 \vspace*{\fill}
 \begin{center}
   \includegraphics[width=2.5in]{images/qr-schedule.png}\\[1em]
@@ -387,6 +389,7 @@ sessions <- sessions %>%
 ```{=latex}
 \thispagestyle{empty}
 \markboth{}{}
+\pdfbookmark[0]{Welcome}{welcome}
 \begin{center}
 {\Large\textbf{WELCOME!}}
 \end{center}
@@ -424,6 +427,7 @@ President, ISA
 ```{=latex}
 \thispagestyle{empty}
 \markboth{}{}
+\pdfbookmark[0]{Venue Map}{map}
 {\Large\textbf{Map of the George Washington University}}
 \vspace{0.6em}
 
@@ -460,6 +464,7 @@ awards <- read_csv(
 
 cat("```{=latex}\n")
 cat("\\markboth{}{}\n")
+cat("\\pdfbookmark[0]{Award Winners}{awards}\n")
 cat("\\noindent\\textbf{\\Large ISA 2026 Award Winners}\\par\n")
 cat("\\vspace{0.5em}\n")
 cat("{\\small\n")
@@ -609,6 +614,7 @@ days <- list(
 
 cat("```{=latex}\n")
 cat("\\markboth{}{}\n")
+cat("\\pdfbookmark[0]{Conference in Brief}{brief}\n")
 cat("\\noindent\\textbf{\\Large Conference in Brief}\\par\\vspace{0.5em}\n")
 cat("{\\renewcommand{\\arraystretch}{0.9}\n")
 
@@ -667,6 +673,7 @@ cat("```\n\n")
 
 ```{=latex}
 \markboth{}{}
+\pdfbookmark[0]{Research Streams}{streams}
 \noindent\textbf{\large Research stream descriptions, abbreviations, and color key:}
 
 \vspace{1.2em}
@@ -722,7 +729,7 @@ cat("```\n\n")
 ```
 
 ```{r}
-#| label: featured-speakers
+#| label: special-session-descriptions
 #| results: asis
 bios <- read_csv(
   file.path('data', 'bios.csv'),
@@ -739,7 +746,8 @@ panel_order_ids <- panels_raw %>%
   pull(id)
 
 cat("```{=latex}\n")
-cat("\\markboth{Featured Speakers}{}\n")
+cat("\\markboth{Special Session Descriptions}{}\n")
+cat("\\pdfbookmark[0]{Special Session Descriptions}{specsessions}\n")
 cat(
   "\\noindent\\textbf{\\Large Special Session Descriptions}\\par\\vspace{0.8em}\n\n"
 )
@@ -1007,8 +1015,17 @@ day_labels <- c(
 emit_day_overview <- function(day_name) {
   label <- day_labels[[day_name]]
   day_data <- all_overview %>% filter(weekday == day_name)
+  day_anchor <- paste0("day-", gsub("[^a-zA-Z]", "", tolower(day_name)))
   cat("```{=latex}\n")
   cat("\\markboth{}{}\n")
+  cat(
+    "\\pdfbookmark[0]{",
+    escape_latex(label),
+    "}{",
+    day_anchor,
+    "}\n",
+    sep = ""
+  )
   cat(
     "\\noindent\\colorbox{event}{\\parbox{\\dimexpr\\linewidth-2\\fboxsep}{",
     "\\centering\\textcolor{white}{\\large\\textbf{Conference Program: ",
@@ -1125,6 +1142,16 @@ for (b in seq_len(nrow(all_blocks))) {
     " – ",
     format(block$end_dt, "%I:%M %p")
   )
+
+  bm_anchor <- paste0("slot-", gsub("[^a-zA-Z0-9]", "", block$block_key))
+  bm_label <- paste0(
+    session_type,
+    ": ",
+    format(block$start_dt, "%I:%M %p"),
+    " -- ",
+    format(block$end_dt, "%I:%M %p")
+  )
+  cat("\\pdfbookmark[1]{", bm_label, "}{", bm_anchor, "}\n\n", sep = "")
 
   cat(
     "\\markboth{",
