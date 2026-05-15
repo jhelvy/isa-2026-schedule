@@ -25,6 +25,7 @@ format:
         \definecolor{policy}{HTML}{D55E00}
         \definecolor{sustainability}{HTML}{009E73}
         \definecolor{event}{HTML}{17A2B8}
+        \usepackage{wrapfig}
         \usepackage{scrlayer-scrpage}
         \pagestyle{scrheadings}
         \clearpairofpagestyles
@@ -375,22 +376,36 @@ sessions <- sessions %>%
 \thispagestyle{empty}
 \markboth{}{}
 \begin{center}
-{\Large\textbf{WELCOME}}
+{\Large\textbf{WELCOME!}}
 \end{center}
 \vspace{0.5em}
 \noindent\textbf{\large John Gray, President of the Industry Studies Association}
 
 \vspace{1em}
-\noindent [<President's message text here>]
+
+\begin{wrapfigure}{r}{0.28\textwidth}
+  \vspace{-0.5em}
+  \includegraphics[width=0.28\textwidth]{images/bios/john-gray.png}
+  \vspace{-1em}
+\end{wrapfigure}
+
+Thank you for including the Industry Studies Association as part of your conference circuit. We are happy to welcome you to The George Washington University for an energizing few days of panels, paper sessions, plenaries and, most importantly, great side conversations.
+
+Industry studies research is by its nature interdisciplinary, focused more on the interesting industry-specific phenomena and/or a policy dilemma. You may find yourself in a session diving deeply into a single industry from multiple perspectives, or one examining an issue across industries.
+
+I want to thank John Paul Helveston (“JPH”) for chairing the committee this year and serving as our host. He, along with a distinguished committee of local DC talent of Allison Forbes, Monica Gorman, David Hart, and Andrew Reamer helped to put together an amazing program, with many highlights including the Wednesday morning “excursion” into the world of DC entities that influence public policy. JPH also spearheaded the modernization of our program...he is the one to thank for our first ever searchable, online program app (he noted that he wanted to thank Claude Code for doing the lion's share!) and the thoughtful organization of the papers and special sessions.
+
+I also want to recognize our program manager, Renae Sullivan, who is now just over a year into her job, for leading the great improvements you have probably noticed on our website, communication, and professionalism. While she is still our only paid employee, she has managed to spearhead many improvements. I also want to recognize our treasurer, Jeff Shockley. He (and Renae) worked many hours over the December-February time frame as we transitioned from outdated and clunky MemberClicks to our new, much easier to manage platform, Novi. Taken together, we will soon be able to focus less on just executing the basics well but thinking creatively about ways to make more impact through membership growth, as well as additional partnerships and sources of funding.
+
+I'll also note that, for the first time ever, we have a second major conference this year. Board member Benn Lawson has done a great job of organizing and promoting our first international conference, in Oxford, September 3-5. It will be every bit as large, if not larger, than this conference, and will grow our presence and influence outside of North America.
+
+Finally, my term as president will end after this conference. I am delighted that founding member Ed Anderson from the University of Texas will take over - ISA is in good hands! I think the entire board for working along with me for the last few years.
+
+I can speak on behalf of the entire ISA board: We are very happy that you are here! We expect you will greatly enjoy the conference and hope that you will spread the word about ISA.
 
 \vspace{2em}
 \noindent John Gray\\
 President, ISA
-
-\vspace{1.5em}  
-\begin{center}
-  \includegraphics[width=0.35\textwidth]{images/bios/john-gray.png}
-\end{center}
 \newpage
 ```
 
@@ -694,7 +709,9 @@ panel_order_ids <- panels_raw %>%
 
 cat("```{=latex}\n")
 cat("\\markboth{Featured Speakers}{}\n")
-cat("\\noindent\\textbf{\\Large Featured Speakers}\\par\\vspace{0.8em}\n\n")
+cat(
+  "\\noindent\\textbf{\\Large Special Session Descriptions}\\par\\vspace{0.8em}\n\n"
+)
 
 seen_people <- character(0)
 first_panel <- list()
@@ -732,10 +749,7 @@ for (pid in panel_order_ids) {
     )
     current_day <- day_label
   } else {
-    cat(
-      "\\par\\vspace{0.6em}\\noindent\\rule{\\linewidth}{0.3pt}\\par\\vspace{0.6em}\n\n",
-      sep = ""
-    )
+    cat("\\newpage\n\n")
   }
 
   time_str <- paste0(
