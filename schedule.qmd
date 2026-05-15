@@ -375,6 +375,18 @@ sessions <- sessions %>%
 ```{=latex}
 \thispagestyle{empty}
 \markboth{}{}
+\vspace*{\fill}
+\begin{center}
+  \includegraphics[width=2.5in]{images/qr-schedule.png}\\[1em]
+  {\Large Scan to access the digital program}
+\end{center}
+\vspace*{\fill}
+\newpage
+```
+
+```{=latex}
+\thispagestyle{empty}
+\markboth{}{}
 \begin{center}
 {\Large\textbf{WELCOME!}}
 \end{center}
@@ -412,9 +424,28 @@ President, ISA
 ```{=latex}
 \thispagestyle{empty}
 \markboth{}{}
+{\Large\textbf{Map of the George Washington University}}
+\vspace{0.6em}
+
 \begin{center}
-  \includegraphics[width=\textwidth, height=\textheight, keepaspectratio]{images/map.png}
+  \includegraphics[width=\textwidth, height=0.72\textheight, keepaspectratio]{images/map.png}
 \end{center}
+
+\vspace{0.5em}
+\noindent
+\begin{minipage}[c]{0.65\textwidth}
+  \begin{enumerate} \large
+    \item Milken Institute for Public Health
+    \item Foggy Bottom Metro Stop
+    \item Science and Engineering Hall (SEH)
+    \item Student Center
+  \end{enumerate}
+\end{minipage}\hfill
+\begin{minipage}[c]{0.3\textwidth}
+  \centering
+  \includegraphics[width=1.4in]{images/qr-map.png}\\[0.4em]
+  {\normalsize Scan for interactive map}
+\end{minipage}
 \newpage
 ```
 
