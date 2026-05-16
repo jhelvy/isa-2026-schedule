@@ -836,6 +836,7 @@
         <button class="view-btn" data-view="speakers">Speakers</button>
         <button class="view-btn" data-view="awards">Awards</button>
         <button class="view-btn" data-view="map">Map</button>
+        <button class="view-btn" data-view="sponsors">Sponsors</button>
     </nav>
 
     <div id="mapView" style="display:none; padding: 1.5rem; max-width: 900px; margin: 0 auto;">
@@ -848,6 +849,32 @@
                 <a href="https://www.google.com/maps/d/viewer?mid=1YxxEPfjWhI0q6cc99z3QuXxW8Ew4Xrc" target="_blank" rel="noopener" style="display:inline-block; padding:0.6rem 1.2rem; background:#17A2B8; color:#fff; border-radius:4px; text-decoration:none; font-size:1rem; text-align:center;">View Live Google Map</a>
             </div>
         </div>
+    </div>
+
+    <div id="sponsorsView" style="display:none; padding: 2rem 1.5rem; max-width: 900px; margin: 0 auto; text-align: center;">
+        <h2 style="margin-bottom: 2rem;">Thank You to Our Sponsors</h2>
+        <div style="display: flex; flex-wrap: wrap; justify-content: center; align-items: center; gap: 2.5rem 3rem;">
+            <img src="images/sponsors/logo_fisher-1.png" style="height: 110px; object-fit: contain;" alt="Fisher College of Business">
+            <img src="images/sponsors/mack-institute-logo-1.png" style="height: 110px; object-fit: contain;" alt="Mack Institute">
+            <img src="images/sponsors/mit_logo-1.jpg" style="height: 110px; object-fit: contain;" alt="MIT">
+            <img src="images/sponsors/sacstate_logo-1.jpg" style="height: 110px; object-fit: contain;" alt="Sacramento State">
+            <img src="images/sponsors/sbs_logo_rgb_keyline-1.png" style="height: 110px; object-fit: contain;" alt="SBS">
+            <img src="images/sponsors/vcubusiness_logo-1.jpg" style="height: 110px; object-fit: contain;" alt="VCU Business">
+            <img src="images/sponsors/wsb_madison-logo-2.png" style="height: 110px; object-fit: contain;" alt="Wisconsin School of Business">
+        </div>
+        <h2 style="margin-top: 3rem; margin-bottom: 1.5rem;">Thank You to the ISA Conference Committee (ISACC)</h2>
+        <table style="margin: 0 auto; border-collapse: collapse; text-align: left;">
+            <tr><td style="padding: 0.4rem 1rem 0.4rem 0; font-weight: 600; white-space: nowrap;">John Paul Helveston</td><td style="padding: 0.4rem 0; color: #555;">2026 Annual Conference Chair, George Washington University</td></tr>
+            <tr><td style="padding: 0.4rem 1rem 0.4rem 0; font-weight: 600; white-space: nowrap;">John Gray</td><td style="padding: 0.4rem 0; color: #555;">ISA President, The Ohio State University</td></tr>
+            <tr><td style="padding: 0.4rem 1rem 0.4rem 0; font-weight: 600; white-space: nowrap;">Edward Anderson</td><td style="padding: 0.4rem 0; color: #555;">ISA Vice President, The University of Texas, Austin</td></tr>
+            <tr><td style="padding: 0.4rem 1rem 0.4rem 0; font-weight: 600; white-space: nowrap;">David M. Hart</td><td style="padding: 0.4rem 0; color: #555;">DC ISACC, George Mason University</td></tr>
+            <tr><td style="padding: 0.4rem 1rem 0.4rem 0; font-weight: 600; white-space: nowrap;">Andrew Reamer</td><td style="padding: 0.4rem 0; color: #555;">ISA Industrial Policy, George Washington University</td></tr>
+            <tr><td style="padding: 0.4rem 1rem 0.4rem 0; font-weight: 600; white-space: nowrap;">Benn Lawson</td><td style="padding: 0.4rem 0; color: #555;">2026 International Conference Chair; ISA Non-U.S. Strategy and Programming, University of Oxford</td></tr>
+            <tr><td style="padding: 0.4rem 1rem 0.4rem 0; font-weight: 600; white-space: nowrap;">Allison Forbes</td><td style="padding: 0.4rem 0; color: #555;">DC ISACC, Center for Regional Economic Competitiveness</td></tr>
+            <tr><td style="padding: 0.4rem 1rem 0.4rem 0; font-weight: 600; white-space: nowrap;">Monica Gorman</td><td style="padding: 0.4rem 0; color: #555;">ISA Industrial Policy, Crowell Global Advisors</td></tr>
+            <tr><td style="padding: 0.4rem 1rem 0.4rem 0; font-weight: 600; white-space: nowrap;">Jeff Furman</td><td style="padding: 0.4rem 0; color: #555;">ISA Early Career Development Committee Chair, Boston University</td></tr>
+            <tr><td style="padding: 0.4rem 1rem 0.4rem 0; font-weight: 600; white-space: nowrap;">Zach Wright</td><td style="padding: 0.4rem 0; color: #555;">2027 Annual Conference Chair, Brigham Young University</td></tr>
+        </table>
     </div>
 
     <div id="speakersView" class="speakers-view" style="display:none;">
@@ -1388,6 +1415,7 @@
             document.getElementById('speakersView').style.display  = view === 'speakers'  ? '' : 'none';
             document.getElementById('awardsView').style.display    = view === 'awards'    ? '' : 'none';
             document.getElementById('mapView').style.display       = view === 'map'       ? '' : 'none';
+            document.getElementById('sponsorsView').style.display   = view === 'sponsors'  ? '' : 'none';
             document.getElementById('mobileFilterToggle').style.display = view === 'schedule' ? '' : 'none';
         }
 

@@ -476,6 +476,10 @@ for (i in seq_len(nrow(awards))) {
       )
       cat("\\vspace{0.4em}\n\n")
     }
+    # Page break before Gomory award
+    if (r$award == "Ralph Gomory Best Industry Studies Paper Award") {
+      cat("\\newpage\n")
+    }
     # Open new award: name + description
     cat(
       "\\noindent\\textcolor{event}{\\textbf{",
@@ -1330,4 +1334,67 @@ for (b in seq_len(nrow(all_blocks))) {
     }
   }
 }
+```
+
+```{=latex}
+\newpage
+\thispagestyle{empty}
+\markboth{}{}
+\pdfbookmark[0]{Sponsors}{sponsors}
+\vspace*{\fill}
+\begin{center}
+  {\Large\textbf{Thank You to Our Sponsors}}
+\end{center}
+\vspace{1.2em}
+\begin{center}
+  \includegraphics[height=0.95in]{images/sponsors/logo_fisher-1.png}\hspace{2em}
+  \includegraphics[height=0.95in]{images/sponsors/mack-institute-logo-1.png}\hspace{2em}
+  \includegraphics[height=0.95in]{images/sponsors/mit_logo-1.jpg}
+\end{center}
+\vspace{1.2em}
+\begin{center}
+  \includegraphics[height=0.95in]{images/sponsors/sacstate_logo-1.jpg}\hspace{2em}
+  \includegraphics[height=0.95in]{images/sponsors/sbs_logo_rgb_keyline-1.png}\hspace{2em}
+  \includegraphics[height=0.95in]{images/sponsors/vcubusiness_logo-1.jpg}
+\end{center}
+\vspace{1.2em}
+\begin{center}
+  \includegraphics[height=0.95in]{images/sponsors/wsb_madison-logo-2.png}
+\end{center}
+\vspace{1.5em}
+\begin{center}
+  {\Large\textbf{Thank You to the ISA Conference Committee (ISACC)}}
+\end{center}
+\vspace{0.8em}
+\begin{center}
+\begin{tabular}{lp{0.62\textwidth}}
+  John Paul Helveston & \textit{2026 Annual Conference Chair, George Washington University} \\[0.3em]
+  John Gray & \textit{ISA President, The Ohio State University} \\[0.3em]
+  Edward Anderson & \textit{ISA Vice President, The University of Texas, Austin} \\[0.3em]
+  David M. Hart & \textit{DC ISACC, George Mason University} \\[0.3em]
+  Andrew Reamer & \textit{ISA Industrial Policy, George Washington University} \\[0.3em]
+  Benn Lawson & \textit{2026 International Conference Chair; ISA Non-U.S. Strategy and Programming, University of Oxford} \\[0.3em]
+  Allison Forbes & \textit{DC ISACC, Center for Regional Economic Competitiveness} \\[0.3em]
+  Monica Gorman & \textit{ISA Industrial Policy, Crowell Global Advisors} \\[0.3em]
+  Jeff Furman & \textit{ISA Early Career Development Committee Chair and Dissertation Award Chair, Boston University} \\[0.3em]
+  Zach Wright & \textit{2027 Annual Conference Chair, Brigham Young University} \\
+\end{tabular}
+\end{center}
+\vspace*{\fill}
+\newpage
+```
+
+```{=latex}
+\thispagestyle{empty}
+\markboth{}{}
+\pdfbookmark[0]{ISA 2027}{isa2027}
+\vspace*{\fill}
+\begin{center}
+  {\Large\textbf{Join Us Next Year!}}\\[0.8em]
+  {\LARGE\textbf{ISA 2027 Annual Conference}}\\[0.5em]
+  {\large Brigham Young University $\bullet$ Provo, Utah}\\[2em]
+  \includegraphics[height=1in]{images/byu-logo.png}\\[1.5em]
+  \includegraphics[width=\textwidth, keepaspectratio]{images/byu.png}
+\end{center}
+\vspace*{\fill}
 ```
