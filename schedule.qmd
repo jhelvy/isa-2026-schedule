@@ -436,20 +436,10 @@ President, ISA
 \end{center}
 
 \vspace{0.5em}
-\noindent
-\begin{minipage}[c]{0.65\textwidth}
-  \begin{enumerate} \large
-    \item Milken Institute for Public Health
-    \item Foggy Bottom Metro Stop
-    \item Science and Engineering Hall (SEH)
-    \item Student Center
-  \end{enumerate}
-\end{minipage}\hfill
-\begin{minipage}[c]{0.3\textwidth}
-  \centering
+\begin{center}
   \includegraphics[width=1.4in]{images/qr-map.png}\\[0.4em]
   {\normalsize Scan for interactive map}
-\end{minipage}
+\end{center}
 \newpage
 ```
 

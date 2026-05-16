@@ -1,4 +1,4 @@
-SCHEDULE_SEED <- 42
+SCHEDULE_SEED <- 123
 
 source(here::here("code", "setup.R"))
 
@@ -65,6 +65,7 @@ date_restrictions <- list(
 date_exclusions <- list(
   `133` = "2026-06-03", # Sustainable Innovation, Energy, and Mobility
   `148` = "2026-06-03",
+  `50` = "2026-06-03",
   `36` = "2026-06-03",
   `51` = "2026-06-03",
   `120` = "2026-06-05",

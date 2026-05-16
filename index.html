@@ -838,14 +838,16 @@
         <button class="view-btn" data-view="map">Map</button>
     </nav>
 
-    <div id="mapView" style="display:none; width:100%; height:calc(100vh - 120px);">
-        <iframe
-            src="https://www.google.com/maps/d/embed?mid=1YxxEPfjWhI0q6cc99z3QuXxW8Ew4Xrc&ll=38.901013287067144%2C-77.04902175000001&z=18"
-            width="100%"
-            height="100%"
-            style="border:0;"
-            allowfullscreen>
-        </iframe>
+    <div id="mapView" style="display:none; padding: 1.5rem; max-width: 900px; margin: 0 auto;">
+        <h2 style="margin-bottom: 1rem;">Map of the George Washington University</h2>
+        <div style="display:flex; align-items:flex-start; gap: 1.5rem;">
+            <img src="images/map.png" style="flex:1; min-width:0; display:block;" alt="GWU Venue Map">
+            <div style="flex-shrink:0; width:160px; display:flex; flex-direction:column; align-items:center; gap:1rem; padding-top:0.5rem;">
+                <img src="images/qr-map.png" style="width:140px;" alt="QR code for interactive map">
+                <p style="margin:0; font-size:0.9rem; color:#555; text-align:center;">Scan for interactive map</p>
+                <a href="https://www.google.com/maps/d/viewer?mid=1YxxEPfjWhI0q6cc99z3QuXxW8Ew4Xrc" target="_blank" rel="noopener" style="display:inline-block; padding:0.6rem 1.2rem; background:#17A2B8; color:#fff; border-radius:4px; text-decoration:none; font-size:1rem; text-align:center;">View Live Google Map</a>
+            </div>
+        </div>
     </div>
 
     <div id="speakersView" class="speakers-view" style="display:none;">

@@ -17,7 +17,6 @@ id,session_id,session_name
 24,5,Industrial Policy and Market Governance
 87,5,Industrial Policy and Market Governance
 73,6,Industry Classification and Regulatory Policy
-110,6,Industry Classification and Regulatory Policy
 134,6,Industry Classification and Regulatory Policy
 181,6,Industry Classification and Regulatory Policy
 30,7,Biomedical Innovation & Organizational Ecosystems
@@ -104,6 +103,7 @@ id,session_id,session_name
 37,29,Digital Platforms and Last-Mile Delivery
 61,29,Digital Platforms and Last-Mile Delivery
 98,29,Digital Platforms and Last-Mile Delivery
+2004,29,Digital Platforms and Last-Mile Delivery
 36,30,Supply Chain Risk and Resilience
 156,30,Supply Chain Risk and Resilience
 168,30,Supply Chain Risk and Resilience
@@ -123,11 +123,13 @@ id,session_id,session_name
 28,34,Digital Technology in Manufacturing
 34,34,Digital Technology in Manufacturing
 183,34,Digital Technology in Manufacturing
-198,34,Digital Technology in Manufacturing
 97,35,ESG in Supply Chains
 128,35,ESG in Supply Chains
 143,35,ESG in Supply Chains
 154,35,ESG in Supply Chains
+110,36,AI and Data Tools for Manufacturing and Industry Intelligence
+198,36,AI and Data Tools for Manufacturing and Industry Intelligence
+2003,36,AI and Data Tools for Manufacturing and Industry Intelligence
 16,37,AI and Digital Economy Policy
 157,37,AI and Digital Economy Policy
 196,37,AI and Digital Economy Policy
