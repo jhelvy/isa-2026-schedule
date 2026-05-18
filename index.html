@@ -377,6 +377,29 @@
             margin-bottom: 0.5rem;
         }
 
+        .award-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 3px;
+            font-size: 0.72em;
+            font-weight: 600;
+            padding: 2px 7px;
+            border-radius: 20px;
+            vertical-align: middle;
+            margin-left: 6px;
+            white-space: nowrap;
+        }
+        .award-badge-winner {
+            background: #fff3cd;
+            color: #856404;
+            border: 1px solid #ffd700;
+        }
+        .award-badge-runnerup {
+            background: #f0f0f0;
+            color: #555;
+            border: 1px solid #aaa;
+        }
+
         .paper-authors {
             color: #6c757d;
             font-size: 0.9em;
@@ -955,6 +978,7 @@
         let biosData = [];
         let bioMap = {};
         let awardsData = [];
+        let awardMap = {};
         let allTracks = new Set();
         let allTimeSlotsData = [];
         const seenSlotKeys = new Set();
@@ -980,6 +1004,7 @@
                 biosData = bios;
                 awardsData = awards;
                 buildBioMap();
+                buildAwardMap();
 
                 data.forEach(item => {
                     if (item.category) allTracks.add(item.category);
@@ -1246,9 +1271,13 @@
         }
 
         function renderPaper(paper) {
+            const aw = getAwardForTitle(paper.title);
+            const awardBadge = aw
+                ? `<span class="award-badge ${aw.rank === 'Winner' ? 'award-badge-winner' : 'award-badge-runnerup'}">${aw.rank === 'Winner' ? '🏆' : '🥈'} ${escapeHtml(aw.rank)}: ${escapeHtml(aw.award)}</span>`
+                : '';
             return `
                 <div class="paper">
-                    <div class="paper-title">${escapeHtml(paper.title || 'Untitled')}</div>
+                    <div class="paper-title">${escapeHtml(paper.title || 'Untitled')}${awardBadge}</div>
                     ${paper.authors ? `<div class="paper-authors">${escapeHtml(paper.authors)}</div>` : ''}
                     ${paper.abstract ? `
                         <button class="abstract-toggle" onclick="toggleAbstract(this, event)">View Abstract</button>
@@ -1377,6 +1406,34 @@
                 else addKey('Dr. ' + bio.name);
                 if (bio.name.includes('-')) addKey(bio.name.replace(/-/g, ' '));
             });
+        }
+
+        function normalizeTitle(t) {
+            return (t || '').toLowerCase().trim()
+                .replace(/[‘’]/g, "'")
+                .replace(/[“”]/g, '"');
+        }
+
+        function buildAwardMap() {
+            awardMap = {};
+            awardsData.forEach(row => {
+                if (!row.paper_title) return;
+                awardMap[normalizeTitle(row.paper_title)] = {
+                    award: row.award,
+                    rank:  row.rank
+                };
+            });
+        }
+
+        function getAwardForTitle(title) {
+            if (!title) return null;
+            const norm = normalizeTitle(title);
+            if (awardMap[norm]) return awardMap[norm];
+            // startsWith match (award title may be prefix of schedule title or vice versa)
+            for (const [k, v] of Object.entries(awardMap)) {
+                if (norm.startsWith(k) || k.startsWith(norm)) return v;
+            }
+            return null;
         }
 
         function findBioForName(panelistStr) {

@@ -25,6 +25,7 @@ format:
         \definecolor{policy}{HTML}{D55E00}
         \definecolor{sustainability}{HTML}{009E73}
         \definecolor{event}{HTML}{17A2B8}
+        \definecolor{awardgold}{HTML}{B8860B}
         \usepackage{wrapfig}
         \usepackage{scrlayer-scrpage}
         \pagestyle{scrheadings}
@@ -408,7 +409,7 @@ Thank you for including the Industry Studies Association as part of your confere
 
 Industry studies research is by its nature interdisciplinary, focused more on the interesting industry-specific phenomena and/or a policy dilemma. You may find yourself in a session diving deeply into a single industry from multiple perspectives, or one examining an issue across industries.
 
-I want to thank John Paul Helveston (“JPH”) for chairing the committee this year and serving as our host. He, along with a distinguished committee of local DC talent of Allison Forbes, Monica Gorman, David Hart, and Andrew Reamer helped to put together an amazing program, with many highlights including the Wednesday morning “excursion” into the world of DC entities that influence public policy. JPH also spearheaded the modernization of our program...he is the one to thank for our first ever searchable, online program app (he noted that he wanted to thank Claude Code for doing the lion's share!) and the thoughtful organization of the papers and special sessions.
+I want to thank John Paul Helveston ("JPH") for chairing the committee this year and serving as our host. He, along with a distinguished committee of local DC talent of Allison Forbes, Monica Gorman, David Hart, and Andrew Reamer helped to put together an amazing program, with many highlights including the Wednesday morning "excursion" into the world of DC entities that influence public policy. JPH also spearheaded the modernization of our program...he is the one to thank for our first ever searchable, online program app (he noted that he wanted to thank Claude Code for doing the lion's share!) and the thoughtful organization of the papers and special sessions.
 
 I also want to recognize our program manager, Renae Sullivan, who is now just over a year into her job, for leading the great improvements you have probably noticed on our website, communication, and professionalism. While she is still our only paid employee, she has managed to spearhead many improvements. I also want to recognize our treasurer, Jeff Shockley. He (and Renae) worked many hours over the December-February time frame as we transitioned from outdated and clunky MemberClicks to our new, much easier to manage platform, Novi. Taken together, we will soon be able to focus less on just executing the basics well but thinking creatively about ways to make more impact through membership growth, as well as additional partnerships and sources of funding.
 
@@ -905,6 +906,52 @@ cat("```\n\n")
 ```{r}
 #| label: schedule
 #| results: asis
+# Build award lookup: normalize titles and map to {award, rank}
+normalize_title <- function(t) {
+  t %>%
+    str_to_lower() %>%
+    str_trim() %>%
+    str_replace_all("\u2018|\u2019", "'") %>%
+    str_replace_all("\u201c|\u201d", '"')
+}
+
+awards_lookup <- read_csv(
+  file.path('data', 'awards.csv'),
+  show_col_types = FALSE,
+  col_types = cols(.default = "c")
+) %>%
+  select(paper_title, award, rank) %>%
+  mutate(norm_title = normalize_title(paper_title))
+
+get_award_label <- function(title) {
+  norm <- normalize_title(title)
+  m <- awards_lookup %>%
+    filter(
+      norm_title == norm |
+        startsWith(norm, norm_title) |
+        startsWith(norm_title, norm)
+    )
+  if (nrow(m) == 0) {
+    return("")
+  }
+  r <- m$rank[1]
+  award_name <- m$award[1]
+  short_name <- escape_latex(award_name)
+  if (r == "Winner") {
+    paste0(
+      " \\textcolor{awardgold}{\\small\\,$\\star$ \\textit{Winner: ",
+      short_name,
+      "}}"
+    )
+  } else {
+    paste0(
+      " \\textcolor{gray}{\\small\\,$\\star$ \\textit{Runner-up: ",
+      short_name,
+      "}}"
+    )
+  }
+}
+
 # Build paper time blocks (one per time slot)
 paper_blocks <- sessions %>%
   filter(!is.na(time_slot)) %>%
@@ -1270,6 +1317,7 @@ for (b in seq_len(nrow(all_blocks))) {
               escape_latex(papers$authors[m]),
               "** — ",
               escape_latex(papers$title[m]),
+              get_award_label(papers$title[m]),
               "\n\n",
               sep = ""
             )
