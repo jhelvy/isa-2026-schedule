@@ -482,15 +482,10 @@
         }
 
         .panel-description {
-            margin-top: 0.75rem;
-            padding: 1rem;
-            background: #f8f9fa;
-            border-left: 4px solid #6f42c1;
-            border-radius: 0.375rem;
+            font-size: 0.95em;
+            margin-bottom: 0.75rem;
             color: #495057;
             line-height: 1.7;
-            font-size: 0.95em;
-            white-space: pre-line;
         }
 
         .no-results {
@@ -1181,7 +1176,7 @@
 
                 if (!isEvent) {
                     totalSessions++;
-                    if (!special) totalPapers += session.papers.length;
+                    if (!special && session.session_name !== 'Award Winners Panel') totalPapers += session.papers.length;
                 }
 
                 const timeStr = session.start_time && session.end_time
@@ -1219,7 +1214,10 @@
                     ? '<span class="session-badge badge-special">Special Session</span>'
                     : '';
 
-                const typeLabel = session.type === 'plenary'        ? '🎤 Plenary Session'  :
+                const isAwp = session.session_name === 'Award Winners Panel';
+
+                const typeLabel = isAwp                              ? '🏆 Award Winners Panel' :
+                                  session.type === 'plenary'        ? '🎤 Plenary Session'  :
                                   session.type === 'special_session' ? '🎤 Special Session' :
                                   `📄 ${session.papers.length} paper${session.papers.length !== 1 ? 's' : ''}`;
 
@@ -1303,7 +1301,7 @@
             }
 
             const desc = panel.abstract && panel.abstract.trim() && panel.abstract.trim() !== 'TBD'
-                ? `<div class="panel-description">${escapeHtml(panel.abstract.trim())}</div>`
+                ? `<div class="panel-description"><strong>Description:</strong> ${escapeHtml(panel.abstract.trim())}</div>`
                 : '';
 
             return `<div class="paper">${mod}${panelists}${desc}</div>`;
