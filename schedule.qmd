@@ -399,6 +399,7 @@ sessions <- sessions %>%
 
 \vspace{1em}
 
+\begingroup
 \raggedright
 \begin{wrapfigure}{r}{0.28\textwidth}
   \vspace{-0.5em}
@@ -423,6 +424,7 @@ I can speak on behalf of the entire ISA board: We are very happy that you are he
 \vspace{2em}
 \noindent John Gray\\
 President, ISA
+\endgroup
 \newpage
 ```
 
