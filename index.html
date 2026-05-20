@@ -976,6 +976,7 @@
         let awardMap = {};
         let allTracks = new Set();
         let allTimeSlotsData = [];
+        let excursionsData = [];
         const seenSlotKeys = new Set();
 
         const trackMap = {
@@ -992,12 +993,14 @@
         Promise.all([
             fetch('schedule_data.json').then(r => r.json()),
             fetch('bios_data.json').then(r => r.json()),
-            fetch('awards_data.json').then(r => r.json())
+            fetch('awards_data.json').then(r => r.json()),
+            fetch('excursions_data.json').then(r => r.json()).catch(() => [])
         ])
-            .then(([data, bios, awards]) => {
+            .then(([data, bios, awards, excursions]) => {
                 scheduleData = data;
                 biosData = bios;
                 awardsData = awards;
+                excursionsData = excursions;
                 buildBioMap();
                 buildAwardMap();
 
@@ -1111,7 +1114,8 @@
                     (item.abstract     && item.abstract.toLowerCase().includes(searchTerm))     ||
                     (item.moderator    && item.moderator.toLowerCase().includes(searchTerm))     ||
                     (item.discussant   && item.discussant.toLowerCase().includes(searchTerm))   ||
-                    (item.session_chair && item.session_chair.toLowerCase().includes(searchTerm));
+                    (item.session_chair && item.session_chair.toLowerCase().includes(searchTerm)) ||
+                    (item.type === 'event' && getExcursionSearchText(item.session_name).includes(searchTerm));
 
                 const dayMatch  = !dayFilter   || item.day === dayFilter;
                 const slotMatch = !slotFilter  || item.time_slot === slotFilter;
@@ -1183,9 +1187,11 @@
                     ? `${formatTime(session.start_time)} – ${formatTime(session.end_time)}`
                     : session.time_slot;
 
-                // Render events as a non-expandable banner card
+                // Render events: excursions are expandable, all others are non-expandable banner cards
                 if (isEvent) {
-                    html += `
+                    const excursion = findExcursion(session.session_name);
+                    if (!excursion) {
+                        html += `
                     <div class="session-group cat-event event-card">
                         <div class="session-header">
                             <div class="session-meta">
@@ -1201,6 +1207,29 @@
                                     </div>
                                 </div>
                             </div>
+                        </div>
+                    </div>`;
+                        return;
+                    }
+                    html += `
+                    <div class="session-group cat-event">
+                        <div class="session-header" onclick="toggleSession(this)">
+                            <div class="session-meta">
+                                <div>
+                                    <div class="session-title-row">
+                                        <span class="session-title">${escapeHtml(session.session_name)}</span>
+                                        <span class="session-badge badge-event">Excursion</span>
+                                    </div>
+                                    <div class="session-info">
+                                        <span>📅 ${session.day}, ${formatDate(session.date)}</span>
+                                        <span>🕒 ${timeStr}</span>
+                                        <span>📍 ${escapeHtml(excursion.meeting_point || session.room || 'TBA')}</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="session-papers">
+                            ${renderExcursionContent(excursion)}
                         </div>
                     </div>`;
                     return;
@@ -1266,6 +1295,46 @@
             scheduleDiv.innerHTML = html;
             document.getElementById('sessionCount').textContent = totalSessions;
             document.getElementById('paperCount').textContent = totalPapers;
+        }
+
+        function findExcursion(session_name) {
+            return excursionsData.find(e => e.session_name === session_name) || null;
+        }
+
+        function getExcursionSearchText(session_name) {
+            const ex = findExcursion(session_name);
+            if (!ex) return '';
+            let text = (ex.description || '') + ' ' + (ex.meeting_point || '');
+            const orgs = Array.isArray(ex.organizations) ? ex.organizations : [];
+            orgs.forEach(org => {
+                text += ' ' + (org.name || '');
+                if (org.panel_title) text += ' ' + org.panel_title;
+                const spks = Array.isArray(org.speakers) ? org.speakers : [];
+                spks.forEach(s => { text += ' ' + s.name + ' ' + s.role; });
+            });
+            return text.toLowerCase();
+        }
+
+        function renderExcursionContent(excursion) {
+            let html = '';
+            if (excursion.description) {
+                html += `<div class="panel-description">${escapeHtml(excursion.description)}</div>`;
+            }
+            const orgs = Array.isArray(excursion.organizations) ? excursion.organizations : [];
+            orgs.forEach(org => {
+                html += `<div style="margin-top:0.8em">`;
+                html += `<strong>${escapeHtml(org.name)}</strong>`;
+                if (org.panel_title) {
+                    html += `<div><em>${escapeHtml(org.panel_title)}</em></div>`;
+                }
+                html += `<ul style="margin:0.3em 0 0 1em;padding:0">`;
+                const spks = Array.isArray(org.speakers) ? org.speakers : [];
+                spks.forEach(s => {
+                    html += `<li>${escapeHtml(s.name)}, <em>${escapeHtml(s.role)}</em></li>`;
+                });
+                html += `</ul></div>`;
+            });
+            return `<div class="paper">${html}</div>`;
         }
 
         function renderPaper(paper) {

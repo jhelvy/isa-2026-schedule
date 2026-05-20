@@ -191,6 +191,7 @@ events <- read_csv(
     # Computed from start_secs to avoid fragile string joins
     time_order = case_when(
       weekday == "Wednesday" & start_secs == 28800L ~ 0.10,  # 8:00 AM
+      weekday == "Wednesday" & start_secs == 34200L ~ 0.12,  # 9:30 AM
       weekday == "Wednesday" & start_secs == 43200L ~ 0.30,  # 12:00 PM
       weekday == "Wednesday" & start_secs == 50400L ~ 0.95,  # 2:00 PM (PDW)
       weekday == "Wednesday" & start_secs == 54600L ~ 1.50,  # 3:10 PM
@@ -253,3 +254,44 @@ awards <- read_csv('data/awards.csv', show_col_types = FALSE) %>%
   arrange(award_order, desc(rank == "Winner"))
 write_json(awards, 'awards_data.json', auto_unbox = TRUE, pretty = TRUE)
 cat(sprintf("Written %d award entries to awards_data.json\n", nrow(awards)))
+
+# Read excursion data and export structured JSON
+excursions_meta     <- read_csv('data/excursions.csv', show_col_types = FALSE)
+excursion_speakers  <- read_csv('data/excursion-speakers.csv', show_col_types = FALSE)
+
+excursions_list <- lapply(seq_len(nrow(excursions_meta)), function(i) {
+  ex   <- excursions_meta[i, ]
+  spkrs <- excursion_speakers %>% filter(excursion_id == ex$id)
+
+  entry <- list(
+    id            = ex$id[[1]],
+    option        = as.integer(ex$option[[1]]),
+    session_name  = ex$session_name[[1]],
+    date          = as.character(ex$date[[1]]),
+    day           = ex$day[[1]],
+    start_time    = ex$start_time[[1]],
+    end_time      = ex$end_time[[1]],
+    meeting_point = ex$meeting_point[[1]],
+    description   = ex$description[[1]]
+  )
+
+  if (nrow(spkrs) > 0) {
+    org_names <- unique(spkrs$org_name)
+    entry$organizations <- lapply(org_names, function(org_nm) {
+      org_rows        <- spkrs %>% filter(org_name == org_nm)
+      panel_title_val <- org_rows$org_panel_title[[1]]
+      list(
+        name        = org_nm,
+        panel_title = if (is.na(panel_title_val)) NULL else panel_title_val,
+        speakers    = lapply(seq_len(nrow(org_rows)), function(k) {
+          list(name = org_rows$speaker_name[[k]], role = org_rows$speaker_role[[k]])
+        })
+      )
+    })
+  }
+
+  entry
+})
+
+write_json(excursions_list, 'excursions_data.json', auto_unbox = TRUE, pretty = TRUE)
+cat(sprintf("Written %d excursion entries to excursions_data.json\n", length(excursions_list)))
