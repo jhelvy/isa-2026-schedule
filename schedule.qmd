@@ -1540,27 +1540,75 @@ for (b in seq_len(nrow(all_blocks))) {
 \begin{center}
   \includegraphics[height=0.95in]{images/sponsors/wsb_madison-logo-2.png}
 \end{center}
-\vspace{1.5em}
-\begin{center}
-  {\Large\textbf{Thank You to the ISA Conference Committee (ISACC)}}
-\end{center}
-\vspace{0.8em}
-\begin{center}
-\begin{tabular}{lp{0.62\textwidth}}
-  John Paul Helveston & \textit{2026 Annual Conference Chair, George Washington University} \\[0.3em]
-  John Gray & \textit{ISA President, The Ohio State University} \\[0.3em]
-  Edward Anderson & \textit{ISA Vice President, The University of Texas, Austin} \\[0.3em]
-  David M. Hart & \textit{DC ISACC, George Mason University} \\[0.3em]
-  Andrew Reamer & \textit{ISA Industrial Policy, George Washington University} \\[0.3em]
-  Benn Lawson & \textit{2026 International Conference Chair; ISA Non-U.S. Strategy and Programming, University of Oxford} \\[0.3em]
-  Allison Forbes & \textit{DC ISACC, Center for Regional Economic Competitiveness} \\[0.3em]
-  Monica Gorman & \textit{ISA Industrial Policy, Crowell Global Advisors} \\[0.3em]
-  Jeff Furman & \textit{ISA Early Career Development Committee Chair and Dissertation Award Chair, Boston University} \\[0.3em]
-  Zach Wright & \textit{2027 Annual Conference Chair, Brigham Young University} \\
-\end{tabular}
-\end{center}
 \vspace*{\fill}
 \newpage
+```
+
+```{r}
+#| label: committee-page
+#| results: asis
+committee <- read_csv(
+  file.path('data', 'committee.csv'),
+  show_col_types = FALSE
+) %>%
+  arrange(sort_order)
+
+board <- committee %>% filter(group == "board")
+iscc_grp <- committee %>% filter(group == "iscc")
+streams <- committee %>% filter(group == "stream_chairs")
+
+make_rows <- function(df) {
+  rows <- vapply(
+    seq_len(nrow(df)),
+    function(i) {
+      nm <- escape_latex(df$name[i])
+      rol <- escape_latex(df$role[i])
+      aff <- escape_latex(df$affiliation[i])
+      sep <- if (i < nrow(df)) " \\\\[0.2em]\n" else " \\\\\n"
+      paste0("  \\textbf{", nm, "} & \\textit{", rol, ", ", aff, "}", sep)
+    },
+    character(1)
+  )
+  paste(rows, collapse = "")
+}
+
+make_stream_rows <- function(df) {
+  rows <- vapply(
+    seq_len(nrow(df)),
+    function(i) {
+      nm <- escape_latex(df$name[i])
+      rol <- escape_latex(df$role[i])
+      aff <- escape_latex(df$affiliation[i])
+      sep <- if (i < nrow(df)) " \\\\[0.2em]\n" else " \\\\\n"
+      paste0("  \\textbf{", rol, "}---", nm, " & \\textit{", aff, "}", sep)
+    },
+    character(1)
+  )
+  paste(rows, collapse = "")
+}
+
+cat("```{=latex}\n")
+cat("\\newpage\n")
+cat("\\thispagestyle{empty}\n")
+cat("\\markboth{}{}\n")
+cat("\\pdfbookmark[0]{ISA Leadership}{leadership}\n\n")
+cat("{\\large\\textbf{\\underline{Board of Directors}}}\\\\[0.6em]\n")
+cat("{\\small\n\\begin{tabular}{lp{0.60\\textwidth}}\n")
+cat(make_rows(board))
+cat("\\end{tabular}\n}\n\n")
+cat("\\vspace{1.2em}\n")
+cat(
+  "{\\large\\textbf{\\underline{Industry Studies Conference Committee (ISCC)}}}\\\\[0.6em]\n"
+)
+cat("{\\small\n\\begin{tabular}{lp{0.60\\textwidth}}\n")
+cat(make_rows(iscc_grp))
+cat("\\end{tabular}\n}\n\n")
+cat("\\vspace{0.8em}\n")
+cat("{\\large\\textbf{\\underline{Research Stream Chairs}}}\\\\[0.6em]\n")
+cat("{\\small\n\\begin{tabular}{lp{0.58\\textwidth}}\n")
+cat(make_stream_rows(streams))
+cat("\\end{tabular}\n}\n")
+cat("```\n")
 ```
 
 ```{=latex}

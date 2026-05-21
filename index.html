@@ -917,19 +917,7 @@
             <img src="images/sponsors/vcubusiness_logo-1.jpg" style="height: 110px; object-fit: contain;" alt="VCU Business">
             <img src="images/sponsors/wsb_madison-logo-2.png" style="height: 110px; object-fit: contain;" alt="Wisconsin School of Business">
         </div>
-        <h2 style="margin-top: 3rem; margin-bottom: 1.5rem;">Thank You to the ISA Conference Committee (ISACC)</h2>
-        <table style="margin: 0 auto; border-collapse: collapse; text-align: left;">
-            <tr><td style="padding: 0.4rem 1rem 0.4rem 0; font-weight: 600; white-space: nowrap;">John Paul Helveston</td><td style="padding: 0.4rem 0; color: #555;">2026 Annual Conference Chair, George Washington University</td></tr>
-            <tr><td style="padding: 0.4rem 1rem 0.4rem 0; font-weight: 600; white-space: nowrap;">John Gray</td><td style="padding: 0.4rem 0; color: #555;">ISA President, The Ohio State University</td></tr>
-            <tr><td style="padding: 0.4rem 1rem 0.4rem 0; font-weight: 600; white-space: nowrap;">Edward Anderson</td><td style="padding: 0.4rem 0; color: #555;">ISA Vice President, The University of Texas, Austin</td></tr>
-            <tr><td style="padding: 0.4rem 1rem 0.4rem 0; font-weight: 600; white-space: nowrap;">David M. Hart</td><td style="padding: 0.4rem 0; color: #555;">DC ISACC, George Mason University</td></tr>
-            <tr><td style="padding: 0.4rem 1rem 0.4rem 0; font-weight: 600; white-space: nowrap;">Andrew Reamer</td><td style="padding: 0.4rem 0; color: #555;">ISA Industrial Policy, George Washington University</td></tr>
-            <tr><td style="padding: 0.4rem 1rem 0.4rem 0; font-weight: 600; white-space: nowrap;">Benn Lawson</td><td style="padding: 0.4rem 0; color: #555;">2026 International Conference Chair; ISA Non-U.S. Strategy and Programming, University of Oxford</td></tr>
-            <tr><td style="padding: 0.4rem 1rem 0.4rem 0; font-weight: 600; white-space: nowrap;">Allison Forbes</td><td style="padding: 0.4rem 0; color: #555;">DC ISACC, Center for Regional Economic Competitiveness</td></tr>
-            <tr><td style="padding: 0.4rem 1rem 0.4rem 0; font-weight: 600; white-space: nowrap;">Monica Gorman</td><td style="padding: 0.4rem 0; color: #555;">ISA Industrial Policy, Crowell Global Advisors</td></tr>
-            <tr><td style="padding: 0.4rem 1rem 0.4rem 0; font-weight: 600; white-space: nowrap;">Jeff Furman</td><td style="padding: 0.4rem 0; color: #555;">ISA Early Career Development Committee Chair, Boston University</td></tr>
-            <tr><td style="padding: 0.4rem 1rem 0.4rem 0; font-weight: 600; white-space: nowrap;">Zach Wright</td><td style="padding: 0.4rem 0; color: #555;">2027 Annual Conference Chair, Brigham Young University</td></tr>
-        </table>
+        <div id="committeeContainer" style="margin-top: 3rem;"></div>
     </div>
 
     <div id="speakersView" class="speakers-view" style="display:none;">
@@ -1014,6 +1002,7 @@
         let allTracks = new Set();
         let allTimeSlotsData = [];
         let excursionsData = [];
+        let committeeData = {};
         const seenSlotKeys = new Set();
 
         const trackMap = {
@@ -1031,13 +1020,16 @@
             fetch('schedule_data.json').then(r => r.json()),
             fetch('bios_data.json').then(r => r.json()),
             fetch('awards_data.json').then(r => r.json()),
-            fetch('excursions_data.json').then(r => r.json()).catch(() => [])
+            fetch('excursions_data.json').then(r => r.json()).catch(() => []),
+            fetch('committee_data.json').then(r => r.json()).catch(() => ({}))
         ])
-            .then(([data, bios, awards, excursions]) => {
+            .then(([data, bios, awards, excursions, committee]) => {
                 scheduleData = data;
                 biosData = bios;
                 awardsData = awards;
                 excursionsData = excursions;
+                committeeData = committee;
+                renderCommittee();
                 buildBioMap();
                 buildAwardMap();
 
@@ -1722,6 +1714,38 @@
             if (category.includes('Sustainable Innovation') || category.includes('Energy'))         return 'cat-sustainability';
             if (category.includes('Innovation') || category.includes('Entrepreneurship'))           return 'cat-innovation';
             return '';
+        }
+
+        // Committee rendering
+        function renderCommittee() {
+            const container = document.getElementById('committeeContainer');
+            if (!container || !committeeData.board) return;
+
+            function makeTable(members, isStream) {
+                const rows = members.map(m => {
+                    const left = isStream
+                        ? `<strong>${escapeHtml(m.role)}</strong>—${escapeHtml(m.name)}`
+                        : `<strong>${escapeHtml(m.name)}</strong>`;
+                    const right = isStream
+                        ? `<em>${escapeHtml(m.affiliation)}</em>`
+                        : `<em>${escapeHtml(m.role)}, ${escapeHtml(m.affiliation)}</em>`;
+                    return `<tr>
+                        <td style="padding:0.35rem 1.2rem 0.35rem 0; white-space:nowrap; vertical-align:top;">${left}</td>
+                        <td style="padding:0.35rem 0; color:#555; vertical-align:top;">${right}</td>
+                    </tr>`;
+                }).join('');
+                return `<table style="border-collapse:collapse; text-align:left;">${rows}</table>`;
+            }
+
+            container.innerHTML = `
+                <h2 style="margin-bottom:1.5rem;">Thank You to all the ISA Organizers!</h2>
+                <h3 style="margin:0 0 0.6rem; font-size:1.05rem; text-decoration:underline;">Board of Directors</h3>
+                ${makeTable(committeeData.board, false)}
+                <h3 style="margin:1.5rem 0 0.6rem; font-size:1.05rem; text-decoration:underline;">Industry Studies Conference Committee (ISCC)</h3>
+                ${makeTable(committeeData.iscc, false)}
+                <p style="margin:1.2rem 0 0.4rem; font-style:italic; font-weight:600;">Research Stream Chairs:</p>
+                ${makeTable(committeeData.stream_chairs, true)}
+            `;
         }
 
         // Lightbox

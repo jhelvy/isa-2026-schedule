@@ -305,3 +305,22 @@ excursions_list <- lapply(seq_len(nrow(excursions_meta)), function(i) {
 
 write_json(excursions_list, 'excursions_data.json', auto_unbox = TRUE, pretty = TRUE)
 cat(sprintf("Written %d excursion entries to excursions_data.json\n", length(excursions_list)))
+
+# Generate committee_data.json
+committee <- read_csv('data/committee.csv', show_col_types = FALSE) %>%
+  arrange(sort_order)
+
+to_records <- function(df) {
+  lapply(seq_len(nrow(df)), function(i) {
+    list(name = df$name[i], role = df$role[i], affiliation = df$affiliation[i])
+  })
+}
+
+committee_list <- list(
+  board         = to_records(committee %>% filter(group == "board")),
+  iscc          = to_records(committee %>% filter(group == "iscc")),
+  stream_chairs = to_records(committee %>% filter(group == "stream_chairs"))
+)
+
+write_json(committee_list, 'committee_data.json', auto_unbox = TRUE, pretty = TRUE)
+cat("Written committee data to committee_data.json\n")
