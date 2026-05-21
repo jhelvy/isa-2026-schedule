@@ -432,17 +432,36 @@ President, ISA
 \thispagestyle{empty}
 \markboth{}{}
 \pdfbookmark[0]{Venue Map}{map}
-{\Large\textbf{Map of the George Washington University}}
+{\Large\textbf{Map of conference locations at The George Washington University}}
 \vspace{0.6em}
 
 \begin{center}
-  \includegraphics[width=\textwidth, height=0.72\textheight, keepaspectratio]{images/map.png}
+  \includegraphics[width=\textwidth, height=0.72\textheight, keepaspectratio]{images/map.png}\\[0.6em]
+  {\large On 6/3, please enter SEH Building at main entrance on H st \& 22nd}
 \end{center}
 
 \vspace{0.5em}
 \begin{center}
   \includegraphics[width=1.4in]{images/qr-map.png}\\[0.4em]
-  {\normalsize Scan for interactive map}
+  {\normalsize Scan for interactive Google map}
+\end{center}
+\newpage
+
+\thispagestyle{empty}
+\markboth{}{}
+{\Large\textbf{Venue Floor Plans}}
+\vspace{0.2em}
+
+\begin{center}
+  \includegraphics[width=\textwidth, height=0.42\textheight, keepaspectratio]{images/gh-seh-b1.png}\\[0.2em]
+  {\normalsize\textit{Wednesday, June 3\\Classrooms on other floors will also be used for paper sessions}}
+\end{center}
+
+\vspace{0.1em}
+
+\begin{center}
+  \includegraphics[width=\textwidth, height=0.42\textheight, keepaspectratio]{images/gw-sc.png}\\[0.2em]
+  {\normalsize\textit{Thursday, June 4 \& Friday, June 5\\All programming will be on the 3rd floor these days}}
 \end{center}
 \newpage
 ```
@@ -1547,12 +1566,30 @@ for (b in seq_len(nrow(all_blocks))) {
 ```{=latex}
 \thispagestyle{empty}
 \markboth{}{}
+\pdfbookmark[0]{ISA 2026 International Conference}{isa2026intl}
+\vspace*{\fill}
+\begin{center}
+  {\Large\textbf{Join Us At Our First International Conference This Fall!}}\\[0.8em]
+  {\large Sa\"{i}d Business School, Oxford University $\bullet$ September 3 - 5, 2026 $\bullet$ Oxford, UK}\\[2em]
+  \includegraphics[height=2in]{images/sponsors/sbs_logo_rgb_keyline-1.png}\\[1.5em]
+  \includegraphics[width=\textwidth, keepaspectratio]{images/oxford.png}
+\end{center}
+\vspace*{\fill}
+```
+
+```{=latex}
+\newpage
+```
+
+```{=latex}
+\thispagestyle{empty}
+\markboth{}{}
 \pdfbookmark[0]{ISA 2027}{isa2027}
 \vspace*{\fill}
 \begin{center}
   {\Large\textbf{Join Us Next Year!}}\\[0.8em]
   {\LARGE\textbf{ISA 2027 Annual Conference}}\\[0.5em]
-  {\large Brigham Young University $\bullet$ Provo, Utah}\\[2em]
+  {\large Brigham Young University $\bullet$ May 26 - 28, 2027 $\bullet$ Provo, Utah}\\[2em]
   \includegraphics[height=1in]{images/byu-logo.png}\\[1.5em]
   \includegraphics[width=\textwidth, keepaspectratio]{images/byu.png}
 \end{center}
