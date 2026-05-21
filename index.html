@@ -851,7 +851,7 @@
 
     <nav class="view-nav">
         <button class="view-btn active" data-view="schedule">Schedule</button>
-        <button class="view-btn" data-view="speakers">Speakers</button>
+        <button class="view-btn" data-view="speakers">Special Session Speakers</button>
         <button class="view-btn" data-view="awards">Awards</button>
         <button class="view-btn" data-view="map">Map</button>
         <button class="view-btn" data-view="sponsors">Sponsors</button>
@@ -1305,10 +1305,12 @@
             const ex = findExcursion(session_name);
             if (!ex) return '';
             let text = (ex.description || '') + ' ' + (ex.meeting_point || '');
+            const timeline = Array.isArray(ex.timeline) ? ex.timeline : [];
+            timeline.forEach(item => { text += ' ' + item.activity; });
             const orgs = Array.isArray(ex.organizations) ? ex.organizations : [];
             orgs.forEach(org => {
                 text += ' ' + (org.name || '');
-                if (org.panel_title) text += ' ' + org.panel_title;
+                if (typeof org.panel_title === 'string' && org.panel_title.trim()) text += ' ' + org.panel_title;
                 const spks = Array.isArray(org.speakers) ? org.speakers : [];
                 spks.forEach(s => { text += ' ' + s.name + ' ' + s.role; });
             });
@@ -1317,23 +1319,60 @@
 
         function renderExcursionContent(excursion) {
             let html = '';
-            if (excursion.description) {
-                html += `<div class="panel-description">${escapeHtml(excursion.description)}</div>`;
-            }
+            const timeline = Array.isArray(excursion.timeline) ? excursion.timeline : [];
             const orgs = Array.isArray(excursion.organizations) ? excursion.organizations : [];
-            orgs.forEach(org => {
-                html += `<div style="margin-top:0.8em">`;
-                html += `<strong>${escapeHtml(org.name)}</strong>`;
-                if (org.panel_title) {
-                    html += `<div><em>${escapeHtml(org.panel_title)}</em></div>`;
-                }
-                html += `<ul style="margin:0.3em 0 0 1em;padding:0">`;
-                const spks = Array.isArray(org.speakers) ? org.speakers : [];
-                spks.forEach(s => {
-                    html += `<li>${escapeHtml(s.name)}, <em>${escapeHtml(s.role)}</em></li>`;
+
+            if (timeline.length > 0) {
+                // Integrated view: build a lookup of org details by name
+                const orgMap = {};
+                orgs.forEach(org => { if (org && org.name) orgMap[org.name] = org; });
+
+                html += `<div><strong>Program</strong>`;
+                html += `<table style="margin:0.4em 0 0 0;border-collapse:collapse">`;
+                timeline.forEach(item => {
+                    const timeStr = String(item.time || '');
+                    const actStr  = String(item.activity || '');
+                    const org = orgMap[actStr];
+                    html += `<tr>
+                        <td style="white-space:nowrap;vertical-align:top;padding:0.2em 1.2em 0.2em 0;font-size:0.9em;color:#555;font-family:monospace">${escapeHtml(timeStr)}</td>
+                        <td style="padding:0.2em 0;font-size:0.9em;vertical-align:top">`;
+                    html += `<strong>${escapeHtml(actStr)}</strong>`;
+                    if (org) {
+                        const pt = typeof org.panel_title === 'string' ? org.panel_title.trim() : '';
+                        if (pt) {
+                            html += `<div style="font-style:italic;margin-top:0.1em">${escapeHtml(pt)}</div>`;
+                        }
+                        const spks = Array.isArray(org.speakers) ? org.speakers : [];
+                        spks.forEach(s => {
+                            html += `<div style="font-size:0.9em;color:#444">${escapeHtml(String(s.name || ''))}, <em>${escapeHtml(String(s.role || ''))}</em></div>`;
+                        });
+                    }
+                    html += `</td></tr>`;
                 });
-                html += `</ul></div>`;
-            });
+                html += `</table></div>`;
+            } else {
+                // No timeline: show description and org list (used for excursions without a program)
+                if (excursion.description) {
+                    html += `<div class="panel-description">${escapeHtml(String(excursion.description))}</div>`;
+                }
+                orgs.forEach(org => {
+                    if (!org) return;
+                    html += `<div style="margin-top:0.8em"><strong>${escapeHtml(String(org.name || ''))}</strong>`;
+                    const pt2 = typeof org.panel_title === 'string' ? org.panel_title.trim() : '';
+                    if (pt2) {
+                        html += `<div><em>${escapeHtml(pt2)}</em></div>`;
+                    }
+                    const spks = Array.isArray(org.speakers) ? org.speakers : [];
+                    if (spks.length > 0) {
+                        html += `<ul style="margin:0.3em 0 0 1em;padding:0">`;
+                        spks.forEach(s => {
+                            html += `<li>${escapeHtml(String(s.name || ''))}, <em>${escapeHtml(String(s.role || ''))}</em></li>`;
+                        });
+                        html += `</ul>`;
+                    }
+                    html += `</div>`;
+                });
+            }
             return `<div class="paper">${html}</div>`;
         }
 
@@ -1363,7 +1402,7 @@
             let panelists = '';
             if (panel.authors && panel.authors.trim() && panel.authors.trim() !== 'TBD') {
                 const items = panel.authors.split('\n').map(p => p.trim()).filter(p => p.length > 0);
-                const label = panel.type === 'plenary' ? 'Speakers' : 'Panelists';
+                const label = panel.type === 'plenary' ? 'Speakers' : 'Special Session Speakers';
                 panelists = `<div class="panel-panelists"><strong>${label}:</strong><ul>
                     ${items.map(p => `<li>${renderPanelistLine(p)}</li>`).join('')}
                 </ul></div>`;

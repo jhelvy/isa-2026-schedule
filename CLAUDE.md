@@ -38,7 +38,7 @@ data/
   panels.csv          # Special sessions and plenaries
   overview.csv        # Full conference program overview (breaks, meals, PDW, receptions, etc.)
   excursions.csv      # Optional morning excursion metadata (id, option, session_name, time, meeting_point, description)
-  excursion-speakers.csv  # Think tank tour speakers (excursion_id, org_name, org_panel_title, speaker_name, speaker_role)
+  excursion-program.csv   # Think tank tour full program (excursion_id, time_range, activity, org_panel_title, speaker_name, speaker_role)
   self-sessions.csv   # Papers within self-organized panels (used by schedule.qmd)
   pdw-registered.csv  # PDW registrants who cannot present in W1 or W2
   special-slots.csv   # Special slot definitions
@@ -94,7 +94,7 @@ W1 and W2 overlap with the Professional Development Workshop — no PDW registra
 
 **Update morning excursion descriptions or logistics**: edit `data/excursions.csv` (one row per excursion — times, meeting point, description). Then re-run `3generate_json.R` and re-render `schedule.qmd`.
 
-**Update think tank tour speakers**: edit `data/excursion-speakers.csv` (one row per speaker — `excursion_id`, `org_name`, `org_panel_title`, `speaker_name`, `speaker_role`). Then re-run `3generate_json.R` and re-render `schedule.qmd`.
+**Update think tank tour program**: edit `data/excursion-program.csv` (one row per speaker for org visits, one row per activity for general items — `excursion_id`, `time_range`, `activity`, `org_panel_title`, `speaker_name`, `speaker_role`). Then re-run `3generate_json.R` and re-render `schedule.qmd`.
 
 ## Social Events (overview.csv)
 
@@ -110,12 +110,12 @@ W1 and W2 overlap with the Professional Development Workshop — no PDW registra
 
 Two optional morning excursions run on Wednesday, June 3 before the main program. Their details live in two CSVs and are rendered in both the PDF and the web app.
 
-- **Option 1: Walking Tour of the DC Mall** — meets 9:30 AM at Lockkeeper's House, 17th & Constitution Ave NW; ends at Lincoln Memorial; participants walk to Milken Institute for lunch.
-- **Option 2: DC Think Tank Tour** — meets 8:00 AM at Science & Engineering Hall, B1 1270; visits SCSP, Niskanen Center, McKinsey Global Institute, MITRE, CSPO, and CSIS.
+- **Option 1: DC Think Tank Tour** — meets 8:00 AM at Science & Engineering Hall, B1 1270; visits CSIS, SCSP, McKinsey Global Institute, MITRE, Niskanen Center, and CSPO. Full program (times, speakers, panel titles) in `data/excursion-program.csv`.
+- **Option 2: Walking Tour of the DC Mall** — meets 9:30 AM at Lockkeeper's House, 17th & Constitution Ave NW; ends at Lincoln Memorial; participants walk to Milken Institute for lunch.
 
 **Data files:**
 - `data/excursions.csv` — one row per excursion; columns: `id`, `option`, `session_name`, `date`, `day`, `start_time`, `end_time`, `meeting_point`, `description`.
-- `data/excursion-speakers.csv` — one row per speaker for the think tank tour; columns: `excursion_id`, `org_name`, `org_panel_title` (blank if none), `speaker_name`, `speaker_role`.
+- `data/excursion-program.csv` — full program for excursions; one row per speaker (for org visits) or one row per activity (for general items like Coffee, Break); columns: `excursion_id`, `time_range`, `activity`, `org_panel_title`, `speaker_name`, `speaker_role`.
 
 **How they are included:**
 - `3generate_json.R` reads both CSVs, builds a nested JSON structure, and writes `excursions_data.json`. The excursion entries in `overview.csv` are also included in `schedule_data.json` as `type = "event"` for timeline ordering.

@@ -256,12 +256,12 @@ write_json(awards, 'awards_data.json', auto_unbox = TRUE, pretty = TRUE)
 cat(sprintf("Written %d award entries to awards_data.json\n", nrow(awards)))
 
 # Read excursion data and export structured JSON
-excursions_meta     <- read_csv('data/excursions.csv', show_col_types = FALSE)
-excursion_speakers  <- read_csv('data/excursion-speakers.csv', show_col_types = FALSE)
+excursions_meta    <- read_csv('data/excursions.csv',        show_col_types = FALSE)
+excursion_program  <- read_csv('data/excursion-program.csv', show_col_types = FALSE)
 
 excursions_list <- lapply(seq_len(nrow(excursions_meta)), function(i) {
   ex   <- excursions_meta[i, ]
-  spkrs <- excursion_speakers %>% filter(excursion_id == ex$id)
+  prog <- excursion_program %>% filter(excursion_id == ex$id)
 
   entry <- list(
     id            = ex$id[[1]],
@@ -272,22 +272,32 @@ excursions_list <- lapply(seq_len(nrow(excursions_meta)), function(i) {
     start_time    = ex$start_time[[1]],
     end_time      = ex$end_time[[1]],
     meeting_point = ex$meeting_point[[1]],
-    description   = ex$description[[1]]
+    description   = if (is.na(ex$description[[1]])) NULL else ex$description[[1]]
   )
 
-  if (nrow(spkrs) > 0) {
-    org_names <- unique(spkrs$org_name)
-    entry$organizations <- lapply(org_names, function(org_nm) {
-      org_rows        <- spkrs %>% filter(org_name == org_nm)
-      panel_title_val <- org_rows$org_panel_title[[1]]
-      list(
-        name        = org_nm,
-        panel_title = if (is.na(panel_title_val)) NULL else panel_title_val,
-        speakers    = lapply(seq_len(nrow(org_rows)), function(k) {
-          list(name = org_rows$speaker_name[[k]], role = org_rows$speaker_role[[k]])
-        })
-      )
+  if (nrow(prog) > 0) {
+    # Timeline: distinct time+activity pairs preserving CSV order
+    tl_rows <- prog %>% distinct(time_range, activity)
+    entry$timeline <- lapply(seq_len(nrow(tl_rows)), function(t) {
+      list(time = tl_rows$time_range[[t]], activity = tl_rows$activity[[t]])
     })
+
+    # Organizations: rows that have a speaker
+    spkr_rows <- prog %>% filter(!is.na(speaker_name) & speaker_name != "")
+    if (nrow(spkr_rows) > 0) {
+      org_names <- unique(spkr_rows$activity)
+      entry$organizations <- lapply(org_names, function(org_nm) {
+        org_rows        <- spkr_rows %>% filter(activity == org_nm)
+        panel_title_val <- org_rows$org_panel_title[[1]]
+        list(
+          name        = org_nm,
+          panel_title = if (is.na(panel_title_val) || panel_title_val == "") NULL else panel_title_val,
+          speakers    = lapply(seq_len(nrow(org_rows)), function(k) {
+            list(name = org_rows$speaker_name[[k]], role = org_rows$speaker_role[[k]])
+          })
+        )
+      })
+    }
   }
 
   entry

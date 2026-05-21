@@ -678,8 +678,8 @@ excursions <- read_csv(
 ) %>%
   arrange(option)
 
-excursion_spkrs <- read_csv(
-  file.path('data', 'excursion-speakers.csv'),
+excursion_program <- read_csv(
+  file.path('data', 'excursion-program.csv'),
   show_col_types = FALSE
 )
 
@@ -693,6 +693,7 @@ cat("\\noindent\\textit{Wednesday, June 3, 2026}\\par\\vspace{1em}\n")
 
 for (i in seq_len(nrow(excursions))) {
   ex <- excursions[i, ]
+  prog <- excursion_program %>% filter(excursion_id == ex$id)
   short_title <- sub("^Morning Excursion Option [0-9]+: ", "", ex$session_name)
 
   cat(
@@ -711,43 +712,63 @@ for (i in seq_len(nrow(excursions))) {
     "}\\par\\vspace{0.5em}\n",
     sep = ""
   )
-  cat("\\noindent ", escape_latex(ex$description), "\\par\n", sep = "")
+  if (!is.na(ex$description) && nchar(ex$description) > 0) {
+    cat("\\noindent ", escape_latex(ex$description), "\\par\n", sep = "")
+  }
 
-  spkrs_for_ex <- excursion_spkrs %>% filter(excursion_id == ex$id)
+  if (nrow(prog) > 0) {
+    tl_rows <- prog %>% distinct(time_range, activity)
+    spkr_rows <- prog %>% filter(!is.na(speaker_name) & speaker_name != "")
 
-  if (nrow(spkrs_for_ex) > 0) {
-    cat("\\vspace{0.4em}\n")
-    org_groups <- spkrs_for_ex %>% distinct(org_name, org_panel_title)
+    cat("\\vspace{0.5em}\n")
+    cat("\\noindent\\textbf{Program:}\\par\\vspace{0.3em}\n")
+    cat("\\begin{tabular}{@{}l@{\\hspace{1.5em}}p{12cm}@{}}\n")
+    for (t in seq_len(nrow(tl_rows))) {
+      trow <- tl_rows[t, ]
+      act <- trow$activity[[1]]
+      org_spkr <- spkr_rows %>% filter(activity == act)
+      is_org <- nrow(org_spkr) > 0
 
-    for (j in seq_len(nrow(org_groups))) {
-      org <- org_groups[j, ]
+      # Org-visit rows: bold name, then panel title (italic) + speakers on new lines
+      # \newline is the correct within-cell break for p{} columns (not \\)
+      if (is_org) {
+        cell <- paste0("\\textbf{", escape_latex(act), "}")
+        pt <- org_spkr$org_panel_title[[1]]
+        if (!is.na(pt) && nchar(pt) > 0) {
+          cell <- paste0(
+            cell,
+            "\\newline{\\small\\textit{",
+            escape_latex(pt),
+            "}}"
+          )
+        }
+        for (k in seq_len(nrow(org_spkr))) {
+          cell <- paste0(
+            cell,
+            "\\newline{\\small\\hspace{1em}",
+            escape_latex(org_spkr$speaker_name[[k]]),
+            ", \\textit{",
+            escape_latex(org_spkr$speaker_role[[k]]),
+            "}}"
+          )
+        }
+        row_end <- "\\\\[0.5em]\n"
+      } else {
+        cell <- escape_latex(act)
+        row_end <- "\\\\\n"
+      }
+
       cat(
-        "\n\\vspace{0.6em}\\noindent\\textbf{",
-        escape_latex(org$org_name),
-        "}\\par\n",
+        "{\\small\\texttt{",
+        escape_latex(trow$time_range[[1]]),
+        "}}",
+        " & ",
+        cell,
+        row_end,
         sep = ""
       )
-      if (!is.na(org$org_panel_title)) {
-        cat(
-          "\\noindent\\textit{",
-          escape_latex(org$org_panel_title),
-          "}\\par\\vspace{0.2em}\n",
-          sep = ""
-        )
-      }
-      org_spkrs <- spkrs_for_ex %>% filter(org_name == org$org_name)
-      for (k in seq_len(nrow(org_spkrs))) {
-        spkr <- org_spkrs[k, ]
-        cat(
-          "\\noindent\\hspace{1.5em}",
-          escape_latex(spkr$speaker_name),
-          ", \\textit{",
-          escape_latex(spkr$speaker_role),
-          "}\\par\n",
-          sep = ""
-        )
-      }
     }
+    cat("\\end{tabular}\\par\n")
   }
 
   if (i < nrow(excursions)) cat("\\vspace{1.5em}\n\n")
