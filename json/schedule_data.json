@@ -3147,22 +3147,21 @@
     "session_chair": "Deepa Kylasam Iyer (Cornell University), Ayaj Rana (Cornell University), Adam Seth Litwin (Cornell University)"
   },
   {
-    "id": "P13",
-    "session_id": "P13",
-    "session_name": "Inside China's AI Ecosystem: Open Source Development, Hardware Diversity, and a Changing Trade Landscape",
+    "id": "P14",
+    "session_id": "P14",
+    "session_name": "Award Winners Panel",
     "time_slot": "TP3",
-    "room": "SC-Amp.",
+    "room": "SC-309",
     "date": "2026-06-04",
     "day": "Thursday",
     "start_time": "16:55:00",
     "end_time": "18:00:00",
     "time_order": 6.5,
-    "title": "Inside China's AI Ecosystem: Open Source Development, Hardware Diversity, and a Changing Trade Landscape",
-    "abstract": "China's AI ecosystem is evolving at remarkable speed, with companies and research institutions increasingly embracing open source models and frameworks while navigating a complex hardware landscape shaped by business competition, government priorities, and shifting trade policies. This panel brings together experts with direct knowledge of what is actually happening in China's AI sector to explore how Chinese companies are building and deploying AI systems across a diverse array of chips, from advanced processors from the US to domestic alternatives from Huawei and other vendors. Beyond the technical questions of model training and inference capabilities, we will examine how concerns about dual use technology and civil-military fusion are influencing development choices, how open source is reshaping the competitive dynamics, and what the changing US regulatory environment under different administrations means in practice for access to advanced chips. Rather than debating optimal policy approaches, this panel provides an empirical look at the strategies, innovations, and constraints defining China's AI landscape today and how they are shaping the trajectory of global AI development.",
-    "authors": "Douglas Fuller (Associate Professor of International Economics, Government & Business, Copenhagen Business School)\nPaul Triolo (Partner at DGA-Albright Stonebridge Group)",
-    "category": "Innovation, Entrepreneurship, and AI-Driven Transformation",
-    "type": "special_session",
-    "moderator": "TBD"
+    "title": "Award Winners Panel",
+    "abstract": "ISA's award-winning researchers discuss the backstory behind their celebrated work; not the findings themselves, but rather the process - how they gained industry access, the pivotal decisions that shaped their research design, and the unexpected challenges and insights encountered along the way. This session offers a candid look into what it takes to conduct exceptional industry studies research.",
+    "authors": "Sukhun Kang (UC Santa Barbara)\nSubhankar Saha (Ahmedabad University, India)\nJennifer Zou (Harvard University)\nEppa Rixey (MIT-Sloan, currently Northeastern University)",
+    "category": "General Industry Studies",
+    "type": "special_session"
   },
   {
     "id": "P4",
@@ -3187,7 +3186,7 @@
     "session_id": "P8",
     "session_name": "Panel on Strategic Government Procurement",
     "time_slot": "TP3",
-    "room": "SC-309",
+    "room": "SC-Amp.",
     "date": "2026-06-04",
     "day": "Thursday",
     "start_time": "16:55:00",
@@ -3227,9 +3226,9 @@
     "type": "event"
   },
   {
-    "id": "P14",
-    "session_id": "P14",
-    "session_name": "Award Winners Panel",
+    "id": "P13",
+    "session_id": "P13",
+    "session_name": "Inside China's AI Ecosystem: Open Source Development, Hardware Diversity, and a Changing Trade Landscape",
     "time_slot": "FP1",
     "room": "SC-308",
     "date": "2026-06-05",
@@ -3237,11 +3236,12 @@
     "start_time": "09:00:00",
     "end_time": "10:00:00",
     "time_order": 6.75,
-    "title": "Award Winners Panel",
-    "abstract": "ISA's award-winning researchers discuss the backstory behind their celebrated work; not the findings themselves, but rather the process - how they gained industry access, the pivotal decisions that shaped their research design, and the unexpected challenges and insights encountered along the way. This session offers a candid look into what it takes to conduct exceptional industry studies research.",
-    "authors": "Sukhun Kang (UC Santa Barbara)\nSubhankar Saha (Ahmedabad University, India)\nJennifer Zou (Harvard University)\nEppa Rixey (MIT-Sloan, currently Northeastern University)",
-    "category": "General Industry Studies",
-    "type": "special_session"
+    "title": "Inside China's AI Ecosystem: Open Source Development, Hardware Diversity, and a Changing Trade Landscape",
+    "abstract": "China's AI ecosystem is evolving at remarkable speed, with companies and research institutions increasingly embracing open source models and frameworks while navigating a complex hardware landscape shaped by business competition, government priorities, and shifting trade policies. This panel brings together experts with direct knowledge of what is actually happening in China's AI sector to explore how Chinese companies are building and deploying AI systems across a diverse array of chips, from advanced processors from the US to domestic alternatives from Huawei and other vendors. Beyond the technical questions of model training and inference capabilities, we will examine how concerns about dual use technology and civil-military fusion are influencing development choices, how open source is reshaping the competitive dynamics, and what the changing US regulatory environment under different administrations means in practice for access to advanced chips. Rather than debating optimal policy approaches, this panel provides an empirical look at the strategies, innovations, and constraints defining China's AI landscape today and how they are shaping the trajectory of global AI development.",
+    "authors": "Douglas Fuller (Associate Professor of International Economics, Government & Business, Copenhagen Business School)\nPaul Triolo (Partner at DGA-Albright Stonebridge Group)",
+    "category": "Innovation, Entrepreneurship, and AI-Driven Transformation",
+    "type": "special_session",
+    "moderator": "Kyle Chan, PhD (Fellow in the John L. Thornton China Center at Brookings)"
   },
   {
     "id": "P3",
