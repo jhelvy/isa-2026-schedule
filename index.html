@@ -1410,10 +1410,13 @@
             const awardBadge = aw
                 ? `<span class="award-badge ${aw.rank === 'Winner' ? 'award-badge-winner' : 'award-badge-runnerup'}">${aw.rank === 'Winner' ? '🏆' : '🥈'} ${escapeHtml(aw.rank)}: ${escapeHtml(aw.award)}</span>`
                 : '';
+            const authorsHtml = paper.authors
+                ? escapeHtml(paper.authors).replace(/\*/g, '<sup style="color:#0d6efd;font-size:0.75em;font-weight:600;">*</sup>')
+                : '';
             return `
                 <div class="paper">
                     <div class="paper-title">${escapeHtml(paper.title || 'Untitled')}${awardBadge}</div>
-                    ${paper.authors ? `<div class="paper-authors">${escapeHtml(paper.authors)}</div>` : ''}
+                    ${authorsHtml ? `<div class="paper-authors">${authorsHtml}</div>` : ''}
                     ${paper.abstract ? `
                         <button class="abstract-toggle" onclick="toggleAbstract(this, event)">View Abstract</button>
                         <div class="abstract" id="abstract-${paper.id}">${escapeHtml(paper.abstract)}</div>

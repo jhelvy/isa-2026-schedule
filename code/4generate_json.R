@@ -51,7 +51,7 @@ self_discussants <- self_sessions_raw %>%
 paper_sessions <- schedule %>%
   distinct(id, .keep_all = TRUE) %>%
   left_join(
-    submissions %>% select(id, title, abstract, authors, category, type),
+    submissions %>% select(id, title, abstract, authors, author_names, category, type),
     by = 'id'
   ) %>%
   mutate(
@@ -70,19 +70,49 @@ paper_sessions <- schedule %>%
   left_join(self_discussants, by = 'id') %>%
   arrange(time_order, session_id, paper_order)
 
-# Session chair: first author of the first paper in each session
+# Return the full "Name (Affiliation)" entry for the presenting author (*).
+# Falls back to the first author if no * is marked.
+get_presenter <- function(authors_str, author_names_str) {
+  fallback <- coalesce(
+    str_trim(str_extract(authors_str, "^.+?\\)")),
+    str_trim(str_extract(authors_str, "^[^;,]+"))
+  )
+  if (is.na(author_names_str) || is.na(authors_str)) return(fallback)
+  names_parts   <- str_split(author_names_str, ";\\s*")[[1]]
+  authors_parts <- str_split(authors_str,      ";\\s*")[[1]]
+  idx <- which(str_detect(names_parts, "\\*"))[1]
+  if (is.na(idx) || idx > length(authors_parts)) return(fallback)
+  str_trim(authors_parts[idx])
+}
+
+# Append * after the presenting author's name (before their affiliation).
+mark_presenter <- function(authors_str, author_names_str) {
+  if (is.na(author_names_str) || is.na(authors_str)) return(authors_str)
+  names_parts   <- str_split(author_names_str, ";\\s*")[[1]]
+  authors_parts <- str_split(authors_str,      ";\\s*")[[1]]
+  idx <- which(str_detect(names_parts, "\\*"))[1]
+  if (is.na(idx) || idx > length(authors_parts)) return(authors_str)
+  entry <- str_trim(authors_parts[idx])
+  entry <- if (str_detect(entry, "\\(")) {
+    str_replace(entry, "\\s*\\(", "* (")
+  } else {
+    paste0(entry, "*")
+  }
+  authors_parts[idx] <- entry
+  paste(str_trim(authors_parts), collapse = "; ")
+}
+
+# Session chair: presenting author (*) of first paper, else first author
 session_chairs <- paper_sessions %>%
   filter(paper_order == 1) %>%
   mutate(
-    session_chair = coalesce(
-      str_trim(str_extract(authors, "^.+?\\)")),
-      str_trim(str_extract(authors, "^[^;,]+"))
-    )
+    session_chair = mapply(get_presenter, authors, author_names, USE.NAMES = FALSE)
   ) %>%
   select(session_id, session_chair)
 
 paper_sessions <- paper_sessions %>%
-  left_join(session_chairs, by = 'session_id')
+  left_join(session_chairs, by = 'session_id') %>%
+  mutate(authors = mapply(mark_presenter, authors, author_names, USE.NAMES = FALSE))
 
 # Read and format panel sessions
 # Panels get synthetic time_slot codes (WP1, TP1, TP2, TP3, FP1) and
@@ -227,7 +257,11 @@ events <- read_csv(
   )
 
 # Combine and write JSON
-all_data <- bind_rows(paper_sessions, panels, events) %>%
+all_data <- bind_rows(
+  paper_sessions %>% select(-author_names),
+  panels,
+  events
+) %>%
   arrange(time_order, session_id)
 
 write_json(

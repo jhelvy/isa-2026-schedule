@@ -148,7 +148,14 @@ self_papers <- self_sessions %>%
   group_by(id) %>%
   mutate(paper_order = row_number()) %>%
   ungroup() %>%
-  select(parent_id = id, authors, title, abstract, paper_order) %>%
+  select(
+    parent_id = id,
+    authors,
+    author_names,
+    title,
+    abstract,
+    paper_order
+  ) %>%
   left_join(self_discussants, by = c("parent_id" = "id")) %>%
   left_join(
     sessions %>%
@@ -247,6 +254,47 @@ escape_latex <- function(text) {
   text <- str_replace_all(text, "\\^", "\\\\textasciicircum{}")
   text <- str_replace_all(text, "~", "\\\\textasciitilde{}")
   return(text)
+}
+
+# Return the full "Name (Affiliation)" entry for the presenting author (*) of the first paper.
+# Falls back to the first author if no * is marked.
+presenting_author <- function(authors_str, author_names_str) {
+  fallback <- coalesce(
+    str_trim(str_extract(authors_str, "^.+?\\)")),
+    str_trim(str_extract(authors_str, "^[^;,]+"))
+  )
+  if (is.na(author_names_str) || is.na(authors_str)) {
+    return(fallback)
+  }
+  names_parts <- str_split(author_names_str, ";\\s*")[[1]]
+  authors_parts <- str_split(authors_str, ";\\s*")[[1]]
+  idx <- which(str_detect(names_parts, "\\*"))[1]
+  if (is.na(idx) || idx > length(authors_parts)) {
+    return(fallback)
+  }
+  str_trim(authors_parts[idx])
+}
+
+# Append * after the presenting author's name (before their affiliation) in the
+# full authors string so it displays in the rendered output.
+mark_presenter <- function(authors_str, author_names_str) {
+  if (is.na(author_names_str) || is.na(authors_str)) {
+    return(authors_str)
+  }
+  names_parts <- str_split(author_names_str, ";\\s*")[[1]]
+  authors_parts <- str_split(authors_str, ";\\s*")[[1]]
+  idx <- which(str_detect(names_parts, "\\*"))[1]
+  if (is.na(idx) || idx > length(authors_parts)) {
+    return(authors_str)
+  }
+  entry <- str_trim(authors_parts[idx])
+  entry <- if (str_detect(entry, "\\(")) {
+    str_replace(entry, "\\s*\\(", "* (")
+  } else {
+    paste0(entry, "*")
+  }
+  authors_parts[idx] <- entry
+  paste(str_trim(authors_parts), collapse = "; ")
 }
 
 # Helper function for proper title case (keeps articles/conjunctions/prepositions lowercase)
@@ -1424,13 +1472,12 @@ for (b in seq_len(nrow(all_blocks))) {
           # For regular sessions: show paper list in sessions/*.csv row order
           papers <- session_data %>%
             arrange(paper_order) %>%
-            select(authors, title)
+            select(authors, author_names, title)
 
-          # Session chair: first author of first paper
-          first_authors <- papers$authors[1]
-          session_chair <- coalesce(
-            str_trim(str_extract(first_authors, "^.+?\\)")),
-            str_trim(str_extract(first_authors, "^[^;,]+"))
+          # Session chair: presenting author (*) of first paper, else first author
+          session_chair <- presenting_author(
+            papers$authors[1],
+            papers$author_names[1]
           )
           if (!is.na(session_chair) && nchar(session_chair) > 0) {
             cat(
@@ -1442,10 +1489,14 @@ for (b in seq_len(nrow(all_blocks))) {
           }
 
           for (m in seq_len(nrow(papers))) {
+            display_authors <- mark_presenter(
+              papers$authors[m],
+              papers$author_names[m]
+            )
             cat(
               m,
               ". **",
-              escape_latex(papers$authors[m]),
+              escape_latex(display_authors),
               "** — ",
               escape_latex(papers$title[m]),
               get_award_label(papers$title[m]),
