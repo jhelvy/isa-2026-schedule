@@ -290,7 +290,31 @@ write_json(awards, 'json/awards_data.json', auto_unbox = TRUE, pretty = TRUE)
 cat(sprintf("Written %d award entries to awards_data.json\n", nrow(awards)))
 
 # Read excursion data and export structured JSON
-excursions_meta    <- read_csv('data/excursions.csv',        show_col_types = FALSE)
+excursions_meta <- read_csv(
+  'data/overview.csv',
+  show_col_types = FALSE,
+  col_types = cols(.default = "c")
+) %>%
+  rename_with(str_trim) %>%
+  filter(!is.na(excursion_id)) %>%
+  rename(
+    id           = excursion_id,
+    option       = excursion_option,
+    session_name = Session,
+    day          = Weekday,
+    start_time   = `Time Start`,
+    end_time     = `Time End`
+  ) %>%
+  mutate(
+    date   = case_when(
+      day == "Wednesday" ~ "2026-06-03",
+      day == "Thursday"  ~ "2026-06-04",
+      day == "Friday"    ~ "2026-06-05"
+    ),
+    option = as.integer(option)
+  ) %>%
+  arrange(option)
+
 excursion_program  <- read_csv('data/excursion-program.csv', show_col_types = FALSE)
 
 excursions_list <- lapply(seq_len(nrow(excursions_meta)), function(i) {

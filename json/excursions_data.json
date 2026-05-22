@@ -5,8 +5,8 @@
     "session_name": "Morning Excursion Option 1: Showcase of DC-based Public Policy Think Tanks and Research Centers",
     "date": "2026-06-03",
     "day": "Wednesday",
-    "start_time": "08:00:00",
-    "end_time": "11:50:00",
+    "start_time": "8:00 AM",
+    "end_time": "11:50 AM",
     "meeting_point": "Science & Engineering Hall, B1 1270",
     "description": {},
     "timeline": [
@@ -148,8 +148,8 @@
     "session_name": "Morning Excursion Option 2: Walking Tour of the DC Mall",
     "date": "2026-06-03",
     "day": "Wednesday",
-    "start_time": "09:30:00",
-    "end_time": "11:30:00",
+    "start_time": "9:30 AM",
+    "end_time": "11:30 AM",
     "meeting_point": "Lockkeeper's House, 17th & Constitution Ave NW",
     "description": "Join us for a walking tour of the National Mall, visiting many of the major monuments. The tour ends at the Lincoln Memorial. Participants can then walk to the Milken Institute for lunch and registration."
   }

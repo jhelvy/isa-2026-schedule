@@ -38,8 +38,7 @@ data/
   session-slots.csv   # Available time slots and rooms
   schedule.csv        # OUTPUT: full schedule with time slots and rooms
   panels.csv          # Special sessions and plenaries
-  overview.csv        # Full conference program overview (breaks, meals, PDW, receptions, etc.)
-  excursions.csv      # Optional morning excursion metadata (id, option, session_name, time, meeting_point, description)
+  overview.csv        # Full conference program overview (breaks, meals, PDW, receptions, excursions)
   excursion-program.csv   # Think tank tour full program (excursion_id, time_range, activity, org_panel_title, speaker_name, speaker_role)
   self-sessions.csv   # Papers within self-organized panels (used by schedule.qmd)
   pdw-registered.csv  # PDW registrants who cannot present in W1 or W2

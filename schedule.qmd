@@ -740,9 +740,20 @@ cat("```\n\n")
 #| label: morning-excursions
 #| results: asis
 excursions <- read_csv(
-  file.path('data', 'excursions.csv'),
-  show_col_types = FALSE
+  file.path('data', 'overview.csv'),
+  show_col_types = FALSE,
+  col_types = cols(.default = "c")
 ) %>%
+  rename_with(str_trim) %>%
+  filter(!is.na(excursion_id)) %>%
+  rename(
+    id           = excursion_id,
+    option       = excursion_option,
+    session_name = Session,
+    start_time   = `Time Start`,
+    end_time     = `Time End`
+  ) %>%
+  mutate(option = as.integer(option)) %>%
   arrange(option)
 
 excursion_program <- read_csv(
