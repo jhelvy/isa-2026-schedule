@@ -266,7 +266,7 @@ all_data <- bind_rows(
 
 write_json(
   all_data,
-  'schedule_data.json',
+  'json/schedule_data.json',
   auto_unbox = TRUE,
   pretty = TRUE
 )
@@ -280,13 +280,13 @@ cat(sprintf(
 
 # Generate bios JSON for speaker profiles
 bios <- read_csv('data/bios.csv', show_col_types = FALSE)
-write_json(bios, 'bios_data.json', auto_unbox = TRUE, pretty = TRUE)
+write_json(bios, 'json/bios_data.json', auto_unbox = TRUE, pretty = TRUE)
 cat(sprintf("Written %d bio entries to bios_data.json\n", nrow(bios)))
 
 # Generate awards JSON
 awards <- read_csv('data/awards.csv', show_col_types = FALSE) %>%
   arrange(award_order, desc(rank == "Winner"))
-write_json(awards, 'awards_data.json', auto_unbox = TRUE, pretty = TRUE)
+write_json(awards, 'json/awards_data.json', auto_unbox = TRUE, pretty = TRUE)
 cat(sprintf("Written %d award entries to awards_data.json\n", nrow(awards)))
 
 # Read excursion data and export structured JSON
@@ -337,7 +337,7 @@ excursions_list <- lapply(seq_len(nrow(excursions_meta)), function(i) {
   entry
 })
 
-write_json(excursions_list, 'excursions_data.json', auto_unbox = TRUE, pretty = TRUE)
+write_json(excursions_list, 'json/excursions_data.json', auto_unbox = TRUE, pretty = TRUE)
 cat(sprintf("Written %d excursion entries to excursions_data.json\n", length(excursions_list)))
 
 # Generate committee_data.json
@@ -356,5 +356,5 @@ committee_list <- list(
   stream_chairs = to_records(committee %>% filter(group == "stream_chairs"))
 )
 
-write_json(committee_list, 'committee_data.json', auto_unbox = TRUE, pretty = TRUE)
+write_json(committee_list, 'json/committee_data.json', auto_unbox = TRUE, pretty = TRUE)
 cat("Written committee data to committee_data.json\n")

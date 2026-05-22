@@ -1017,11 +1017,11 @@
 
         // Load data
         Promise.all([
-            fetch('schedule_data.json').then(r => r.json()),
-            fetch('bios_data.json').then(r => r.json()),
-            fetch('awards_data.json').then(r => r.json()),
-            fetch('excursions_data.json').then(r => r.json()).catch(() => []),
-            fetch('committee_data.json').then(r => r.json()).catch(() => ({}))
+            fetch('json/schedule_data.json').then(r => r.json()),
+            fetch('json/bios_data.json').then(r => r.json()),
+            fetch('json/awards_data.json').then(r => r.json()),
+            fetch('json/excursions_data.json').then(r => r.json()).catch(() => []),
+            fetch('json/committee_data.json').then(r => r.json()).catch(() => ({}))
         ])
             .then(([data, bios, awards, excursions, committee]) => {
                 scheduleData = data;
