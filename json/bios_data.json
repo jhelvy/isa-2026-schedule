@@ -5,29 +5,34 @@
     "bio": "David Adler is a Contributing Editor at American Affairs magazine and Senior Advisor at XA Investments, focusing on economics, liquidity, and manufacturing policy. He is the author of \"Snap Judgment\" (FT Press) on behavioral economics and the monograph \"The New Economics of Liquidity and Financial Frictions\" published by the CFA Institute Research Foundation, and co-editor of \"Understanding American Economic Decline\" (Cambridge University Press). He holds an MA and BA in Economics from Columbia University and studied graduate economics at New College, Oxford."
   },
   {
-    "image": "meena-al-azzawe",
-    "name": "Meena Al-Azzawe",
-    "bio": "Meena Al-Azzawe, CPIM, CSCP, is an Enablement Architect at Kinaxis with expertise in supply chain management, AI-driven planning, technology integration, and strategic alignment. She previously held senior roles at Genpact as Senior Director for digital transformation services, and has experience at Qorvo, Nike, Infosys, and other companies in supply chain planning analytics and systems. She holds a BEng from McGill University and an MS in Applied Data Science for Business from Portland State University."
-  },
-  {
     "image": "melissa-appleyard",
     "name": "Melissa Appleyard",
     "bio": "Melissa M. Appleyard is the Ames Professor in the Management of Innovation and Technology and Associate Dean of Graduate Programs at Portland State University's School of Business Administration, where she joined in 2003. Her research focuses on how knowledge creation and diffusion catalyze economic growth in technology-intensive industries, including the global semiconductor industry and open-source software. She holds a PhD in Economics from UC Berkeley."
   },
   {
-    "image": "phaedra-boinodiris",
-    "name": "Phaedra Boinodiris",
-    "bio": "Phaedra Boinodiris leads IBM Consulting's Trustworthy AI Practice and serves as the AI ethics board focal for all of IBM Consulting, where she works with enterprises to develop AI frameworks that mitigate bias, enhance compliance, and drive responsible innovation. She is the author of \"AI for the Rest of Us\" and co-founded the Future World Alliance, a nonprofit committed to K-12 education in AI ethics. A Fellow of the Royal Society of Arts, she is pursuing a PhD in AI and Ethics at University College Dublin."
-  },
-  {
-    "image": "bill-bonvillian",
-    "name": "Bill Bonvillian",
-    "bio": "William B. Bonvillian is a Lecturer at MIT in the Science Technology and Society and Political Science Departments, and Senior Advisor to MIT's Initiative on New Manufacturing, working on workforce education and manufacturing policy. He served as Director of MIT's Washington, D.C. Office from 2006 to 2017 and previously was a senior policy advisor in the U.S. Senate for seventeen years, working on science and technology policy, defense R&D, and national competitiveness legislation including the America COMPETES Act. He is the author of \"Advanced Manufacturing — The New American Innovation Policies\" (MIT Press, 2018) with Peter L. Singer."
-  },
-  {
     "image": "mimi-bulfin",
     "name": "Mimi Bulfin",
     "bio": "Mimi Bulfin is a Partner in IBM Consulting and leader of the HR and Talent Transformation Service Line, with over 20 years of expertise in talent strategy, digital transformation, and large-scale technology modernization. She focuses on helping organizations measure and realize the value of digital transformation and build agile, skilled workforces. She contributes regularly to IBM thought leadership on talent and organizational transformation."
+  },
+  {
+    "image": "edward-anderson",
+    "name": "Edward Anderson",
+    "bio": "Edward Anderson is a professor of supply chain and operations management for the McCombs School of Business. Within the school's Department of Information, Risk, and Operations Management, he has taught courses on supply chain and operations management, project management, health care, and new venture design and implementation for the BBA, MBA, Ph.D., and Executive Education programs. Anderson has also served as director of the McCombs Healthcare Innovation Center, a research center that specializes in innovation in health care delivery."
+  },
+  {
+    "image": "jennifer-woolley",
+    "name": "Jennifer Woolley",
+    "bio": "Jennifer Woolley is an Associate Professor of Management and the Management Department Chair Professor at Santa Clara University. Her research and teaching focus on entrepreneurship, innovation, and the emergence of firms, industries, and technologies. Her recent work examines the relationship between founding teams, intellectual property, public policy, and firm outcomes."
+  },
+  {
+    "image": "maxine-markovitz",
+    "name": "Maxine Markovitz",
+    "bio": "Maxine Markovitz is an MBA candidate at Portland State University and operations manager with 6+ years leading high-volume manufacturing and logistics environments. He has experience managing $200K+ in daily labor spend, workforce planning for up to 700 associates per shift and driving measurable improvements in safety, quality, and cost."
+  },
+  {
+    "image": "lizzi-lee",
+    "name": "Lizzi C. Lee",
+    "bio": "Lizzi C. Lee is a Fellow on the Chinese Economy at the Asia Society Policy Institute’s Center for China Analysis, where she leads the Center’s Economics and Technology Pillar. She co-leads the Center's initiatives: “The Art of Dealing with China,” which focuses on global MNCs’ China strategies, and “The Business of Being Well,” which examines the frontier of China’s health economy. She holds a Ph.D. in Economics from MIT."
   },
   {
     "image": "james-coburn",
@@ -130,6 +135,16 @@
     "bio": "Elisabeth Reynolds is Professor of the Practice at MIT focused on systems of innovation, manufacturing, and industrial competitiveness in the context of national and regional economic development. She served as Special Assistant to President Biden for Manufacturing and Economic Development at the National Economic Council (2021–2022), where she helped lead the administration's work on national manufacturing strategy, supply chain resilience, and industrial strategy. She co-leads MIT's Priority Technologies seminar, which produced a volume published by MIT Press in spring 2026."
   },
   {
+    "image": "heidi-crib-rediker",
+    "name": "Heidi Crib-Rediker",
+    "bio": "Heidi Crebo-Rediker is an adjunct senior fellow in the Center for Geoeconomic Studies at the Council on Foreign Relations, specializing in international political economy, U.S. economic competitiveness, economic security, and international finance. She directs the Roundtable Series on Global Political Economy."
+  },
+  {
+    "image": "sree-ramaswamy",
+    "name": "Sree Ramaswamy",
+    "bio": "Ramaswamy is the Chief Innovation Officer at NobleReach and a Senior Technical Expert at CSIS's Economic Security and Technology Department. He is also a former senior adviser for industrial policy and technology strategy at the U.S. Department of Commerce, where he advised Secretary Gina Raimondo and helped develop and implement the CHIPS and Science Act. Prior to his government role, he spent over 12 years as a partner at McKinsey & Company and the McKinsey Global Institute, leading research on global competition, technology disruption, and multinational competitiveness."
+  },
+  {
     "image": "mariana-socal",
     "name": "Mariana Socal",
     "bio": "Mariana Socal, MD, PhD, is Associate Professor of Health Policy and Management at the Johns Hopkins Bloomberg School of Public Health and Director of the PhD program in Health Services Research. Her research focuses on making the U.S. pharmaceutical market more competitive, including the global pharmaceutical supply chain, generics and biosimilar markets, and drug spending control, and she leads the Johns Hopkins Prescription Drug Supply Chain Data Dashboard. She regularly advises the White House, CMS, and Congressional committees on pharmaceutical pricing and regulation."
@@ -173,6 +188,11 @@
     "image": "franz-wuerfmannsdobler",
     "name": "Franz Wuerfmannsdobler",
     "bio": "Franz Wuerfmannsdobler is Executive Director of the U.S. Manufacturing Innovation Council, a nonpartisan organization advocating for U.S. manufacturing competitiveness. He has extensive Capitol Hill experience in energy, environment, manufacturing, and innovation policy, having served as a legislative assistant for Senator Robert C. Byrd and as Senior Energy Policy Advisor to Senator Byron L. Dorgan. He was previously at the Bipartisan Policy Center and has been a member of the AAAS Science and Technology Policy Fellowships Advisory Committee."
+  },
+  {
+    "image": "bill-bonvillian",
+    "name": "Bill Bonvillian",
+    "bio": "William B. Bonvillian is a Lecturer at MIT in the Science Technology and Society and Political Science Departments, and Senior Advisor to MIT's Initiative on New Manufacturing, where he focuses on workforce education and manufacturing policy. He previously served as Director of MIT's Washington, D.C. Office and spent seventeen years as a senior policy advisor in the U.S. Senate, working on national competitiveness and innovation legislation including the America Competes Act of 2007. He serves on the National Academies of Science Board on Materials and Manufacturing and has advised numerous federal and international bodies on science, technology, and innovation policy."
   },
   {
     "image": "marcelo-yoon",
