@@ -63,10 +63,10 @@ id,session_id,session_name,time_slot,room,date,day,start_time,end_time,time_orde
 47,45,Energy Infrastructure and Communities,W3,SEH-3040,2026-06-03,Wednesday,16:45:00,17:55:00,3
 142,45,Energy Infrastructure and Communities,W3,SEH-3040,2026-06-03,Wednesday,16:45:00,17:55:00,3
 201,45,Energy Infrastructure and Communities,W3,SEH-3040,2026-06-03,Wednesday,16:45:00,17:55:00,3
-43,23,"Hiring, Skills, and Labor Market Dynamics",F1,SC-310,2026-06-05,Friday,10:30:00,11:40:00,7
-72,23,"Hiring, Skills, and Labor Market Dynamics",F1,SC-310,2026-06-05,Friday,10:30:00,11:40:00,7
-100,23,"Hiring, Skills, and Labor Market Dynamics",F1,SC-310,2026-06-05,Friday,10:30:00,11:40:00,7
-119,23,"Hiring, Skills, and Labor Market Dynamics",F1,SC-310,2026-06-05,Friday,10:30:00,11:40:00,7
+43,23,"Hiring, Skills, and Labor Market Dynamics",W3,SEH-B1220,2026-06-03,Wednesday,16:45:00,17:55:00,3
+72,23,"Hiring, Skills, and Labor Market Dynamics",W3,SEH-B1220,2026-06-03,Wednesday,16:45:00,17:55:00,3
+100,23,"Hiring, Skills, and Labor Market Dynamics",W3,SEH-B1220,2026-06-03,Wednesday,16:45:00,17:55:00,3
+119,23,"Hiring, Skills, and Labor Market Dynamics",W3,SEH-B1220,2026-06-03,Wednesday,16:45:00,17:55:00,3
 82,38,Global Value Chains and Trade Policy,W3,SEH-B1270,2026-06-03,Wednesday,16:45:00,17:55:00,3
 145,38,Global Value Chains and Trade Policy,W3,SEH-B1270,2026-06-03,Wednesday,16:45:00,17:55:00,3
 161,38,Global Value Chains and Trade Policy,W3,SEH-B1270,2026-06-03,Wednesday,16:45:00,17:55:00,3
@@ -169,10 +169,10 @@ id,session_id,session_name,time_slot,room,date,day,start_time,end_time,time_orde
 73,6,Industry Classification and Regulatory Policy,F1,SC-309,2026-06-05,Friday,10:30:00,11:40:00,7
 134,6,Industry Classification and Regulatory Policy,F1,SC-309,2026-06-05,Friday,10:30:00,11:40:00,7
 181,6,Industry Classification and Regulatory Policy,F1,SC-309,2026-06-05,Friday,10:30:00,11:40:00,7
-96,25,Manufacturing Transformation and Workforce Development,W3,SEH-B1220,2026-06-03,Wednesday,16:45:00,17:55:00,3
-126,25,Manufacturing Transformation and Workforce Development,W3,SEH-B1220,2026-06-03,Wednesday,16:45:00,17:55:00,3
-151,25,Manufacturing Transformation and Workforce Development,W3,SEH-B1220,2026-06-03,Wednesday,16:45:00,17:55:00,3
-204,25,Manufacturing Transformation and Workforce Development,W3,SEH-B1220,2026-06-03,Wednesday,16:45:00,17:55:00,3
+96,25,Manufacturing Transformation and Workforce Development,F1,SC-310,2026-06-05,Friday,10:30:00,11:40:00,7
+126,25,Manufacturing Transformation and Workforce Development,F1,SC-310,2026-06-05,Friday,10:30:00,11:40:00,7
+151,25,Manufacturing Transformation and Workforce Development,F1,SC-310,2026-06-05,Friday,10:30:00,11:40:00,7
+204,25,Manufacturing Transformation and Workforce Development,F1,SC-310,2026-06-05,Friday,10:30:00,11:40:00,7
 64,43,Industrial Decarbonization Pathways,F1,SC-Amp.,2026-06-05,Friday,10:30:00,11:40:00,7
 69,43,Industrial Decarbonization Pathways,F1,SC-Amp.,2026-06-05,Friday,10:30:00,11:40:00,7
 76,43,Industrial Decarbonization Pathways,F1,SC-Amp.,2026-06-05,Friday,10:30:00,11:40:00,7
