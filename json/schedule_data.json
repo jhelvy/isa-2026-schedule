@@ -3164,24 +3164,6 @@
     "type": "special_session"
   },
   {
-    "id": "P4",
-    "session_id": "P4",
-    "session_name": "University centers on industrial policy",
-    "time_slot": "TP3",
-    "room": "SC-307",
-    "date": "2026-06-04",
-    "day": "Thursday",
-    "start_time": "16:55:00",
-    "end_time": "18:00:00",
-    "time_order": 6.5,
-    "title": "University centers on industrial policy",
-    "abstract": "Panelists will discuss roadmaps for US competitive advantage and global leadership in key technologies of interest to national and economic security.",
-    "authors": "TBD",
-    "category": "Public Policy and Global Competitiveness",
-    "type": "special_session",
-    "moderator": "Allison Forbes (Senior Vice President, Center for Regional Economic Competitiveness)"
-  },
-  {
     "id": "P8",
     "session_id": "P8",
     "session_name": "Panel on Strategic Government Procurement",
