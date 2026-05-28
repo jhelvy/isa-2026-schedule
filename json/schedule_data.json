@@ -126,25 +126,6 @@
     "session_chair": "Shu Deng (University of Mississippi)"
   },
   {
-    "id": "86",
-    "session_id": "24",
-    "session_name": "AI, Technology, and the Changing Nature of Work",
-    "time_slot": "W1",
-    "room": "SEH-1300",
-    "date": "2026-06-03",
-    "day": "Wednesday",
-    "start_time": "14:00:00",
-    "end_time": "15:10:00",
-    "time_order": 1,
-    "title": "The Impact of Robotics on the Demand for Skills",
-    "abstract": "Recent firm-level difference-in-differences studies across multiple countries find that robot-adopting firms often experience net employment gains, driven by output expansion that outweighs direct task automation. While this literature has substantially advanced our understanding of employment effects, far less is known about how robot adoption reshapes the demand for skills within and across occupations. Existing evidence suggests that robots substitute for routine tasks while increasing demand for complementary activities such as monitoring, maintenance, logistics, and quality control, leading to occupational reallocation and skill upgrading among both production and technical workers.\nThis paper investigates how robot adoption affects a broad set of skills across multiple occupations at the plant level. We conceptualize robots as transforming task requirements not only within the robotized stage of production, but also across upstream and downstream production stages and support functions. As a result, robot adoption may induce skill changes that extend beyond directly automated tasks, altering the overall skill profile of establishments.\nEmpirically, we combine detailed job-posting data from Lightcast covering U.S. manufacturing establishments between 2010 and 2025 with plant-level measures of robot adoption. Job postings allow us to observe changes in demanded skills at a granular level, including technical, cognitive, digital, and coordination-related competencies. Using an event-study difference-in-differences framework, we estimate how robot adoption affects skill demand overall and within specific occupations.\nOur findings provide new evidence on the skill consequences of industrial automation, highlighting how robots reconfigure human work inside and beyond the production line. The results contribute to debates on technological change, workforce adjustment, and the distributional consequences of automation.",
-    "authors": "Avner Ben-Ner* (Carlson School of Management, University of Minnesota); Andrew Weaver (University of Illinois at Urbana-Champaign); Ainhoa Urtasun (Public University of Navarra); Adrianto Adrianto (Ministry of Finance)",
-    "category": "Labor Markets, Organizations, and the Future of Work",
-    "type": "paper",
-    "paper_order": 1,
-    "session_chair": "Avner Ben-Ner (Carlson School of Management, University of Minnesota)"
-  },
-  {
     "id": "129",
     "session_id": "24",
     "session_name": "AI, Technology, and the Changing Nature of Work",
@@ -160,8 +141,8 @@
     "authors": "Hun Whee Lee* (The Ohio State University); Christopher  Dishop (Auburn University); Nai-Wen Chi (National Sun Yat-Sen University); Yonghwan \tLee (Kyungpook National University); Wu Wei (Wuhan University); Ke Michael Mai (China Europe International Business School)",
     "category": "Labor Markets, Organizations, and the Future of Work",
     "type": "paper",
-    "paper_order": 2,
-    "session_chair": "Avner Ben-Ner (Carlson School of Management, University of Minnesota)"
+    "paper_order": 1,
+    "session_chair": "Hun Whee Lee (The Ohio State University)"
   },
   {
     "id": "144",
@@ -179,8 +160,8 @@
     "authors": "Sojung Yoon* (University of Minnesota)",
     "category": "Labor Markets, Organizations, and the Future of Work",
     "type": "paper",
-    "paper_order": 3,
-    "session_chair": "Avner Ben-Ner (Carlson School of Management, University of Minnesota)"
+    "paper_order": 2,
+    "session_chair": "Hun Whee Lee (The Ohio State University)"
   },
   {
     "id": "147",
@@ -198,8 +179,8 @@
     "authors": "Susan Helper* (15)",
     "category": "Labor Markets, Organizations, and the Future of Work",
     "type": "paper",
-    "paper_order": 4,
-    "session_chair": "Avner Ben-Ner (Carlson School of Management, University of Minnesota)"
+    "paper_order": 3,
+    "session_chair": "Hun Whee Lee (The Ohio State University)"
   },
   {
     "id": "116",
@@ -468,7 +449,7 @@
     "session_chair": "Dedan Luvaga (ARUA)"
   },
   {
-    "id": "35",
+    "id": "46",
     "session_id": "8",
     "session_name": "Drug Pricing and Market Competition",
     "time_slot": "W1",
@@ -478,13 +459,13 @@
     "start_time": "14:00:00",
     "end_time": "15:10:00",
     "time_order": 1,
-    "title": "Drug coupons as a strategic lever: Expanding access or a brand loyalty acquisition tool?",
-    "abstract": "Manufacturer coupons for prescription drugs are frequently framed as tools to improve affordability, access, and use of medications. However, previous studies have shown that coupon deployments may have more strategic motivations, merely as brand-loyalty or acquisition tools, potentially steering patients toward high-cost medications. Whether coupons are truly reaching those with the greatest financial need remains an empirical question. In this study, we examine whether coupon deployment in the U.S. is concentrated in markets with greater financial vulnerability relative to lower financial vulnerability to understand whether drug companies are optimizing coupon programs around inequities in drug access and affordability. We use the IQVIA Formulary Impact Analyzer for 2017–2024, covering roughly 1.8 billion retail and mail-order claims for about 12 million patients, linked at the ZIP-code level to area income, income inequality index(?), and the validated Social Vulnerability Metric (SVM). Outcomes include panel information on the share of claims using a coupon (coupon penetration) and the post-coupon buydown out-of-pocket spending across ZIPs, payers, and clinical condition.\n\nWe first illustrate national patterns in coupon penetration, income, and income inequality using choropleth maps. We then estimate regression models relating changes in coupon penetration over time to changes in income, income inequality, and SVM, adjusting for time-varying payer mix in the zip-code and region fixed effects. We also use group-based trajectory models to characterize dynamic patterns of coupon deployment. To probe causality, we exploit plausibly exogenous changes in local income as an instrument for coupon penetration, including instruments representing (i) large firm openings and closures that generate sharp employment shocks and (ii) region-specific exposure to national industry cycles (Bartik-type labor demand shocks). In complementary analyses, we implement a coverage-switcher design comparing adults moving from Medicaid (where coupons are statutorily prohibited) to employer-sponsored insurance with stably insured counterparts. Difference-in-differences models trace changes in coupon use, brand-name drug initiation, and out-of-pocket spending around the time of coverage transition. We examine heterogeneity by clinical condition—such as HIV and other chronic therapies serving patients who are “close to poor” but commercially insured—to assess whether strategic deployment is concentrated in high-value, long-duration markets. We will also compare drug classes with known high/low elasticity of demand. We will also examine coupon penetration among acute conditions.\n\nPreliminary results using SVM information indicate that, although areas with higher social and financial vulnerability exhibit greater coupon use in simple cross-sections, this relationship reverses after adjusting for region and payer mix: within regions, higher social vulnerability is associated with slower growth in coupon penetration over time. The fastest-growing coupon trajectories are concentrated in commercially attractive, less vulnerable ZIPs and in long-duration therapeutic areas such as HIV.\nRobustness checks, including alternative vulnerability and inequality measures, pre-trend falsification tests, and sensitivity to coupon intensity definitions, support these patterns. Together, our preliminary findings suggest that manufacturer coupons function less as equity-enhancing tools and more as a strategic instrument to convert new patients and retain existing ones regardless of need, with implications for the regulation of manufacturer-sponsored coupon programs and the design of income-based cost-sharing protections.\n",
-    "authors": "Miguel  Sanchez* (Johns Hopkins University); Antonio Trujillo (Johns Hopkins Bloomberg School of Public Health); Manuel  Hermosilla (University of Illinois Chicago); So-Yeon Kang (Georgetown School of Health); Jason Gibbons (Brigham and Women's Hospital/Harvard Medical School)",
+    "title": "Potential Impact of Tariffs on the Price of Generic Drugs Made in the US with Imported Active Ingredients",
+    "abstract": "Using U.S. importation data 2019-2024, this study modeled the potential impact of tariffs on the prices of generic drugs manufactured in the U.S. with imported active pharmaceutical ingredients (APIs). Under baseline assumptions a 100% worldwide tariff would result in average price increase of 30% (additional $21.15) per prescription and a blended tariff based on rates proposed by the Federal Administration would result in an average price increase of 10% (additional $6.22) per prescription for domestically-produced generics using imported APIs. Estimates varied across drugs reflecting different API importation patterns. Assumptions on the tariff rate, the contribution of the API cost to the final drug price, and on the supply chain’s ability to absorb the added tariff cost contributed markedly to determining the final price. The study findings do not generalize to U.S.-made generics using U.S.-made API but could be relevant to U.S.-made branded drugs using imported API. Tariffs could raise costs for U.S. drug manufacturers using imported APIs, potentially limiting affordability and manufacturers’ competitiveness in U.S. and global markets. Policies to incentivize “made-in-America” prescription drugs should incentivize domestic API production or reconsider API tariffs.",
+    "authors": "Mariana Socal* (Johns Hopkins Bloomberg School of Public Health); Yunxiang Sun (Johns Hopkins Bloomberg School of Public Health); Jeromie Ballreich (Johns Hopkins Bloomberg School of Public Health); Joy Acha (Johns Hopkins Bloomberg School of Public Health); Mohammad Ali Yazdi (Johns Hopkins Carey Business School); Tinglong Dai (Johns Hopkins Carey Business School); Maqbool Dada (Johns Hopkins Carey Business School)",
     "category": "Health Care Systems, Biotechnology, and Pharmaceuticals",
     "type": "paper",
     "paper_order": 1,
-    "session_chair": "Miguel  Sanchez (Johns Hopkins University)"
+    "session_chair": "Mariana Socal (Johns Hopkins Bloomberg School of Public Health)"
   },
   {
     "id": "38",
@@ -503,26 +484,7 @@
     "category": "Health Care Systems, Biotechnology, and Pharmaceuticals",
     "type": "paper",
     "paper_order": 2,
-    "session_chair": "Miguel  Sanchez (Johns Hopkins University)"
-  },
-  {
-    "id": "46",
-    "session_id": "8",
-    "session_name": "Drug Pricing and Market Competition",
-    "time_slot": "W1",
-    "room": "SEH-1450",
-    "date": "2026-06-03",
-    "day": "Wednesday",
-    "start_time": "14:00:00",
-    "end_time": "15:10:00",
-    "time_order": 1,
-    "title": "Potential Impact of Tariffs on the Price of Generic Drugs Made in the US with Imported Active Ingredients",
-    "abstract": "Using U.S. importation data 2019-2024, this study modeled the potential impact of tariffs on the prices of generic drugs manufactured in the U.S. with imported active pharmaceutical ingredients (APIs). Under baseline assumptions a 100% worldwide tariff would result in average price increase of 30% (additional $21.15) per prescription and a blended tariff based on rates proposed by the Federal Administration would result in an average price increase of 10% (additional $6.22) per prescription for domestically-produced generics using imported APIs. Estimates varied across drugs reflecting different API importation patterns. Assumptions on the tariff rate, the contribution of the API cost to the final drug price, and on the supply chain’s ability to absorb the added tariff cost contributed markedly to determining the final price. The study findings do not generalize to U.S.-made generics using U.S.-made API but could be relevant to U.S.-made branded drugs using imported API. Tariffs could raise costs for U.S. drug manufacturers using imported APIs, potentially limiting affordability and manufacturers’ competitiveness in U.S. and global markets. Policies to incentivize “made-in-America” prescription drugs should incentivize domestic API production or reconsider API tariffs.",
-    "authors": "Mariana Socal* (Johns Hopkins Bloomberg School of Public Health); Yunxiang Sun (Johns Hopkins Bloomberg School of Public Health); Jeromie Ballreich (Johns Hopkins Bloomberg School of Public Health); Joy Acha (Johns Hopkins Bloomberg School of Public Health); Mohammad Ali Yazdi (Johns Hopkins Carey Business School); Tinglong Dai (Johns Hopkins Carey Business School); Maqbool Dada (Johns Hopkins Carey Business School)",
-    "category": "Health Care Systems, Biotechnology, and Pharmaceuticals",
-    "type": "paper",
-    "paper_order": 3,
-    "session_chair": "Miguel  Sanchez (Johns Hopkins University)"
+    "session_chair": "Mariana Socal (Johns Hopkins Bloomberg School of Public Health)"
   },
   {
     "id": "58",
@@ -540,8 +502,27 @@
     "authors": "Allison Kim* (Georgetown University); So-Yeon Kang (Georgetown University)",
     "category": "Health Care Systems, Biotechnology, and Pharmaceuticals",
     "type": "paper",
+    "paper_order": 3,
+    "session_chair": "Mariana Socal (Johns Hopkins Bloomberg School of Public Health)"
+  },
+  {
+    "id": "169",
+    "session_id": "8",
+    "session_name": "Drug Pricing and Market Competition",
+    "time_slot": "W1",
+    "room": "SEH-1450",
+    "date": "2026-06-03",
+    "day": "Wednesday",
+    "start_time": "14:00:00",
+    "end_time": "15:10:00",
+    "time_order": 1,
+    "title": "Strategic Reserves: Shelved Innovation as a Real Option",
+    "abstract": "How can firms mitigate risk in research and development? This paper investigates the role of shelved innovation - R&D projects suspended despite promising results - as a risk management tool in the pharmaceutical industry. I identify ‘shelved’ drug development projects, those suspended following positive trial results, using a novel dataset linking clinical trials to their disclosed results. Conceptually, shelved innovation represents a real option to the firm that can be strategically created and exercised. First, I investigate option creation and demonstrate that firms create shelved R&D projects through simultaneously investing in multiple competing projects. Second, I examine the conditions under which firms choose to exercise the option and restart a project. Using the exogenous nature of trial failures, I evaluate whether firms restart shelved projects following project failures in the same market. Results show that firms restart shelved projects in response to late-stage failures in Phase III clinical trials.  Further, I find that the decision to restart a shelved project is moderated by the presence of co-specialized complementary assets and the thickness of the market for technology, an alternative source of replacements for failed R&D projects. Lastly, I provide evidence on the performance implications of restarting shelved projects and find no signal of inferior performance, both in terms of transition and relabeling probabilities. These findings support the view that shelved innovation is not an arbitrary byproduct of the R&D process, but represents a real option to the firm that is employed to manage risk.",
+    "authors": "Elisabeth Hofmeister* (Max Planck Institute for Innovation and Competition)",
+    "category": "Health Care Systems, Biotechnology, and Pharmaceuticals",
+    "type": "paper",
     "paper_order": 4,
-    "session_chair": "Miguel  Sanchez (Johns Hopkins University)"
+    "session_chair": "Mariana Socal (Johns Hopkins Bloomberg School of Public Health)"
   },
   {
     "id": "EV5",
@@ -937,25 +918,6 @@
     "session_chair": "Sergey Naumov (Pennsylvania State University)"
   },
   {
-    "id": "131",
-    "session_id": "49",
-    "session_name": "Taking Stock: System Dynamics Modeling in Industry Studies",
-    "time_slot": "W2",
-    "room": "SEH-1450",
-    "date": "2026-06-03",
-    "day": "Wednesday",
-    "start_time": "15:30:00",
-    "end_time": "16:40:00",
-    "time_order": 2,
-    "title": "The role of public infrastructure in food systems resilience: a model-based strategy to revitalise wholesale markets",
-    "abstract": "Fresh Produce Wholesale Markets (FPWM) are critical to affordable, accessible food, yet their commercial and institutional foundations are eroding. Structural shifts in food retail, tighter margins, and changing consumer habits reduce tenant incentives to locate in FPWM, undermining occupancy and the long-term viability of this public infrastructure. At the same time, cities face growing concerns about the nutritional value of food sold, while edible surplus and organic fractions often remain underutilized or sent to landfill. Policy debates on food systems rarely treat wholesale markets as strategic assets that can buffer demand shocks, stabilize supply, and coordinate distribution at scale. This paper examines one of Europe's largest integrated FPWMs as a driver of regional food resilience. Using System Dynamics and group model building with tenants and management, the study formulates strategy interventions to increase throughput, strengthen customer footfall, and sustain tenancy. Identified interventions are: (1) product differentiation with complementary SKUs; (2) public infrastructure for food sorting, processing, and cooking; and (3) a new marketplace for food and packaging surplus. To evaluate these interventions, we develop an SD model that supports tenant attraction and retention, as well as the co-flow of fresh produce. Value-added activities open new income streams and stabilise margins during demand declines. The model contributes to industrial studies of food resilience by conceptualising FPWMs as core infrastructure for absorbing shocks within regional food systems.",
-    "authors": "Nikolai Kazantsev* (University of Cambridge), Ettore Settanni (University of Cambridge), Jagjit Singh Srai (University of Cambridge)",
-    "category": "Sustainable Innovation, Energy, and Mobility",
-    "type": "self_organized_panel",
-    "paper_order": 4,
-    "session_chair": "Sergey Naumov (Pennsylvania State University)"
-  },
-  {
     "id": "24",
     "session_id": "5",
     "session_name": "Industrial Policy and Market Governance",
@@ -1087,44 +1049,6 @@
     "type": "paper",
     "paper_order": 4,
     "session_chair": "Roxanne Jaffe (Vanderbilt University)"
-  },
-  {
-    "id": "48",
-    "session_id": "13",
-    "session_name": "Pharmaceutical R&D Strategy",
-    "time_slot": "W3",
-    "room": "SEH-1400",
-    "date": "2026-06-03",
-    "day": "Wednesday",
-    "start_time": "16:45:00",
-    "end_time": "17:55:00",
-    "time_order": 3,
-    "title": "Mind the Gap in Drug Development: Understanding the Whitespace Between Clinical Trials",
-    "abstract": "Across innovation-intensive industries, R&D progress often unfolds through discrete stages separated by transition periods with strategic implications for portfolio management and organizational performance, yet remain understudied. In pharmaceutical R&D, these transitions take the form of intervals between clinical trials – termed “whitespace” – which have received limited attention from a firm-level strategy and R&D management perspective. This exploratory analysis uses the Citeline TrialTrove database to examine 4,288 sequential clinical trial transitions (Phase I–II & Phase II–III) from industry-sponsored programs spanning 2008-2022. Whitespace is defined as the duration (in days) between the primary completion of one trial and the initiation of the subsequent trial. We quantify whitespace durations and assess heterogeneity and trends by trial phase, firm type (big vs. emerging pharmaceutical companies), molecule type (small molecule vs. biologics), and therapeutic area. Median whitespace duration was 474 days. Whitespace increased by 14.2% from 2008–2012 to 2018–2022, with notably greater increases in Phase I–II transitions (28.7%). Big pharmaceutical companies experienced greater increases (Phase I–II: 35.9%; Phase II–III: 17.2%) compared to emerging firms. Oncology and neurology experienced especially large increases. Longer whitespace was associated with lower drug subsequent development success. Taken together, these findings suggest that whitespace represents a substantial, growing, and heterogeneous component of drug development timelines. Whitespace may reflect strategic choices related to portfolio prioritization, risk management, capability deployment, and organizational coordination. Framing whitespace as an integral phase of R&D highlights opportunities for firms to better manage development transitions and improve innovation efficiency.",
-    "authors": "Sukhun Kang (UC Santa Barbara); Sandra Barbosu* (New York University, Tandon School of Engineering); Sungyong Chang (Cornell University, Johnson Graduate School of Management); Fan Ye (UC Santa Barbara)",
-    "category": "Health Care Systems, Biotechnology, and Pharmaceuticals",
-    "type": "paper",
-    "paper_order": 1,
-    "session_chair": "Sandra Barbosu (New York University, Tandon School of Engineering)"
-  },
-  {
-    "id": "169",
-    "session_id": "13",
-    "session_name": "Pharmaceutical R&D Strategy",
-    "time_slot": "W3",
-    "room": "SEH-1400",
-    "date": "2026-06-03",
-    "day": "Wednesday",
-    "start_time": "16:45:00",
-    "end_time": "17:55:00",
-    "time_order": 3,
-    "title": "Strategic Reserves: Shelved Innovation as a Real Option",
-    "abstract": "How can firms mitigate risk in research and development? This paper investigates the role of shelved innovation - R&D projects suspended despite promising results - as a risk management tool in the pharmaceutical industry. I identify ‘shelved’ drug development projects, those suspended following positive trial results, using a novel dataset linking clinical trials to their disclosed results. Conceptually, shelved innovation represents a real option to the firm that can be strategically created and exercised. First, I investigate option creation and demonstrate that firms create shelved R&D projects through simultaneously investing in multiple competing projects. Second, I examine the conditions under which firms choose to exercise the option and restart a project. Using the exogenous nature of trial failures, I evaluate whether firms restart shelved projects following project failures in the same market. Results show that firms restart shelved projects in response to late-stage failures in Phase III clinical trials.  Further, I find that the decision to restart a shelved project is moderated by the presence of co-specialized complementary assets and the thickness of the market for technology, an alternative source of replacements for failed R&D projects. Lastly, I provide evidence on the performance implications of restarting shelved projects and find no signal of inferior performance, both in terms of transition and relabeling probabilities. These findings support the view that shelved innovation is not an arbitrary byproduct of the R&D process, but represents a real option to the firm that is employed to manage risk.",
-    "authors": "Elisabeth Hofmeister* (Max Planck Institute for Innovation and Competition)",
-    "category": "Health Care Systems, Biotechnology, and Pharmaceuticals",
-    "type": "paper",
-    "paper_order": 2,
-    "session_chair": "Sandra Barbosu (New York University, Tandon School of Engineering)"
   },
   {
     "id": "13",
@@ -1495,7 +1419,7 @@
     "type": "event"
   },
   {
-    "id": "57",
+    "id": "63",
     "session_id": "18",
     "session_name": "Generative AI and the Future of Work",
     "time_slot": "T1",
@@ -1505,13 +1429,13 @@
     "start_time": "09:00:00",
     "end_time": "10:10:00",
     "time_order": 4,
-    "title": "The Impact of Generative AI on Individuals’ Career Choices and Entrepreneurship Intentions",
-    "abstract": "The widespread adoption of generative AI is reshaping individuals’ career choices, yet existing research has paid limited attention to how generative AI influences career intentions and through which channels these effects unfold. Two well-discussed channels capture these mechanisms. Augmentation refers to humans collaborating with AI to enhance capabilities and improve work performance, whereas automation refers to AI substituting for human labor to increase efficiency in work routines. To disentangle these channels and investigate underlying mechanisms, we conducted a field study in a U.S. biotechnology firm. We implemented a two-wave survey experiment with full-time employees, in which the key treatment educates respondents about either an augmentation view or an automation view of AI. Our results show that augmentation plays a larger role in shaping employees’ internal mobility intentions, and that this effect strengthens over time. In contrast, automation plays a larger role in shaping employees’ entrepreneurial intentions, and this effect also increases over time. We further examine mechanisms underlying these snowball patterns. We find that use of the firm-specific LinkedIn Learning system, an AI-enabled career development tool, partially mediates the relationship between the augmentation treatment and internal mobility intentions. We also find that the use of other generative AI tools partially mediates the relationship between the automation treatment and entrepreneurial intentions. Overall, the study offers implications for how firms and employees adapt to AI in the workplace and how AI shapes career intentions over time.",
-    "authors": "Chang Liu* (University of Wisconsin - Madison); Florence Honoré (University of Wisconsin - Madison)",
+    "title": "Beyond Productivity: Evaluating the Hidden Costs of Generative AI in Software Development",
+    "abstract": "AI-assisted programming tools are increasingly adopted to enhance developer productivity by automating routine tasks and accelerating software development. While early evidence highlights short-term productivity gains, our study shows that excessive reliance on AI can unintentionally accelerate the accumulation of technical debt, leading to escalating maintenance costs and eventual revenue erosion. Drawing on interviews with software engineers and insights from the literature, we build a dynamic simulation model to examine the long-term impacts of AI-assisted coding under varying conditions of project horizon, legacy-system interaction, developer skill, and market dynamism. Our results reveal that productivity benefits follow an inverted-U pattern: there exists a “sweet spot” where AI assistance improves overall performance, but beyond this threshold, compounded technical debt undermines system maintainability and profitability. We further show that greenfield environments and fast-evolving markets can tolerate higher levels of AI assistance, whereas brownfield (legacy) settings and teams with less skilled developers are substantially more susceptible to long-term decline. We identify technical-debt retirement as a strategic guardrail that can help sustain AI benefits over time. These findings demonstrate that AI-assisted development is not simply a choice of productivity tool, but a strategic decision that must consider programming environment constraints, system longevity, skill composition, and market factors. Finally, we discuss implications for theory and management.",
+    "authors": "Edward Anderson* (University of Texas at Austin); Geoffrey Parker (Dartmouth College)",
     "category": "Innovation, Entrepreneurship, and AI-Driven Transformation",
     "type": "paper",
     "paper_order": 1,
-    "session_chair": "Chang Liu (University of Wisconsin - Madison)"
+    "session_chair": "Edward Anderson (University of Texas at Austin)"
   },
   {
     "id": "62",
@@ -1530,26 +1454,7 @@
     "category": "Innovation, Entrepreneurship, and AI-Driven Transformation",
     "type": "paper",
     "paper_order": 2,
-    "session_chair": "Chang Liu (University of Wisconsin - Madison)"
-  },
-  {
-    "id": "63",
-    "session_id": "18",
-    "session_name": "Generative AI and the Future of Work",
-    "time_slot": "T1",
-    "room": "SC-302",
-    "date": "2026-06-04",
-    "day": "Thursday",
-    "start_time": "09:00:00",
-    "end_time": "10:10:00",
-    "time_order": 4,
-    "title": "Beyond Productivity: Evaluating the Hidden Costs of Generative AI in Software Development",
-    "abstract": "AI-assisted programming tools are increasingly adopted to enhance developer productivity by automating routine tasks and accelerating software development. While early evidence highlights short-term productivity gains, our study shows that excessive reliance on AI can unintentionally accelerate the accumulation of technical debt, leading to escalating maintenance costs and eventual revenue erosion. Drawing on interviews with software engineers and insights from the literature, we build a dynamic simulation model to examine the long-term impacts of AI-assisted coding under varying conditions of project horizon, legacy-system interaction, developer skill, and market dynamism. Our results reveal that productivity benefits follow an inverted-U pattern: there exists a “sweet spot” where AI assistance improves overall performance, but beyond this threshold, compounded technical debt undermines system maintainability and profitability. We further show that greenfield environments and fast-evolving markets can tolerate higher levels of AI assistance, whereas brownfield (legacy) settings and teams with less skilled developers are substantially more susceptible to long-term decline. We identify technical-debt retirement as a strategic guardrail that can help sustain AI benefits over time. These findings demonstrate that AI-assisted development is not simply a choice of productivity tool, but a strategic decision that must consider programming environment constraints, system longevity, skill composition, and market factors. Finally, we discuss implications for theory and management.",
-    "authors": "Edward Anderson* (University of Texas at Austin); Geoffrey Parker (Dartmouth College)",
-    "category": "Innovation, Entrepreneurship, and AI-Driven Transformation",
-    "type": "paper",
-    "paper_order": 3,
-    "session_chair": "Chang Liu (University of Wisconsin - Madison)"
+    "session_chair": "Edward Anderson (University of Texas at Austin)"
   },
   {
     "id": "138",
@@ -1567,8 +1472,27 @@
     "authors": "Mingtao Xu* (Tsinghua University); Fan Yang (Tsinghua University)",
     "category": "Innovation, Entrepreneurship, and AI-Driven Transformation",
     "type": "paper",
-    "paper_order": 4,
-    "session_chair": "Chang Liu (University of Wisconsin - Madison)"
+    "paper_order": 3,
+    "session_chair": "Edward Anderson (University of Texas at Austin)"
+  },
+  {
+    "id": "86",
+    "session_id": "26",
+    "session_name": "Platform Work, Control, and Worker Voice",
+    "time_slot": "T1",
+    "room": "SC-309",
+    "date": "2026-06-04",
+    "day": "Thursday",
+    "start_time": "09:00:00",
+    "end_time": "10:10:00",
+    "time_order": 4,
+    "title": "The Impact of Robotics on the Demand for Skills",
+    "abstract": "Recent firm-level difference-in-differences studies across multiple countries find that robot-adopting firms often experience net employment gains, driven by output expansion that outweighs direct task automation. While this literature has substantially advanced our understanding of employment effects, far less is known about how robot adoption reshapes the demand for skills within and across occupations. Existing evidence suggests that robots substitute for routine tasks while increasing demand for complementary activities such as monitoring, maintenance, logistics, and quality control, leading to occupational reallocation and skill upgrading among both production and technical workers.\nThis paper investigates how robot adoption affects a broad set of skills across multiple occupations at the plant level. We conceptualize robots as transforming task requirements not only within the robotized stage of production, but also across upstream and downstream production stages and support functions. As a result, robot adoption may induce skill changes that extend beyond directly automated tasks, altering the overall skill profile of establishments.\nEmpirically, we combine detailed job-posting data from Lightcast covering U.S. manufacturing establishments between 2010 and 2025 with plant-level measures of robot adoption. Job postings allow us to observe changes in demanded skills at a granular level, including technical, cognitive, digital, and coordination-related competencies. Using an event-study difference-in-differences framework, we estimate how robot adoption affects skill demand overall and within specific occupations.\nOur findings provide new evidence on the skill consequences of industrial automation, highlighting how robots reconfigure human work inside and beyond the production line. The results contribute to debates on technological change, workforce adjustment, and the distributional consequences of automation.",
+    "authors": "Avner Ben-Ner* (Carlson School of Management, University of Minnesota); Andrew Weaver (University of Illinois at Urbana-Champaign); Ainhoa Urtasun (Public University of Navarra); Adrianto Adrianto (Ministry of Finance)",
+    "category": "Labor Markets, Organizations, and the Future of Work",
+    "type": "paper",
+    "paper_order": 1,
+    "session_chair": "Avner Ben-Ner (Carlson School of Management, University of Minnesota)"
   },
   {
     "id": "27",
@@ -1586,27 +1510,8 @@
     "authors": "Alex Kowalski* (Cornell ILR School); Erin Kelly (MIT Sloan School of Management); Hazhir Rahmandad (MIT Sloan School of Management); Kirsten Siebach (Johns Hopkins Bloomberg School of Public Health)",
     "category": "Labor Markets, Organizations, and the Future of Work",
     "type": "paper",
-    "paper_order": 1,
-    "session_chair": "Alex Kowalski (Cornell ILR School)"
-  },
-  {
-    "id": "107",
-    "session_id": "26",
-    "session_name": "Platform Work, Control, and Worker Voice",
-    "time_slot": "T1",
-    "room": "SC-309",
-    "date": "2026-06-04",
-    "day": "Thursday",
-    "start_time": "09:00:00",
-    "end_time": "10:10:00",
-    "time_order": 4,
-    "title": "What You Say or How You Say It? Predicting Freelance Job Success with Large Language Models",
-    "abstract": "In online freelance marketplaces, where clients and freelancers often work together without prior relationships, conversation is the primary channel for building trust, aligning expectations, and driving successful outcomes. Yet some freelance collaborations thrive while others fall apart---and the reasons why remain poorly understood. This study draws on a large-scale dataset of real-world client–freelancer conversations from a leading platform to examine how communication dynamics, specifically content versus style, predict match quality. Using large language models, we extract task-oriented content and socio-emotional style features from entire conversations and develop a theory-driven framework to study how these signals evolve over time and relate to freelance success. We find that high-quality matches are characterized by positive socio-emotional communication and expressions of solidarity, whereas low-quality matches exhibit substantially more negative socio-emotional behaviors, including disagreement, tension, and antagonism. Socio-negative language is strongly and consistently associated with lower match quality, with client negativity proving far more damaging than freelancer negativity. Conversation timing also matters: negative signals that persist into later stages---especially unresolved disagreement from clients---are among the strongest predictors of failure, while late-stage confirmation and solidarity are linked to success. Mid-conversation dynamics reveal asymmetric repair, as freelancer efforts to release tension improve outcomes, whereas late-stage client questioning signals emerging misalignment. Together, these findings offer new insights into how communication patterns distinguish successful from unsuccessful freelance matches and suggest avenues for improving matching and collaboration support in online labor markets.",
-    "authors": "Jiannan Xu* (University of Maryland)",
-    "category": "Labor Markets, Organizations, and the Future of Work",
-    "type": "paper",
     "paper_order": 2,
-    "session_chair": "Alex Kowalski (Cornell ILR School)"
+    "session_chair": "Avner Ben-Ner (Carlson School of Management, University of Minnesota)"
   },
   {
     "id": "141",
@@ -1625,7 +1530,7 @@
     "category": "Labor Markets, Organizations, and the Future of Work",
     "type": "paper",
     "paper_order": 3,
-    "session_chair": "Alex Kowalski (Cornell ILR School)"
+    "session_chair": "Avner Ben-Ner (Carlson School of Management, University of Minnesota)"
   },
   {
     "id": "192",
@@ -1948,6 +1853,25 @@
     "category": "Health Care Systems, Biotechnology, and Pharmaceuticals",
     "type": "paper",
     "paper_order": 3,
+    "session_chair": "Matteo Tranchero (The Wharton School)"
+  },
+  {
+    "id": "48",
+    "session_id": "7",
+    "session_name": "Biomedical Innovation & Organizational Ecosystems",
+    "time_slot": "T1",
+    "room": "SC-308",
+    "date": "2026-06-04",
+    "day": "Thursday",
+    "start_time": "09:00:00",
+    "end_time": "10:10:00",
+    "time_order": 4,
+    "title": "Mind the Gap in Drug Development: Understanding the Whitespace Between Clinical Trials",
+    "abstract": "Across innovation-intensive industries, R&D progress often unfolds through discrete stages separated by transition periods with strategic implications for portfolio management and organizational performance, yet remain understudied. In pharmaceutical R&D, these transitions take the form of intervals between clinical trials – termed “whitespace” – which have received limited attention from a firm-level strategy and R&D management perspective. This exploratory analysis uses the Citeline TrialTrove database to examine 4,288 sequential clinical trial transitions (Phase I–II & Phase II–III) from industry-sponsored programs spanning 2008-2022. Whitespace is defined as the duration (in days) between the primary completion of one trial and the initiation of the subsequent trial. We quantify whitespace durations and assess heterogeneity and trends by trial phase, firm type (big vs. emerging pharmaceutical companies), molecule type (small molecule vs. biologics), and therapeutic area. Median whitespace duration was 474 days. Whitespace increased by 14.2% from 2008–2012 to 2018–2022, with notably greater increases in Phase I–II transitions (28.7%). Big pharmaceutical companies experienced greater increases (Phase I–II: 35.9%; Phase II–III: 17.2%) compared to emerging firms. Oncology and neurology experienced especially large increases. Longer whitespace was associated with lower drug subsequent development success. Taken together, these findings suggest that whitespace represents a substantial, growing, and heterogeneous component of drug development timelines. Whitespace may reflect strategic choices related to portfolio prioritization, risk management, capability deployment, and organizational coordination. Framing whitespace as an integral phase of R&D highlights opportunities for firms to better manage development transitions and improve innovation efficiency.",
+    "authors": "Sukhun Kang (UC Santa Barbara); Sandra Barbosu* (New York University, Tandon School of Engineering); Sungyong Chang (Cornell University, Johnson Graduate School of Management); Fan Ye (UC Santa Barbara)",
+    "category": "Health Care Systems, Biotechnology, and Pharmaceuticals",
+    "type": "paper",
+    "paper_order": 4,
     "session_chair": "Matteo Tranchero (The Wharton School)"
   },
   {
@@ -3237,7 +3161,7 @@
     "time_order": 6.75,
     "title": "The Integrity Imperative: Ethics and Governance for Agentic AI at Scale",
     "abstract": "As organizations move beyond generative AI toward increasingly autonomous agentic AI systems, the ethical, organizational, and governance challenges intensify dramatically. These systems are capable of planning, decision-making, and acting across complex workflows. Unlike traditional automation, agentic AI introduces new forms of distributed agency, opaque decision rights, and emergent behavior that strain existing corporate controls, regulatory frameworks, and professional norms. Drawing on perspectives from operations and systems design (Nitin Joglekar, Villanova), enterprise AI enablement (Meena Al-Azzawe, Kinaxis), organizational transformation and talent strategy (Mimi Bulfin, IBM), and responsible AI leadership (Phaedra Boinodiris, Author of AI for the Rest of Us), the panel will explore four interrelated questions:\n\n(1) How do agentic systems reshape accountability, risk ownership, and human-in-the-loop governance?\n(2) What organizational capabilities—skills, structures, and decision processes—are required to prevent ethical drift as autonomy increases?\n(3) How can firms align innovation incentives with integrity, transparency, and societal trust?   \n(4) How are the regulatory trends, e.g., EU’s 2024 AI Act, affecting agentic supply chains?   \n\nThrough real-world enterprise cases and conceptual frameworks, the panel will propose practical governance mechanisms, including auditability for autonomous agents, ethical control planes that monitor and constrain behavior, and new roles for AI stewardship within firms. The session is designed to bridge theory and practice, offering industry studies scholars and practitioners a shared language for analyzing agentic AI not merely as a technical frontier, but as a fundamental transformation in how organizations exercise power, responsibility, and strategic choice.",
-    "authors": "Kristi Yuthas (Portland State University)\nNitin Joglekar (Villanova)\nMimi Bulfin (IBM)\nEdward Anderson (UT Austin)\nJennifer Woolley (Santa Clara University)\nMaxine Markovitz (Portland State University)",
+    "authors": "Kristi Yuthas (Portland State University)\nNitin Joglekar (Villanova)\nMimi Bulfin (IBM)\nEdward Anderson (UT Austin)\nJennifer Woolley (Santa Clara University)\nMaxine Markovitz (Portland State University)\nGeoff Parker (Dartmouth)",
     "category": "Innovation, Entrepreneurship, and AI-Driven Transformation",
     "type": "special_session",
     "moderator": "Melissa Appleyard (Portland State University)"

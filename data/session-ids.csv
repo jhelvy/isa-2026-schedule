@@ -22,7 +22,6 @@ id,session_id,session_name
 30,7,Biomedical Innovation & Organizational Ecosystems
 71,7,Biomedical Innovation & Organizational Ecosystems
 188,7,Biomedical Innovation & Organizational Ecosystems
-35,8,Drug Pricing and Market Competition
 38,8,Drug Pricing and Market Competition
 46,8,Drug Pricing and Market Competition
 58,8,Drug Pricing and Market Competition
@@ -34,7 +33,6 @@ id,session_id,session_name
 184,10,Drug Supply Chains and Shortages
 185,10,Drug Supply Chains and Shortages
 190,10,Drug Supply Chains and Shortages
-21,11,Healthcare Data and Analytics
 39,11,Healthcare Data and Analytics
 114,11,Healthcare Data and Analytics
 150,11,Healthcare Data and Analytics
@@ -42,8 +40,9 @@ id,session_id,session_name
 125,12,Healthcare Operations and Capacity
 137,12,Healthcare Operations and Capacity
 140,12,Healthcare Operations and Capacity
-48,13,Pharmaceutical R&D Strategy
-169,13,Pharmaceutical R&D Strategy
+21,11,Healthcare Data and Analytics
+48,7,Biomedical Innovation & Organizational Ecosystems
+169,8,Drug Pricing and Market Competition
 111,14,AI Adoption and Organizational Performance
 199,14,AI Adoption and Organizational Performance
 200,14,AI Adoption and Organizational Performance
@@ -59,7 +58,6 @@ id,session_id,session_name
 108,17,Entrepreneurship Research and Policy
 120,17,Entrepreneurship Research and Policy
 208,17,Entrepreneurship Research and Policy
-57,18,Generative AI and the Future of Work
 62,18,Generative AI and the Future of Work
 63,18,Generative AI and the Future of Work
 138,18,Generative AI and the Future of Work
@@ -81,7 +79,7 @@ id,session_id,session_name
 72,23,"Hiring, Skills, and Labor Market Dynamics"
 100,23,"Hiring, Skills, and Labor Market Dynamics"
 119,23,"Hiring, Skills, and Labor Market Dynamics"
-86,24,"AI, Technology, and the Changing Nature of Work"
+86,26,"Platform Work, Control, and Worker Voice"
 129,24,"AI, Technology, and the Changing Nature of Work"
 144,24,"AI, Technology, and the Changing Nature of Work"
 147,24,"AI, Technology, and the Changing Nature of Work"
@@ -90,7 +88,6 @@ id,session_id,session_name
 151,25,Manufacturing Transformation and Workforce Development
 204,25,Manufacturing Transformation and Workforce Development
 27,26,"Platform Work, Control, and Worker Voice"
-107,26,"Platform Work, Control, and Worker Voice"
 141,26,"Platform Work, Control, and Worker Voice"
 23,27,Organizational Structure and Human Capital
 160,27,Organizational Structure and Human Capital
@@ -172,7 +169,6 @@ id,session_id,session_name
 32,48,Technological Change at Work and Across Industries
 32,48,Technological Change at Work and Across Industries
 32,48,Technological Change at Work and Across Industries
-131,49,Taking Stock: System Dynamics Modeling in Industry Studies
 131,49,Taking Stock: System Dynamics Modeling in Industry Studies
 131,49,Taking Stock: System Dynamics Modeling in Industry Studies
 131,49,Taking Stock: System Dynamics Modeling in Industry Studies

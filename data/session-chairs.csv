@@ -6,7 +6,7 @@ session_id,session_name,day,time_slot,room,chair_name,chair_email
 5,Industrial Policy and Market Governance,Wednesday,W2,SEH-1300,Alexander Bendel,alexander.bendel@uni-due.de
 6,Industry Classification and Regulatory Policy,Friday,F1,SC-309,Haiyang Zhang,hzhang@hbs.edu
 7,Biomedical Innovation & Organizational Ecosystems,Thursday,T1,SC-308,Matteo Tranchero,mtranc@wharton.upenn.edu
-8,Drug Pricing and Market Competition,Wednesday,W1,SEH-1450,Miguel  Sanchez,msanch62@jh.edu
+8,Drug Pricing and Market Competition,Wednesday,W1,SEH-1450,Mariana Socal,msocal1@jhu.edu
 9,Drug Quality and Safety,Thursday,T2,SC-302,Zach Wright,zach.wright@byu.edu
 10,Drug Supply Chains and Shortages,Friday,F1,SC-307,Iman Attari,attariin@ucmail.uc.edu
 11,Healthcare Data and Analytics,Thursday,T3,SC-302,Hanu Tyagi,hanu@illinois.edu
@@ -16,7 +16,7 @@ session_id,session_name,day,time_slot,room,chair_name,chair_email
 15,Advanced Technologies and Digital Innovation,Thursday,T2,SC-Amp.,Marco Cucculelli,M.CUCCULELLI@UNIVPM.IT
 16,Entrepreneurial Ecosystems and Clusters,Friday,F1,SC-301,Runjin Guo,guorunjin@gmail.com
 17,Entrepreneurship Research and Policy,Wednesday,W3,SEH-1450,Biswapriya Saha,biswapriya.saha22@iimb.ac.in
-18,Generative AI and the Future of Work,Thursday,T1,SC-302,Chang Liu,cliu672@wisc.edu
+18,Generative AI and the Future of Work,Thursday,T1,SC-302,Edward Anderson,edanderson@utexas.edu
 19,Industrial Policy and Technology Development,Thursday,T2,SC-307,Shuqi Sun,shuqisun@asu.edu
 20,Innovation Strategy and Resources,Thursday,T3,SC-310,Temitope Oladimeji,toladimeji@umass.edu
 21,Venture Financing and Technology Dynamics,Wednesday,W1,SEH-1400,Jiaqi Yuan,yuan0390@umn.edu
@@ -47,4 +47,4 @@ session_id,session_name,day,time_slot,room,chair_name,chair_email
 46,Energy Systems and Reliability,Thursday,T3,SC-Amp.,Umair Khan,edu.szu.edu.cn@gmail.com
 47,Green Innovation Diffusion,Thursday,T1,SC-Amp.,Maria Qayum,Maria.qayyum_87@yahoo.com
 48,Technological Change at Work and Across Industries,Thursday,T3,SC-307,Sean O'Brady,obradys@mcmaster.ca
-49,Taking Stock: System Dynamics Modeling in Industry Studies,Wednesday,W2,SEH-1450,Nikolai Kazantsev,nk622@cam.ac.uk
+49,Taking Stock: System Dynamics Modeling in Industry Studies,Wednesday,W2,SEH-1450,Sergey Naumov,snaumov@psu.edu

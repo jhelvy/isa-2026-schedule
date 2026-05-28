@@ -37,7 +37,10 @@ withdraw_ids <- c(
   26,
   102,
   91,
-  31
+  31,
+  35,
+  57,
+  107
 )
 
 # Combined exclusion list used by 3exclude.R and 5verify.R
