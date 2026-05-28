@@ -1089,25 +1089,6 @@
     "session_chair": "Roxanne Jaffe (Vanderbilt University)"
   },
   {
-    "id": "31",
-    "session_id": "13",
-    "session_name": "Pharmaceutical R&D Strategy",
-    "time_slot": "W3",
-    "room": "SEH-1400",
-    "date": "2026-06-03",
-    "day": "Wednesday",
-    "start_time": "16:45:00",
-    "end_time": "17:55:00",
-    "time_order": 3,
-    "title": "Tax Windfall or White Elephant? The Intensive-Margin Innovation Response of U.S. Pharmaceutical Firms to the 2017 Corporate Tax Reform",
-    "abstract": "A central question for the U.S. medical innovation system is whether broad-based fiscal policies—rather than targeted “push” or “pull” instruments—meaningfully influence the rate and direction of biomedical innovation. Existing work largely evaluates interventions that explicitly condition on R&D activity or pharmaceutical outputs. Much less is known about whether untargeted corporate tax changes that shift after-tax cash flows alter firms’ innovation choices. This question matters for ongoing debates over whether broad tax cuts or more targeted incentives better stimulate socially valuable biomedical innovation.\n\nWe study the 2017 U.S. Tax Cuts and Jobs Act (TCJA), which reduced the federal corporate tax rate from 35% to 21% and produced sizable increases in after-tax cash flow for tax-paying corporations. Building on our prior work (Trujillo et al., 2025, under review), which documents no meaningful post-TCJA rise in aggregate pharmaceutical R&D spending among public firms, we examine whether firms nonetheless adjusted how they innovate across stages of the pipeline and along quality margins.\n\nOur analysis shifts from aggregate inputs to upstream, midstream, and downstream outcomes at the firm-therapeutic area level. We study (i) patent applications and grants; (ii) clinical development intensity, including trial initiations and time to Phase III completion; (iii) regulatory approvals; and (iv) innovation quality, measured through forward citations to patents rooted in TCJA-era R&D. Together, these outcomes allow us to assess changes in both the rate and composition of innovation.\n\nOur empirical strategy combines multiple quasi-experimental sources of variation in exposure to the TCJA. First, we estimate a U.S.-Europe difference-in-differences design for 2012—2024, with extensive pre-trend diagnostics. Second, within U.S. firms, we exploit heterogeneity in (i) pre-reform effective tax rates and tax liabilities; (ii) firm stage and profitability, distinguishing mature tax-paying firms from pre-commercial firms with little direct statutory exposure; (iii) internal liquidity and leverage; and (iv) U.S. revenue share and therapeutic-area composition. These dimensions help separate direct tax-liability channels from broader financing-environment effects.\n\nWe estimate event-study and distributed-lag models with high-dimensional fixed effects and interactions capturing heterogeneous tax-shock exposure. We further implement triple-difference specifications that compare high- versus low-exposure U.S. firms before and after the TCJA within therapeutic areas and global trends, mitigating concerns about macroeconomic confounders.\n\nPreliminary results indicate limited but heterogeneous intensive-margin responses. Upstream, we observe modest, short-lived increases in patenting among mid-sized and large tax-paying firms with substantial liquidity gains; pre-commercial firms show no response. Midstream, we find modest acceleration in Phase III execution for firms with both large tax windfalls and high U.S. revenue exposure in shorter-cycle therapeutic areas. Downstream, we detect no robust changes in regulatory approvals or in innovation quality as captured by forward citation distributions.\n\nTaken together with stable aggregate R&D expenditures, these results suggest that the TCJA—a broad, untargeted corporate tax cut—generated limited productivity gains for the U.S. medical innovation system. Effects are concentrated among incumbent, profitable firms and represent incremental acceleration rather than reallocation toward higher-value or longer-horizon projects. Our findings imply that broad fiscal windfalls are a relatively blunt instrument compared with more targeted innovation policies.",
-    "authors": "Antonio Trujillo (Johns Hopkins University); Yongzheng Liang* (Johns Hopkins University); Manuel Hermosilla (University of Illinois Chicago); So Yeon Kang (Georgetown University); Jeromie Ballreich (Johns Hopkins University)",
-    "category": "Health Care Systems, Biotechnology, and Pharmaceuticals",
-    "type": "paper",
-    "paper_order": 1,
-    "session_chair": "Yongzheng Liang (Johns Hopkins University)"
-  },
-  {
     "id": "48",
     "session_id": "13",
     "session_name": "Pharmaceutical R&D Strategy",
@@ -1123,8 +1104,8 @@
     "authors": "Sukhun Kang (UC Santa Barbara); Sandra Barbosu* (New York University, Tandon School of Engineering); Sungyong Chang (Cornell University, Johnson Graduate School of Management); Fan Ye (UC Santa Barbara)",
     "category": "Health Care Systems, Biotechnology, and Pharmaceuticals",
     "type": "paper",
-    "paper_order": 2,
-    "session_chair": "Yongzheng Liang (Johns Hopkins University)"
+    "paper_order": 1,
+    "session_chair": "Sandra Barbosu (New York University, Tandon School of Engineering)"
   },
   {
     "id": "169",
@@ -1142,8 +1123,8 @@
     "authors": "Elisabeth Hofmeister* (Max Planck Institute for Innovation and Competition)",
     "category": "Health Care Systems, Biotechnology, and Pharmaceuticals",
     "type": "paper",
-    "paper_order": 3,
-    "session_chair": "Yongzheng Liang (Johns Hopkins University)"
+    "paper_order": 2,
+    "session_chair": "Sandra Barbosu (New York University, Tandon School of Engineering)"
   },
   {
     "id": "13",

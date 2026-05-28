@@ -140,6 +140,10 @@ Two optional morning excursions run on Wednesday, June 3 before the main program
 - Track colors are defined in `trackMap` in `index.html`. Social events and excursions use CSS class `cat-event` (teal border, light teal background).
 - `excursions_data.json` is loaded alongside `schedule_data.json`, `bios_data.json`, and `awards_data.json` at startup via `Promise.all`.
 
+## Session Chairs
+
+Each paper session has one chair, identified as the author marked with `*` in the `author_names` column of `data/submissions.csv`. The corresponding email is the `*`-marked entry in the `author_emails` column (same row). This is the same person as the `contact_author` / `contact_email` fields.
+
 ## Workflow Rules
 
 - **Never run R scripts or render `.qmd` files.** The user always does this after edits are made.
