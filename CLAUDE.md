@@ -43,6 +43,7 @@ data/
   self-sessions.csv   # Papers within self-organized panels (used by schedule.qmd)
   pdw-registered.csv  # PDW registrants who cannot present in W1 or W2
   special-slots.csv   # Special slot definitions
+  session-chairs.csv  # OUTPUT: one row per paper session with chair name and email
 
 index.html            # Web app (served by GitHub Pages)
 images/logo.png       # Conference logo
@@ -87,7 +88,14 @@ W1 and W2 overlap with the Professional Development Workshop — no PDW registra
 
 **Reassign time slots**: just re-run `Rscript code/2assign_slots.R` (adjust `SCHEDULE_SEED` in `config.R` to get a different random assignment).
 
-**Change session groupings**: edit the relevant CSV in `data/sessions/` (`session_id` and `session_name` columns), then re-run `1generate_session_ids.R` followed by `2assign_slots.R`.
+**Change session groupings (full reassignment)**: edit the relevant CSV in `data/sessions/` (`session_id` and `session_name` columns), then re-run `1generate_session_ids.R` followed by `2assign_slots.R`.
+
+**Move a paper between sessions without re-running slot assignment**: edit all three files manually to keep existing slot assignments intact:
+1. `data/sessions/<category>.csv` — update the paper's `session_id` and `session_name`
+2. `data/session-ids.csv` — update the paper's `session_id` and `session_name`
+3. `data/schedule.csv` — update the paper's `session_id`, `session_name`, `time_slot`, `room`, `date`, `day`, `start_time`, `end_time`, and `time_order` to match the target session
+
+Then run `Rscript code/3exclude.R` and `Rscript code/4generate_json.R`. Always run `Rscript code/5verify.R` afterward to confirm no constraints are violated.
 
 **Add a date restriction**: add an entry to `date_restrictions` in `code/config.R`, then re-run `2assign_slots.R`.
 
@@ -139,6 +147,13 @@ Two optional morning excursions run on Wednesday, June 3 before the main program
 - **Excursion events** are `type = "event"` entries in `schedule_data.json` whose `session_name` matches an entry in `excursions_data.json`. They render as expandable teal cards (badge: "Excursion") showing meeting logistics and, for the think tank tour, the full org/speaker roster. Search covers speaker names and org names via `getExcursionSearchText()`.
 - Track colors are defined in `trackMap` in `index.html`. Social events and excursions use CSS class `cat-event` (teal border, light teal background).
 - `excursions_data.json` is loaded alongside `schedule_data.json`, `bios_data.json`, and `awards_data.json` at startup via `Promise.all`.
+
+## Session Constraints
+
+- Each paper session must have **3–4 papers** (verified by `5verify.R`).
+- Sessions with fewer than 3 or more than 4 papers must be resolved before publishing.
+- When removing a paper, check if its session drops below 3 and resolve before committing.
+- When moving papers between sessions, always check: (1) author conflicts in the target time slot, (2) `date_restrictions` and `date_exclusions` in `config.R`, (3) PDW registrant conflicts for W1/W2 slots.
 
 ## Session Chairs
 
