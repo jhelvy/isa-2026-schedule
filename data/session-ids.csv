@@ -77,7 +77,7 @@ id,session_id,session_name
 2000,22,Technology Legitimacy and Emerging Markets
 43,23,"Hiring, Skills, and Labor Market Dynamics"
 72,23,"Hiring, Skills, and Labor Market Dynamics"
-100,23,"Hiring, Skills, and Labor Market Dynamics"
+100,27,Organizational Structure and Human Capital
 119,23,"Hiring, Skills, and Labor Market Dynamics"
 86,26,"Platform Work, Control, and Worker Voice"
 129,24,"AI, Technology, and the Changing Nature of Work"
@@ -89,7 +89,6 @@ id,session_id,session_name
 204,25,Manufacturing Transformation and Workforce Development
 27,26,"Platform Work, Control, and Worker Voice"
 141,26,"Platform Work, Control, and Worker Voice"
-23,27,Organizational Structure and Human Capital
 160,27,Organizational Structure and Human Capital
 187,27,Organizational Structure and Human Capital
 116,28,Labor Policy and Institutions

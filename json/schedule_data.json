@@ -595,7 +595,7 @@
     "session_chair": "Scott Taylor (University of Southern California)"
   },
   {
-    "id": "23",
+    "id": "100",
     "session_id": "27",
     "session_name": "Organizational Structure and Human Capital",
     "time_slot": "W2",
@@ -605,13 +605,13 @@
     "start_time": "15:30:00",
     "end_time": "16:40:00",
     "time_order": 2,
-    "title": "Jurisdictional Decoupling: When Service Providers Expand Control by Distancing Other Groups from Their Work",
-    "abstract": "Some domains of work are culturally salient (e.g. sustainability work, craft work) and give legitimacy to the occupations and organizations that identify with them. Yet increasingly such work is outsourced to contract service providers. That is, service providers may take symbolically valuable work of other groups, not through jurisdictional contestation but through market exchange. My 16-month field study of California vineyards reveals that symbolic claim to doing vineyard stewardship work is held by several groups (e.g. winemakers, family owners, ESG investors), meanwhile the actual work of stewarding vineyards increasingly falls to service providers who decide how work gets done. I introduce jurisdictional decoupling to describe the conditions that make jurisdiction expansion possible through exchange dynamics. Drawing on data from a prominent vineyard service provider, I identify mechanisms enabling them to exploit jurisdictional decoupling. Their jurisdiction grew over a few decades to include all vineyard-relevant work—work that other groups previously performed and continued to claim. I find that as other groups relinquished their work, starting with menial undesirable tasks to gradually include more identity-central activities, they grew more detached and dependent. Conversely, the service provider became more capable and indispensable as gatekeepers of the production ecosystem.",
-    "authors": "Alan Zhang* (Columbia)",
+    "title": "Redeployment or Hiring? R&D Characteristics, Organizational Capabilities, and Strategic Human Capital Sourcing in Multi-Business Firms",
+    "abstract": "Industry shocks reallocate profitability across business units, often forcing multi-business firms to reconfigure their human capital. When a focal business unit experiences a sudden growth inducement, should the firm redeploy employees from other units or hire externally? I develop a task-resource matching view in which sourcing decisions reflect not only transaction and adjustment costs but also the benefits of aligning an employee’s knowledge with task requirements. I study inventor (i.e., engineers and scientists) inflows to ethylene-related business units of petrochemical firms after the U.S. shale revolution, which sharply lowered ethane input costs and increased U.S. ethylene margins beginning in 2011. Using LinkedIn career histories linked to patent records, I observe inventors entering ethylene units of large petrochemical firms (2011-2015) and classify their tasks as downstream new application development or upstream operational efficiency. Consistent with the matching view, firms are more likely to hire externally for new application development roles but rely more on internal redeployment for operational efficiency roles, even after accounting for local hiring frictions and within-firm task relatedness. In addition, these task-contingent patterns are weaker in firms with stronger knowledge recombination capability and more clustered intrafirm inventor networks, suggesting substitution between external hiring and internal knowledge generation/coordination capacities. Additional tests show that external hires bring more novel prior-task knowledge and that performance is highest when the sourcing mode matches task type.",
+    "authors": "Kyungsoo Kim* (Georgia State University)",
     "category": "Labor Markets, Organizations, and the Future of Work",
     "type": "paper",
     "paper_order": 1,
-    "session_chair": "Alan Zhang (Columbia)"
+    "session_chair": "Kyungsoo Kim (Georgia State University)"
   },
   {
     "id": "160",
@@ -630,7 +630,7 @@
     "category": "Labor Markets, Organizations, and the Future of Work",
     "type": "paper",
     "paper_order": 2,
-    "session_chair": "Alan Zhang (Columbia)"
+    "session_chair": "Kyungsoo Kim (Georgia State University)"
   },
   {
     "id": "187",
@@ -649,7 +649,7 @@
     "category": "Labor Markets, Organizations, and the Future of Work",
     "type": "paper",
     "paper_order": 3,
-    "session_chair": "Alan Zhang (Columbia)"
+    "session_chair": "Kyungsoo Kim (Georgia State University)"
   },
   {
     "id": "60",
@@ -1165,25 +1165,6 @@
     "session_chair": "Justine Boudou (Harvard Business School)"
   },
   {
-    "id": "100",
-    "session_id": "23",
-    "session_name": "Hiring, Skills, and Labor Market Dynamics",
-    "time_slot": "W3",
-    "room": "SEH-B1220",
-    "date": "2026-06-03",
-    "day": "Wednesday",
-    "start_time": "16:45:00",
-    "end_time": "17:55:00",
-    "time_order": 3,
-    "title": "Redeployment or Hiring? R&D Characteristics, Organizational Capabilities, and Strategic Human Capital Sourcing in Multi-Business Firms",
-    "abstract": "Industry shocks reallocate profitability across business units, often forcing multi-business firms to reconfigure their human capital. When a focal business unit experiences a sudden growth inducement, should the firm redeploy employees from other units or hire externally? I develop a task-resource matching view in which sourcing decisions reflect not only transaction and adjustment costs but also the benefits of aligning an employee’s knowledge with task requirements. I study inventor (i.e., engineers and scientists) inflows to ethylene-related business units of petrochemical firms after the U.S. shale revolution, which sharply lowered ethane input costs and increased U.S. ethylene margins beginning in 2011. Using LinkedIn career histories linked to patent records, I observe inventors entering ethylene units of large petrochemical firms (2011-2015) and classify their tasks as downstream new application development or upstream operational efficiency. Consistent with the matching view, firms are more likely to hire externally for new application development roles but rely more on internal redeployment for operational efficiency roles, even after accounting for local hiring frictions and within-firm task relatedness. In addition, these task-contingent patterns are weaker in firms with stronger knowledge recombination capability and more clustered intrafirm inventor networks, suggesting substitution between external hiring and internal knowledge generation/coordination capacities. Additional tests show that external hires bring more novel prior-task knowledge and that performance is highest when the sourcing mode matches task type.",
-    "authors": "Kyungsoo Kim* (Georgia State University)",
-    "category": "Labor Markets, Organizations, and the Future of Work",
-    "type": "paper",
-    "paper_order": 3,
-    "session_chair": "Justine Boudou (Harvard Business School)"
-  },
-  {
     "id": "119",
     "session_id": "23",
     "session_name": "Hiring, Skills, and Labor Market Dynamics",
@@ -1199,7 +1180,7 @@
     "authors": "Rohan Sharma* (The University of British Columbia); Rohan Sharma (The University of British Columbia)",
     "category": "Labor Markets, Organizations, and the Future of Work",
     "type": "paper",
-    "paper_order": 4,
+    "paper_order": 3,
     "session_chair": "Justine Boudou (Harvard Business School)"
   },
   {
