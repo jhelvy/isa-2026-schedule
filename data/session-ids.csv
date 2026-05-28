@@ -12,7 +12,6 @@ id,session_id,session_name
 192,3,Biodiversity and Agricultural Industry
 25,4,Private Equity and Capital Markets
 74,4,Private Equity and Capital Markets
-149,4,Private Equity and Capital Markets
 17,5,Industrial Policy and Market Governance
 24,5,Industrial Policy and Market Governance
 87,5,Industrial Policy and Market Governance
@@ -69,9 +68,8 @@ id,session_id,session_name
 55,20,Innovation Strategy and Resources
 59,20,Innovation Strategy and Resources
 65,20,Innovation Strategy and Resources
-80,21,Venture Financing and Technology Dynamics
-92,21,Venture Financing and Technology Dynamics
-210,21,Venture Financing and Technology Dynamics
+92,16,Entrepreneurial Ecosystems and Clusters
+210,22,Technology Legitimacy and Emerging Markets
 179,22,Technology Legitimacy and Emerging Markets
 186,22,Technology Legitimacy and Emerging Markets
 2000,22,Technology Legitimacy and Emerging Markets
@@ -145,7 +143,7 @@ id,session_id,session_name
 41,42,Technology Competitiveness and National Security
 113,42,Technology Competitiveness and National Security
 64,43,Industrial Decarbonization Pathways
-69,43,Industrial Decarbonization Pathways
+69,4,Private Equity and Capital Markets
 76,43,Industrial Decarbonization Pathways
 163,43,Industrial Decarbonization Pathways
 67,44,EV Transition and Automotive Industry

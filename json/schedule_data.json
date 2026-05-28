@@ -69,63 +69,6 @@
     "type": "event"
   },
   {
-    "id": "92",
-    "session_id": "21",
-    "session_name": "Venture Financing and Technology Dynamics",
-    "time_slot": "W1",
-    "room": "SEH-1400",
-    "date": "2026-06-03",
-    "day": "Wednesday",
-    "start_time": "14:00:00",
-    "end_time": "15:10:00",
-    "time_order": 1,
-    "title": "From Tolerance to Termination: How Venture Capitalists Decide on Startups’ Invention Failures",
-    "abstract": "Venture capitalists (VCs) routinely face the challenge of deciding whether to persist in or terminate investments as new information about startup performance unfolds. In innovation-driven contexts, this decision is particularly complex because technological experimentation inevitably generates invention failures that are ambiguous in their implications—startups’ invention failure can either serve as a signal of learning or a trigger of abandonment. Little is known about when and why failure sustains versus undermines investor commitment. We address this puzzle by conceptualizing VC follow-on investment decisions as an optimal stopping problem in which investors balance the informational value of waiting against the costs of continued commitment.\nWe develop a formal model in which VCs observe new information about startups’ invention activities and follow threshold-based rules governing investment continuation and termination. The model predicts a non-monotonic relationship between invention failure and investment termination: moderate failure enhances learning and increases the value of waiting, whereas very low or excessive failure reduces expected future payoffs and accelerates exit. Importantly, the model also predicts systematic heterogeneity in stopping thresholds across investors, shaped by differences in experiential depth and breadth.\nWe test these predictions using a novel dataset that links U.S. venture capital investments to detailed patent application outcomes. Analyzing 16,013 funding rounds involving 2,328 VCs and 3,392 startups from 2002 to 2022, we find robust evidence of a U-shaped relationship between startups’ invention failure rates and the likelihood of VC investment termination. Consistent with optimal stopping logic, termination likelihood is lowest at intermediate levels of failure. Moreover, this relationship varies systematically with investor experience. VCs with deeper technological or industrial familiarity exhibit greater tolerance for invention failure, shifting termination thresholds rightward, whereas VCs with broader experience across technologies or industries terminate investments at lower levels of failure due to higher opportunity costs.\nThese findings contribute to research on entrepreneurial experimentation, venture capital decision-making, and strategic persistence by offering a dynamic, forward-looking explanation for failure tolerance. By framing investment continuation and exit as optimal timing decisions, this study reconciles competing views of failure and highlights how investor experience conditions the strategic meaning of negative innovation signals. Practically, the results underscore that effective governance of entrepreneurial experimentation depends not only on observing failure, but on interpreting its magnitude and timing relative to investors’ capabilities and opportunity sets.\n",
-    "authors": "Shu Deng* (University of Mississippi); Jung H. Kwon (University of Denver)",
-    "category": "Innovation, Entrepreneurship, and AI-Driven Transformation",
-    "type": "paper",
-    "paper_order": 1,
-    "session_chair": "Shu Deng (University of Mississippi)"
-  },
-  {
-    "id": "210",
-    "session_id": "21",
-    "session_name": "Venture Financing and Technology Dynamics",
-    "time_slot": "W1",
-    "room": "SEH-1400",
-    "date": "2026-06-03",
-    "day": "Wednesday",
-    "start_time": "14:00:00",
-    "end_time": "15:10:00",
-    "time_order": 1,
-    "title": "Lean Thinking, Deep Impact?  Early Exploration Strategies and Commercialization of Deeptech Ventures",
-    "abstract": "This paper examines how early exploration strategies, sequential or parallel, shape the financial and innovation trajectories of deeptech ventures. These firms must navigate multiple dimensions of uncertainty, including technological feasibility. Moreover, they rely on physical assets to commercialize, making exploration costly. Prior research on entrepreneurial strategy emphasizes experimentation to resolve uncertainty but largely focuses on asset-light settings such as software. Even lean startup methods, which encourage early commercial exploration, are better suited to digital ventures where uncertainty is primarily market-based. Consequently, less is known about the implications of exploration strategy in high-uncertainty, asset-intensive environments. I assembled a novel longitudinal dataset of 13,790 hardware-oriented ventures using primary and archival sources, augmented by machine learning and NLP. Employing multiple empirical strategies, including an exogenous technological development (3D printing), the study finds that parallel exploration improves early commercial outcomes by accelerating market learning and mitigating information frictions, yet risks premature technological lock-in. In contrast, sequential exploration fosters deeper learning, yielding long-run financial and innovation performance.\nThese results highlight the trade-offs faced by boundedly rational entrepreneurs as they balance resolving uncertainty with enhancing organizational learning. The study extends research on entrepreneurial strategy and experimentation to asset-intensive contexts and delineates the boundary conditions under which lean methods are effective in scaling science and technology ventures.",
-    "authors": "Vinay Subramanian* (Wharton)",
-    "category": "Innovation, Entrepreneurship, and AI-Driven Transformation",
-    "type": "paper",
-    "paper_order": 2,
-    "session_chair": "Shu Deng (University of Mississippi)"
-  },
-  {
-    "id": "80",
-    "session_id": "21",
-    "session_name": "Venture Financing and Technology Dynamics",
-    "time_slot": "W1",
-    "room": "SEH-1400",
-    "date": "2026-06-03",
-    "day": "Wednesday",
-    "start_time": "14:00:00",
-    "end_time": "15:10:00",
-    "time_order": 1,
-    "title": "When the Wind Picks Up: Technology Hype and Industry Dynamics",
-    "abstract": "Emerging technology is a source of future value creation. However, it is often accompanied by high uncertainties that make it hard for audiences to assess its technological claims. This paper examines how hype around emerging technology affects whether new ventures position themselves under a technology label and their subsequent survival. It conceptualizes technology hype as a shared surge of excitement about a technology's future that attracts attention and resources but also amplifies risks when the promises exceed verifiable progress. \nEmpirically, this study investigates how blockchain hype shaped the entry positioning and survival outcomes for 5,527 U.S. Financial Technology startups founded between 2012 and 2020 (tracked through 2024). It develops a novel measure of hype, constructed from 33,651 news articles, that tracks shifts in attention, hyperbolic language, and future-oriented claims about blockchain technology. The results indicate that although much of the hype is generated outside of fintech, it still creates a fragility trap. The rising hype attracts more technology-positioned startups, but they face a higher failure risk and a faster time to failure. This pattern is consistent with the idea that heightened hype draws resources but also relaxes screening standards and raises the performance bar.  It also shows that hype components have different effects. The hyperbolic and confident future claims are associated with a higher risk of failure and a faster time to failure compared to the possibility-oriented \"could be\" claims.\nThis study highlights technology hype as an important but understudied factor that shapes selection processes in nascent markets. It shows that hype has a dual effect as a resource catalyst and an ecological distorter, highlighting that resource-rich environments do not necessarily buffer firms from failure but instead attract structurally vulnerable ventures.",
-    "authors": "Jiaqi Yuan* (University of Minnesota)",
-    "category": "Innovation, Entrepreneurship, and AI-Driven Transformation",
-    "type": "paper",
-    "paper_order": 3,
-    "session_chair": "Shu Deng (University of Mississippi)"
-  },
-  {
     "id": "129",
     "session_id": "24",
     "session_name": "AI, Technology, and the Changing Nature of Work",
@@ -538,6 +481,25 @@
     "type": "event"
   },
   {
+    "id": "210",
+    "session_id": "22",
+    "session_name": "Technology Legitimacy and Emerging Markets",
+    "time_slot": "W2",
+    "room": "SEH-1400",
+    "date": "2026-06-03",
+    "day": "Wednesday",
+    "start_time": "15:30:00",
+    "end_time": "16:40:00",
+    "time_order": 2,
+    "title": "Lean Thinking, Deep Impact?  Early Exploration Strategies and Commercialization of Deeptech Ventures",
+    "abstract": "This paper examines how early exploration strategies, sequential or parallel, shape the financial and innovation trajectories of deeptech ventures. These firms must navigate multiple dimensions of uncertainty, including technological feasibility. Moreover, they rely on physical assets to commercialize, making exploration costly. Prior research on entrepreneurial strategy emphasizes experimentation to resolve uncertainty but largely focuses on asset-light settings such as software. Even lean startup methods, which encourage early commercial exploration, are better suited to digital ventures where uncertainty is primarily market-based. Consequently, less is known about the implications of exploration strategy in high-uncertainty, asset-intensive environments. I assembled a novel longitudinal dataset of 13,790 hardware-oriented ventures using primary and archival sources, augmented by machine learning and NLP. Employing multiple empirical strategies, including an exogenous technological development (3D printing), the study finds that parallel exploration improves early commercial outcomes by accelerating market learning and mitigating information frictions, yet risks premature technological lock-in. In contrast, sequential exploration fosters deeper learning, yielding long-run financial and innovation performance.\nThese results highlight the trade-offs faced by boundedly rational entrepreneurs as they balance resolving uncertainty with enhancing organizational learning. The study extends research on entrepreneurial strategy and experimentation to asset-intensive contexts and delineates the boundary conditions under which lean methods are effective in scaling science and technology ventures.",
+    "authors": "Vinay Subramanian* (Wharton)",
+    "category": "Innovation, Entrepreneurship, and AI-Driven Transformation",
+    "type": "paper",
+    "paper_order": 1,
+    "session_chair": "Vinay Subramanian (Wharton)"
+  },
+  {
     "id": "179",
     "session_id": "22",
     "session_name": "Technology Legitimacy and Emerging Markets",
@@ -553,8 +515,8 @@
     "authors": "Scott Taylor* (University of Southern California)",
     "category": "Innovation, Entrepreneurship, and AI-Driven Transformation",
     "type": "paper",
-    "paper_order": 1,
-    "session_chair": "Scott Taylor (University of Southern California)"
+    "paper_order": 2,
+    "session_chair": "Vinay Subramanian (Wharton)"
   },
   {
     "id": "186",
@@ -572,8 +534,8 @@
     "authors": "Rui Wang* (Tsinghua University); Joel Gehman (George Washington University)",
     "category": "Innovation, Entrepreneurship, and AI-Driven Transformation",
     "type": "paper",
-    "paper_order": 2,
-    "session_chair": "Scott Taylor (University of Southern California)"
+    "paper_order": 3,
+    "session_chair": "Vinay Subramanian (Wharton)"
   },
   {
     "id": "2000",
@@ -591,8 +553,8 @@
     "authors": "Rohit Verma* (University of South Carolina), Kejia Hu (University of Oxford), Xin Ding (Rutgers University), and Diep Pham (University of South Carolina)",
     "category": "Innovation, Entrepreneurship, and AI-Driven Transformation",
     "type": "paper",
-    "paper_order": 3,
-    "session_chair": "Scott Taylor (University of Southern California)"
+    "paper_order": 4,
+    "session_chair": "Vinay Subramanian (Wharton)"
   },
   {
     "id": "100",
@@ -1177,7 +1139,7 @@
     "time_order": 3,
     "title": "Skill-Based Measures of Workforce Readiness Across Canadian Regions",
     "abstract": "Assessing whether regions possess the workforce capabilities needed to support industrial change is a central concern for policymakers, firms, and regional development organizations. Existing research has examined labor mobility, firm behavior, and responses to specific demand shocks, but such approaches are often difficult to use as general, ex ante diagnostics for regional strategy. This paper introduces a capability-based framework for measuring regional workforce readiness using occupational skill proximity.\nThe method combines occupation-level skill profiles with regional occupational employment data to construct employment-weighted regional skill endowments and assess their alignment with the requirements of a target occupation. The resulting readiness measure captures latent occupational capacity embedded in existing workforce composition rather than predicted transitions, wages, or job creation. Conceptually, the framework treats labor as a stock of capabilities shaped by past economic activity, providing insight into what regions are structurally prepared to support.\nBuilding on prior task and skill-based analyses of labor markets, including recent work in the US context, the approach emphasizes interpretability, transferability, and consistent comparison across places. Applied across Canadian urban regions using harmonized occupational employment and standardized skill information, the framework enables systematic assessment of workforce readiness across cities. An illustrative application shows that readiness changes with the skill threshold used, yielding a broad set of possible occupational options at lower thresholds and a smaller set of closely related occupations that are more realistic candidates for targeted training at higher thresholds.\nFor policymakers and regional development practitioners, the framework offers a practical tool to align workforce development strategies with realistic, place-based industrial opportunities. More broadly, the paper contributes to industry studies by reframing labor as a stock of capabilities that shapes feasible paths of regional transformation.\n\n",
-    "authors": "Rohan Sharma* (The University of British Columbia); Rohan Sharma (The University of British Columbia)",
+    "authors": "Rohan Sharma* (The University of British Columbia); Wouter Bam (The University of British Columbia)",
     "category": "Labor Markets, Organizations, and the Future of Work",
     "type": "paper",
     "paper_order": 3,
@@ -2858,7 +2820,7 @@
     "session_chair": "Audrey Stienon (Open Markets Institute)"
   },
   {
-    "id": "149",
+    "id": "69",
     "session_id": "4",
     "session_name": "Private Equity and Capital Markets",
     "time_slot": "T3",
@@ -2868,10 +2830,10 @@
     "start_time": "15:40:00",
     "end_time": "16:50:00",
     "time_order": 6,
-    "title": "When Endorsements Fades: VC Certification Under Completion Incentives in SPACs",
-    "abstract": "When do prestigious intermediaries lose credibility? While Venture Capital (VC) backing is traditionally regarded as a credible signal of deal quality, I posit that this signal’s credibility depends on whether governance keeps the certifier at arm’s length from the transaction. Specifically, reputational capital generates value when intermediaries act primarily as screeners, but the signal is discounted when structural incentives tie the certifier’s payoff to deal completion rather than deal quality.\nI examine this argument in the Special Purpose Acquisition Company (SPAC) market, which decouples capital formation (IPO) from asset selection (merger). This setting allows me to separate reputational certification from conflicts that emerge when certifiers become deal participants. Using a dataset of 1,233 SPAC IPOs and 366 completed mergers (2019-2022), I exploit variation in board interlocks - cases in which VCs hold dual directorships on both the SPAC and the target firm - to test when certification loses credibility.\nThe results reveal a clear temporal pattern. At the SPAC's IPO stage, when there is no operating business to evaluate and investors rely on sponsor reputation, VC backing significantly enhances short-term returns. At the merger stage, however, VC backing alone yields no abnormal returns once a specific deal is proposed. Here, board interlocks are associated with significant post-merger underperformance, consistent with investors penalizing a perceived completion conflict. While VC-affiliated interlocks perform better than non-VC interlocks, the penalty persists, suggesting that reputational capital can cushion conflicted governance but cannot restore credibility when incentives shift from screening to closing the deal.\nTogether, these findings offer a framework for identifying when agency problems override reputational incentives, with implications for other markets in which intermediaries both certify quality and benefit from closing transactions, including crossover investing and private equity roll-ups.",
-    "authors": "Jiaqi Yuan* (University of Minnesota)",
-    "category": "General Industry Studies",
+    "title": "Special Purpose Acquisition Cleantech? Lessons From the Cleantech SPAC Bubble",
+    "abstract": "Successful commercialisation of radical clean energy innovation (cleantech) is necessary for the world’s ambitions for net-zero emissions and the Paris Climate targets but venture funding of cleantech start-ups suffers a ‘financial valley of death’ and generates comparably poor returns. In a short-lived ‘Cleantech SPAC bubble’ in 2021, cleantech start-ups merged with special purpose acquisition companies (SPACs) to access $54 billion. Within one year of each merger, SPAC investors had lost on average almost 80% of their investment value. Such losses may be too easy to dismiss, especially as the bubble was co-incident with all-time high trading volumes of dogecoin, non-fungible tokens (NFTs) and shares in GameStop, and Trevor Milton, the high-profile CEO of the cleantech SPAC Nikola, was convicted of fraud. Yet we believe the Cleantech SPAC bubble is worthy of re-examination: why were SPACs one of few real exit opportunities for cleantech start-ups? How did cleantech innovation seemingly find itself with the financial legitimacy of meme coins and Bored Ape NFTs? Cleantech may be more susceptible to speculation, as it has relatively little financial performance data to inform investing. The cleantech SPAC bubble offers a unique opportunity to generate financial performance data, as SPACs have unusual freedom to publicly share forward-looking financial statements. We can evaluate how the forecasts of Cleantech SPACs compare with industrial benchmarks and actual results. In this paper we consider the Cleantech SPAC bubble – its context and its aftermath – and in an analysis of 121 cleantech SPACs, we find that cleantech SPACs significantly exceeded historical benchmark rates of growth and cost reduction, whilst projecting rates of learning well within industry benchmarks. Companies with greater technological maturity and with projections closer to industry benchmarks offered better returns to investors.",
+    "authors": "Will Mosley* (Melbourne Business School); David Keith (Melbourne Business School)",
+    "category": "Sustainable Innovation, Energy, and Mobility",
     "type": "paper",
     "paper_order": 3,
     "session_chair": "Audrey Stienon (Open Markets Institute)"
@@ -3370,6 +3332,25 @@
     "session_chair": "Runjin Guo (Zhejiang University)"
   },
   {
+    "id": "92",
+    "session_id": "16",
+    "session_name": "Entrepreneurial Ecosystems and Clusters",
+    "time_slot": "F1",
+    "room": "SC-301",
+    "date": "2026-06-05",
+    "day": "Friday",
+    "start_time": "10:30:00",
+    "end_time": "11:40:00",
+    "time_order": 7,
+    "title": "From Tolerance to Termination: How Venture Capitalists Decide on Startups’ Invention Failures",
+    "abstract": "Venture capitalists (VCs) routinely face the challenge of deciding whether to persist in or terminate investments as new information about startup performance unfolds. In innovation-driven contexts, this decision is particularly complex because technological experimentation inevitably generates invention failures that are ambiguous in their implications—startups’ invention failure can either serve as a signal of learning or a trigger of abandonment. Little is known about when and why failure sustains versus undermines investor commitment. We address this puzzle by conceptualizing VC follow-on investment decisions as an optimal stopping problem in which investors balance the informational value of waiting against the costs of continued commitment.\nWe develop a formal model in which VCs observe new information about startups’ invention activities and follow threshold-based rules governing investment continuation and termination. The model predicts a non-monotonic relationship between invention failure and investment termination: moderate failure enhances learning and increases the value of waiting, whereas very low or excessive failure reduces expected future payoffs and accelerates exit. Importantly, the model also predicts systematic heterogeneity in stopping thresholds across investors, shaped by differences in experiential depth and breadth.\nWe test these predictions using a novel dataset that links U.S. venture capital investments to detailed patent application outcomes. Analyzing 16,013 funding rounds involving 2,328 VCs and 3,392 startups from 2002 to 2022, we find robust evidence of a U-shaped relationship between startups’ invention failure rates and the likelihood of VC investment termination. Consistent with optimal stopping logic, termination likelihood is lowest at intermediate levels of failure. Moreover, this relationship varies systematically with investor experience. VCs with deeper technological or industrial familiarity exhibit greater tolerance for invention failure, shifting termination thresholds rightward, whereas VCs with broader experience across technologies or industries terminate investments at lower levels of failure due to higher opportunity costs.\nThese findings contribute to research on entrepreneurial experimentation, venture capital decision-making, and strategic persistence by offering a dynamic, forward-looking explanation for failure tolerance. By framing investment continuation and exit as optimal timing decisions, this study reconciles competing views of failure and highlights how investor experience conditions the strategic meaning of negative innovation signals. Practically, the results underscore that effective governance of entrepreneurial experimentation depends not only on observing failure, but on interpreting its magnitude and timing relative to investors’ capabilities and opportunity sets.\n",
+    "authors": "Shu Deng* (University of Mississippi); Jung H. Kwon (University of Denver)",
+    "category": "Innovation, Entrepreneurship, and AI-Driven Transformation",
+    "type": "paper",
+    "paper_order": 4,
+    "session_chair": "Runjin Guo (Zhejiang University)"
+  },
+  {
     "id": "96",
     "session_id": "25",
     "session_name": "Manufacturing Transformation and Workforce Development",
@@ -3576,25 +3557,6 @@
     "category": "Sustainable Innovation, Energy, and Mobility",
     "type": "paper",
     "paper_order": 3,
-    "session_chair": "Mateus Do Rego Ferreira Lima (Indiana University)"
-  },
-  {
-    "id": "69",
-    "session_id": "43",
-    "session_name": "Industrial Decarbonization Pathways",
-    "time_slot": "F1",
-    "room": "SC-Amp.",
-    "date": "2026-06-05",
-    "day": "Friday",
-    "start_time": "10:30:00",
-    "end_time": "11:40:00",
-    "time_order": 7,
-    "title": "Special Purpose Acquisition Cleantech? Lessons From the Cleantech SPAC Bubble",
-    "abstract": "Successful commercialisation of radical clean energy innovation (cleantech) is necessary for the world’s ambitions for net-zero emissions and the Paris Climate targets but venture funding of cleantech start-ups suffers a ‘financial valley of death’ and generates comparably poor returns. In a short-lived ‘Cleantech SPAC bubble’ in 2021, cleantech start-ups merged with special purpose acquisition companies (SPACs) to access $54 billion. Within one year of each merger, SPAC investors had lost on average almost 80% of their investment value. Such losses may be too easy to dismiss, especially as the bubble was co-incident with all-time high trading volumes of dogecoin, non-fungible tokens (NFTs) and shares in GameStop, and Trevor Milton, the high-profile CEO of the cleantech SPAC Nikola, was convicted of fraud. Yet we believe the Cleantech SPAC bubble is worthy of re-examination: why were SPACs one of few real exit opportunities for cleantech start-ups? How did cleantech innovation seemingly find itself with the financial legitimacy of meme coins and Bored Ape NFTs? Cleantech may be more susceptible to speculation, as it has relatively little financial performance data to inform investing. The cleantech SPAC bubble offers a unique opportunity to generate financial performance data, as SPACs have unusual freedom to publicly share forward-looking financial statements. We can evaluate how the forecasts of Cleantech SPACs compare with industrial benchmarks and actual results. In this paper we consider the Cleantech SPAC bubble – its context and its aftermath – and in an analysis of 121 cleantech SPACs, we find that cleantech SPACs significantly exceeded historical benchmark rates of growth and cost reduction, whilst projecting rates of learning well within industry benchmarks. Companies with greater technological maturity and with projections closer to industry benchmarks offered better returns to investors.",
-    "authors": "Will Mosley* (Melbourne Business School); David Keith (Melbourne Business School)",
-    "category": "Sustainable Innovation, Energy, and Mobility",
-    "type": "paper",
-    "paper_order": 4,
     "session_chair": "Mateus Do Rego Ferreira Lima (Indiana University)"
   },
   {
