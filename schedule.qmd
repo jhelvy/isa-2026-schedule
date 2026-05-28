@@ -1695,13 +1695,24 @@ cat("```\n")
 \thispagestyle{empty}
 \markboth{}{}
 \pdfbookmark[0]{ISA 2027}{isa2027}
-\vspace*{\fill}
 \begin{center}
   {\Large\textbf{Join Us Next Year!}}\\[0.8em]
   {\LARGE\textbf{ISA 2027 Annual Conference}}\\[0.5em]
-  {\large Brigham Young University $\bullet$ May 26 - 28, 2027 $\bullet$ Provo, Utah}\\[2em]
-  \includegraphics[height=1in]{images/byu-logo.png}\\[1.5em]
-  \includegraphics[width=\textwidth, keepaspectratio]{images/byu.png}
+  {\large Brigham Young University $\bullet$ May 26 - 28, 2027 $\bullet$ Provo, Utah}\\[1em]
+  \includegraphics[height=0.8in]{images/byu-logo.png}
 \end{center}
-\vspace*{\fill}
+\vspace{0.6em}
+\noindent
+\includegraphics[width=\textwidth, keepaspectratio]{images/byu-pano.png}
+\vspace{0.3em}
+\noindent
+\begin{minipage}[t]{0.31\textwidth}
+  \includegraphics[width=\linewidth]{images/byu-campus.png}
+\end{minipage}\hfill
+\begin{minipage}[t]{0.31\textwidth}
+  \includegraphics[width=\linewidth]{images/byu-bridge.png}
+\end{minipage}\hfill
+\begin{minipage}[t]{0.31\textwidth}
+  \includegraphics[width=\linewidth]{images/byu-sign.png}
+\end{minipage}
 ```
