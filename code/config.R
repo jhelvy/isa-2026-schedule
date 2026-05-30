@@ -43,7 +43,40 @@ withdraw_ids <- c(
   107,
   23,
   149,
-  80
+  80,
+  111,
+  13,
+  14,
+  15,
+  16,
+  17,
+  18,
+  19,
+  34,
+  38,
+  42,
+  43,
+  47,
+  58,
+  60,
+  68,
+  69,
+  78,
+  82,
+  87,
+  88,
+  121,
+  129,
+  130,
+  145,
+  160,
+  164,
+  166,
+  167,
+  187,
+  188,
+  189,
+  198
 )
 
 # Combined exclusion list used by 3exclude.R and 5verify.R
@@ -58,10 +91,49 @@ date_restrictions <- list(
   `128` = "2026-06-04",
   `141` = "2026-06-04",
   `203` = "2026-06-04",
-  # `100` = "2026-06-03",
   `21` = "2026-06-04",
   `32` = "2026-06-04", # Labor Markets, Organizations
-  `64` = "2026-06-05"
+  `64` = "2026-06-05",
+  # Date anchors to preserve current session days when re-running slot assignment
+  `56` = "2026-06-03",  # session 1: Geographic Location and Transportation Cost
+  `85` = "2026-06-04",  # session 2: Public Policy and ESG
+  `103` = "2026-06-04", # session 3: Biodiversity and Agricultural Industry
+  `25` = "2026-06-04",  # session 4: Private Equity and Capital Markets
+  `24` = "2026-06-05",  # session 6: Industry Classification and Regulatory Policy (moved from session 5)
+  `73` = "2026-06-05",  # session 6: Industry Classification and Regulatory Policy
+  `46` = "2026-06-04",  # session 2: Public Policy and ESG (moved from session 8)
+  `50` = "2026-06-04",  # session 9: Drug Quality and Safety
+  `148` = "2026-06-05", # session 10: Drug Supply Chains and Shortages
+  `124` = "2026-06-04", # session 12: Healthcare Operations and Capacity
+  `33` = "2026-06-04",  # session 15: Advanced Technologies and Digital Innovation
+  `77` = "2026-06-05",  # session 16: Entrepreneurial Ecosystems and Clusters
+  `108` = "2026-06-03", # session 17: Entrepreneurship Research and Policy
+  `62` = "2026-06-04",  # session 18: Generative AI and the Future of Work
+  `54` = "2026-06-04",  # session 20: Innovation Strategy and Resources
+  `179` = "2026-06-03", # session 22: Technology Legitimacy and Emerging Markets
+  `72` = "2026-06-03",  # session 23: Hiring, Skills, and Labor Market Dynamics
+  `144` = "2026-06-04", # session 26: Platform Work (moved from session 24)
+  `96` = "2026-06-05",  # session 25: Manufacturing Transformation and Workforce Development
+  `100` = "2026-06-03", # session 27: Organizational Structure and Human Capital
+  `116` = "2026-06-04", # session 40: Industrial Policy Frameworks (moved from session 28)
+  `37` = "2026-06-03",  # session 36: AI and Data Tools for Manufacturing (moved from session 29)
+  `36` = "2026-06-04",  # session 30: Supply Chain Risk and Resilience
+  `135` = "2026-06-03", # session 31: Retail and Manufacturing Operations
+  `83` = "2026-06-05",  # session 32: Sustainable and Circular Supply Chains
+  `51` = "2026-06-04",  # session 33: Healthcare and People-Centric Operations
+  `28` = "2026-06-03",  # session 34: Digital Technology in Manufacturing
+  `110` = "2026-06-03", # session 36: AI and Data Tools for Manufacturing
+  `157` = "2026-06-03", # session 37: AI and Digital Economy Policy
+  `161` = "2026-06-04", # session 42: Industrial Statecraft (moved to T3 Thu)
+  `146` = "2026-06-04", # session 42: Industrial Statecraft (pulled from session 19)
+  `171` = "2026-06-03", # session 39: Humanitarian and Development Policy
+  `90` = "2026-06-04",  # session 40: Industrial Policy Frameworks
+  `45` = "2026-06-04",  # session 41: Regulatory Dynamics and Business Strategy
+  `41` = "2026-06-04",  # session 42: Industrial Statecraft and Emerging Technology Policy (moved to T3 Thu)
+  `67` = "2026-06-04",  # session 44: EV Transition and Automotive Industry
+  `142` = "2026-06-05", # session 43: Industrial Decarbonization Pathways (moved from session 45)
+  `44` = "2026-06-04",  # session 46: Energy Systems and Reliability
+  `66` = "2026-06-04"   # session 47: Green Innovation Diffusion
 )
 
 # Scheduling exclusions: id -> dates the session must NOT be on (format: "YYYY-MM-DD")
