@@ -177,20 +177,52 @@ build_session_constraint_map <- function(config_list) {
 session_required_date_map <- build_session_constraint_map(date_restrictions)
 session_excluded_date_map  <- build_session_constraint_map(date_exclusions)
 
-# Universal date + PDW safety check for early-phase swaps (assigned_time_slot column)
+# Build slot constraint map: session_id -> required time slot (e.g., "T2")
+build_session_slot_constraint_map <- function(config_list) {
+  if (length(config_list) == 0) return(list())
+  df <- tibble(id = as.integer(names(config_list)), value = unlist(config_list))
+  mapped <- session_ids %>%
+    inner_join(df, by = "id") %>%
+    select(session_id, value) %>%
+    distinct()
+  setNames(as.list(mapped$value), as.character(mapped$session_id))
+}
+
+session_required_slot_map <- build_session_slot_constraint_map(
+  if (exists("slot_restrictions")) slot_restrictions else list()
+)
+
+cat(sprintf(
+  "Slot-restricted sessions: %s\n",
+  if (length(session_required_slot_map) == 0) "none"
+  else paste(
+    names(session_required_slot_map),
+    unlist(session_required_slot_map),
+    sep = "->",
+    collapse = ", "
+  )
+))
+
+# Universal date + PDW + slot safety check for early-phase swaps (assigned_time_slot column)
 swap_is_date_safe_early <- function(asgn, sess1, sess2) {
-  ts1 <- asgn$assigned_time_slot[asgn$session_id == sess1]
-  ts2 <- asgn$assigned_time_slot[asgn$session_id == sess2]
+  ts1 <- asgn$assigned_time_slot[asgn$session_id == sess1][1]
+  ts2 <- asgn$assigned_time_slot[asgn$session_id == sess2][1]
+  if (is.na(ts1) || is.na(ts2)) return(TRUE)
   if (ts1 == ts2) return(TRUE)
 
   if (sess1 %in% pdw_sessions && ts2 %in% pdw_slots) return(FALSE)
   if (sess2 %in% pdw_sessions && ts1 %in% pdw_slots) return(FALSE)
 
+  s1 <- as.character(sess1); s2 <- as.character(sess2)
+
+  slot_req1 <- session_required_slot_map[[s1]]
+  if (!is.null(slot_req1) && ts2 != slot_req1) return(FALSE)
+  slot_req2 <- session_required_slot_map[[s2]]
+  if (!is.null(slot_req2) && ts1 != slot_req2) return(FALSE)
+
   d1 <- slot_to_date[[ts1]]
   d2 <- slot_to_date[[ts2]]
   if (identical(d1, d2)) return(TRUE)
-
-  s1 <- as.character(sess1); s2 <- as.character(sess2)
 
   req1 <- session_required_date_map[[s1]]
   if (!is.null(req1) && d2 != req1) return(FALSE)
@@ -217,14 +249,86 @@ if (exists("SCHEDULE_SEED")) {
   cat("\nUsing default seed: 42 (set SCHEDULE_SEED in config.R to change)\n")
 }
 
-# Pre-assign date-restricted sessions to their required date slots BEFORE the
-# random shuffle, guaranteeing the constraint is met from the start.
-constrained_session_ids <- as.integer(names(session_required_date_map))
+# Pre-assign sessions to their required slots BEFORE the random shuffle.
+# Phase 1: slot-restricted sessions (most constrained — exact slot required).
+# Phase 2: date-restricted sessions (any slot on the required date).
+# This guarantees all constraints are met from the start.
 
 remaining_all_slots <- all_slots
 pre_assigned <- tibble()
 
+# Phase 1: slot-restricted sessions
+constrained_slot_session_ids <- as.integer(names(session_required_slot_map))
+for (sess_id in sample(constrained_slot_session_ids)) {
+  req_slot <- session_required_slot_map[[as.character(sess_id)]]
+  valid <- remaining_all_slots[remaining_all_slots == req_slot]
+  if (length(valid) == 0) {
+    warning("No slot ", req_slot, " available for session ", sess_id, " — skipping slot pre-assignment")
+    next
+  }
+  chosen <- sample(valid, 1)
+  pre_assigned <- bind_rows(
+    pre_assigned,
+    tibble(session_id = as.double(sess_id), assigned_time_slot = chosen)
+  )
+  remaining_all_slots <- remaining_all_slots[-which(remaining_all_slots == chosen)[1]]
+}
+
+n_slot_preassigned <- nrow(pre_assigned)
+
+# Phase 2: PDW-conflicted sessions — pre-assign to non-W1/W2 slots.
+# This is proactive: ensures PDW authors are never in W1/W2 from the start,
+# rather than relying solely on the post-hoc exclusion phase to fix it.
+cat(sprintf(
+  "PDW-conflicted sessions: %s\n",
+  if (length(pdw_sessions) == 0) "none"
+  else paste(sort(pdw_sessions), collapse = ", ")
+))
+
+for (sess_id in sample(pdw_sessions)) {
+  if (as.double(sess_id) %in% pre_assigned$session_id) next  # already assigned by Phase 1
+
+  req_slot <- session_required_slot_map[[as.character(sess_id)]]
+  req_date <- session_required_date_map[[as.character(sess_id)]]
+
+  # Valid slots = non-PDW slots remaining
+  valid <- remaining_all_slots[!remaining_all_slots %in% pdw_slots]
+
+  # Exclude slots on dates the session is not allowed on (date exclusions)
+  excl_date_pdw <- session_excluded_date_map[[as.character(sess_id)]]
+  if (!is.null(excl_date_pdw)) {
+    valid <- valid[slot_to_date[valid] != excl_date_pdw]
+  }
+
+  # Further restrict if this session also has a slot or date constraint
+  if (!is.null(req_slot)) {
+    valid <- valid[valid == req_slot]
+  } else if (!is.null(req_date)) {
+    valid <- valid[slot_to_date[valid] == req_date & !valid %in% pdw_slots]
+  }
+
+  if (length(valid) == 0) {
+    warning(sprintf(
+      "No valid non-PDW slot for PDW session %s — will rely on post-hoc exclusion",
+      sess_id
+    ))
+    next
+  }
+
+  chosen <- sample(valid, 1)
+  pre_assigned <- bind_rows(
+    pre_assigned,
+    tibble(session_id = as.double(sess_id), assigned_time_slot = chosen)
+  )
+  remaining_all_slots <- remaining_all_slots[-which(remaining_all_slots == chosen)[1]]
+}
+
+n_pdw_preassigned <- nrow(pre_assigned) - n_slot_preassigned
+
+# Phase 3: date-restricted sessions (skip any already assigned above)
+constrained_session_ids <- as.integer(names(session_required_date_map))
 for (sess_id in sample(constrained_session_ids)) {
+  if (sess_id %in% pre_assigned$session_id) next  # already assigned by slot or PDW pre-assignment
   req_date <- session_required_date_map[[as.character(sess_id)]]
   valid <- remaining_all_slots[slot_to_date[remaining_all_slots] == req_date]
   if (length(valid) == 0) {
@@ -234,7 +338,7 @@ for (sess_id in sample(constrained_session_ids)) {
   chosen <- sample(valid, 1)
   pre_assigned <- bind_rows(
     pre_assigned,
-    tibble(session_id = sess_id, assigned_time_slot = chosen)
+    tibble(session_id = as.double(sess_id), assigned_time_slot = chosen)
   )
   remaining_all_slots <- remaining_all_slots[-which(remaining_all_slots == chosen)[1]]
 }
@@ -252,9 +356,19 @@ unconstrained_assignments <- unconstrained_sessions %>%
 
 session_assignments <- bind_rows(pre_assigned, unconstrained_assignments)
 
+if (any(duplicated(session_assignments$session_id))) {
+  n_dups <- sum(duplicated(session_assignments$session_id))
+  warning(sprintf("%d duplicate session_id(s) found — deduplicating", n_dups))
+  session_assignments <- session_assignments %>%
+    distinct(session_id, .keep_all = TRUE)
+}
+
 cat(sprintf(
-  "Pre-assigned %d date-restricted sessions; randomly assigned %d remaining.\n",
-  nrow(pre_assigned), nrow(unconstrained_assignments)
+  "Pre-assigned %d slot-restricted + %d PDW + %d date-restricted sessions; randomly assigned %d remaining.\n",
+  n_slot_preassigned,
+  n_pdw_preassigned,
+  nrow(pre_assigned) - n_slot_preassigned - n_pdw_preassigned,
+  nrow(unconstrained_assignments)
 ))
 
 # --- Conflict resolution: try to swap sessions to eliminate author conflicts ---
@@ -608,6 +722,23 @@ session_assignments <- session_assignments %>%
 # Sessions were pre-assigned to their required dates before the random shuffle.
 # This block confirms the constraint survived all optimization phases.
 
+cat("\n\n=== Verifying slot restrictions ===\n")
+if (length(session_required_slot_map) > 0) {
+  for (sess_id_chr in names(session_required_slot_map)) {
+    req_slot <- session_required_slot_map[[sess_id_chr]]
+    current_row <- session_assignments %>% filter(session_id == as.integer(sess_id_chr))
+    if (nrow(current_row) == 0) next
+    if (current_row$time_slot != req_slot) {
+      warning(sprintf(
+        "Slot restriction VIOLATED: session %s is in %s but required %s",
+        sess_id_chr, current_row$time_slot, req_slot
+      ))
+    } else {
+      cat(sprintf("  OK session %s in slot %s\n", sess_id_chr, req_slot))
+    }
+  }
+}
+
 cat("\n\n=== Verifying date restrictions ===\n")
 if (length(date_restrictions) > 0) {
   restriction_df <- tibble(
@@ -677,6 +808,12 @@ if (length(date_exclusions) > 0) {
     excl_authors <- session_authors_map[[as.character(excl_session_id)]]
     candidates_off_date <- session_assignments %>%
       filter(as.Date(date) != excl_date, session_id != excl_session_id)
+
+    # PDW sessions must never land in W1 or W2
+    if (excl_session_id %in% pdw_sessions) {
+      candidates_off_date <- candidates_off_date %>%
+        filter(!time_slot %in% pdw_slots)
+    }
 
     if (!is.null(excl_authors) && nrow(candidates_off_date) > 0) {
       conflicting_sessions <- all_authors_by_session %>%
@@ -770,7 +907,8 @@ for (sess_id in pdw_sessions) {
   pdw_date <- slot_to_date[pdw_slots[1]]  # June 3
 
   # Candidates: outside W1/W2, not PDW-restricted, and safe to land in W1/W2
-  # (i.e., no date restriction requiring a different date, no exclusion for June 3)
+  # (i.e., no date restriction requiring a different date, no exclusion for June 3,
+  # and not slot-restricted to a non-W1/W2 slot)
   candidates <- session_assignments %>%
     filter(!time_slot %in% pdw_slots, !session_id %in% pdw_sessions) %>%
     filter(map_lgl(session_id, ~ {
@@ -779,6 +917,8 @@ for (sess_id in pdw_sessions) {
       if (!is.null(req)  && req  != pdw_date) return(FALSE)
       excl <- session_excluded_date_map[[key]]
       if (!is.null(excl) && excl == pdw_date) return(FALSE)
+      slot_req <- session_required_slot_map[[key]]
+      if (!is.null(slot_req) && !slot_req %in% pdw_slots) return(FALSE)
       TRUE
     }))
 
@@ -832,23 +972,28 @@ cat("\n\n=== Post-constraint author conflict resolution ===\n")
 # session_required_date_map and session_excluded_date_map are already built
 # early in the script and reused here.
 
-# Check if swapping two sessions' full slot assignments would violate date or PDW constraints
+# Check if swapping two sessions' full slot assignments would violate date, slot, or PDW constraints
 swap_is_date_safe_post <- function(asgn, sess1, sess2) {
-  slot1 <- asgn$time_slot[asgn$session_id == sess1]
-  slot2 <- asgn$time_slot[asgn$session_id == sess2]
+  slot1 <- asgn$time_slot[asgn$session_id == sess1][1]
+  slot2 <- asgn$time_slot[asgn$session_id == sess2][1]
+  if (is.na(slot1) || is.na(slot2)) return(TRUE)
 
-  # PDW constraint: PDW-registered sessions cannot be swapped into W1 or W2
   if (sess1 %in% pdw_sessions && slot2 %in% pdw_slots) return(FALSE)
   if (sess2 %in% pdw_sessions && slot1 %in% pdw_slots) return(FALSE)
+
+  s1 <- as.character(sess1)
+  s2 <- as.character(sess2)
+
+  slot_req1 <- session_required_slot_map[[s1]]
+  if (!is.null(slot_req1) && slot2 != slot_req1) return(FALSE)
+  slot_req2 <- session_required_slot_map[[s2]]
+  if (!is.null(slot_req2) && slot1 != slot_req2) return(FALSE)
 
   date1 <- as.Date(asgn$date[asgn$session_id == sess1])
   date2 <- as.Date(asgn$date[asgn$session_id == sess2])
   if (identical(date1, date2)) {
     return(TRUE)
   }
-
-  s1 <- as.character(sess1)
-  s2 <- as.character(sess2)
 
   req1 <- session_required_date_map[[s1]]
   if (!is.null(req1) && date2 != req1) {
@@ -1141,6 +1286,59 @@ session_assignments %>%
   ) %>%
   arrange(category) %>%
   print(n = 100)
+
+# --- Final mandatory PDW enforcement ---
+# Hard guarantee: no PDW session may be in W1 or W2 when we write output.
+# This runs after all other phases and stops with a clear error if it cannot
+# be satisfied (so the user knows immediately rather than getting a silent failure).
+
+cat("\n\n=== Final mandatory PDW enforcement ===\n")
+pdw_date_final <- as.Date(slot_to_date[pdw_slots[1]])
+
+for (sess_id in pdw_sessions) {
+  current_row <- session_assignments %>% filter(session_id == sess_id)
+  if (nrow(current_row) == 0) next
+  if (!current_row$time_slot %in% pdw_slots) {
+    cat(sprintf("  OK: PDW session %s → %s\n", sess_id, current_row$time_slot))
+    next
+  }
+
+  cat(sprintf("  !! PDW session %s is in %s — forcing move\n", sess_id, current_row$time_slot))
+
+  candidates <- session_assignments %>%
+    filter(!time_slot %in% pdw_slots, !session_id %in% pdw_sessions) %>%
+    filter(map_lgl(session_id, ~ {
+      key <- as.character(.x)
+      slot_req <- session_required_slot_map[[key]]
+      if (!is.null(slot_req) && !slot_req %in% pdw_slots) return(FALSE)
+      req  <- session_required_date_map[[key]]
+      if (!is.null(req) && req != pdw_date_final) return(FALSE)
+      excl <- session_excluded_date_map[[key]]
+      if (!is.null(excl) && excl == pdw_date_final) return(FALSE)
+      TRUE
+    }))
+
+  if (nrow(candidates) == 0) {
+    stop(sprintf(
+      "Cannot remove PDW session %s from %s — no valid swap candidates. Check date restrictions.",
+      sess_id, current_row$time_slot
+    ))
+  }
+
+  candidate <- slice(candidates, 1)
+  idx_sess <- which(session_assignments$session_id == sess_id)
+  idx_cand <- which(session_assignments$session_id == candidate$session_id)
+
+  tmp <- session_assignments[idx_sess, slot_cols_post]
+  session_assignments[idx_sess, slot_cols_post] <- session_assignments[idx_cand, slot_cols_post]
+  session_assignments[idx_cand, slot_cols_post] <- tmp
+
+  cat(sprintf(
+    "    Session %s moved from %s to %s (swapped with session %s)\n",
+    sess_id, current_row$time_slot,
+    session_assignments$time_slot[idx_sess], candidate$session_id
+  ))
+}
 
 # --- Merge back with full session data ---
 schedule <- session_ids %>%
