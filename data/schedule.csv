@@ -116,9 +116,9 @@ id,session_id,session_name,time_slot,room,date,day,start_time,end_time,time_orde
 116,40,Industrial Policy Frameworks,T3,SC-Amp.,2026-06-04,Thursday,15:40:00,16:50:00,6
 118,40,Industrial Policy Frameworks,T3,SC-Amp.,2026-06-04,Thursday,15:40:00,16:50:00,6
 176,40,Industrial Policy Frameworks,T3,SC-Amp.,2026-06-04,Thursday,15:40:00,16:50:00,6
-46,2,Public Policy and ESG,W3,SEH-1450,2026-06-03,Wednesday,16:45:00,17:55:00,3
-85,2,Public Policy and ESG,W3,SEH-1450,2026-06-03,Wednesday,16:45:00,17:55:00,3
 172,2,Public Policy and ESG,W3,SEH-1450,2026-06-03,Wednesday,16:45:00,17:55:00,3
+85,2,Public Policy and ESG,W3,SEH-1450,2026-06-03,Wednesday,16:45:00,17:55:00,3
+46,2,Public Policy and ESG,W3,SEH-1450,2026-06-03,Wednesday,16:45:00,17:55:00,3
 33,15,Advanced Technologies and Digital Innovation,T2,SC-307,2026-06-04,Thursday,12:50:00,14:00:00,5
 52,15,Advanced Technologies and Digital Innovation,T2,SC-307,2026-06-04,Thursday,12:50:00,14:00:00,5
 194,15,Advanced Technologies and Digital Innovation,T2,SC-307,2026-06-04,Thursday,12:50:00,14:00:00,5

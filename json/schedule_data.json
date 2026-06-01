@@ -139,7 +139,7 @@
     "title": "Beyond NAICS: A Generative AI Approach to Customized Industry Classification",
     "abstract": "We present a novel approach that uses generative artificial intelligence (GenAI) to identify and categorize the industries in which companies operate. Although standard industry classification systems such as the North American Industry Classification System (NAICS) are widely used, many research questions do not fit neatly into their predefined categories. For example, the real estate development industry does not neatly fit into any single NAICS code or combination of NAICS codes. Instead, real estate developers are scattered across multiple NAICS codes, primarily in the real estate and construction sectors. This dynamic is not unique to real estate development or to NAICS; many industries of interest to researchers, practitioners, and policymakers are poorly captured by existing industry classification schemas. \n\nConventional approaches to solving this problem rely on labor-intensive and costly data collection, cleaning, and validation processes, placing them out of reach for many small research teams and individual researchers. We demonstrate an alternative GenAI-enabled approach to customized industry classification and illustrate its application through a national landscape analysis of women-owned real estate development firms. We examine the representation of women-owned firms in the real estate development industry and compare their performance to that of other firms in the industry. \nBy describing the methodology and illustrating its implementation, we show how publicly available GenAI models can be used to implement researcher-designed industry classifications with a high degree of accuracy and at substantially lower cost than conventional methods. \n",
     "authors": "Peter Eberhardt* (ICIC); Howard Wial (ICIC)",
-    "category": "General Industry Studies",
+    "category": "Operations, Supply Chain, and AI-Enhanced Industry 4.0",
     "type": "paper",
     "paper_order": 1,
     "session_chair": "Peter Eberhardt (ICIC)"
@@ -158,7 +158,7 @@
     "title": "The Real Bottleneck in AI: Power Generation, Environmental Policy, and National Competitiveness",
     "abstract": "Artificial intelligence is framed as a central driver of productivity, industrial transformation, and national competitiveness. Policy discussions, however, continue to prioritize computer chips, data, and talent while underestimating the environmental and infrastructure constraints that shape AI scalability. This paper argues that the binding constraint on long-term AI competitiveness is not computational capacity alone, but the availability of low-cost, low-emissions power.\n\nBuilding on prior work quantifying the environmental impact of datacenters that power AI, this study examines how rapidly scaling AI capacity influences energy demand and the resultant emissions by examining the current largest datacenter of xAI - The Colossus in Boxtown, TN. This paper explores the exponential growth of AI computational power, the resultant energy demand, emissions and current environmental policy.\n\nThe analysis demonstrates the need for cheap, low emission energy production is crucial to AI competitiveness and the bottleneck to scalability. Sustainable and affordable energy expansion—rather than the weakening of emissions standards—must be the central industrial policy lever for maintaining AI competitiveness in unprecedented times of AI innovation.",
     "authors": "Prathyaj Mantha* (PEER Consultants, P.C.)",
-    "category": "Public Policy and Global Competitiveness",
+    "category": "Operations, Supply Chain, and AI-Enhanced Industry 4.0",
     "type": "paper",
     "paper_order": 2,
     "session_chair": "Peter Eberhardt (ICIC)"
@@ -253,7 +253,7 @@
     "title": "Forecasting the Winners and Losers of H-1B Reforms Across Industries and Workers: Will firms, universities, and health care lose workers or profits?",
     "abstract": "As the U.S.’s largest skilled guestworker program, the H-1B visa is used by tens of thousands of firms who employ more than 600 thousand of these guestworkers. The H-1B program has been described as the swiss army knife of guest worker programs because of the varied nature of employers and workers who use it. The Trump administration proposing the most farreaching reforms to the H-1B program since its inception. The three reforms implemented for this year are: 1) employers are assessed a new $100,000 fee for visas for certain workers, 2) the annual process for selecting new visas has been modified to favor higher wages, and 3) stepped up enforcement of program rules by the Department of Labor (DOL) . The DOL has also announced changes the minimum wage employers are required to pay H-1B workers. These reforms will alter the types of firms that apply for and receive visas, and the pool of worker-beneficiaries. We examine the expected winners and losers from these policy changes and potential impact, with focus  on the tech sector as the largest user of this guestworker visa and health care system which relies on the H-1B for a large supply of residents.",
     "authors": "Ron Hira* (Howard University); Hal Salzman (Rutgers University)",
-    "category": "Labor Markets, Organizations, and the Future of Work",
+    "category": "Public Policy and Global Competitiveness",
     "type": "paper",
     "paper_order": 4,
     "session_chair": "Wenzhe Xu (Tsinghua University)"
@@ -684,7 +684,7 @@
     "title": "Potential Impact of Tariffs on the Price of Generic Drugs Made in the US with Imported Active Ingredients",
     "abstract": "Using U.S. importation data 2019-2024, this study modeled the potential impact of tariffs on the prices of generic drugs manufactured in the U.S. with imported active pharmaceutical ingredients (APIs). Under baseline assumptions a 100% worldwide tariff would result in average price increase of 30% (additional $21.15) per prescription and a blended tariff based on rates proposed by the Federal Administration would result in an average price increase of 10% (additional $6.22) per prescription for domestically-produced generics using imported APIs. Estimates varied across drugs reflecting different API importation patterns. Assumptions on the tariff rate, the contribution of the API cost to the final drug price, and on the supply chain’s ability to absorb the added tariff cost contributed markedly to determining the final price. The study findings do not generalize to U.S.-made generics using U.S.-made API but could be relevant to U.S.-made branded drugs using imported API. Tariffs could raise costs for U.S. drug manufacturers using imported APIs, potentially limiting affordability and manufacturers’ competitiveness in U.S. and global markets. Policies to incentivize “made-in-America” prescription drugs should incentivize domestic API production or reconsider API tariffs.",
     "authors": "Mariana Socal (Johns Hopkins Bloomberg School of Public Health); Yunxiang Sun* (Johns Hopkins Bloomberg School of Public Health); Jeromie Ballreich (Johns Hopkins Bloomberg School of Public Health); Joy Acha (Johns Hopkins Bloomberg School of Public Health); Mohammad Ali Yazdi (Johns Hopkins Carey Business School); Tinglong Dai (Johns Hopkins Carey Business School); Maqbool Dada (Johns Hopkins Carey Business School)",
-    "category": "Health Care Systems, Biotechnology, and Pharmaceuticals",
+    "category": "General Industry Studies",
     "type": "paper",
     "paper_order": 1,
     "session_chair": "Yunxiang Sun (Johns Hopkins Bloomberg School of Public Health)"
@@ -949,11 +949,11 @@
     "time_order": 3,
     "title": "Quantifying Battery Electric Vehicle Affordability in the United States",
     "abstract": "Electric vehicle (EV) adoption in the United States remains constrained by affordability barriers, with growth concentrated in higher price segments rather than in affordable vehicle markets. This study presents a novel bottom-up approach to assess EV affordability by combining synthetic household data representing over 150 million U.S. households with machine learning-based expenditure modeling and comprehensive vehicle market data. We constructed household-level financial profiles using Public Use Microdata Samples and trained an XGBoost model on 2019 Consumer Expenditure Survey data (26,000 households) to predict spending-to-income ratios across major categories. Local vehicle markets were defined using 90-minute driving isochrones from census tract centroids, incorporating 19 million vehicle listings from approximately 60,000 dealerships nationwide in 2024. Our analysis reveals that battery electric vehicles (BEVs) are growing fastest in price segments above $40,000, with minimal growth in segments below $30,000. While 99% of Americans have access to at least one internal combustion engine vehicle (ICEV) per person within their budget, only 63% have equivalent access to BEVs—a dramatic improvement from 10% in 2018, but still far from parity with ICEVs. Approximately 25% of Americans have access to fewer than one BEV for every two people. The BEV-to-ICEV ratio within budget averages approximately 1:50 across most of the country. Subsidies have differential impacts across market segments: a $10,000 incentive increases accessible driving range by 22% for new cars, 40% for new SUVs, 39% for used cars, and 27% for used SUVs. This study provides policymakers with granular, location-specific insights for designing targeted incentive programs that address persistent affordability gaps in the transition to electric mobility.",
-    "authors": "John Helveston* (George Washington University); Joseph Severino (National Laboratory of the Rockies); Zain Hoda (George Washington University); Qichao Wang (National Laboratory of the Rockies); Bo Liu (National Laboratory of the Rockies)",
+    "authors": "Zain Hoda* (George Washington University); Joseph Severino (National Laboratory of the Rockies); Qichao Wang (National Laboratory of the Rockies); Bo Liu (National Laboratory of the Rockies); John Helveston (George Washington University)",
     "category": "Sustainable Innovation, Energy, and Mobility",
     "type": "paper",
     "paper_order": 1,
-    "session_chair": "John Helveston (George Washington University)"
+    "session_chair": "Zain Hoda (George Washington University)"
   },
   {
     "id": "89",
@@ -972,7 +972,7 @@
     "category": "Sustainable Innovation, Energy, and Mobility",
     "type": "paper",
     "paper_order": 2,
-    "session_chair": "John Helveston (George Washington University)"
+    "session_chair": "Zain Hoda (George Washington University)"
   },
   {
     "id": "93",
@@ -991,7 +991,7 @@
     "category": "Sustainable Innovation, Energy, and Mobility",
     "type": "paper",
     "paper_order": 3,
-    "session_chair": "John Helveston (George Washington University)"
+    "session_chair": "Zain Hoda (George Washington University)"
   },
   {
     "id": "159",
@@ -1010,7 +1010,7 @@
     "category": "Sustainable Innovation, Energy, and Mobility",
     "type": "paper",
     "paper_order": 4,
-    "session_chair": "John Helveston (George Washington University)"
+    "session_chair": "Zain Hoda (George Washington University)"
   },
   {
     "id": "EV6",
@@ -1305,25 +1305,6 @@
     "session_chair": "Yinyin Cao (University of Michigan - Dearborn)"
   },
   {
-    "id": "205",
-    "session_id": "47",
-    "session_name": "Green Innovation and Sustainable Energy Strategies",
-    "time_slot": "T1",
-    "room": "SC-308",
-    "date": "2026-06-04",
-    "day": "Thursday",
-    "start_time": "09:00:00",
-    "end_time": "10:10:00",
-    "time_order": 4,
-    "title": "ESG Challenges in Large-scale Infrastructure Projects",
-    "abstract": "Large-scale infrastructure projects are critical for economic development and societal well-being, with global spending on infrastructure accounting for more than 10% of the world GDP. These projects are unique in nature in terms of design and location, technically complicated and large in scale, and thus have great level of impact on various stakeholders. While these projects are notorious for their frequent cost overruns and delays, the large physical nature makes such projects especially susceptible to various sustainability challenges.\n\nWhile various factors have been studied extensively as drivers of project performance, sustainability challenges, specifically, the role of Environmental, Social, and Governance (ESG) risks remains largely underexplored in operations management literature. This study investigates ESG risks in large-scale infrastructure projects by examining ESG-related challenges and risks over the life cycle of projects.\n\nWe analyze 280 large-scale infrastructure projects from the World Bank, spanning transportation, water, and energy sectors across 64 countries. We first develop a comprehensive project-related ESG taxonomy through text analysis using text data obtained from ESG-related documents and project documents from the World Bank. Using the identified ESG terms, we measure intensity of ESG-related risks at the point of project planning and after completion of the projects. By comparing project appraisal documents with completion reports, we identify which ESG risks are likely to be anticipated during planning versus those that emerge over the project's implementation and examine how these emergent challenges influence project performance outcomes.\n\nThis study contributes to operations management by investigating an underexplored intersection of infrastructure project management and sustainability and showing ESG-related factors as important drivers of project performance.",
-    "authors": "Sun Kim* (Michigan State University); Sriram Narayanan (Michigan State University)",
-    "category": "General Industry Studies",
-    "type": "paper",
-    "paper_order": 1,
-    "session_chair": "Sun Kim (Michigan State University)"
-  },
-  {
     "id": "44",
     "session_id": "47",
     "session_name": "Green Innovation and Sustainable Energy Strategies",
@@ -1339,8 +1320,8 @@
     "authors": "Jennifer Woolley* (Santa Clara University); Shaohua Lu (Santa Clara University)",
     "category": "Sustainable Innovation, Energy, and Mobility",
     "type": "paper",
-    "paper_order": 2,
-    "session_chair": "Sun Kim (Michigan State University)"
+    "paper_order": 1,
+    "session_chair": "Jennifer Woolley (Santa Clara University)"
   },
   {
     "id": "66",
@@ -1358,8 +1339,8 @@
     "authors": "Syed Muhammad Ali Shah* (University of Bari); Angela Stefania  Bergantino (University of Bari); Marco Cucculelli (Università Politecnica Delle Marche); Mario Intini (University of Bari)",
     "category": "Sustainable Innovation, Energy, and Mobility",
     "type": "paper",
-    "paper_order": 3,
-    "session_chair": "Sun Kim (Michigan State University)"
+    "paper_order": 2,
+    "session_chair": "Jennifer Woolley (Santa Clara University)"
   },
   {
     "id": "133",
@@ -1377,8 +1358,27 @@
     "authors": "Subhankar Saha* (Ahmedabad University); Haritha  Saranga (Indian Institute of Management, Bangalore); Sriram Narayanan (Michigan State University); Chandrakant Pradhan (Confederation of Indian Industry)",
     "category": "Sustainable Innovation, Energy, and Mobility",
     "type": "paper",
+    "paper_order": 3,
+    "session_chair": "Jennifer Woolley (Santa Clara University)"
+  },
+  {
+    "id": "205",
+    "session_id": "47",
+    "session_name": "Green Innovation and Sustainable Energy Strategies",
+    "time_slot": "T1",
+    "room": "SC-308",
+    "date": "2026-06-04",
+    "day": "Thursday",
+    "start_time": "09:00:00",
+    "end_time": "10:10:00",
+    "time_order": 4,
+    "title": "ESG Challenges in Large-scale Infrastructure Projects",
+    "abstract": "Large-scale infrastructure projects are critical for economic development and societal well-being, with global spending on infrastructure accounting for more than 10% of the world GDP. These projects are unique in nature in terms of design and location, technically complicated and large in scale, and thus have great level of impact on various stakeholders. While these projects are notorious for their frequent cost overruns and delays, the large physical nature makes such projects especially susceptible to various sustainability challenges.\n\nWhile various factors have been studied extensively as drivers of project performance, sustainability challenges, specifically, the role of Environmental, Social, and Governance (ESG) risks remains largely underexplored in operations management literature. This study investigates ESG risks in large-scale infrastructure projects by examining ESG-related challenges and risks over the life cycle of projects.\n\nWe analyze 280 large-scale infrastructure projects from the World Bank, spanning transportation, water, and energy sectors across 64 countries. We first develop a comprehensive project-related ESG taxonomy through text analysis using text data obtained from ESG-related documents and project documents from the World Bank. Using the identified ESG terms, we measure intensity of ESG-related risks at the point of project planning and after completion of the projects. By comparing project appraisal documents with completion reports, we identify which ESG risks are likely to be anticipated during planning versus those that emerge over the project's implementation and examine how these emergent challenges influence project performance outcomes.\n\nThis study contributes to operations management by investigating an underexplored intersection of infrastructure project management and sustainability and showing ESG-related factors as important drivers of project performance.",
+    "authors": "Sun Kim* (Michigan State University); Sriram Narayanan (Michigan State University)",
+    "category": "Sustainable Innovation, Energy, and Mobility",
+    "type": "paper",
     "paper_order": 4,
-    "session_chair": "Sun Kim (Michigan State University)"
+    "session_chair": "Jennifer Woolley (Santa Clara University)"
   },
   {
     "id": "24",
@@ -1746,25 +1746,6 @@
     "session_chair": "Marco Cucculelli (Università Politecnica Delle Marche)"
   },
   {
-    "id": "83",
-    "session_id": "32",
-    "session_name": "Sustainable and Circular Supply Chains",
-    "time_slot": "T2",
-    "room": "SC-309",
-    "date": "2026-06-04",
-    "day": "Thursday",
-    "start_time": "12:50:00",
-    "end_time": "14:00:00",
-    "time_order": 5,
-    "title": "Imported solar photovoltaics contributed to health and climate benefits in the United States",
-    "abstract": "Global supply chains have played a central role in driving down solar photovoltaic (PV) costs and accelerating deployment globally, but their broader societal benefits are underexplored. Here we quantify the climate, air quality, and health impacts of imported solar panels in the United States between 2014 and 2022. We find that 1 kW of imported solar capacity yields an average of $180 in annualized climate and health benefits, offsetting nearly half the PV module cost in 2020. This imported capacity displaced fossil generation by 305 TWh, avoided 178 million tons of CO2, and prevented an estimated 595 premature deaths between 2014 and 2022. While these advantages are unevenly distributed across regions and demographic groups, residents in non-importing states also benefited from them. These findings provide critical evidence for policy debates on clean energy trade, showing that imported solar capacity delivers substantial public health and climate gains beyond direct cost savings.",
-    "authors": "Minghao Qiu (Stony Brook University); Gang He* (CUNY-Baruch College); Peter Marcotullio (CUNY Hunter College)",
-    "category": "Operations, Supply Chain, and AI-Enhanced Industry 4.0",
-    "type": "paper",
-    "paper_order": 1,
-    "session_chair": "Gang He (CUNY-Baruch College)"
-  },
-  {
     "id": "170",
     "session_id": "32",
     "session_name": "Sustainable and Circular Supply Chains",
@@ -1778,10 +1759,10 @@
     "title": "Apparel Closed-Loop Supply Chains",
     "abstract": "The traditional method of apparel production relies on virgin natural (e.g., cotton) and synthetic (e.g., polyester) materials. The manufacturing process follows a mostly linear path: involving fiber extraction, fabric production, dyeing, cutting, sewing, packaging, and distribution. A large majority of apparel consumption occurs in the end-consumer market. Consumer behavior is also largely linear: consumers buy, use, and dispose of apparel at the end of its useful life. The rise of fast fashion in recent years has increased the number of apparel items consumers purchase and the speed at which they are discarded. This linear production-consumption approach places strain on the resources required to produce apparel and requires efficient management of discarded items. Brands (i.e., apparel manufacturers) are increasingly adopting recycled fibers in the production processes.   \n\nThe transition from virgin to recycled fibers in apparel production requires fundamental changes in how brands organize their operations and supply chains. We collaborate with a large global apparel brand to understand the tradeoffs and pressure points in the transition. We show that, to transition from a linear to a closed-loop model, brands must adapt their procurement, product design, production, and marketing strategies. We discuss the internal and external challenges brands face in setting up economically and technically viable recycling operations. We also discuss the drivers that can enable the implementation of a closed-loop model for brands, including: i) technical improvements; ii) trade-related policy and legislative incentives and initiatives; and iii) industry-wide collaboration.",
     "authors": "Akshay Mutha* (University of Vermont); Daniel  Guide (Pennsylvania State University); Omkar Palsule-Desai (IIT Bombay); Kanti Prakash Brahma (IIM Indore)",
-    "category": "Operations, Supply Chain, and AI-Enhanced Industry 4.0",
+    "category": "Sustainable Innovation, Energy, and Mobility",
     "type": "paper",
-    "paper_order": 2,
-    "session_chair": "Gang He (CUNY-Baruch College)"
+    "paper_order": 1,
+    "session_chair": "Akshay Mutha (University of Vermont)"
   },
   {
     "id": "201",
@@ -1799,8 +1780,27 @@
     "authors": "Angela Ryu* (University of Southern California); Shon Hiatt (University of Southern California)",
     "category": "Sustainable Innovation, Energy, and Mobility",
     "type": "paper",
+    "paper_order": 2,
+    "session_chair": "Akshay Mutha (University of Vermont)"
+  },
+  {
+    "id": "83",
+    "session_id": "32",
+    "session_name": "Sustainable and Circular Supply Chains",
+    "time_slot": "T2",
+    "room": "SC-309",
+    "date": "2026-06-04",
+    "day": "Thursday",
+    "start_time": "12:50:00",
+    "end_time": "14:00:00",
+    "time_order": 5,
+    "title": "Imported solar photovoltaics contributed to health and climate benefits in the United States",
+    "abstract": "Global supply chains have played a central role in driving down solar photovoltaic (PV) costs and accelerating deployment globally, but their broader societal benefits are underexplored. Here we quantify the climate, air quality, and health impacts of imported solar panels in the United States between 2014 and 2022. We find that 1 kW of imported solar capacity yields an average of $180 in annualized climate and health benefits, offsetting nearly half the PV module cost in 2020. This imported capacity displaced fossil generation by 305 TWh, avoided 178 million tons of CO2, and prevented an estimated 595 premature deaths between 2014 and 2022. While these advantages are unevenly distributed across regions and demographic groups, residents in non-importing states also benefited from them. These findings provide critical evidence for policy debates on clean energy trade, showing that imported solar capacity delivers substantial public health and climate gains beyond direct cost savings.",
+    "authors": "Minghao Qiu (Stony Brook University); Gang He* (CUNY-Baruch College); Peter Marcotullio (CUNY Hunter College)",
+    "category": "Sustainable Innovation, Energy, and Mobility",
+    "type": "paper",
     "paper_order": 3,
-    "session_chair": "Gang He (CUNY-Baruch College)"
+    "session_chair": "Akshay Mutha (University of Vermont)"
   },
   {
     "id": "32",
@@ -2191,7 +2191,7 @@
     "title": "The Institutional Economics of Artificial Intelligence (AI) in Higher Education: A Transaction Cost Analysis of University Transformation",
     "abstract": "Why do universities persist in their current bundled form - integrating research, teaching, credentialing, and socialization within hierarchical organizations - when alternative arrangements for knowledge production and transmission have proliferated? This paper applies transaction cost economics (TCE) to answer this question and to analyze how artificial intelligence (AI) may fundamentally transform the institutional logic of higher education. While canonical organization theories describe how universities function internally - as loosely coupled systems (Weick, 1976), legitimacy-seeking entities (Meyer & Rowan, 1977), or organized anarchies (Cohen, March, & Olsen, 1972) - they do not explain why the bundled form emerged and persists. TCE provides this foundation (Coase, 1937; Williamson, 1985), demonstrating that universities internalize functions whose coordination through markets would be prohibitively costly due to verification challenges, monitoring difficulties, appropriability problems (Teece, 1986), and the tacit nature of professional knowledge transfer (Polanyi, 1966).\n\nThe paper makes three contributions to organization theory. First, it extends TCE into higher education, developing a systematic account of why credentialing solves signaling problems in labor markets characterized by information asymmetry (Spence, 1973; Akerlof, 1970), why instruction addresses monitoring challenges that market-based provision cannot resolve (Nelson, 1970), why research bundling enables knowledge appropriation under weak intellectual property conditions (Arrow, 1962; Teece, 1986), and why socialization transfers tacit expertise that resists market coordination (Lave & Wenger, 1991). Second, and more fundamentally, the paper advances transaction cost theory by distinguishing between marginal and parametric technological effects on governance structures. Prior technologies - printing, broadcasting, the internet - produced marginal effects: they reduced certain transaction costs while leaving the fundamental parameters that favor bundled governance intact. This explains why universities absorbed these technologies without institutional displacement, and why MOOCs failed to disrupt traditional institutions despite initial predictions (Hoxby, 2014; Reich & Ruipérez-Valiente, 2019). Artificial intelligence differs because it transforms the parameters themselves. AI does not merely make monitoring cheaper; it changes what monitoring means when human and machine contributions become indistinguishable (Cotton, Cotton, & Shipway, 2023). AI does not simply reduce information asymmetry; it creates new forms of asymmetry regarding algorithmic processes while dissolving traditional asymmetries regarding expert knowledge (Agrawal, Gans, & Goldfarb, 2018).\n\nThird, the paper integrates TCE with institutional theory (DiMaggio & Powell, 1983) to explain organizational persistence and change under technological disruption. The analysis yields a typology that maps university functions according to AI substitutability and verification complexity, generating propositions about which institutional arrangements face displacement (content delivery, routine assessment), which gain distinctive importance (professional identity formation, ethical development, research apprenticeship), and which become contested terrain where institutions and markets compete on verification capacity (complex skill development, collaborative capabilities). The framework provides principled criteria for distinguishing between functions that remain essential - continuing to solve transaction cost problems AI does not address - and those that are historically contingent, persisting only through legitimacy and inertia.\n\nFor industry studies scholars, this paper demonstrates how transaction cost analysis can illuminate institutional transformation in knowledge-intensive industries facing technological disruption. The distinction between marginal and parametric technological effects has implications far beyond higher education, providing theoretical grounding for understanding why some technologies produce incremental adaptation while others precipitate genuine institutional transformation (Langlois, 2003). For policymakers navigating AI's impact on the higher education industry, the framework offers tools for anticipating which institutional arrangements will prove durable and which require fundamental reconceptualization - a question of considerable consequence as institutions, employers, and governments grapple with AI's implications for workforce development, credentialing, and knowledge production.\n",
     "authors": "Pelin Bicen* (Suffolk University )",
-    "category": "Labor Markets, Organizations, and the Future of Work",
+    "category": "Public Policy and Global Competitiveness",
     "type": "paper",
     "paper_order": 2,
     "session_chair": "Keno Haverkamp (University of Cambridge)"
@@ -2248,7 +2248,7 @@
     "title": "Children Before Profits: Constraining Private Equity Profiteering to Advance Child Care as a Public Good",
     "abstract": "The Open Markets Institute and National Women’s Law Center published the original “Children Before Profits” report in June 2024, and will be publishing a follow-up report “Children Before Profits in the States” in January 2026. The crux of our presentation to ISA will draw from the original report — but will include the more up-to-date examples and policy discussions from the more recent paper. \n\nThe findings of this research have been shared to diverse policymakers and child care advocates, but in presenting at the ISA conference, we hope to have the opportunity to discuss not only our policy recommendations, but also our research and analytical methodology, and our thoughts about how this paper ties into broader debates about the nature and scope of industrial policy.\n\nThis paper builds on existing research of the harms that private equity firms have caused in diverse sectors of the economy by exploring potential threats that private equity could pose to other child care industry stakeholders, including workers, families, and small business owners. It then identifies policy opportunities to address these risks (with the 2026 follow-up paper fleshing out these opportunities at the state and local level). \n\nAn overarching hypothesis of this project is that private equity makes for a good case study for the type of firms that prioritize profit maximization over any other goals, and that therefore, by understanding the ways that private equity behaves in a sector like child care, policymakers can build guardrails to align the activities of all types of profit-maximizing firms with broader social priorities, like access and affordability.\n\nAs background for this paper, we studied the market structure and firm business models for the private equity, child care, and other industries that had experienced high levels of private equity investment (e.g. retail, nursing homes, hospice care). This allowed us to identify structural similarities between the firms and markets of the child care industry, and those of other sectors that were harmed by private equity profit-maximizing tactics. From there, we could hypothesize about the risks that private equity activity posed to child care markets, and suggest policy interventions to address these risks.\n\nWe chose to study the child care industry because we believed that underlying market failures of this sector (i.e. under-funded, and thus largely unprofitable for providers) had kept private equity out of this market. Advocates were concerned that new campaigns to increase public funding for child care could increase private equity interest in this space. Our policy recommendations were intended to encourage policymakers to act preemptively in addressing potential risks.\n\nWe were also interested in using this project to broaden the scope of industrial policy discussions. This paper was an experiment in developing a well-researched industrial policy strategy for a sector that is non-import-competing, requires improvements in neither innovation nor global competitiveness, and is largely dependent on public funding. Child care is a socially critical service, and many of the market challenges facing this sector (under-supply, poor job quality, unaffordability) are the same as other sectors targeted by industrial policy strategies. Furthermore, we wanted to use this paper as a case study for the ways that financial sector capture can interrupt other industrial strategy priorities — a challenge that we argue is increasingly relevant across all sectors.\n",
     "authors": "Audrey Stienon* (Open Markets Institute)",
-    "category": "General Industry Studies",
+    "category": "Public Policy and Global Competitiveness",
     "type": "paper",
     "paper_order": 1,
     "session_chair": "Audrey Stienon (Open Markets Institute)"
@@ -2286,7 +2286,7 @@
     "title": "Strategic Focus: Evidence from Private Equity Transactions in US Power Generation Sector",
     "abstract": "Firms aiming to scale often risk unproductive expansions in scope, resulting in diminished focus on core operations and deteriorating performance. This paper exploits the setting of private equity (PE) ownership in the U.S. power generation sector to empirically demonstrate that organizations can achieve “scale without scope,” thereby improving asset-level productivity. Matching high-frequency production data with a decade of transaction records, I find that PE-acquired generating assets improve their heat rate—a direct measure of efficiency—by approximately 2% within five years post-acquisition and about 5% over longer horizons. These efficiency gains emerge from a strategic focus mechanism, the concentration of resources at scale on a narrower set of core generating technologies. Importantly, this is distinct from the traditional learning curve effects: the accumulated depth of experience does not by itself result in better performance; instead, this research supports a contingent view of experience. The value of operational experience is contingent on the organizational context in which it is deployed. In focused organizations, the same depth of experience appears to create greater performance improvements than in diversified ones, suggesting that the returns to experience are not fixed but are shaped by ownership-enabled strategic decisions. Under this frame-work, PE firms can be understood not just as asset owners but as “focus enablers,” organizations that create the conditions under which accumulated experience can be effectively deployed. Beyond conventional PE levers, PE ownership enables an additional value creation mechanism by strategically focusing on core technologies to amplify the returns to experience.",
     "authors": "Haiyang Zhang* (Harvard Business School)",
-    "category": "General Industry Studies",
+    "category": "Public Policy and Global Competitiveness",
     "type": "paper",
     "paper_order": 3,
     "session_chair": "Audrey Stienon (Open Markets Institute)"
@@ -2343,7 +2343,7 @@
     "title": "The Power and Pitfalls of Techno-Industrial Policy: Evidence from China",
     "abstract": "I study how industrial policy shapes innovation by examining China's Strategic and Emerging Industries (SEI) initiative (2010-2018), a large-scale fiscal intervention targeting frontier technology sectors. Employing a staggered difference-in-differences design with city-industry-level patent data, I uncover three key findings: (1) While patent quantity surged by 184%, quality metrics showed minimal improvement; (2) The quantity gains came at a 14% decrease in patent output from untreated sectors, revealing sectoral displacement instead of crowd-in effects; (3) Cities that adopted path-dependent targeting (selecting sectors with pre-existing innovation advantages) achieved over twice the patent growth rates of their counterparts, though without corresponding quality gains. These findings reveal a paradox in China's development model: while achieving unprecedented success in scaling innovation quantity, the nation has yet to realize comparable quality gains - a critical gap as it transitions from 'made' to 'created in China'.",
     "authors": "Hannah Wei* (IMF)",
-    "category": "Innovation, Entrepreneurship, and AI-Driven Transformation",
+    "category": "Public Policy and Global Competitiveness",
     "type": "paper",
     "paper_order": 2,
     "session_chair": "Max Walter (Akili Economic Development)"

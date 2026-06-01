@@ -1,49 +1,38 @@
 session_id,session_name,day,time_slot,room,chair_name,chair_email
-1,Geographic Location and Transportation Cost,Wednesday,W3,SEH-1300,Hyunsoo Kim,hyunsoo.kim@stern.nyu.edu
-2,Public Policy and ESG,Thursday,T2,SC-301,Young Kwak,kwak@gwu.edu
-3,Biodiversity and Agricultural Industry,Thursday,T1,SC-307,Darcy Fudge,darcy.fudge@csus.edu
-4,Private Equity and Capital Markets,Thursday,T3,SC-309,Audrey Stienon,stienon@openmarketsinstitute.org
-5,Industrial Policy and Market Governance,Wednesday,W2,SEH-1300,Alexander Bendel,alexander.bendel@uni-due.de
-6,Industry Classification and Regulatory Policy,Friday,F1,SC-309,Haiyang Zhang,hzhang@hbs.edu
-7,Biomedical Innovation & Organizational Ecosystems,Thursday,T1,SC-308,Matteo Tranchero,mtranc@wharton.upenn.edu
-8,Drug Pricing and Market Competition,Wednesday,W1,SEH-1450,Allison Kim,allisonkim316@gmail.com
-9,Drug Quality and Safety,Thursday,T2,SC-302,Zach Wright,zach.wright@byu.edu
-10,Drug Supply Chains and Shortages,Friday,F1,SC-307,Iman Attari,attariin@ucmail.uc.edu
-11,Healthcare Data and Analytics,Thursday,T3,SC-302,Hanu Tyagi,hanu@illinois.edu
-12,Healthcare Operations and Capacity,Thursday,T3,SC-308,Deepika Gopukumar,deepika.gopukumar.1@slu.edu
-13,Pharmaceutical R&D Strategy,Wednesday,W3,SEH-1400,Yongzheng Liang,yliang44@jhu.edu
-14,AI Adoption and Organizational Performance,Friday,F1,SC-302,Melissa Appleyard,appleyar@pdx.edu
-15,Advanced Technologies and Digital Innovation,Thursday,T2,SC-Amp.,Marco Cucculelli,M.CUCCULELLI@UNIVPM.IT
+1,Geographic Location and Transportation Cost,Thursday,T2,SC-308,Hyunsoo Kim,hyunsoo.kim@stern.nyu.edu
+2,Public Policy and ESG,Wednesday,W3,SEH-1450,Mariana Socal,msocal1@jhu.edu
+3,Biodiversity and Agricultural Industry,Wednesday,W3,SEH-1300,Aurup Ratan Dhar,adhar@umn.edu
+6,Industry Classification and Regulatory Policy,Thursday,T1,SC-301,Audrey Stienon,stienon@openmarketsinstitute.org
+7,Biomedical Innovation & Organizational Ecosystems,Thursday,T3,SC-302,Matteo Tranchero,mtranc@wharton.upenn.edu
+9,Drug Quality and Safety,Thursday,T2,SC-301,Zach Wright,zach.wright@byu.edu
+10,Drug Supply Chains and Shortages,Thursday,T1,SC-302,Iman Attari,attariin@ucmail.uc.edu
+11,Healthcare Data and Analytics,Thursday,T2,SC-302,Hanu Tyagi,hanu@illinois.edu
+12,Healthcare Operations and Capacity,Thursday,T1,SC-307,Deepika Gopukumar,deepika.gopukumar.1@slu.edu
+14,AI Adoption and Organizational Performance,Friday,F1,SC-307,Kristi Yuthas,yuthask@pdx.edu
+15,Advanced Technologies and Digital Innovation,Thursday,T2,SC-307,Marco Cucculelli,M.CUCCULELLI@UNIVPM.IT
 16,Entrepreneurial Ecosystems and Clusters,Friday,F1,SC-301,Runjin Guo,guorunjin@gmail.com
-17,Entrepreneurship Research and Policy,Wednesday,W3,SEH-1450,Biswapriya Saha,biswapriya.saha22@iimb.ac.in
-18,Generative AI and the Future of Work,Thursday,T1,SC-302,Edward Anderson,edanderson@utexas.edu
-19,Industrial Policy and Technology Development,Thursday,T2,SC-307,Shuqi Sun,shuqisun@asu.edu
-20,Innovation Strategy and Resources,Thursday,T3,SC-310,Temitope Oladimeji,toladimeji@umass.edu
-22,Technology Legitimacy and Emerging Markets,Wednesday,W2,SEH-1400,Scott Taylor,davidst@marshall.usc.edu
-23,"Hiring, Skills, and Labor Market Dynamics",Wednesday,W3,SEH-B1220,Justine Boudou,jboudou@hbs.edu
-24,"AI, Technology, and the Changing Nature of Work",Wednesday,W1,SEH-1300,Avner Ben-Ner,benne001@umn.edu
-25,Manufacturing Transformation and Workforce Development,Friday,F1,SC-310,Athar Mansoor,am3381@cam.ac.uk
-26,"Platform Work, Control, and Worker Voice",Thursday,T1,SC-309,Alex Kowalski,alex.kowalski@cornell.edu
-27,Organizational Structure and Human Capital,Wednesday,W2,SEH-3040,Alan Zhang,az2864@columbia.edu
-28,Labor Policy and Institutions,Wednesday,W1,SEH-3040,Pelin Bicen,pbicen@suffolk.edu
-29,Digital Platforms and Last-Mile Delivery,Wednesday,W1,SEH-B2020,Kyungmin (Brad) Lee,bklee@salisbury.edu
-30,Supply Chain Risk and Resilience,Thursday,T1,SC-301,Tomas Harrington,tomas.harrington@uea.ac.uk
-31,Retail and Manufacturing Operations,Wednesday,W2,SEH-B1220,Can Wang,canwang@umich.edu
-32,Sustainable and Circular Supply Chains,Friday,F1,SC-308,Gang He,gang.he@baruch.cuny.edu
-33,Healthcare and People-Centric Operations,Thursday,T3,SC-301,Tomas Harrington,tomas.harrington@uea.ac.uk
-34,Digital Technology in Manufacturing,Wednesday,W3,SEH-B2020,Tianyu Xu,xu.5728@osu.edu
-35,ESG in Supply Chains,Thursday,T2,SC-308,Canberk Ucel,ucel@essec.edu
-36,AI and Data Tools for Manufacturing and Industry Intelligence,Wednesday,W1,SEH-B1220,Peter Eberhardt,peberhardt@icic.org
-37,AI and Digital Economy Policy,Wednesday,W2,SEH-B2020,Abhishek Ray,aray8@gmu.edu
-38,Global Value Chains and Trade Policy,Wednesday,W3,SEH-B1270,Waqas Zafar,wikki6866@gmail.com
-39,Humanitarian and Development Policy,Wednesday,W1,SEH-B1270,Dedan Luvaga,luvagadedan@gmail.com
-40,Industrial Policy Frameworks,Thursday,T1,SC-310,Keno Haverkamp,ksmh2@cam.ac.uk
-41,Regulatory Dynamics and Business Strategy,Thursday,T2,SC-310,Jennifer Woolley,jwoolley@scu.edu
-42,Technology Competitiveness and National Security,Wednesday,W2,SEH-B1270,Angela  Garcia Calvo,angela.garcia.calvo@post.harvard.edu
-43,Industrial Decarbonization Pathways,Friday,F1,SC-Amp.,Nathan Collett,collett@mit.edu
-44,EV Transition and Automotive Industry,Thursday,T2,SC-309,John Helveston,jph@gwu.edu
-45,Energy Infrastructure and Communities,Wednesday,W3,SEH-3040,Freeman Mateko,matekofreeman90@gmail.com
-46,Energy Systems and Reliability,Thursday,T3,SC-Amp.,Umair Khan,edu.szu.edu.cn@gmail.com
-47,Green Innovation Diffusion,Thursday,T1,SC-Amp.,Maria Qayum,Maria.qayyum_87@yahoo.com
-48,Technological Change at Work and Across Industries,Thursday,T3,SC-307,Sean O'Brady,obradys@mcmaster.ca
-49,Taking Stock: System Dynamics Modeling in Industry Studies,Wednesday,W2,SEH-1450,Sergey Naumov,snaumov@psu.edu
+17,Entrepreneurship Research and Policy,Wednesday,W3,SEH-1400,John Lecounte,johnlecounte@gmail.com
+18,Generative AI and the Future of Work,Thursday,T1,SC-Amp.,Boyoon Chang,boyoon.chang@dartmouth.edu
+19,Industrial Policy and Technology Development,Thursday,T3,SC-308,Shuqi Sun,shuqisun@asu.edu
+20,Innovation Strategy and Resources,Wednesday,W2,SEH-B1270,Temitope Oladimeji,toladimeji@umass.edu
+22,Technology Legitimacy and Emerging Markets,Wednesday,W2,SEH-1450,Scott Taylor,davidst@marshall.usc.edu
+23,"Hiring, Skills, and Labor Market Dynamics",Wednesday,W3,SEH-B1220,Wilson Martinez Diaz,wmartine@andrew.cmu.edu
+25,Manufacturing Transformation and Workforce Development,Wednesday,W3,SEH-3040,Athar Mansoor,am3381@cam.ac.uk
+26,"Platform Work, Control, and Worker Voice",Friday,F1,SC-308,Alex Kowalski,alex.kowalski@cornell.edu
+29,Digital Platforms and Last-Mile Delivery,Wednesday,W1,SEH-1300,Kyungmin (Brad) Lee,bklee@salisbury.edu
+30,Supply Chain Risk and Resilience,Friday,F1,SC-Amp.,Tomas Harrington,tomas.harrington@uea.ac.uk
+31,Manufacturing Operations and Digital Technology,Wednesday,W2,SEH-1400,Tianyu Xu,xu.5728@osu.edu
+32,Sustainable and Circular Supply Chains,Thursday,T2,SC-309,Akshay Mutha,akshay.mutha@uvm.edu
+33,Healthcare and People-Centric Operations,Thursday,T3,SC-309,Tomas Harrington,tomas.harrington@uea.ac.uk
+35,ESG in Supply Chains,Thursday,T1,SC-309,Yinyin Cao,yinyinc@umich.edu
+36,AI and Data Tools for Manufacturing and Industry Intelligence,Wednesday,W1,SEH-1400,Peter Eberhardt,peberhardt@icic.org
+37,AI and Digital Economy Policy,Wednesday,W1,SEH-1450,Mingtao Xu,xumt@sem.tsinghua.edu.cn
+39,Humanitarian and Development Policy,Wednesday,W2,SEH-B1220,Junghee Lee,jlee93@nd.edu
+40,Industrial Policy Frameworks,Thursday,T3,SC-Amp.,Keno Haverkamp,ksmh2@cam.ac.uk
+41,"Private Capital, Innovation Policy, and Regulatory Strategy",Thursday,T3,SC-301,Audrey Stienon,stienon@openmarketsinstitute.org
+42,Industrial Statecraft and Emerging Technology Policy,Thursday,T3,SC-307,Max Walter,maxwalter.cda@gmail.com
+43,Industrial Decarbonization Pathways,Friday,F1,SC-302,Nathan Collett,collett@mit.edu
+44,EV Transition and Automotive Industry,Wednesday,W3,SEH-B1270,John Helveston,jph@gwu.edu
+47,Green Innovation and Sustainable Energy Strategies,Thursday,T1,SC-308,Jennifer Woolley,jwoolley@scu.edu
+48,Technological Change at Work and Across Industries,Thursday,T2,SC-Amp.,Sean O'Brady,obradys@mcmaster.ca
+49,Taking Stock: System Dynamics Modeling in Industry Studies,Wednesday,W1,SEH-B1220,Alexander Kuptel,akuptel@mit.edu
