@@ -30,7 +30,7 @@ id,session_id,session_name
 39,11,Healthcare Data and Analytics
 114,11,Healthcare Data and Analytics
 150,11,Healthcare Data and Analytics
-124,12,Healthcare Operations and Capacity
+124,33,Healthcare and People-Centric Operations
 125,12,Healthcare Operations and Capacity
 137,12,Healthcare Operations and Capacity
 140,12,Healthcare Operations and Capacity
@@ -89,7 +89,7 @@ id,session_id,session_name
 51,33,Healthcare and People-Centric Operations
 75,33,Healthcare and People-Centric Operations
 162,33,Healthcare and People-Centric Operations
-2001,33,Healthcare and People-Centric Operations
+2001,12,Healthcare Operations and Capacity
 128,35,ESG in Supply Chains
 143,35,ESG in Supply Chains
 154,35,ESG in Supply Chains

@@ -1115,25 +1115,6 @@
     "session_chair": "Iman Attari (University of Cincinnati)"
   },
   {
-    "id": "124",
-    "session_id": "12",
-    "session_name": "Healthcare Operations and Capacity",
-    "time_slot": "T1",
-    "room": "SC-307",
-    "date": "2026-06-04",
-    "day": "Thursday",
-    "start_time": "09:00:00",
-    "end_time": "10:10:00",
-    "time_order": 4,
-    "title": "Reach Out and Heal a Heart: Tele-ICU and Low Virtualization Care Processes",
-    "abstract": "Telehealth offers significant potential to improve healthcare delivery, but its benefits are context-driven. It shows clear advantages in consumer-facing, high-virtualization settings and uncertain impacts in high-stakes, tightly coupled processes like Intensive Care Unit (ICU) care. Prior IS research has examined high-virtualization telehealth, such as mental\nhealth. In these settings, patients are active agents, and self-efficacy drives outcomes. Far less attention was given in the ICU context, where continuous monitoring, rapid decision-making, and coordination are critical.\nIn this paper, we examine tele-ICU, a telehealth technology designed to support ICU care. We use acute myocardial infarction (AMI) as a context to study a low-virtualizable care process. The AMI care process mostly begins with ICUs and requires rapid monitoring, coordination, and reliance on specialized staff. AMI care contributes significantly to hospital readmissions, targeted under the Medicare Hospital Readmission Reduction Program, underscoring their importance. The shortage of cardiac care staff has increased interest in tele-ICU, which can extend expertise across hospitals. However, the comprehensive role of intensivists in the ICU may also affect the impact of tele-ICUs. These countervailing forces motivate our investigation.\nDrawing on process virtualization theory and the sociotechnical systems perspective, we develop hypotheses about the direct and interaction effects of tele-ICU, health information interchange, and closed-model cardiac intensivist use on AMI outcomes. Using panel data and a control function approach, we find no direct effects of tele-ICU. We find strong\ncomplementarity between tele-ICU and health information interchange, and separately, between tele-ICU and intensivist staffing. Effects vary by organizational level—hospital, joint-venture, or system—highlighting ICU coordination challenges. \nOur study contributes theoretically by extending process virtualization theory with a sociotechnical perspective to low-virtualization care processes. It helps guide hospital administrators on when tele-ICU can improve the ICU care process. It contributes policy-wise by informing telehealth investment, integration, and post-pandemic efforts to enhance complex care.\n",
-    "authors": "Deepika Gopukumar* (Saint Louis University ); Nirup Menon (George Mason University); Sidhartha Das (George Mason University); Amitava Dutta (George Mason University)",
-    "category": "Health Care Systems, Biotechnology, and Pharmaceuticals",
-    "type": "paper",
-    "paper_order": 1,
-    "session_chair": "Deepika Gopukumar (Saint Louis University )"
-  },
-  {
     "id": "125",
     "session_id": "12",
     "session_name": "Healthcare Operations and Capacity",
@@ -1149,8 +1130,8 @@
     "authors": "Ruopeng An (New York University); Zhixin Cao (University of Chicago); Zezheng Lin* (University of Chicago); Fengqi Zhang (National University of Singapore); Yuhao Wang (University of Chicago)",
     "category": "Health Care Systems, Biotechnology, and Pharmaceuticals",
     "type": "paper",
-    "paper_order": 2,
-    "session_chair": "Deepika Gopukumar (Saint Louis University )"
+    "paper_order": 1,
+    "session_chair": "Zezheng Lin (University of Chicago)"
   },
   {
     "id": "137",
@@ -1168,8 +1149,8 @@
     "authors": "Nguyen Nam* (George Washington University); Miguel Lejeune (George Washington University)",
     "category": "Health Care Systems, Biotechnology, and Pharmaceuticals",
     "type": "paper",
-    "paper_order": 3,
-    "session_chair": "Deepika Gopukumar (Saint Louis University )"
+    "paper_order": 2,
+    "session_chair": "Zezheng Lin (University of Chicago)"
   },
   {
     "id": "140",
@@ -1187,8 +1168,27 @@
     "authors": "Janne Kettunen* (The George Washington University); Miguel Lejeune (The George Washington University)",
     "category": "Health Care Systems, Biotechnology, and Pharmaceuticals",
     "type": "paper",
+    "paper_order": 3,
+    "session_chair": "Zezheng Lin (University of Chicago)"
+  },
+  {
+    "id": "2001",
+    "session_id": "12",
+    "session_name": "Healthcare Operations and Capacity",
+    "time_slot": "T1",
+    "room": "SC-307",
+    "date": "2026-06-04",
+    "day": "Thursday",
+    "start_time": "09:00:00",
+    "end_time": "10:10:00",
+    "time_order": 4,
+    "title": "Response Latency in Asynchronous Care Queues and ED Utilization: LLM-Based Measurement of Patient Message Acuity and Complexity",
+    "abstract": "Operational delays in decentralized service systems can induce cross-channel substitutions. Digital patient portals provide a novel setting in which delayed response may shift demand toward the emergency department (ED). Studying this mechanism is difficult because structured records do not capture the severity and complexity embedded in patient messages at arrival. We address this measurement problem with an LLM-based pipeline that scores patient-initiated medical advice messages, then combine these text-derived measures with a discrete-time hazard model of downstream ED utilization. Results from 441,806 patient-initiated threads suggest that unanswered messages predict higher short-run ED use, concentrated early in the waiting period. The study shows how AI can recover latent demand signals from unstructured patient text and suggests that some ED demand reflects operational delays among patients who already have outpatient access, not only uninsured access gaps.",
+    "authors": "Mohamed Megahed, Nathan Craig, Jane Jiang, Aravind Chandrasekaran",
+    "category": "Operations, Supply Chain, and AI-Enhanced Industry 4.0",
+    "type": "paper",
     "paper_order": 4,
-    "session_chair": "Deepika Gopukumar (Saint Louis University )"
+    "session_chair": "Zezheng Lin (University of Chicago)"
   },
   {
     "id": "62",
@@ -2083,6 +2083,25 @@
     "session_chair": "Shuqi Sun (Arizona State University)"
   },
   {
+    "id": "124",
+    "session_id": "33",
+    "session_name": "Healthcare and People-Centric Operations",
+    "time_slot": "T3",
+    "room": "SC-309",
+    "date": "2026-06-04",
+    "day": "Thursday",
+    "start_time": "15:40:00",
+    "end_time": "16:50:00",
+    "time_order": 6,
+    "title": "Reach Out and Heal a Heart: Tele-ICU and Low Virtualization Care Processes",
+    "abstract": "Telehealth offers significant potential to improve healthcare delivery, but its benefits are context-driven. It shows clear advantages in consumer-facing, high-virtualization settings and uncertain impacts in high-stakes, tightly coupled processes like Intensive Care Unit (ICU) care. Prior IS research has examined high-virtualization telehealth, such as mental\nhealth. In these settings, patients are active agents, and self-efficacy drives outcomes. Far less attention was given in the ICU context, where continuous monitoring, rapid decision-making, and coordination are critical.\nIn this paper, we examine tele-ICU, a telehealth technology designed to support ICU care. We use acute myocardial infarction (AMI) as a context to study a low-virtualizable care process. The AMI care process mostly begins with ICUs and requires rapid monitoring, coordination, and reliance on specialized staff. AMI care contributes significantly to hospital readmissions, targeted under the Medicare Hospital Readmission Reduction Program, underscoring their importance. The shortage of cardiac care staff has increased interest in tele-ICU, which can extend expertise across hospitals. However, the comprehensive role of intensivists in the ICU may also affect the impact of tele-ICUs. These countervailing forces motivate our investigation.\nDrawing on process virtualization theory and the sociotechnical systems perspective, we develop hypotheses about the direct and interaction effects of tele-ICU, health information interchange, and closed-model cardiac intensivist use on AMI outcomes. Using panel data and a control function approach, we find no direct effects of tele-ICU. We find strong\ncomplementarity between tele-ICU and health information interchange, and separately, between tele-ICU and intensivist staffing. Effects vary by organizational level—hospital, joint-venture, or system—highlighting ICU coordination challenges. \nOur study contributes theoretically by extending process virtualization theory with a sociotechnical perspective to low-virtualization care processes. It helps guide hospital administrators on when tele-ICU can improve the ICU care process. It contributes policy-wise by informing telehealth investment, integration, and post-pandemic efforts to enhance complex care.\n",
+    "authors": "Deepika Gopukumar* (Saint Louis University ); Nirup Menon (George Mason University); Sidhartha Das (George Mason University); Amitava Dutta (George Mason University)",
+    "category": "Health Care Systems, Biotechnology, and Pharmaceuticals",
+    "type": "paper",
+    "paper_order": 1,
+    "session_chair": "Deepika Gopukumar (Saint Louis University )"
+  },
+  {
     "id": "51",
     "session_id": "33",
     "session_name": "Healthcare and People-Centric Operations",
@@ -2098,8 +2117,8 @@
     "authors": "Tomas Harrington* (University of East Anglia (Uea)); Jagjit Singh Srai (University of Cambridge); Brian Pentland (Michigan State University); Sriram Narayanan (Michigan State University); Nitin Joglekar (Villanova University)",
     "category": "Operations, Supply Chain, and AI-Enhanced Industry 4.0",
     "type": "paper",
-    "paper_order": 1,
-    "session_chair": "Tomas Harrington (University of East Anglia (Uea))"
+    "paper_order": 2,
+    "session_chair": "Deepika Gopukumar (Saint Louis University )"
   },
   {
     "id": "75",
@@ -2117,8 +2136,8 @@
     "authors": "Donggyu Jeon (Indiana University); Mateus Do Rego Ferreira Lima* (Indiana University); Zachary Wright (Brigham Young University)",
     "category": "Operations, Supply Chain, and AI-Enhanced Industry 4.0",
     "type": "paper",
-    "paper_order": 2,
-    "session_chair": "Tomas Harrington (University of East Anglia (Uea))"
+    "paper_order": 3,
+    "session_chair": "Deepika Gopukumar (Saint Louis University )"
   },
   {
     "id": "162",
@@ -2136,27 +2155,8 @@
     "authors": "Minjeong Kang* (University of Minnesota); Rachna Shah (University of Minnesota)",
     "category": "Operations, Supply Chain, and AI-Enhanced Industry 4.0",
     "type": "paper",
-    "paper_order": 3,
-    "session_chair": "Tomas Harrington (University of East Anglia (Uea))"
-  },
-  {
-    "id": "2001",
-    "session_id": "33",
-    "session_name": "Healthcare and People-Centric Operations",
-    "time_slot": "T3",
-    "room": "SC-309",
-    "date": "2026-06-04",
-    "day": "Thursday",
-    "start_time": "15:40:00",
-    "end_time": "16:50:00",
-    "time_order": 6,
-    "title": "Response Latency in Asynchronous Care Queues and ED Utilization: LLM-Based Measurement of Patient Message Acuity and Complexity",
-    "abstract": "Operational delays in decentralized service systems can induce cross-channel substitutions. Digital patient portals provide a novel setting in which delayed response may shift demand toward the emergency department (ED). Studying this mechanism is difficult because structured records do not capture the severity and complexity embedded in patient messages at arrival. We address this measurement problem with an LLM-based pipeline that scores patient-initiated medical advice messages, then combine these text-derived measures with a discrete-time hazard model of downstream ED utilization. Results from 441,806 patient-initiated threads suggest that unanswered messages predict higher short-run ED use, concentrated early in the waiting period. The study shows how AI can recover latent demand signals from unstructured patient text and suggests that some ED demand reflects operational delays among patients who already have outpatient access, not only uninsured access gaps.",
-    "authors": "Mohamed Megahed, Nathan Craig, Jane Jiang, Aravind Chandrasekaran",
-    "category": "Operations, Supply Chain, and AI-Enhanced Industry 4.0",
-    "type": "paper",
     "paper_order": 4,
-    "session_chair": "Tomas Harrington (University of East Anglia (Uea))"
+    "session_chair": "Deepika Gopukumar (Saint Louis University )"
   },
   {
     "id": "90",

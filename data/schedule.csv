@@ -34,10 +34,10 @@ id,session_id,session_name,time_slot,room,date,day,start_time,end_time,time_orde
 103,3,Biodiversity and Agricultural Industry,W3,SEH-1300,2026-06-03,Wednesday,16:45:00,17:55:00,3
 175,3,Biodiversity and Agricultural Industry,W3,SEH-1300,2026-06-03,Wednesday,16:45:00,17:55:00,3
 192,3,Biodiversity and Agricultural Industry,W3,SEH-1300,2026-06-03,Wednesday,16:45:00,17:55:00,3
-124,12,Healthcare Operations and Capacity,T1,SC-307,2026-06-04,Thursday,09:00:00,10:10:00,4
 125,12,Healthcare Operations and Capacity,T1,SC-307,2026-06-04,Thursday,09:00:00,10:10:00,4
 137,12,Healthcare Operations and Capacity,T1,SC-307,2026-06-04,Thursday,09:00:00,10:10:00,4
 140,12,Healthcare Operations and Capacity,T1,SC-307,2026-06-04,Thursday,09:00:00,10:10:00,4
+2001,12,Healthcare Operations and Capacity,T1,SC-307,2026-06-04,Thursday,09:00:00,10:10:00,4
 123,16,Entrepreneurial Ecosystems and Clusters,F1,SC-301,2026-06-05,Friday,10:30:00,11:40:00,7
 132,16,Entrepreneurial Ecosystems and Clusters,F1,SC-301,2026-06-05,Friday,10:30:00,11:40:00,7
 92,16,Entrepreneurial Ecosystems and Clusters,F1,SC-301,2026-06-05,Friday,10:30:00,11:40:00,7
@@ -111,7 +111,7 @@ id,session_id,session_name,time_slot,room,date,day,start_time,end_time,time_orde
 51,33,Healthcare and People-Centric Operations,T3,SC-309,2026-06-04,Thursday,15:40:00,16:50:00,6
 75,33,Healthcare and People-Centric Operations,T3,SC-309,2026-06-04,Thursday,15:40:00,16:50:00,6
 162,33,Healthcare and People-Centric Operations,T3,SC-309,2026-06-04,Thursday,15:40:00,16:50:00,6
-2001,33,Healthcare and People-Centric Operations,T3,SC-309,2026-06-04,Thursday,15:40:00,16:50:00,6
+124,33,Healthcare and People-Centric Operations,T3,SC-309,2026-06-04,Thursday,15:40:00,16:50:00,6
 90,40,Industrial Policy Frameworks,T3,SC-Amp.,2026-06-04,Thursday,15:40:00,16:50:00,6
 116,40,Industrial Policy Frameworks,T3,SC-Amp.,2026-06-04,Thursday,15:40:00,16:50:00,6
 118,40,Industrial Policy Frameworks,T3,SC-Amp.,2026-06-04,Thursday,15:40:00,16:50:00,6
