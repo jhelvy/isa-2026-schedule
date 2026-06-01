@@ -1132,6 +1132,17 @@
             return type === 'special_session' || type === 'plenary';
         }
 
+        function itemMatchesSearch(item, searchTerm) {
+            return (item.session_name && item.session_name.toLowerCase().includes(searchTerm)) ||
+                (item.title        && item.title.toLowerCase().includes(searchTerm))        ||
+                (item.authors      && item.authors.toLowerCase().includes(searchTerm))      ||
+                (item.abstract     && item.abstract.toLowerCase().includes(searchTerm))     ||
+                (item.moderator    && item.moderator.toLowerCase().includes(searchTerm))     ||
+                (item.discussant   && item.discussant.toLowerCase().includes(searchTerm))   ||
+                (item.session_chair && item.session_chair.toLowerCase().includes(searchTerm)) ||
+                (item.type === 'event' && getExcursionSearchText(item.session_name).includes(searchTerm));
+        }
+
         function renderSchedule() {
             const searchTerm   = document.getElementById('search').value.toLowerCase();
             const dayFilter    = document.querySelector('.day-tab.active').getAttribute('data-day');
@@ -1139,17 +1150,8 @@
             const trackFilter  = document.getElementById('trackFilter').value;
             const typeFilter   = document.getElementById('typeFilter').value;
 
-            const filtered = scheduleData.filter(item => {
-                const searchMatch = !searchTerm ||
-                    (item.session_name && item.session_name.toLowerCase().includes(searchTerm)) ||
-                    (item.title        && item.title.toLowerCase().includes(searchTerm))        ||
-                    (item.authors      && item.authors.toLowerCase().includes(searchTerm))      ||
-                    (item.abstract     && item.abstract.toLowerCase().includes(searchTerm))     ||
-                    (item.moderator    && item.moderator.toLowerCase().includes(searchTerm))     ||
-                    (item.discussant   && item.discussant.toLowerCase().includes(searchTerm))   ||
-                    (item.session_chair && item.session_chair.toLowerCase().includes(searchTerm)) ||
-                    (item.type === 'event' && getExcursionSearchText(item.session_name).includes(searchTerm));
-
+            // Apply non-search filters at the item level
+            const nonSearchFiltered = scheduleData.filter(item => {
                 const dayMatch  = !dayFilter   || item.day === dayFilter;
                 const slotMatch = !slotFilter  || item.time_slot === slotFilter;
                 const trackMatch = !trackFilter || item.category === trackFilter;
@@ -1157,8 +1159,23 @@
                     (typeFilter === 'paper'   && (item.type === 'paper' || item.type === 'self_organized_panel')) ||
                     (typeFilter === 'special' && isSpecial(item.type)) ||
                     (typeFilter === 'event'   && item.type === 'event');
+                return dayMatch && slotMatch && trackMatch && typeMatch;
+            });
 
-                return searchMatch && dayMatch && slotMatch && trackMatch && typeMatch;
+            // Group by session, then apply search at the session level so that
+            // matching any paper in a session shows the whole session
+            const sessionMap = {};
+            nonSearchFiltered.forEach(item => {
+                const key = `${item.session_id}_${item.time_slot}`;
+                if (!sessionMap[key]) sessionMap[key] = [];
+                sessionMap[key].push(item);
+            });
+
+            const filtered = [];
+            Object.values(sessionMap).forEach(items => {
+                if (!searchTerm || items.some(item => itemMatchesSearch(item, searchTerm))) {
+                    filtered.push(...items);
+                }
             });
 
             // Sort chronologically

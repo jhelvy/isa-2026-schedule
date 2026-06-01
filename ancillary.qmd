@@ -1,0 +1,125 @@
+---
+format:
+  pdf:
+    toc: false
+    number-sections: false
+    colorlinks: false
+    documentclass: scrartcl
+    papersize: letter
+    pdf-engine: xelatex
+    mainfont: Avenir
+    sansfont: Avenir
+    fontsize: 11pt
+    geometry:
+      - margin=1in
+      - heightrounded
+    include-in-header:
+      text: |
+        \usepackage{xcolor}
+        \definecolor{gwblue}{HTML}{033C5A}
+        \definecolor{gwgold}{HTML}{AA9144}
+        \definecolor{lightgray}{HTML}{F5F5F5}
+        \definecolor{darkgray}{HTML}{444444}
+        \usepackage{mdframed}
+        \usepackage{fontawesome5}
+        \usepackage{tabularx}
+        \usepackage{booktabs}
+        \pagestyle{empty}
+execute:
+  echo: false
+  warning: false
+  message: false
+---
+
+\newpage
+
+\vspace*{\fill}
+
+\begin{center}
+
+{\color{gwblue}\Huge\textbf{ISA 2026 Annual Conference}}
+
+\vspace{0.4cm}
+
+{\large\textit{June 3--5, 2026 · Washington, DC}}
+
+\vspace{1.2cm}
+
+{\color{darkgray}\large Scan for the full interactive program:}
+
+\vspace{0.8cm}
+
+\includegraphics[width=0.72\textwidth]{images/qr-schedule.png}
+
+\vspace{1.2cm}
+
+{\small\color{darkgray}\texttt{jhelvy.github.io/isa-2026-schedule}}
+
+\end{center}
+
+\vspace*{\fill}
+
+\newpage
+
+\begin{center}
+{\color{gwblue}\LARGE\textbf{Connecting to the Internet}}\\[0.2cm]
+{\large\textbf{All Conference Venues}}\\[0.05cm]
+{\color{darkgray} Science \& Engineering Hall · University Student Center (Marvin Center)}
+\end{center}
+
+\vspace{0.25cm}
+\noindent\rule{\textwidth}{1.5pt}
+\vspace{0.25cm}
+
+\noindent\textbf{\large Option 1 — Guest WiFi (GWguest)}
+
+\noindent For all conference attendees without a GW or eduroam account.
+
+\vspace{0.2cm}
+
+\begin{mdframed}[backgroundcolor=lightgray, linecolor=gwblue, linewidth=1.5pt, innerleftmargin=12pt, innerrightmargin=12pt, innertopmargin=7pt, innerbottommargin=7pt]
+\begin{enumerate}
+  \setlength{\itemsep}{3pt}
+  \item Open your device's \textbf{WiFi settings} and select \textbf{GWguest}.
+  \item If prompted with a certificate warning for \texttt{cppm.it.gwu.edu}, tap \textbf{Accept} or \textbf{Trust} (this is a GWU-issued certificate and is safe).
+  \item Open a \textbf{web browser} — you will be automatically redirected to the self-registration page. If not, navigate to \texttt{my.gwu.edu}.
+  \item Enter your name and email address to self-register. Access is valid for \textbf{72 hours}.
+\end{enumerate}
+\end{mdframed}
+
+\vspace{0.35cm}
+
+\noindent\textbf{\large Option 2 — eduroam (Academic Institutions)}
+
+\noindent If your home institution participates in eduroam, you can connect directly.
+
+\vspace{0.2cm}
+
+\begin{mdframed}[backgroundcolor=lightgray, linecolor=gwgold, linewidth=1.5pt, innerleftmargin=12pt, innerrightmargin=12pt, innertopmargin=7pt, innerbottommargin=7pt]
+\begin{enumerate}
+  \setlength{\itemsep}{3pt}
+  \item Open your device's \textbf{WiFi settings} and select \textbf{eduroam}.
+  \item Sign in using your \textbf{home institution credentials} (e.g., \texttt{username@youruniversity.edu}).
+  \item No additional registration is required.
+\end{enumerate}
+\end{mdframed}
+
+\vspace{0.35cm}
+\noindent\rule{\textwidth}{0.8pt}
+\vspace{0.25cm}
+
+\noindent\textbf{\large IT Support}
+
+\vspace{0.15cm}
+
+\begin{tabularx}{\textwidth}{lX}
+\faPhone\quad \textbf{Help Desk} & 202-994-4948 \quad {\color{darkgray}(24/7)} \\[3pt]
+\faPhone\quad \textbf{Classroom / AV} & 202-994-7900 \\[3pt]
+\faEnvelope\quad \textbf{Email} & \texttt{ithelp@gwu.edu} \\[3pt]
+\faGlobe\quad \textbf{Online} & \texttt{go.gwu.edu/ithelp} \\[3pt]
+\faMapMarker*\quad \textbf{Walk-in} & Academic Center, 801 22nd St NW, Room B101 \\
+\end{tabularx}
+
+\vspace{0.3cm}
+\noindent\rule{\textwidth}{0.8pt}
+\vspace{0.15cm}

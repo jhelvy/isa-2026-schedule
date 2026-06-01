@@ -6,7 +6,7 @@ id,session_id,session_name
 46,2,Public Policy and ESG
 85,2,Public Policy and ESG
 172,2,Public Policy and ESG
-205,2,Public Policy and ESG
+205,47,Green Innovation and Sustainable Energy Strategies
 103,3,Biodiversity and Agricultural Industry
 175,3,Biodiversity and Agricultural Industry
 192,3,Biodiversity and Agricultural Industry
@@ -54,7 +54,7 @@ id,session_id,session_name
 195,19,Industrial Policy and Technology Development
 203,19,Industrial Policy and Technology Development
 54,20,Innovation Strategy and Resources
-55,20,Innovation Strategy and Resources
+55,17,Entrepreneurship Research and Policy
 59,20,Innovation Strategy and Resources
 65,20,Innovation Strategy and Resources
 179,22,Technology Legitimacy and Emerging Markets
@@ -74,7 +74,6 @@ id,session_id,session_name
 141,26,"Platform Work, Control, and Worker Voice"
 144,26,"Platform Work, Control, and Worker Voice"
 61,29,Digital Platforms and Last-Mile Delivery
-98,29,Digital Platforms and Last-Mile Delivery
 2004,29,Digital Platforms and Last-Mile Delivery
 36,30,Supply Chain Risk and Resilience
 156,30,Supply Chain Risk and Resilience
@@ -85,18 +84,16 @@ id,session_id,session_name
 183,31,Manufacturing Operations and Digital Technology
 193,31,Manufacturing Operations and Digital Technology
 83,32,Sustainable and Circular Supply Chains
-99,32,Sustainable and Circular Supply Chains
 170,32,Sustainable and Circular Supply Chains
 201,32,Sustainable and Circular Supply Chains
 51,33,Healthcare and People-Centric Operations
 75,33,Healthcare and People-Centric Operations
 162,33,Healthcare and People-Centric Operations
 2001,33,Healthcare and People-Centric Operations
-97,35,ESG in Supply Chains
 128,35,ESG in Supply Chains
 143,35,ESG in Supply Chains
 154,35,ESG in Supply Chains
-37,36,AI and Data Tools for Manufacturing and Industry Intelligence
+37,29,Digital Platforms and Last-Mile Delivery
 110,36,AI and Data Tools for Manufacturing and Industry Intelligence
 113,36,AI and Data Tools for Manufacturing and Industry Intelligence
 2003,36,AI and Data Tools for Manufacturing and Industry Intelligence

@@ -1,7 +1,6 @@
-# code/generate_badges.R
-# Generates print-ready ISA 2026 name badge PDF
-# Layout: 6 badges per page (2 cols × 3 rows), each 4" × 3" — Avery 5392
-# Print duplex (long-edge): front faces on odd pages, personalized QR backs on even pages
+# code/generate_badges_extra.R
+# Generates badges PDF for late-added guests from data/extra.csv
+# Same layout as generate_badges.R (Avery 5392, 4" × 3", duplex long-edge)
 
 library(tidyverse)
 library(ggplot2)
@@ -16,27 +15,19 @@ CONF_DATES   <- "June 3–5, 2026  ·  Washington, DC"
 BANNER_COL   <- "#1e3a5f"
 PAGE_W       <- 8.5
 PAGE_H       <- 11.0
-BADGE_W      <- 4.0    # Avery 5392: 4" wide
-BADGE_H      <- 3.0    # Avery 5392: 3" tall
+BADGE_W      <- 4.0
+BADGE_H      <- 3.0
 BADGE_COLS   <- 2L
 BADGE_ROWS   <- 3L
-MARGIN_SIDE  <- 0.25   # left/right page margin (inches)
-MARGIN_TOP   <- 1.0    # top/bottom page margin (inches)
+MARGIN_SIDE  <- 0.25
+MARGIN_TOP   <- 1.0
 
 # ---- Load data -----------------------------------------------------------
 
-registrants <- read_csv("data/registrants.csv", show_col_types = FALSE)
-guests      <- read_csv("data/guests.csv",      show_col_types = FALSE)
+extra <- read_csv("data/extra.csv", show_col_types = FALSE)
 
-# ---- Prepare data --------------------------------------------------------
-
-registrants_prep <- registrants |>
-  transmute(name = str_trim(name), institution = replace_na(institution, ""))
-
-guests_prep <- guests |>
-  transmute(name = str_trim(name), institution = replace_na(affiliation, ""))
-
-all_badges <- bind_rows(registrants_prep, guests_prep) |>
+all_badges <- extra |>
+  transmute(name = str_trim(name), institution = replace_na(affiliation, "")) |>
   distinct(name, .keep_all = TRUE) |>
   arrange(name) |>
   mutate(
@@ -44,12 +35,7 @@ all_badges <- bind_rows(registrants_prep, guests_prep) |>
     first_name = str_trim(str_remove(name, "\\s+\\S+$"))
   )
 
-message(sprintf(
-  "Preparing %d badges (%d registrants, %d guests)",
-  nrow(all_badges),
-  nrow(registrants_prep),
-  nrow(guests_prep)
-))
+message(sprintf("Preparing %d extra badges", nrow(all_badges)))
 
 # ---- Load and prepare logo -----------------------------------------------
 
@@ -69,11 +55,8 @@ if (dim(logo_raw)[3L] >= 3L) {
   logo[,, 4L][is_near_white] <- 0
 }
 
-# Logo is 500×200 px (2.5:1 w:h ratio).
-# Normalized coords: x 0–1 = BADGE_W inches, y 0–1 = BADGE_H inches.
-# Logo is centered horizontally in the banner.
 logo_h <- 0.13
-logo_w <- logo_h * (BADGE_H / BADGE_W) * 2.5  # preserves 2.5:1 aspect ratio
+logo_w <- logo_h * (BADGE_H / BADGE_W) * 2.5
 
 logo_pad  <- 0.012
 logo_xmin <- 0.5 - logo_w / 2
@@ -93,43 +76,35 @@ fit_name_size <- function(name, base = 10.0, threshold = 14L) {
 
 make_badge <- function(first, last, institution) {
   ggplot() +
-    # Dark blue banner (bottom 42%) — tall enough for logo + conf name + dates
     annotate("rect",
       xmin = 0, xmax = 1, ymin = 0, ymax = 0.42,
       fill = BANNER_COL, color = NA
     ) +
-    # White backing for logo so it reads cleanly on the dark banner
     annotate("rect",
       xmin = logo_xmin - logo_pad, xmax = logo_xmax + logo_pad,
       ymin = logo_ymin - logo_pad, ymax = logo_ymax + logo_pad,
       fill = "white", color = NA
     ) +
-    # ISA logo — centered above conf name
     annotation_raster(logo,
       xmin = logo_xmin, xmax = logo_xmax,
       ymin = logo_ymin, ymax = logo_ymax
     ) +
-    # Conference name — large, bold, full-width centered
     annotate("text",
       x = 0.5, y = 0.165, hjust = 0.5, vjust = 0.5,
       label = CONF_NAME, size = 4.5, fontface = "bold", color = "white"
     ) +
-    # Dates — medium, centered below conf name
     annotate("text",
       x = 0.5, y = 0.075, hjust = 0.5, vjust = 0.5,
       label = CONF_DATES, size = 3.0, color = "white"
     ) +
-    # First name
     annotate("text",
       x = 0.5, y = 0.83, hjust = 0.5, vjust = 0.5,
       label = first, size = fit_name_size(first), fontface = "bold", color = "black"
     ) +
-    # Last name
     annotate("text",
       x = 0.5, y = 0.68, hjust = 0.5, vjust = 0.5,
       label = last, size = fit_name_size(last), fontface = "bold", color = "black"
     ) +
-    # Institution
     annotate("text",
       x = 0.5, y = 0.54, hjust = 0.5, vjust = 0.5,
       label = str_wrap(institution, width = 35L),
@@ -147,27 +122,22 @@ make_badge <- function(first, last, institution) {
 
 qr_img <- readPNG("images/qr-schedule.png")
 
-# QR code is square; keep it square in physical inches.
-# Normalized: 1 x-unit = BADGE_W", 1 y-unit = BADGE_H"
-qr_h <- 0.35                       # 0.35 × 3" = 1.05" physical height
-qr_w <- qr_h * (BADGE_H / BADGE_W) # = 0.2625 → 1.05" physical width (square)
+qr_h <- 0.35
+qr_w <- qr_h * (BADGE_H / BADGE_W)
 
 make_qr_badge <- function(first = "", last = "") {
   full_name <- trimws(paste(first, last))
 
   p <- ggplot() +
-    # QR code: centered horizontally, vertically centered in lower portion
     annotation_raster(qr_img,
       xmin = 0.5 - qr_w / 2, xmax = 0.5 + qr_w / 2,
       ymin = 0.30,            ymax = 0.30 + qr_h
     ) +
-    # Caption below QR
     annotate("text",
       x = 0.5, y = 0.20, hjust = 0.5, vjust = 0.5,
       label = "Scan for full schedule", size = 2.8, color = "gray40"
     )
 
-  # Name at top of back — personalized per badge
   if (nchar(full_name) > 0L) {
     p <- p +
       annotate("text",
@@ -188,9 +158,6 @@ make_qr_badge <- function(first = "", last = "") {
 }
 
 # ---- Grid renderer -------------------------------------------------------
-# Uses explicit margin widths/heights so badges land on Avery 5392 slots.
-# Layout (columns): [MARGIN_SIDE | badge1 | badge2 | MARGIN_SIDE]
-# Layout (rows):    [MARGIN_TOP  | badge1 | badge2 | badge3 | MARGIN_TOP]
 
 draw_grid <- function(plots, mirror = FALSE) {
   n <- length(plots)
@@ -205,8 +172,6 @@ draw_grid <- function(plots, mirror = FALSE) {
   ))
   for (i in seq_len(n)) {
     grid_row <- ceiling(i / BADGE_COLS) + 1L
-    # mirror=TRUE reverses column order so long-edge duplex aligns each badge
-    # with its own back: left-col front flips to right-col back after the fold.
     grid_col <- if (mirror) {
       BADGE_COLS - (i - 1L) %% BADGE_COLS + 1L
     } else {
@@ -225,14 +190,13 @@ n_per_page <- BADGE_COLS * BADGE_ROWS
 n_total    <- nrow(all_badges)
 n_pages    <- ceiling(n_total / n_per_page)
 
-pdf("badges/badges.pdf", width = PAGE_W, height = PAGE_H, onefile = TRUE)
+pdf("badges/badges_extra.pdf", width = PAGE_W, height = PAGE_H, onefile = TRUE)
 
 for (pg in seq_len(n_pages)) {
   i1      <- (pg - 1L) * n_per_page + 1L
   i2      <- min(pg * n_per_page, n_total)
   page_df <- all_badges[i1:i2, ]
 
-  # Pad last page to a full grid
   if (nrow(page_df) < n_per_page) {
     n_blank <- n_per_page - nrow(page_df)
     page_df <- bind_rows(
@@ -254,17 +218,11 @@ for (pg in seq_len(n_pages)) {
   draw_grid(back, mirror = TRUE)
 }
 
-# Extra blank sheet for walk-in registrants
-blank_front <- replicate(n_per_page, make_badge("", "", ""), simplify = FALSE)
-blank_back  <- replicate(n_per_page, make_qr_badge(),        simplify = FALSE)
-draw_grid(blank_front)
-draw_grid(blank_back, mirror = TRUE)
-
 dev.off()
 
 message(sprintf(
-  "Done: badges/badges.pdf  (%d named badges + 6 blanks, %d pages total)",
-  n_total, n_pages * 2L + 2L
+  "Done: badges/badges_extra.pdf  (%d badges, %d pages total)",
+  n_total, n_pages * 2L
 ))
 
 # ---- Report missing affiliations -----------------------------------------
@@ -273,6 +231,6 @@ no_affil <- all_badges |> filter(institution == "") |> select(name)
 if (nrow(no_affil) == 0L) {
   message("All badges have an affiliation.")
 } else {
-  message(sprintf("\n%d badge(s) have no affiliation — add manually:\n", nrow(no_affil)))
+  message(sprintf("\n%d badge(s) have no affiliation:\n", nrow(no_affil)))
   walk(no_affil$name, ~ message("  ", .x))
 }

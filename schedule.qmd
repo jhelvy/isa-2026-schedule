@@ -31,8 +31,10 @@ format:
         \pagestyle{scrheadings}
         \clearpairofpagestyles
         \lohead{\small\textit{\leftmark}}
-        \KOMAoptions{headsepline=true, footsepline=true}
-        \AtBeginDocument{\hypersetup{pdfpagemode=UseOutlines, bookmarksdepth=-1}}
+        \cofoot[{\makebox[0pt][c]{\smash{\raisebox{16pt}{\rule{\textwidth}{0.4pt}}}}\pagemark}]{\makebox[0pt][c]{\smash{\raisebox{16pt}{\rule{\textwidth}{0.4pt}}}}\pagemark}
+        \addtolength{\footskip}{8pt}
+        \KOMAoptions{headsepline=true}
+        \AtBeginDocument{\hypersetup{pdfpagemode=UseOutlines, bookmarksdepth=-1}\thispagestyle{empty}}
 execute:
   echo: false
   warning: false
@@ -423,7 +425,7 @@ sessions <- sessions %>%
 ```
 
 ```{=latex}
-\thispagestyle{empty}
+\thispagestyle{plain.scrheadings}
 \markboth{}{}
 \pdfbookmark[0]{Scan QR Code}{qr}
 \vspace*{\fill}
@@ -436,7 +438,7 @@ sessions <- sessions %>%
 ```
 
 ```{=latex}
-\thispagestyle{empty}
+\thispagestyle{plain.scrheadings}
 \markboth{}{}
 \pdfbookmark[0]{Welcome}{welcome}
 \begin{center}
@@ -477,7 +479,7 @@ President, ISA
 ```
 
 ```{=latex}
-\thispagestyle{empty}
+\thispagestyle{plain.scrheadings}
 \markboth{}{}
 \pdfbookmark[0]{Venue Map}{map}
 {\Large\textbf{Map of conference locations at The George Washington University}}
@@ -495,7 +497,7 @@ President, ISA
 \end{center}
 \newpage
 
-\thispagestyle{empty}
+\thispagestyle{plain.scrheadings}
 \markboth{}{}
 {\Large\textbf{Venue Floor Plans}}
 \vspace{0.2em}
@@ -714,9 +716,16 @@ for (d in days) {
       current_building
     }
     if (bldg != current_building) {
+      bldg_label <- bldg
+      if (!is.na(r$excursion_id) && nchar(str_trim(r$excursion_id)) > 0) {
+        room_val <- str_trim(r$Room)
+        if (!is.na(room_val) && nchar(room_val) > 0) {
+          bldg_label <- paste0(bldg, ", ", room_val)
+        }
+      }
       cat(
         "  \\multicolumn{2}{@{}l@{}}{\\textbf{",
-        escape_latex(bldg),
+        escape_latex(bldg_label),
         "}} \\\\\n",
         sep = ""
       )
@@ -747,11 +756,11 @@ excursions <- read_csv(
   rename_with(str_trim) %>%
   filter(!is.na(excursion_id)) %>%
   rename(
-    id           = excursion_id,
-    option       = excursion_option,
+    id = excursion_id,
+    option = excursion_option,
     session_name = Session,
-    start_time   = `Time Start`,
-    end_time     = `Time End`
+    start_time = `Time Start`,
+    end_time = `Time End`
   ) %>%
   mutate(option = as.integer(option)) %>%
   arrange(option)
@@ -1579,7 +1588,7 @@ for (b in seq_len(nrow(all_blocks))) {
 
 ```{=latex}
 \newpage
-\thispagestyle{empty}
+\thispagestyle{plain.scrheadings}
 \markboth{}{}
 \pdfbookmark[0]{Sponsors}{sponsors}
 \vspace*{\fill}
@@ -1651,7 +1660,7 @@ make_stream_rows <- function(df) {
 
 cat("```{=latex}\n")
 cat("\\newpage\n")
-cat("\\thispagestyle{empty}\n")
+cat("\\thispagestyle{plain.scrheadings}\n")
 cat("\\markboth{}{}\n")
 cat("\\pdfbookmark[0]{ISA Leadership}{leadership}\n\n")
 cat("{\\large\\textbf{\\underline{Board of Directors}}}\\\\[0.6em]\n")
@@ -1674,7 +1683,7 @@ cat("```\n")
 ```
 
 ```{=latex}
-\thispagestyle{empty}
+\thispagestyle{plain.scrheadings}
 \markboth{}{}
 \pdfbookmark[0]{ISA 2026 International Conference}{isa2026intl}
 \vspace*{\fill}
@@ -1692,7 +1701,7 @@ cat("```\n")
 ```
 
 ```{=latex}
-\thispagestyle{empty}
+\thispagestyle{plain.scrheadings}
 \markboth{}{}
 \pdfbookmark[0]{ISA 2027}{isa2027}
 \begin{center}

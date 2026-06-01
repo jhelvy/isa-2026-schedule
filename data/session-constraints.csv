@@ -1,0 +1,38 @@
+session_id,session_name,time_slot,date,constraint_type,constraint_value,constraint_satisfied,notes
+9,Drug Quality and Safety,T2,2026-06-04,date_excluded,2026-06-03,yes,paper 50 — not Wednesday
+10,Drug Supply Chains and Shortages,T1,2026-06-04,date_excluded,2026-06-03,yes,paper 148 — not Wednesday
+17,Entrepreneurship Research and Policy,T1,2026-06-04,date_excluded,2026-06-05,yes,paper 120 — not Friday
+30,Supply Chain Risk and Resilience,F1,2026-06-05,date_excluded,2026-06-03,yes,paper 36 — not Wednesday
+33,Healthcare and People-Centric Operations,T3,2026-06-04,date_excluded,2026-06-03,yes,paper 51 — not Wednesday
+41,"Private Capital, Innovation Policy, and Regulatory Strategy",T3,2026-06-04,date_excluded,2026-06-05,yes,paper 191 — not Friday
+47,Green Innovation and Sustainable Energy Strategies,T1,2026-06-04,date_excluded,2026-06-03,yes,paper 133 — not Wednesday
+7,Biomedical Innovation & Organizational Ecosystems,T3,2026-06-04,date_required,2026-06-04,yes,paper 71
+11,Healthcare Data and Analytics,T2,2026-06-04,date_required,2026-06-04,yes,paper 21
+14,AI Adoption and Organizational Performance,F1,2026-06-05,date_required,2026-06-05,yes,papers 199 and 200
+19,Industrial Policy and Technology Development,T3,2026-06-04,date_required,2026-06-04,yes,paper 203
+26,"Platform Work, Control, and Worker Voice",F1,2026-06-05,date_required,2026-06-05,yes,paper 141
+35,ESG in Supply Chains,T1,2026-06-04,date_required,2026-06-04,yes,paper 128
+49,Taking Stock: System Dynamics Modeling in Industry Studies,W1,2026-06-03,date_required,2026-06-03,yes,paper 131 (Sergey Naumov) — must be Wednesday
+12,Healthcare Operations and Capacity,W3,2026-06-03,none,,yes,free — valid swap candidate
+15,Advanced Technologies and Digital Innovation,F1,2026-06-05,none,,yes,free — valid swap candidate
+16,Entrepreneurial Ecosystems and Clusters,W3,2026-06-03,none,,yes,free — valid swap candidate
+20,Innovation Strategy and Resources,T2,2026-06-04,none,,yes,free — valid swap candidate
+22,Technology Legitimacy and Emerging Markets,W2,2026-06-03,none,,yes,free — valid swap candidate
+25,Manufacturing Transformation and Workforce Development,T2,2026-06-04,none,,yes,free — valid swap candidate
+29,Digital Platforms and Last-Mile Delivery,W1,2026-06-03,none,,yes,free — valid swap candidate
+31,Manufacturing Operations and Digital Technology,W2,2026-06-03,none,,yes,free — valid swap candidate
+36,AI and Data Tools for Manufacturing and Industry Intelligence,W1,2026-06-03,none,,yes,free — valid swap candidate
+37,AI and Digital Economy Policy,W1,2026-06-03,none,,yes,free — valid swap candidate
+39,Humanitarian and Development Policy,W2,2026-06-03,none,,yes,free — valid swap candidate
+40,Industrial Policy Frameworks,T3,2026-06-04,none,,yes,free — valid swap candidate
+42,Industrial Statecraft and Emerging Technology Policy,T1,2026-06-04,none,,yes,free — valid swap candidate
+43,Industrial Decarbonization Pathways,W2,2026-06-03,none,,yes,free — valid swap candidate
+48,Technological Change at Work and Across Industries,W2,2026-06-03,none,,yes,free — valid swap candidate
+1,Geographic Location and Transportation Cost,T2,2026-06-04,pdw_no_W1_W2,not W1 or W2,yes,PDW registrants: Hyunsoo Kim; John Saldanha
+2,Public Policy and ESG,F1,2026-06-05,pdw_no_W1_W2,not W1 or W2,yes,PDW registrants: Young Kwak; Sun Kim
+3,Biodiversity and Agricultural Industry,W3,2026-06-03,pdw_no_W1_W2,not W1 or W2,yes,PDW registrant: John Saldanha
+6,Industry Classification and Regulatory Policy,T1,2026-06-04,pdw_no_W1_W2,not W1 or W2,yes,PDW registrant: Haiyang Zhang (paper 73)
+18,Generative AI and the Future of Work,T3,2026-06-04,pdw_no_W1_W2,not W1 or W2,yes,PDW registrant: Boyoon Chang (paper 62)
+23,"Hiring, Skills, and Labor Market Dynamics",W3,2026-06-03,slot_required,W3,yes,papers 147 and 100 — must be W3; note Sue Helper registered as 'sue helper' (name mismatch may bypass PDW check)
+32,Sustainable and Circular Supply Chains,T2,2026-06-04,slot_required,T2,yes,paper 170 — must be T2 (not T1)
+44,EV Transition and Automotive Industry,W3,2026-06-03,slot_required,W3,yes,paper 159 — must be W3

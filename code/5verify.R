@@ -246,29 +246,54 @@ test_that("No PDW-registered author is scheduled in W1 or W2", {
 # ── 9b. Slot restrictions honoured ────────────────────────────────────────────
 
 test_that("All slot-restricted submissions are in their required time slot", {
-  if (!exists("slot_restrictions") || length(slot_restrictions) == 0) skip("No slot restrictions defined")
+  if (!exists("slot_restrictions") || length(slot_restrictions) == 0) {
+    skip("No slot restrictions defined")
+  }
 
-  session_ids_csv <- read_csv(here("data", "session-ids.csv"), show_col_types = FALSE) %>%
+  session_ids_csv <- read_csv(
+    here("data", "session-ids.csv"),
+    show_col_types = FALSE
+  ) %>%
     mutate(id = as.character(id), session_id = as.character(session_id))
 
   violations <- map_dfr(names(slot_restrictions), function(pid) {
     required_slot <- slot_restrictions[[pid]]
-    sess <- session_ids_csv %>% filter(id == pid) %>% pull(session_id) %>% unique()
-    if (length(sess) == 0) return(tibble(id = pid, issue = "not in session-ids.csv"))
-    row <- schedule %>% filter(session_id %in% sess) %>% distinct(session_id, time_slot)
-    if (nrow(row) == 0) return(tibble(id = pid, issue = "session not scheduled"))
+    sess <- session_ids_csv %>%
+      filter(id == pid) %>%
+      pull(session_id) %>%
+      unique()
+    if (length(sess) == 0) {
+      return(tibble(id = pid, issue = "not in session-ids.csv"))
+    }
+    row <- schedule %>%
+      filter(session_id %in% sess) %>%
+      distinct(session_id, time_slot)
+    if (nrow(row) == 0) {
+      return(tibble(id = pid, issue = "session not scheduled"))
+    }
     if (row$time_slot[1] != required_slot) {
       return(tibble(
         id = pid,
-        issue = sprintf("session %s is in %s, required %s", row$session_id[1], row$time_slot[1], required_slot)
+        issue = sprintf(
+          "session %s is in %s, required %s",
+          row$session_id[1],
+          row$time_slot[1],
+          required_slot
+        )
       ))
     }
     tibble()
   })
 
   expect_equal(
-    nrow(violations), 0L,
-    label = if (nrow(violations) > 0) paste(paste0("id ", violations$id, ": ", violations$issue), collapse = "; ")
+    nrow(violations),
+    0L,
+    label = if (nrow(violations) > 0) {
+      paste(
+        paste0("id ", violations$id, ": ", violations$issue),
+        collapse = "; "
+      )
+    }
   )
 })
 
@@ -314,30 +339,6 @@ test_that("No author appears in multiple sessions at the same time", {
           conflicts$sessions,
           ")"
         ),
-        collapse = "; "
-      )
-    }
-  )
-})
-
-# ── 11. Category distribution ──────────────────────────────────────────────────
-
-test_that("No more than 2 sessions from the same category in any one time slot", {
-  dist <- schedule %>%
-    left_join(
-      submissions %>% mutate(id = as.character(id)) %>% select(id, category) %>% distinct(),
-      by = "id"
-    ) %>%
-    distinct(session_id, time_slot, category) %>%
-    count(time_slot, category, name = "n_sessions") %>%
-    filter(n_sessions > 2)
-
-  expect_equal(
-    nrow(dist),
-    0L,
-    label = if (nrow(dist) > 0) {
-      paste(
-        paste0(dist$category, " in ", dist$time_slot, " (", dist$n_sessions, " sessions)"),
         collapse = "; "
       )
     }

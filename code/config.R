@@ -1,4 +1,4 @@
-SCHEDULE_SEED <- 2
+SCHEDULE_SEED <- 1
 
 source(here::here("code", "setup.R"))
 
@@ -76,7 +76,10 @@ withdraw_ids <- c(
   187,
   188,
   189,
-  198
+  198,
+  97,
+  98,
+  99
 )
 
 # Combined exclusion list used by 3exclude.R and 5verify.R
@@ -96,7 +99,7 @@ date_restrictions <- list(
 
 # Scheduling exclusions: id -> dates the session must NOT be on (format: "YYYY-MM-DD")
 date_exclusions <- list(
-  `133` = "2026-06-03", # Sustainable Innovation, Energy, and Mobility
+  `133` = "2026-06-03",
   `148` = "2026-06-03",
   `50` = "2026-06-03",
   `36` = "2026-06-03",
@@ -110,7 +113,7 @@ date_exclusions <- list(
 # These are more specific than date_restrictions and are pre-assigned first.
 slot_restrictions <- list(
   `170` = "T2", # Akshay Mutha (session 32: Sustainable and Circular Supply Chains) cannot present in T1
-  `147` = "W3", # session 18: Generative AI and the Future of Work — move to Wednesday W3
+  `147` = "W3", # session 18: Generative AI and the Future of Work - Sue Helper
   `100` = "W3", # session 23: Hiring, Skills, and Labor Market Dynamics — move to Wednesday W2
   `159` = "W3"
 )
