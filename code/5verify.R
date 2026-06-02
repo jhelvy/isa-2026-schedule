@@ -326,6 +326,9 @@ test_that("No author appears in multiple sessions at the same time", {
 
   print(conflicts)
 
+  conflicts <- conflicts %>%
+    filter(!str_detect(author_name, "narayanan|combemale")) # Ignore known conflict for Narayanan and Combemale (neither are attending))
+
   expect_equal(
     nrow(conflicts),
     0L,

@@ -69,12 +69,13 @@ id,session_id,session_name
 126,25,Manufacturing Transformation and Workforce Development
 151,25,Manufacturing Transformation and Workforce Development
 204,25,Manufacturing Transformation and Workforce Development
-27,26,"Platform Work, Control, and Worker Voice"
-86,26,"Platform Work, Control, and Worker Voice"
-141,26,"Platform Work, Control, and Worker Voice"
-144,26,"Platform Work, Control, and Worker Voice"
+27,26,"AI, Robots, and Worker Voice: Emerging Evidence on Labor Market Dynamics"
+86,26,"AI, Robots, and Worker Voice: Emerging Evidence on Labor Market Dynamics"
+141,26,"AI, Robots, and Worker Voice: Emerging Evidence on Labor Market Dynamics"
+144,26,"AI, Robots, and Worker Voice: Emerging Evidence on Labor Market Dynamics"
 61,29,Digital Platforms and Last-Mile Delivery
 2004,29,Digital Platforms and Last-Mile Delivery
+37,29,Digital Platforms and Last-Mile Delivery
 36,30,Supply Chain Risk and Resilience
 156,30,Supply Chain Risk and Resilience
 168,30,Supply Chain Risk and Resilience
@@ -93,7 +94,6 @@ id,session_id,session_name
 128,35,ESG in Supply Chains
 143,35,ESG in Supply Chains
 154,35,ESG in Supply Chains
-37,29,Digital Platforms and Last-Mile Delivery
 110,36,AI and Data Tools for Manufacturing and Industry Intelligence
 113,36,AI and Data Tools for Manufacturing and Industry Intelligence
 2003,36,AI and Data Tools for Manufacturing and Industry Intelligence
@@ -105,16 +105,14 @@ id,session_id,session_name
 177,39,Humanitarian and Development Policy
 180,39,Humanitarian and Development Policy
 90,40,Industrial Policy Frameworks
-116,40,Industrial Policy Frameworks
+116,18,Generative AI and the Future of Work
 118,40,Industrial Policy Frameworks
 176,40,Industrial Policy Frameworks
 25,41,"Private Capital, Innovation Policy, and Regulatory Strategy"
 45,41,"Private Capital, Innovation Policy, and Regulatory Strategy"
 74,41,"Private Capital, Innovation Policy, and Regulatory Strategy"
 191,41,"Private Capital, Innovation Policy, and Regulatory Strategy"
-41,42,Industrial Statecraft and Emerging Technology Policy
-146,42,Industrial Statecraft and Emerging Technology Policy
-161,42,Industrial Statecraft and Emerging Technology Policy
+146,19,Industrial Policy and Technology Development
 64,43,Industrial Decarbonization Pathways
 76,43,Industrial Decarbonization Pathways
 142,43,Industrial Decarbonization Pathways
@@ -122,7 +120,6 @@ id,session_id,session_name
 67,44,EV Transition and Automotive Industry
 89,44,EV Transition and Automotive Industry
 93,44,EV Transition and Automotive Industry
-159,44,EV Transition and Automotive Industry
 44,47,Green Innovation and Sustainable Energy Strategies
 66,47,Green Innovation and Sustainable Energy Strategies
 133,47,Green Innovation and Sustainable Energy Strategies

@@ -49,7 +49,6 @@ id,session_id,session_name,time_slot,room,date,day,start_time,end_time,time_orde
 67,44,EV Transition and Automotive Industry,W3,SEH-B1270,2026-06-03,Wednesday,16:45:00,17:55:00,3
 89,44,EV Transition and Automotive Industry,W3,SEH-B1270,2026-06-03,Wednesday,16:45:00,17:55:00,3
 93,44,EV Transition and Automotive Industry,W3,SEH-B1270,2026-06-03,Wednesday,16:45:00,17:55:00,3
-159,44,EV Transition and Automotive Industry,W3,SEH-B1270,2026-06-03,Wednesday,16:45:00,17:55:00,3
 24,6,Industry Classification and Regulatory Policy,T1,SC-301,2026-06-04,Thursday,09:00:00,10:10:00,4
 73,6,Industry Classification and Regulatory Policy,T1,SC-301,2026-06-04,Thursday,09:00:00,10:10:00,4
 134,6,Industry Classification and Regulatory Policy,T1,SC-301,2026-06-04,Thursday,09:00:00,10:10:00,4
@@ -65,13 +64,10 @@ id,session_id,session_name,time_slot,room,date,day,start_time,end_time,time_orde
 44,47,Green Innovation and Sustainable Energy Strategies,T1,SC-308,2026-06-04,Thursday,09:00:00,10:10:00,4
 66,47,Green Innovation and Sustainable Energy Strategies,T1,SC-308,2026-06-04,Thursday,09:00:00,10:10:00,4
 133,47,Green Innovation and Sustainable Energy Strategies,T1,SC-308,2026-06-04,Thursday,09:00:00,10:10:00,4
-205,47,Green Innovation and Sustainable Energy Strategies,T1,SC-308,2026-06-04,Thursday,09:00:00,10:10:00,4
 128,35,ESG in Supply Chains,T1,SC-309,2026-06-04,Thursday,09:00:00,10:10:00,4
 143,35,ESG in Supply Chains,T1,SC-309,2026-06-04,Thursday,09:00:00,10:10:00,4
 154,35,ESG in Supply Chains,T1,SC-309,2026-06-04,Thursday,09:00:00,10:10:00,4
-41,42,Industrial Statecraft and Emerging Technology Policy,T3,SC-307,2026-06-04,Thursday,15:40:00,16:50:00,6
-146,42,Industrial Statecraft and Emerging Technology Policy,T3,SC-307,2026-06-04,Thursday,15:40:00,16:50:00,6
-161,42,Industrial Statecraft and Emerging Technology Policy,T3,SC-307,2026-06-04,Thursday,15:40:00,16:50:00,6
+205,35,ESG in Supply Chains,T1,SC-309,2026-06-04,Thursday,09:00:00,10:10:00,4
 50,9,Drug Quality and Safety,T2,SC-301,2026-06-04,Thursday,12:50:00,14:00:00,5
 94,9,Drug Quality and Safety,T2,SC-301,2026-06-04,Thursday,12:50:00,14:00:00,5
 95,9,Drug Quality and Safety,T2,SC-301,2026-06-04,Thursday,12:50:00,14:00:00,5
@@ -105,15 +101,16 @@ id,session_id,session_name,time_slot,room,date,day,start_time,end_time,time_orde
 62,18,Generative AI and the Future of Work,T1,SC-Amp.,2026-06-04,Thursday,09:00:00,10:10:00,4
 63,18,Generative AI and the Future of Work,T1,SC-Amp.,2026-06-04,Thursday,09:00:00,10:10:00,4
 138,18,Generative AI and the Future of Work,T1,SC-Amp.,2026-06-04,Thursday,09:00:00,10:10:00,4
+116,18,Generative AI and the Future of Work,T1,SC-Amp.,2026-06-04,Thursday,09:00:00,10:10:00,4
 84,19,Industrial Policy and Technology Development,T3,SC-308,2026-06-04,Thursday,15:40:00,16:50:00,6
 195,19,Industrial Policy and Technology Development,T3,SC-308,2026-06-04,Thursday,15:40:00,16:50:00,6
 203,19,Industrial Policy and Technology Development,T3,SC-308,2026-06-04,Thursday,15:40:00,16:50:00,6
+146,19,Industrial Policy and Technology Development,T3,SC-308,2026-06-04,Thursday,15:40:00,16:50:00,6
 51,33,Healthcare and People-Centric Operations,T3,SC-309,2026-06-04,Thursday,15:40:00,16:50:00,6
 75,33,Healthcare and People-Centric Operations,T3,SC-309,2026-06-04,Thursday,15:40:00,16:50:00,6
 162,33,Healthcare and People-Centric Operations,T3,SC-309,2026-06-04,Thursday,15:40:00,16:50:00,6
 124,33,Healthcare and People-Centric Operations,T3,SC-309,2026-06-04,Thursday,15:40:00,16:50:00,6
 90,40,Industrial Policy Frameworks,T3,SC-Amp.,2026-06-04,Thursday,15:40:00,16:50:00,6
-116,40,Industrial Policy Frameworks,T3,SC-Amp.,2026-06-04,Thursday,15:40:00,16:50:00,6
 118,40,Industrial Policy Frameworks,T3,SC-Amp.,2026-06-04,Thursday,15:40:00,16:50:00,6
 176,40,Industrial Policy Frameworks,T3,SC-Amp.,2026-06-04,Thursday,15:40:00,16:50:00,6
 172,2,Public Policy and ESG,W3,SEH-1450,2026-06-03,Wednesday,16:45:00,17:55:00,3
@@ -125,10 +122,10 @@ id,session_id,session_name,time_slot,room,date,day,start_time,end_time,time_orde
 199,14,AI Adoption and Organizational Performance,F1,SC-307,2026-06-05,Friday,10:30:00,11:40:00,7
 200,14,AI Adoption and Organizational Performance,F1,SC-307,2026-06-05,Friday,10:30:00,11:40:00,7
 209,14,AI Adoption and Organizational Performance,F1,SC-307,2026-06-05,Friday,10:30:00,11:40:00,7
-27,26,"Platform Work, Control, and Worker Voice",F1,SC-308,2026-06-05,Friday,10:30:00,11:40:00,7
-86,26,"Platform Work, Control, and Worker Voice",F1,SC-308,2026-06-05,Friday,10:30:00,11:40:00,7
-141,26,"Platform Work, Control, and Worker Voice",F1,SC-308,2026-06-05,Friday,10:30:00,11:40:00,7
-144,26,"Platform Work, Control, and Worker Voice",F1,SC-308,2026-06-05,Friday,10:30:00,11:40:00,7
+27,26,"AI, Robots, and Worker Voice: Emerging Evidence on Labor Market Dynamics",F1,SC-308,2026-06-05,Friday,10:30:00,11:40:00,7
+86,26,"AI, Robots, and Worker Voice: Emerging Evidence on Labor Market Dynamics",F1,SC-308,2026-06-05,Friday,10:30:00,11:40:00,7
+141,26,"AI, Robots, and Worker Voice: Emerging Evidence on Labor Market Dynamics",F1,SC-308,2026-06-05,Friday,10:30:00,11:40:00,7
+144,26,"AI, Robots, and Worker Voice: Emerging Evidence on Labor Market Dynamics",F1,SC-308,2026-06-05,Friday,10:30:00,11:40:00,7
 36,30,Supply Chain Risk and Resilience,F1,SC-Amp.,2026-06-05,Friday,10:30:00,11:40:00,7
 156,30,Supply Chain Risk and Resilience,F1,SC-Amp.,2026-06-05,Friday,10:30:00,11:40:00,7
 168,30,Supply Chain Risk and Resilience,F1,SC-Amp.,2026-06-05,Friday,10:30:00,11:40:00,7

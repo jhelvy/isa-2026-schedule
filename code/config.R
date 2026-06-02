@@ -79,7 +79,10 @@ withdraw_ids <- c(
   198,
   97,
   98,
-  99
+  99,
+  159,
+  161,
+  41
 )
 
 # Combined exclusion list used by 3exclude.R and 5verify.R
@@ -114,6 +117,5 @@ date_exclusions <- list(
 slot_restrictions <- list(
   `170` = "T2", # Akshay Mutha (session 32: Sustainable and Circular Supply Chains) cannot present in T1
   `147` = "W3", # session 18: Generative AI and the Future of Work - Sue Helper
-  `100` = "W3", # session 23: Hiring, Skills, and Labor Market Dynamics — move to Wednesday W2
-  `159` = "W3"
+  `100` = "W3" # session 23: Hiring, Skills, and Labor Market Dynamics — move to Wednesday W2
 )
