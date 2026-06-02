@@ -26,6 +26,13 @@ format:
         \definecolor{sustainability}{HTML}{009E73}
         \definecolor{event}{HTML}{17A2B8}
         \definecolor{awardgold}{HTML}{B8860B}
+        \definecolor{gwblue}{HTML}{033C5A}
+        \definecolor{gwgold}{HTML}{AA9144}
+        \definecolor{lightgray}{HTML}{F5F5F5}
+        \definecolor{darkgray}{HTML}{444444}
+        \usepackage{mdframed}
+        \usepackage{fontawesome5}
+        \usepackage{tabularx}
         \usepackage{wrapfig}
         \usepackage{scrlayer-scrpage}
         \pagestyle{scrheadings}
@@ -475,6 +482,75 @@ I can speak on behalf of the entire ISA board: We are very happy that you are he
 \noindent John Gray\\
 President, ISA
 \endgroup
+\newpage
+```
+
+```{=latex}
+\thispagestyle{plain.scrheadings}
+\markboth{}{}
+\pdfbookmark[0]{Connecting to the Internet}{wifi}
+
+\begin{center}
+{\color{gwblue}\LARGE\textbf{Connecting to the Internet}}\\[0.2cm]
+{\large\textbf{All Conference Venues}}\\[0.05cm]
+{\color{darkgray} Science \& Engineering Hall · University Student Center (Marvin Center)}
+\end{center}
+
+\vspace{0.25cm}
+\noindent\rule{\textwidth}{1.5pt}
+\vspace{0.25cm}
+
+\noindent\textbf{\large Option 1 — Guest WiFi (GWguest)}
+
+\noindent For all conference attendees without a GW or eduroam account.
+
+\vspace{0.2cm}
+
+\begin{mdframed}[backgroundcolor=lightgray, linecolor=gwblue, linewidth=1.5pt, innerleftmargin=12pt, innerrightmargin=12pt, innertopmargin=7pt, innerbottommargin=7pt]
+\begin{enumerate}
+  \setlength{\itemsep}{3pt}
+  \item Open your device's \textbf{WiFi settings} and select \textbf{GWguest}.
+  \item If prompted with a certificate warning for \texttt{cppm.it.gwu.edu}, tap \textbf{Accept} or \textbf{Trust} (this is a GWU-issued certificate and is safe).
+  \item Open a \textbf{web browser} — you will be automatically redirected to the self-registration page. If not, navigate to \texttt{my.gwu.edu}.
+  \item Enter your name and email address to self-register. Access is valid for \textbf{72 hours}.
+\end{enumerate}
+\end{mdframed}
+
+\vspace{0.35cm}
+
+\noindent\textbf{\large Option 2 — eduroam (Academic Institutions)}
+
+\noindent If your home institution participates in eduroam, you can connect directly.
+
+\vspace{0.2cm}
+
+\begin{mdframed}[backgroundcolor=lightgray, linecolor=gwgold, linewidth=1.5pt, innerleftmargin=12pt, innerrightmargin=12pt, innertopmargin=7pt, innerbottommargin=7pt]
+\begin{enumerate}
+  \setlength{\itemsep}{3pt}
+  \item Open your device's \textbf{WiFi settings} and select \textbf{eduroam}.
+  \item Sign in using your \textbf{home institution credentials} (e.g., \texttt{username@youruniversity.edu}).
+  \item No additional registration is required.
+\end{enumerate}
+\end{mdframed}
+
+\vspace{0.35cm}
+\noindent\rule{\textwidth}{0.8pt}
+\vspace{0.25cm}
+
+\noindent\textbf{\large IT Support}
+
+\vspace{0.15cm}
+
+\begin{tabularx}{\textwidth}{lX}
+\faPhone\quad \textbf{Help Desk} & 202-994-4948 \quad {\color{darkgray}(24/7)} \\[3pt]
+\faPhone\quad \textbf{Classroom / AV} & 202-994-7900 \\[3pt]
+\faEnvelope\quad \textbf{Email} & \texttt{ithelp@gwu.edu} \\[3pt]
+\faGlobe\quad \textbf{Online} & \texttt{go.gwu.edu/ithelp} \\[3pt]
+\faMapMarker*\quad \textbf{Walk-in} & Academic Center, 801 22nd St NW, Room B101 \\
+\end{tabularx}
+
+\vspace{0.3cm}
+\noindent\rule{\textwidth}{0.8pt}
 \newpage
 ```
 
@@ -1597,19 +1673,14 @@ for (b in seq_len(nrow(all_blocks))) {
 \end{center}
 \vspace{1.2em}
 \begin{center}
-  \includegraphics[height=0.95in]{images/sponsors/logo_fisher-1.png}\hspace{2em}
-  \includegraphics[height=0.95in]{images/sponsors/mack-institute-logo-1.png}\hspace{2em}
-  \includegraphics[height=0.95in]{images/sponsors/mit_logo-1.jpg}
-\end{center}
-\vspace{1.2em}
-\begin{center}
-  \includegraphics[height=0.95in]{images/sponsors/sacstate_logo-1.jpg}\hspace{2em}
-  \includegraphics[height=0.95in]{images/sponsors/sbs_logo_rgb_keyline-1.png}\hspace{2em}
-  \includegraphics[height=0.95in]{images/sponsors/vcubusiness_logo-1.jpg}
-\end{center}
-\vspace{1.2em}
-\begin{center}
-  \includegraphics[height=0.95in]{images/sponsors/wsb_madison-logo-2.png}
+  \begin{tabular}{ccc}
+    \makebox[1.9in][c]{\includegraphics[width=1.9in,height=1.0in,keepaspectratio]{images/sponsors/byu-marriot.png}} &
+    \makebox[1.9in][c]{\includegraphics[width=1.9in,height=1.0in,keepaspectratio]{images/sponsors/cambridge.png}} &
+    \makebox[1.9in][c]{\includegraphics[width=1.9in,height=1.0in,keepaspectratio]{images/sponsors/gwu.png}} \\[2em]
+    \makebox[1.9in][c]{\includegraphics[width=1.9in,height=1.0in,keepaspectratio]{images/sponsors/said-oxford.png}} &
+    \makebox[1.9in][c]{\includegraphics[width=1.9in,height=1.0in,keepaspectratio]{images/sponsors/vcu-business.jpg}} &
+    \makebox[1.9in][c]{\includegraphics[width=1.9in,height=1.0in,keepaspectratio]{images/sponsors/wsb-madison.png}} \\
+  \end{tabular}
 \end{center}
 \vspace*{\fill}
 \newpage
@@ -1690,7 +1761,7 @@ cat("```\n")
 \begin{center}
   {\Large\textbf{Join Us At Our First International Conference This Fall!}}\\[0.8em]
   {\large Sa\"{i}d Business School, Oxford University $\bullet$ September 3 - 5, 2026 $\bullet$ Oxford, UK}\\[2em]
-  \includegraphics[height=2in]{images/sponsors/sbs_logo_rgb_keyline-1.png}\\[1.5em]
+  \includegraphics[height=2in]{images/sponsors/said-oxford.png}\\[1.5em]
   \includegraphics[width=\textwidth, keepaspectratio]{images/oxford.png}
 \end{center}
 \vspace*{\fill}
