@@ -1882,8 +1882,13 @@
             if (!isOpen) menu.style.display = 'block';
         }
 
-        function calFormatDT(dateStr, timeStr) {
-            return dateStr.replace(/-/g, '') + 'T' + timeStr.replace(':', '') + '00';
+        function calFormatDTUTC(dateStr, timeStr) {
+            // Conference is in Washington DC (Eastern Daylight Time = UTC-4 in June)
+            const [year, month, day] = dateStr.split('-').map(Number);
+            const [h, m] = timeStr.split(':').map(Number);
+            const utc = new Date(Date.UTC(year, month - 1, day, h + 4, m));
+            const pad = n => String(n).padStart(2, '0');
+            return `${utc.getUTCFullYear()}${pad(utc.getUTCMonth()+1)}${pad(utc.getUTCDate())}T${pad(utc.getUTCHours())}${pad(utc.getUTCMinutes())}00Z`;
         }
 
         function buildCalDescription(s) {
@@ -1902,8 +1907,8 @@
         function calToGoogle(key) {
             const s = sessionCalendarData[key];
             if (!s || !s.date || !s.start_time || !s.end_time) return;
-            const start = calFormatDT(s.date, s.start_time);
-            const end   = calFormatDT(s.date, s.end_time);
+            const start = calFormatDTUTC(s.date, s.start_time);
+            const end   = calFormatDTUTC(s.date, s.end_time);
             const url = new URL('https://calendar.google.com/calendar/render');
             url.searchParams.set('action', 'TEMPLATE');
             url.searchParams.set('text', s.session_name);
@@ -1919,8 +1924,8 @@
         function calDownloadICS(key) {
             const s = sessionCalendarData[key];
             if (!s || !s.date || !s.start_time || !s.end_time) return;
-            const start = calFormatDT(s.date, s.start_time);
-            const end   = calFormatDT(s.date, s.end_time);
+            const start = calFormatDTUTC(s.date, s.start_time);
+            const end   = calFormatDTUTC(s.date, s.end_time);
             const loc = (s.room ? s.room + ', ' : '') + 'George Washington University, Washington, DC';
             const rawDesc = buildCalDescription(s);
             const icsDesc = rawDesc
@@ -1937,8 +1942,8 @@
                 'METHOD:PUBLISH',
                 'BEGIN:VEVENT',
                 'UID:' + uid,
-                'DTSTART;TZID=America/New_York:' + start,
-                'DTEND;TZID=America/New_York:' + end,
+                'DTSTART:' + start,
+                'DTEND:' + end,
                 'SUMMARY:' + s.session_name.replace(/,/g, '\\,'),
                 'LOCATION:' + loc.replace(/,/g, '\\,'),
             ];
