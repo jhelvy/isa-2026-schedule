@@ -1726,6 +1726,25 @@
     "session_chair": "Marco Cucculelli (Università Politecnica Delle Marche)"
   },
   {
+    "id": "92",
+    "session_id": "15",
+    "session_name": "Advanced Technologies and Digital Innovation",
+    "time_slot": "T2",
+    "room": "SC-307",
+    "date": "2026-06-04",
+    "day": "Thursday",
+    "start_time": "12:50:00",
+    "end_time": "14:00:00",
+    "time_order": 5,
+    "title": "From Tolerance to Termination: How Venture Capitalists Decide on Startups’ Invention Failures",
+    "abstract": "Venture capitalists (VCs) routinely face the challenge of deciding whether to persist in or terminate investments as new information about startup performance unfolds. In innovation-driven contexts, this decision is particularly complex because technological experimentation inevitably generates invention failures that are ambiguous in their implications—startups’ invention failure can either serve as a signal of learning or a trigger of abandonment. Little is known about when and why failure sustains versus undermines investor commitment. We address this puzzle by conceptualizing VC follow-on investment decisions as an optimal stopping problem in which investors balance the informational value of waiting against the costs of continued commitment.\nWe develop a formal model in which VCs observe new information about startups’ invention activities and follow threshold-based rules governing investment continuation and termination. The model predicts a non-monotonic relationship between invention failure and investment termination: moderate failure enhances learning and increases the value of waiting, whereas very low or excessive failure reduces expected future payoffs and accelerates exit. Importantly, the model also predicts systematic heterogeneity in stopping thresholds across investors, shaped by differences in experiential depth and breadth.\nWe test these predictions using a novel dataset that links U.S. venture capital investments to detailed patent application outcomes. Analyzing 16,013 funding rounds involving 2,328 VCs and 3,392 startups from 2002 to 2022, we find robust evidence of a U-shaped relationship between startups’ invention failure rates and the likelihood of VC investment termination. Consistent with optimal stopping logic, termination likelihood is lowest at intermediate levels of failure. Moreover, this relationship varies systematically with investor experience. VCs with deeper technological or industrial familiarity exhibit greater tolerance for invention failure, shifting termination thresholds rightward, whereas VCs with broader experience across technologies or industries terminate investments at lower levels of failure due to higher opportunity costs.\nThese findings contribute to research on entrepreneurial experimentation, venture capital decision-making, and strategic persistence by offering a dynamic, forward-looking explanation for failure tolerance. By framing investment continuation and exit as optimal timing decisions, this study reconciles competing views of failure and highlights how investor experience conditions the strategic meaning of negative innovation signals. Practically, the results underscore that effective governance of entrepreneurial experimentation depends not only on observing failure, but on interpreting its magnitude and timing relative to investors’ capabilities and opportunity sets.\n",
+    "authors": "Shu Deng* (University of Mississippi); Jung H. Kwon (University of Denver)",
+    "category": "Innovation, Entrepreneurship, and AI-Driven Transformation",
+    "type": "paper",
+    "paper_order": 2,
+    "session_chair": "Marco Cucculelli (Università Politecnica Delle Marche)"
+  },
+  {
     "id": "52",
     "session_id": "15",
     "session_name": "Advanced Technologies and Digital Innovation",
@@ -1741,7 +1760,7 @@
     "authors": "Rang* (Rae) Gong (The Ohio State University); Walter Zinn (The Ohio State University); Xiang (Sean) Wan (The Ohio State University); Keely Croxton (The Ohio State University)",
     "category": "Innovation, Entrepreneurship, and AI-Driven Transformation",
     "type": "paper",
-    "paper_order": 2,
+    "paper_order": 3,
     "session_chair": "Marco Cucculelli (Università Politecnica Delle Marche)"
   },
   {
@@ -1760,7 +1779,7 @@
     "authors": "Karthik Ramachandran* (Georgia Institute of Technology)",
     "category": "Innovation, Entrepreneurship, and AI-Driven Transformation",
     "type": "paper",
-    "paper_order": 3,
+    "paper_order": 4,
     "session_chair": "Marco Cucculelli (Università Politecnica Delle Marche)"
   },
   {
@@ -2609,25 +2628,6 @@
     "session_chair": "Runjin Guo (Zhejiang University)"
   },
   {
-    "id": "92",
-    "session_id": "16",
-    "session_name": "Entrepreneurial Ecosystems and Clusters",
-    "time_slot": "F1",
-    "room": "SC-301",
-    "date": "2026-06-05",
-    "day": "Friday",
-    "start_time": "10:30:00",
-    "end_time": "11:40:00",
-    "time_order": 7,
-    "title": "From Tolerance to Termination: How Venture Capitalists Decide on Startups’ Invention Failures",
-    "abstract": "Venture capitalists (VCs) routinely face the challenge of deciding whether to persist in or terminate investments as new information about startup performance unfolds. In innovation-driven contexts, this decision is particularly complex because technological experimentation inevitably generates invention failures that are ambiguous in their implications—startups’ invention failure can either serve as a signal of learning or a trigger of abandonment. Little is known about when and why failure sustains versus undermines investor commitment. We address this puzzle by conceptualizing VC follow-on investment decisions as an optimal stopping problem in which investors balance the informational value of waiting against the costs of continued commitment.\nWe develop a formal model in which VCs observe new information about startups’ invention activities and follow threshold-based rules governing investment continuation and termination. The model predicts a non-monotonic relationship between invention failure and investment termination: moderate failure enhances learning and increases the value of waiting, whereas very low or excessive failure reduces expected future payoffs and accelerates exit. Importantly, the model also predicts systematic heterogeneity in stopping thresholds across investors, shaped by differences in experiential depth and breadth.\nWe test these predictions using a novel dataset that links U.S. venture capital investments to detailed patent application outcomes. Analyzing 16,013 funding rounds involving 2,328 VCs and 3,392 startups from 2002 to 2022, we find robust evidence of a U-shaped relationship between startups’ invention failure rates and the likelihood of VC investment termination. Consistent with optimal stopping logic, termination likelihood is lowest at intermediate levels of failure. Moreover, this relationship varies systematically with investor experience. VCs with deeper technological or industrial familiarity exhibit greater tolerance for invention failure, shifting termination thresholds rightward, whereas VCs with broader experience across technologies or industries terminate investments at lower levels of failure due to higher opportunity costs.\nThese findings contribute to research on entrepreneurial experimentation, venture capital decision-making, and strategic persistence by offering a dynamic, forward-looking explanation for failure tolerance. By framing investment continuation and exit as optimal timing decisions, this study reconciles competing views of failure and highlights how investor experience conditions the strategic meaning of negative innovation signals. Practically, the results underscore that effective governance of entrepreneurial experimentation depends not only on observing failure, but on interpreting its magnitude and timing relative to investors’ capabilities and opportunity sets.\n",
-    "authors": "Shu Deng* (University of Mississippi); Jung H. Kwon (University of Denver)",
-    "category": "Innovation, Entrepreneurship, and AI-Driven Transformation",
-    "type": "paper",
-    "paper_order": 2,
-    "session_chair": "Runjin Guo (Zhejiang University)"
-  },
-  {
     "id": "123",
     "session_id": "16",
     "session_name": "Entrepreneurial Ecosystems and Clusters",
@@ -2643,7 +2643,7 @@
     "authors": "Utkarsha Dahal* (University of Southern Mississippi); Christopher Smith (University of Southern Mississippi)",
     "category": "Innovation, Entrepreneurship, and AI-Driven Transformation",
     "type": "paper",
-    "paper_order": 3,
+    "paper_order": 2,
     "session_chair": "Runjin Guo (Zhejiang University)"
   },
   {
@@ -2662,7 +2662,7 @@
     "authors": "Indu Khurana (Hampden-Sydney College); Ananya Sheth* (Cal Poly)",
     "category": "Innovation, Entrepreneurship, and AI-Driven Transformation",
     "type": "paper",
-    "paper_order": 4,
+    "paper_order": 3,
     "session_chair": "Runjin Guo (Zhejiang University)"
   },
   {

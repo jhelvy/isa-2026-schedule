@@ -40,7 +40,6 @@ id,session_id,session_name,time_slot,room,date,day,start_time,end_time,time_orde
 2001,12,Healthcare Operations and Capacity,T1,SC-307,2026-06-04,Thursday,09:00:00,10:10:00,4
 123,16,Entrepreneurial Ecosystems and Clusters,F1,SC-301,2026-06-05,Friday,10:30:00,11:40:00,7
 132,16,Entrepreneurial Ecosystems and Clusters,F1,SC-301,2026-06-05,Friday,10:30:00,11:40:00,7
-92,16,Entrepreneurial Ecosystems and Clusters,F1,SC-301,2026-06-05,Friday,10:30:00,11:40:00,7
 77,16,Entrepreneurial Ecosystems and Clusters,F1,SC-301,2026-06-05,Friday,10:30:00,11:40:00,7
 72,23,"Hiring, Skills, and Labor Market Dynamics",W3,SEH-B1220,2026-06-03,Wednesday,16:45:00,17:55:00,3
 100,23,"Hiring, Skills, and Labor Market Dynamics",W3,SEH-B1220,2026-06-03,Wednesday,16:45:00,17:55:00,3
@@ -117,6 +116,7 @@ id,session_id,session_name,time_slot,room,date,day,start_time,end_time,time_orde
 85,2,Public Policy and ESG,W3,SEH-1450,2026-06-03,Wednesday,16:45:00,17:55:00,3
 46,2,Public Policy and ESG,W3,SEH-1450,2026-06-03,Wednesday,16:45:00,17:55:00,3
 33,15,Advanced Technologies and Digital Innovation,T2,SC-307,2026-06-04,Thursday,12:50:00,14:00:00,5
+92,15,Advanced Technologies and Digital Innovation,T2,SC-307,2026-06-04,Thursday,12:50:00,14:00:00,5
 52,15,Advanced Technologies and Digital Innovation,T2,SC-307,2026-06-04,Thursday,12:50:00,14:00:00,5
 194,15,Advanced Technologies and Digital Innovation,T2,SC-307,2026-06-04,Thursday,12:50:00,14:00:00,5
 199,14,AI Adoption and Organizational Performance,F1,SC-307,2026-06-05,Friday,10:30:00,11:40:00,7
