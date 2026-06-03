@@ -994,6 +994,25 @@
     "session_chair": "Zain Hoda (George Washington University)"
   },
   {
+    "id": "17",
+    "session_id": "44",
+    "session_name": "EV Transition and Automotive Industry",
+    "time_slot": "W3",
+    "room": "SEH-B1270",
+    "date": "2026-06-03",
+    "day": "Wednesday",
+    "start_time": "16:45:00",
+    "end_time": "17:55:00",
+    "time_order": 3,
+    "title": "Responding to Polycrisis: Industrial Relations and Strategic Action in the German automotive industry",
+    "abstract": "The German automotive industry is currently facing a profound transformation process. A key challenge is the transition to electromobility, which requires substantial investments in new technologies, batteries, and software. At the same time, demand for electric vehicles and political framework conditions remain uncertain, making planning and profitability difficult. Global competitive pressure has also increased significantly, particularly from Chinese manufacturers, which are technologically advanced in electric vehicles and produce them at low cost. In addition, high production costs in Germany, such as energy prices and labor costs, are weighing on competitiveness. This leads to cost-cutting programs, adjustments in production and job losses. The structural transformation is also reshaping the labor market, as traditional jobs disappear and new skills are required.\nIn this paper, we explore how the actors within Germany’s system of industrial relations are responding to these challenges, which approaches and strategies they develop, what kinds of labour conflicts arise, and what impact restructuring has on labour regulation. Our analysis is based on case studies of companies in the automotive industry as well as an investigation of industry-level collective bargaining and political lobbying by the collective associations of labour and capital. The core questions we will tackle are: (1) How do works councils react to the polycrisis in their interactions and negotiations with management? (2) What instruments of collective bargaining that cope with these transformations are developed by trade unions and employers’ associations? (3) What demands do the collective actors address to the state and how far do they cooperate in doing this? Based on these questions, we will try to assess the challenges these developments pose for German industrial relations as a whole, given that the automotive industry still forms the backbone of the German model of partnership and corporatism in industrial relations.\nThe paper is based on findings from the project ‘Digital and Ecological Transformations in the Regulatory Environment of Labour Relations,’ funded by the German Research Foundation (DFG).\n",
+    "authors": "Alexander Bendel (University of Duisburg-Essen), Thomas Haipeter (University of Duisburg-Essen)",
+    "category": "Sustainable Innovation, Energy, and Mobility",
+    "type": "paper",
+    "paper_order": 4,
+    "session_chair": "Zain Hoda (George Washington University)"
+  },
+  {
     "id": "EV6",
     "session_id": "EV6",
     "session_name": "Reception",
