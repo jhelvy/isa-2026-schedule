@@ -861,6 +861,42 @@
             transition: opacity 0.15s;
         }
         img[data-lightbox]:hover { opacity: 0.85; }
+
+        /* Add-to-calendar button */
+        .cal-wrapper { position: relative; display: inline-block; }
+        .cal-btn {
+            background: white;
+            border: 1px solid #ced4da;
+            border-radius: 0.375rem;
+            padding: 0.3rem 0.7rem;
+            font-size: 0.82em;
+            cursor: pointer;
+            color: #6c757d;
+            white-space: nowrap;
+            transition: all 0.15s ease-in-out;
+        }
+        .cal-btn:hover { background: #f0f7ff; border-color: #86b7fe; color: #0d6efd; }
+        .cal-menu {
+            position: absolute;
+            left: 0;
+            top: calc(100% + 4px);
+            background: white;
+            border: 1px solid #dee2e6;
+            border-radius: 0.375rem;
+            box-shadow: 0 0.5rem 1rem rgba(0,0,0,0.1);
+            z-index: 200;
+            min-width: 210px;
+            overflow: hidden;
+        }
+        .cal-menu a {
+            display: block;
+            padding: 0.5rem 1rem;
+            font-size: 0.88em;
+            color: #212529;
+            text-decoration: none;
+            white-space: nowrap;
+        }
+        .cal-menu a:hover { background: #f8f9fa; }
     </style>
 </head>
 <body>
@@ -1062,6 +1098,7 @@
         let excursionsData = [];
         let committeeData = {};
         const seenSlotKeys = new Set();
+        let sessionCalendarData = {};
 
         const trackMap = {
             'General Industry Studies':                                          { short: 'General Industry',          color: '#E69F00' },
@@ -1274,6 +1311,7 @@
                 return;
             }
 
+            sessionCalendarData = {};
             let html = '';
             let totalSessions = 0;
             let totalPapers = 0;
@@ -1315,6 +1353,9 @@
                     </div>`;
                         return;
                     }
+                    const excCalKey = `cal_${String(session.session_id || '').replace(/[^a-zA-Z0-9]/g, '_')}_${(session.time_slot || '').replace(/[^a-zA-Z0-9]/g, '_')}`;
+                    sessionCalendarData[excCalKey] = session;
+                    const excCalBtn = `<div style="padding:10px 20px 4px;"><div class="cal-wrapper"><button class="cal-btn" onclick="event.stopPropagation();toggleCalMenu(this,'${excCalKey}')">&#128197; Add to Calendar &#9662;</button><div class="cal-menu" style="display:none"><a href="#" onclick="event.preventDefault();event.stopPropagation();calToGoogle('${excCalKey}')">&#127760; Google Calendar</a><a href="#" onclick="event.preventDefault();event.stopPropagation();calDownloadICS('${excCalKey}')">&#128229; Apple / Outlook (.ics)</a></div></div></div>`;
                     html += `
                     <div class="session-group cat-event">
                         <div class="session-header" onclick="toggleSession(this)">
@@ -1333,7 +1374,7 @@
                             </div>
                         </div>
                         <div class="session-papers">
-                            ${renderExcursionContent(excursion)}
+                            ${excCalBtn}${renderExcursionContent(excursion)}
                         </div>
                     </div>`;
                     return;
@@ -1371,6 +1412,9 @@
                     ? `<div class="session-discussant"><strong>Discussant:</strong> ${escapeHtml(session.discussant)}</div>`
                     : '';
 
+                const calKey = `cal_${String(session.session_id || '').replace(/[^a-zA-Z0-9]/g, '_')}_${(session.time_slot || '').replace(/[^a-zA-Z0-9]/g, '_')}`;
+                sessionCalendarData[calKey] = session;
+                const calBtn = `<div style="padding:10px 20px 4px;"><div class="cal-wrapper"><button class="cal-btn" onclick="event.stopPropagation();toggleCalMenu(this,'${calKey}')">&#128197; Add to Calendar &#9662;</button><div class="cal-menu" style="display:none"><a href="#" onclick="event.preventDefault();event.stopPropagation();calToGoogle('${calKey}')">&#127760; Google Calendar</a><a href="#" onclick="event.preventDefault();event.stopPropagation();calDownloadICS('${calKey}')">&#128229; Apple / Outlook (.ics)</a></div></div></div>`;
                 html += `
                     <div class="session-group ${categoryClass}">
                         <div class="session-header" onclick="toggleSession(this)">
@@ -1391,7 +1435,7 @@
                             </div>
                         </div>
                         <div class="session-papers">
-                            ${chairHtml}${discussantHtml}${papersHtml}
+                            ${calBtn}${chairHtml}${discussantHtml}${papersHtml}
                         </div>
                     </div>`;
             });
@@ -1830,7 +1874,89 @@
         const lightboxOverlay = document.getElementById('lightbox-overlay');
         const lightboxImg     = document.getElementById('lightbox-img');
 
+        // Calendar helpers
+        function toggleCalMenu(btn, key) {
+            const menu = btn.nextElementSibling;
+            const isOpen = menu.style.display !== 'none';
+            document.querySelectorAll('.cal-menu').forEach(m => m.style.display = 'none');
+            if (!isOpen) menu.style.display = 'block';
+        }
+
+        function calFormatDT(dateStr, timeStr) {
+            return dateStr.replace(/-/g, '') + 'T' + timeStr.replace(':', '') + '00';
+        }
+
+        function buildCalDescription(s) {
+            const lines = [];
+            if (s.session_chair) lines.push('Session Chair: ' + s.session_chair);
+            if (s.papers && s.papers.length > 0 && s.type !== 'event') {
+                const paperList = s.papers
+                    .filter(p => p.title)
+                    .map(p => '- ' + p.title + (p.authors ? ' (' + p.authors.replace(/\*/g, '') + ')' : ''))
+                    .join('\n');
+                if (paperList) lines.push('\nPapers:\n' + paperList);
+            }
+            return lines.join('\n');
+        }
+
+        function calToGoogle(key) {
+            const s = sessionCalendarData[key];
+            if (!s || !s.date || !s.start_time || !s.end_time) return;
+            const start = calFormatDT(s.date, s.start_time);
+            const end   = calFormatDT(s.date, s.end_time);
+            const url = new URL('https://calendar.google.com/calendar/render');
+            url.searchParams.set('action', 'TEMPLATE');
+            url.searchParams.set('text', s.session_name);
+            url.searchParams.set('dates', start + '/' + end);
+            const loc = (s.room ? s.room + ', ' : '') + 'George Washington University, Washington, DC';
+            url.searchParams.set('location', loc);
+            const desc = buildCalDescription(s);
+            if (desc) url.searchParams.set('details', desc);
+            window.open(url.toString(), '_blank');
+            document.querySelectorAll('.cal-menu').forEach(m => m.style.display = 'none');
+        }
+
+        function calDownloadICS(key) {
+            const s = sessionCalendarData[key];
+            if (!s || !s.date || !s.start_time || !s.end_time) return;
+            const start = calFormatDT(s.date, s.start_time);
+            const end   = calFormatDT(s.date, s.end_time);
+            const loc = (s.room ? s.room + ', ' : '') + 'George Washington University, Washington, DC';
+            const rawDesc = buildCalDescription(s);
+            const icsDesc = rawDesc
+                .replace(/\\/g, '\\\\')
+                .replace(/;/g, '\\;')
+                .replace(/,/g, '\\,')
+                .replace(/\n/g, '\\n');
+            const uid = 'isa2026-' + String(s.session_id) + '-' + s.time_slot + '@isa2026.org';
+            const lines = [
+                'BEGIN:VCALENDAR',
+                'VERSION:2.0',
+                'PRODID:-//ISA 2026//Conference Schedule//EN',
+                'CALSCALE:GREGORIAN',
+                'METHOD:PUBLISH',
+                'BEGIN:VEVENT',
+                'UID:' + uid,
+                'DTSTART;TZID=America/New_York:' + start,
+                'DTEND;TZID=America/New_York:' + end,
+                'SUMMARY:' + s.session_name.replace(/,/g, '\\,'),
+                'LOCATION:' + loc.replace(/,/g, '\\,'),
+            ];
+            if (icsDesc) lines.push('DESCRIPTION:' + icsDesc);
+            lines.push('END:VEVENT', 'END:VCALENDAR');
+            const blob = new Blob([lines.join('\r\n')], { type: 'text/calendar;charset=utf-8' });
+            const a = document.createElement('a');
+            a.href = URL.createObjectURL(blob);
+            a.download = s.session_name.replace(/[^a-zA-Z0-9 ]/g, '').replace(/\s+/g, '_').substring(0, 50) + '.ics';
+            a.click();
+            URL.revokeObjectURL(a.href);
+            document.querySelectorAll('.cal-menu').forEach(m => m.style.display = 'none');
+        }
+
         document.addEventListener('click', e => {
+            if (!e.target.closest('.cal-wrapper')) {
+                document.querySelectorAll('.cal-menu').forEach(m => m.style.display = 'none');
+            }
             if (e.target.hasAttribute('data-lightbox')) {
                 lightboxImg.src = e.target.src;
                 lightboxImg.alt = e.target.alt;

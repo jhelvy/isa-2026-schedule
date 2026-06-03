@@ -1,0 +1,88 @@
+---
+format:
+  pdf:
+    toc: false
+    number-sections: false
+    colorlinks: false
+    documentclass: scrartcl
+    papersize: letter
+    pdf-engine: xelatex
+    mainfont: Avenir
+    sansfont: Avenir
+    fontsize: 10pt
+    geometry:
+      - margin=0.75in
+      - heightrounded
+    include-in-header:
+      text: |
+        \usepackage{xcolor}
+        \definecolor{gwblue}{HTML}{033C5A}
+        \definecolor{gwgold}{HTML}{AA9144}
+        \usepackage{longtable}
+        \usepackage{booktabs}
+        \usepackage{amssymb}
+        \pagestyle{plain}
+execute:
+  echo: false
+  warning: false
+  message: false
+---
+
+```{r}
+library(readr)
+library(dplyr)
+
+df <- read_csv("data/attendees_final.csv", show_col_types = FALSE) |>
+  mutate(across(c(name_last, name_first), trimws)) |>
+  arrange(name_last, name_first) |>
+  mutate(
+    display_name = paste0(
+      name_last,
+      ", ",
+      name_first,
+      ifelse(
+        !is.na(name_middle) & name_middle != "",
+        paste0(" ", name_middle),
+        ""
+      )
+    ),
+    affiliation = ifelse(is.na(affiliation), "", affiliation),
+    display_name = gsub("&", "\\\\&", display_name),
+    affiliation = gsub("&", "\\\\&", affiliation)
+  )
+```
+
+\begin{center}
+{\color{gwblue}\Large\textbf{ISA 2026 Annual Conference}}\\[0.15cm]
+{\large Attendee Checklist}\\[0.05cm]
+{\color{gray}\normalsize June 3--5, 2026 \textbullet{} Washington, DC}
+\end{center}
+
+\vspace{0.4cm}
+
+```{r}
+#| output: asis
+rows <- paste0(
+  "$\\square$ & ",
+  df$display_name,
+  " & ",
+  df$affiliation,
+  " \\\\\n"
+)
+
+cat(
+  "\\begin{longtable}{p{0.35cm} p{5.5cm} p{9cm}}\n",
+  "\\toprule\n",
+  " & \\textbf{Name} & \\textbf{Affiliation} \\\\\n",
+  "\\midrule\n",
+  "\\endhead\n",
+  "\\midrule\n",
+  "\\multicolumn{3}{r}{\\small\\textit{continued on next page}} \\\\\n",
+  "\\endfoot\n",
+  "\\bottomrule\n",
+  "\\endlastfoot\n",
+  paste(rows, collapse = ""),
+  "\\end{longtable}\n",
+  sep = ""
+)
+```
