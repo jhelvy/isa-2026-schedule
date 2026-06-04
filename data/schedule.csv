@@ -76,7 +76,6 @@ id,session_id,session_name,time_slot,room,date,day,start_time,end_time,time_orde
 114,11,Healthcare Data and Analytics,T2,SC-302,2026-06-04,Thursday,12:50:00,14:00:00,5
 150,11,Healthcare Data and Analytics,T2,SC-302,2026-06-04,Thursday,12:50:00,14:00:00,5
 54,20,Innovation Strategy and Resources,W2,SEH-B1270,2026-06-03,Wednesday,15:30:00,16:40:00,2
-59,20,Innovation Strategy and Resources,W2,SEH-B1270,2026-06-03,Wednesday,15:30:00,16:40:00,2
 65,20,Innovation Strategy and Resources,W2,SEH-B1270,2026-06-03,Wednesday,15:30:00,16:40:00,2
 56,1,Geographic Location and Transportation Cost,T2,SC-308,2026-06-04,Thursday,12:50:00,14:00:00,5
 109,1,Geographic Location and Transportation Cost,T2,SC-308,2026-06-04,Thursday,12:50:00,14:00:00,5
@@ -112,6 +111,7 @@ id,session_id,session_name,time_slot,room,date,day,start_time,end_time,time_orde
 90,40,Industrial Policy Frameworks,T3,SC-Amp.,2026-06-04,Thursday,15:40:00,16:50:00,6
 118,40,Industrial Policy Frameworks,T3,SC-Amp.,2026-06-04,Thursday,15:40:00,16:50:00,6
 176,40,Industrial Policy Frameworks,T3,SC-Amp.,2026-06-04,Thursday,15:40:00,16:50:00,6
+59,40,Industrial Policy Frameworks,T3,SC-Amp.,2026-06-04,Thursday,15:40:00,16:50:00,6
 172,2,Public Policy and ESG,W3,SEH-1450,2026-06-03,Wednesday,16:45:00,17:55:00,3
 85,2,Public Policy and ESG,W3,SEH-1450,2026-06-03,Wednesday,16:45:00,17:55:00,3
 46,2,Public Policy and ESG,W3,SEH-1450,2026-06-03,Wednesday,16:45:00,17:55:00,3

@@ -55,7 +55,6 @@ id,session_id,session_name
 203,19,Industrial Policy and Technology Development
 54,20,Innovation Strategy and Resources
 55,17,Entrepreneurship Research and Policy
-59,20,Innovation Strategy and Resources
 65,20,Innovation Strategy and Resources
 179,22,Technology Legitimacy and Emerging Markets
 186,22,Technology Legitimacy and Emerging Markets
@@ -104,10 +103,11 @@ id,session_id,session_name
 171,39,Humanitarian and Development Policy
 177,39,Humanitarian and Development Policy
 180,39,Humanitarian and Development Policy
-90,40,Industrial Policy Frameworks
 116,18,Generative AI and the Future of Work
+90,40,Industrial Policy Frameworks
 118,40,Industrial Policy Frameworks
 176,40,Industrial Policy Frameworks
+59,40,Industrial Policy Frameworks
 25,41,"Private Capital, Innovation Policy, and Regulatory Strategy"
 45,41,"Private Capital, Innovation Policy, and Regulatory Strategy"
 74,41,"Private Capital, Innovation Policy, and Regulatory Strategy"

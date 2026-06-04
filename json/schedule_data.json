@@ -348,25 +348,6 @@
     "session_chair": "Temitope Oladimeji (University of Massachusetts Amherst)"
   },
   {
-    "id": "59",
-    "session_id": "20",
-    "session_name": "Innovation Strategy and Resources",
-    "time_slot": "W2",
-    "room": "SEH-B1270",
-    "date": "2026-06-03",
-    "day": "Wednesday",
-    "start_time": "15:30:00",
-    "end_time": "16:40:00",
-    "time_order": 2,
-    "title": "Product Innovation as Emergent Hypothesis",
-    "abstract": "Product innovation is a function of the component units of a firm processually aligning to create a novel solution to a firm’s goals. Product innovation is thus a representation of a firm’s capacities, including the ability to grasp market direction. This means that product innovation is both a process of hypothesis-making about firm capacity to engage a market and a representation of that firm’s market perception.\n\n   Understanding product innovation as an emergent representational strategy gives a single formal framework for what is often seen as a function of several parts of an organization collaborating across internal boundaries. The rise of “product” roles in this century speaks to the need for a complexity management function within the productive process, just as the decay of traditional middle management speaks to a rationalization of the operating processes of large firms. Viewing novel products as representations of a firm akin to quarterly statements, as readable documentation of the firm’s ability to innovate and that firm’s beliefs about the nature and direction of the markets they serve adds to the means by which firm capacity can be understood. \n\n   By understanding product innovation as a materially representative hypothesis simultaneously concerning the nature of the firm and its surrounding markets, we can better understand the pragmatic application of innovation to times that may be more uncertain than usual. This paper draws on ethnographic research in nascent innovation ecosystems and present practice in product innovation.",
-    "authors": "William Benton* (Virginia Commonwealth University)",
-    "category": "Innovation, Entrepreneurship, and AI-Driven Transformation",
-    "type": "paper",
-    "paper_order": 2,
-    "session_chair": "Temitope Oladimeji (University of Massachusetts Amherst)"
-  },
-  {
     "id": "65",
     "session_id": "20",
     "session_name": "Innovation Strategy and Resources",
@@ -382,7 +363,7 @@
     "authors": "Tan Tran* (Beyondegrees Sas); Christian Goglin (ICD Business School)",
     "category": "Innovation, Entrepreneurship, and AI-Driven Transformation",
     "type": "paper",
-    "paper_order": 3,
+    "paper_order": 2,
     "session_chair": "Temitope Oladimeji (University of Massachusetts Amherst)"
   },
   {
@@ -2269,6 +2250,25 @@
     "category": "Public Policy and Global Competitiveness",
     "type": "paper",
     "paper_order": 3,
+    "session_chair": "Keno Haverkamp (University of Cambridge)"
+  },
+  {
+    "id": "59",
+    "session_id": "40",
+    "session_name": "Industrial Policy Frameworks",
+    "time_slot": "T3",
+    "room": "SC-Amp.",
+    "date": "2026-06-04",
+    "day": "Thursday",
+    "start_time": "15:40:00",
+    "end_time": "16:50:00",
+    "time_order": 6,
+    "title": "Product Innovation as Emergent Hypothesis",
+    "abstract": "Product innovation is a function of the component units of a firm processually aligning to create a novel solution to a firm’s goals. Product innovation is thus a representation of a firm’s capacities, including the ability to grasp market direction. This means that product innovation is both a process of hypothesis-making about firm capacity to engage a market and a representation of that firm’s market perception.\n\n   Understanding product innovation as an emergent representational strategy gives a single formal framework for what is often seen as a function of several parts of an organization collaborating across internal boundaries. The rise of “product” roles in this century speaks to the need for a complexity management function within the productive process, just as the decay of traditional middle management speaks to a rationalization of the operating processes of large firms. Viewing novel products as representations of a firm akin to quarterly statements, as readable documentation of the firm’s ability to innovate and that firm’s beliefs about the nature and direction of the markets they serve adds to the means by which firm capacity can be understood. \n\n   By understanding product innovation as a materially representative hypothesis simultaneously concerning the nature of the firm and its surrounding markets, we can better understand the pragmatic application of innovation to times that may be more uncertain than usual. This paper draws on ethnographic research in nascent innovation ecosystems and present practice in product innovation.",
+    "authors": "William Benton* (Virginia Commonwealth University)",
+    "category": "Public Policy and Global Competitiveness",
+    "type": "paper",
+    "paper_order": 4,
     "session_chair": "Keno Haverkamp (University of Cambridge)"
   },
   {
