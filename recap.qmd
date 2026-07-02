@@ -1,0 +1,107 @@
+---
+title: "2026 ISA Annual Conference Recap"
+format:
+  docx:
+    toc: false
+    number-sections: false
+---
+
+*[PHOTO: Wide shot of the Science & Engineering Hall or Milken Institute School of Public Health exterior, or a group photo from the opening plenary — suggested as the lead image at the top of the recap]*
+
+## Recap
+
+The 2026 Industry Studies Association Annual Conference convened June 3–5 at The George Washington University in Washington, DC, bringing together 215 attendees from more than 130 institutions. The program featured 132 paper presentations and 11 special panel sessions spread across seven research streams, alongside an opening plenary fireside chat. Across three days, researchers, policymakers, and practitioners explored how industries and industrial systems are navigating AI-driven transformation, reindustrialization, supply chain resilience, and a fast-shifting policy landscape in the nation's capital.
+
+ISA brings together researchers from management, economics, engineering, sociology, and public policy who study firms, supply chains, and institutions from the ground up. This year's seven research streams — General Industry Studies, Health Care Systems, Biotechnology, and Pharmaceuticals; Innovation, Entrepreneurship, and AI-Driven Transformation; Labor Markets, Organizations, and the Future of Work; Operations, Supply Chain, and AI-Enhanced Industry 4.0; Public Policy and Global Competitiveness; and Sustainable Innovation, Energy, and Mobility — reflected just how wide a lens industry studies scholars bring to bear on today's economy.
+
+## Morning Excursions
+
+*[PHOTO: Group photo from the think tank tour or the DC Mall walking tour]*
+
+Wednesday morning opened with two excursions before the main program began. The first excursion was a **DC Think Tank Tour** hosted in the Science and Engineering Hall building. For this "tour", representatives from a wide variety of local DC think tanks came and gave short presentations on the work they each do and the roles they serve in the broader DC ecosystem of policy making. Representatives came from the Center for Strategic and International Studies (CSIS), the Special Competitive Studies Project (SCSP), the McKinsey Global Institute, MITRE, the Niskanen Center, and Arizona State's Consortium for Science, Policy & Outcomes (CSPO). Speakers included Philip Luck (CSIS), Nyah Stewart and Caroline Armstrong (SCSP), Rebecca J. Anderson (McKinsey Global Institute), Roz Engel, Sanith Wijesinghe, and Dan Brown (MITRE), R.J. Lyman, Liza Reed, and Alex Mechanick (Niskanen Center), and Arthur Daemmrich and Mahmud Farooque (CSPO). The event gave attendees a rare behind-the-scenes look at how DC's think tank ecosystem shapes technology, economic, and industrial policy.
+
+The second excursion as a **Walking Tour of the DC Mall**, which took the group past many of the National Mall's major monuments, ending at the Lincoln Memorial before walking over to the Milken Institute School of Public Health for lunch and registration.
+
+## Opening Plenary: A Fireside Chat on Industrial Policy and Economic Security
+
+*[PHOTO: Opening plenary fireside chat on stage at the Milken Institute Convening Hall]*
+
+The conference officially opened Wednesday afternoon with a fireside chat between two leading voices on industrial policy and economic security: **Dr. Monica Gorman**, Managing Director at Crowell Global Advisors and former Special Assistant to the President for Manufacturing and Industrial Policy at the White House National Economic Council, and **Dr. Laura Taylor-Kale**, Senior Fellow for Geoeconomics and Defense at the Council on Foreign Relations and the first presidentially-appointed, Senate-confirmed Assistant Secretary of Defense for Industrial Base Policy. Together, the two brought a rare combination of White House, Pentagon, Commerce Department, and private-sector experience to bear on the industrial policy questions defining the moment — from supply chain resilience to the mechanics of standing up a national industrial strategy.
+
+## Special Sessions and Panels
+
+*[PHOTO: A panel session in progress — panelists seated at a table with the audience visible]*
+
+Twelve special panels ran alongside the paper program across all three days, many drawing on ISA's DC location to bring in senior voices from government, industry, and policy research.
+
+**AI and technology** was featured prominently. A Thursday panel on the electricity demands of AI data centers brought together Long Lam (Brattle Group), Levi Patterson (Nvidia), and Elizabeth Wilson (Dartmouth) to unpack the collision between AI infrastructure buildout and a power grid that hasn't grown in decades. A Friday panel, "The Integrity Imperative," examined governance and accountability for agentic AI systems with panelists from Portland State, Villanova, IBM, UT Austin, Santa Clara, and Dartmouth. And "Inside China's AI Ecosystem," moderated by GWU's own John Paul Helveston, brought together Lizzi C. Lee (Asia Society Policy Institute), Douglas Fuller (Copenhagen Business School), and Paul Triolo (DGA-Albright Stonebridge Group) for an empirical look at open-source development, hardware diversity, and trade policy shaping China's AI sector.
+
+**Industrial and innovation policy** sessions included a panel on the National Academies' study of the future of the Manufacturing USA Program in 2030 and 2035, featuring David Adler, Franz Wuerfmannsdobler, and Bill Bonvillian (MIT); two back-to-back panels on improvements to federal statistics for industry studies, with representatives from the Census Bureau, the National Center for Science & Engineering Statistics, the Bureau of Labor Statistics, and the Bureau of Economic Analysis; and a panel on strategic government procurement moderated by Susan Helper (Case Western), featuring practitioners from the Office of Management and Budget, the FDA, and the Office of Federal Procurement Policy. A Friday morning panel on building US innovation and industrial ecosystems brought together Elisabeth Reynolds (MIT), Heidi Crebo-Rediker (Council on Foreign Relations), and Sree Ramaswamy (NobleReach/CSIS).
+
+**Health care and the social sector** were also well represented, with a panel on national security implications of pharmaceutical supply chain resilience — spanning the Uniformed Services University, Ohio State, Johns Hopkins, Brookings, and the US Pharmacopeia — and a timely practitioner panel on how nonprofits are navigating funding uncertainty, featuring leaders from the Capital Area Food Bank and other organizations confronting a turbulent 2025 funding landscape.
+
+## Professional Development Workshop
+
+*[PHOTO: PDW mentors and mentees in discussion]*
+
+Running in parallel with the first two paper session blocks on Wednesday afternoon, the Professional Development Workshop drew 41 PhD students and junior faculty from institutions across the country and abroad for mentorship and career discussions ahead of the main program.
+
+## Paper Sessions
+
+*[PHOTO: A parallel paper session — presenter at the front of a classroom, audience taking notes]*
+
+As always, the heart of the ISA conference was the parallel paper sessions, running from Wednesday afternoon through Friday midday across the Science & Engineering Hall and Student Center classrooms. The 128 papers and 7 self-organized panels spanned the full breadth of ISA's research streams, with Innovation, Entrepreneurship, and AI-Driven Transformation (30 papers) and Operations, Supply Chain, and AI-Enhanced Industry 4.0 (26 papers) leading in volume, alongside strong showings in Health Care Systems, Biotechnology, and Pharmaceuticals (22), Public Policy and Global Competitiveness (17), Sustainable Innovation, Energy, and Mobility (18), Labor Markets, Organizations, and the Future of Work (16), and General Industry Studies (14). As always, sessions were intimate and discussion-heavy, with conversations regularly spilling into the hallways between blocks.
+
+## Award Winners Panel
+
+*[PHOTO: Award winners panel discussion]*
+
+A highlight of Thursday's late-afternoon lineup was the Award Winners Panel, where ISA's award-winning researchers — Sukhun Kang (UC Santa Barbara), Subhankar Saha (Ahmedabad University), Jennifer Zou (Harvard), and Eppa Rixey (MIT-Sloan, now Northeastern) — went beyond their findings to discuss the process behind the research: how they gained industry access, the decisions that shaped their research design, and the unexpected challenges along the way.
+
+## Receptions and Networking
+
+*[PHOTO: Attendees mingling at the Wednesday or Thursday evening reception]*
+
+Wednesday evening closed with a reception at the Science & Engineering Hall, and Thursday's longer, two-hour reception at the Student Center Grand Ballroom gave attendees ample time to reconnect after a full day of sessions and the annual ISA business meeting over lunch. Interim Dean Zara gave welcoming remarks at the Wednesday evening reception, which showcased the GWU School of Engineering.
+
+## Congratulations to Our Award Winners!
+
+*[PHOTO: Award winners on stage at the Friday luncheon]*
+
+The conference concluded Friday with the annual awards luncheon. Congratulations to this year's winners:
+
+**Best Paper in Innovation and Entrepreneurship**
+Winner: "Mind the Gap in Drug Development: Understanding the Whitespace Between Clinical Trials" — Sukhun Kang (UC Santa Barbara), Sandra Barbosu (New York University), Fan Ye (UC Santa Barbara), Sungyong Chang (Cornell University)
+Runner-up: "Misleading Science Maps: Firms' Strategic Responses to Data Malpractice in Alzheimer's Research" — Matteo Tranchero (The Wharton School), Christian Fons-Rosen (UC Merced), Lee Fleming (UC Berkeley)
+
+**Babbage Best Paper in Industrial Innovation Policy**
+Winner: "Implementing a Comprehensive Intervention to Promote Sustainable Agricultural Practices in India" — Subhankar Saha (Ahmedabad University), Haritha Saranga (Indian Institute of Management Bangalore), Sriram Narayanan (Michigan State University), Chandrakant Pradhan (Confederation of Indian Industry)
+Runner-up: "Data Privacy Regulation and Innovation" — Sukhun Kang (UC Santa Barbara), Jennifer Kao (UCLA)
+
+**Giarratani Rising Star Award**
+Winner: "Dynamic Competition in Networked Markets: Evidence from US Broadband" — Jennifer Zou (Harvard University)
+Runner-up: "Offshore Manufacturing of Innovative Drugs: Evidence from U.S. Pharmaceutical Firms" — Minji Lee (Cornell University)
+
+**Ralph Gomory Best Industry Studies Paper Award**
+Winner: "Contradictory control: How employers' multiple control practices clash and enable workers' acts of resistance" — Yuequan Guo (WZB Berlin Social Science Center), published in *ILR Review*
+Runner-up: "The perils of a soft start: Initial conditions, early strategy selection, and small firm performance" — F. Christopher Eaglin (Duke University), published in *Strategic Management Journal*
+
+**Dissertation Award**
+Winner: "Coevolution of Small Business Strategy and Regulation: A Mixed-Methods Study of United States Craft Breweries" — Eppa Rixey (MIT-Sloan, currently Northeastern University)
+Runner-up: "The Role of Data in the Search for Innovation: Essays on Big Data Genomics" — Matteo Tranchero (UC Berkeley, currently The Wharton School)
+
+## Thank You
+
+*[PHOTO: Conference chair or ISA leadership at the podium]*
+
+ISA extends its sincere thanks to The George Washington University for hosting this year's conference, and to the local DC program committee — Allison Forbes, Monica Gorman, David Hart, and Andrew Reamer — for helping put together an outstanding program, including the Wednesday morning think tank excursion. Thanks also to Renae Sullivan, ISA's Program Manager, for her continued work modernizing ISA's communications and membership platform, and to Treasurer Jeff Shockley for his work alongside her on the organization's operations.
+
+This conference also marked the end of John Gray's (The Ohio State University) term as ISA President. Founding member Ed Anderson (University of Texas) takes over as President — ISA is in good hands!
+
+## Looking Ahead
+
+*[PHOTO/LOGO: Saïd Business School, Oxford, or BYU campus]*
+
+ISA returns with two major gatherings in the second half of 2026 and beyond. For the first time ever, ISA will host an international conference at the **Saïd Business School, Oxford University**, September 3–5, 2026. And the **2027 ISA Annual Conference** heads to **Brigham Young University** in Provo, Utah, May 26–28, 2027.
+
+As the world contends with AI disruption, reindustrialization, and new industrial policy regimes, ISA remains the essential home for scholarship that connects theory with practice. We hope to see you at one — or both — of our 2026 and 2027 gatherings!
